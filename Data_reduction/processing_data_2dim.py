@@ -61,6 +61,9 @@ def merging_files():
     combined_csv.to_csv("combined_csvs/combined_csv_2dim.csv", index=False, encoding='utf-8')
     print("Merged file saved!")
 
+def binning():
+    print("Test")
+
 
 def main():
     sys.stdout = open("dimensionalityReduction_project#3.txt", "a")
