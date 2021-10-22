@@ -1,0 +1,1847 @@
+Selected columns:  ['totalTravelTimeInSec', 'totalPrice', 'totalNumberOfChanges', 'totalWalkingDistance', 'totalWaitingTime', 'objective', 'finiteAutomaton', 'consideredPreferences', 'finalSolutionUsedLabels', 'sourceName', 'targetName']
+For file 26_30_Aachen_Oberhausen.csv_reduced.csv 23812 rows have been removed.
+
+For file 36_40_Berlin_Hamburg.csv_reduced.csv 23627 rows have been removed.
+
+For file 26_30_Ulm_Wrzburg.csv_reduced.csv 23700 rows have been removed.
+
+For file 06_10_Stuttgart_Bonn.csv_reduced.csv 23561 rows have been removed.
+
+For file 26_30_Leipzig_Berlin.csv_reduced.csv 23565 rows have been removed.
+
+For file 16_20_Karlsruhe_Mnchen.csv_reduced.csv 23609 rows have been removed.
+
+For file 01_05_Aachen_Dortmund.csv_reduced.csv 23580 rows have been removed.
+
+For file 16_20_Wrzburg_Wuppertal.csv_reduced.csv 23918 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Bochum.csv_reduced.csv 23620 rows have been removed.
+
+For file 46_50_Mannheim_Wuppertal.csv_reduced.csv 23569 rows have been removed.
+
+For file 01_05_Hamburg_Solingen.csv_reduced.csv 23559 rows have been removed.
+
+For file 46_50_Wuppertal_Aachen.csv_reduced.csv 23661 rows have been removed.
+
+For file 16_20_Darmstadt_Oberhausen.csv_reduced.csv 23659 rows have been removed.
+
+For file 21_25_Solingen_Darmstadt.csv_reduced.csv 23707 rows have been removed.
+
+For file 56_60_Nrnberg_Hamburg.csv_reduced.csv 23431 rows have been removed.
+
+For file 56_60_Nrnberg_Bonn.csv_reduced.csv 23793 rows have been removed.
+
+For file 36_40_Mannheim_Dsseldorf.csv_reduced.csv 23492 rows have been removed.
+
+For file 41_45_Hagen_Wuppertal.csv_reduced.csv 23580 rows have been removed.
+
+For file 21_25_Dortmund_Mannheim.csv_reduced.csv 23429 rows have been removed.
+
+For file 01_05_Dortmund_Gelsenkirchen.csv_reduced.csv 23585 rows have been removed.
+
+For file 41_45_Wrzburg_Erlangen.csv_reduced.csv 23668 rows have been removed.
+
+For file 31_35_Kln_Mannheim.csv_reduced.csv 23602 rows have been removed.
+
+For file 21_25_Bonn_Gelsenkirchen.csv_reduced.csv 23677 rows have been removed.
+
+For file 56_60_Wrzburg_Ulm.csv_reduced.csv 23700 rows have been removed.
+
+For file 11_15_Nrnberg_Karlsruhe.csv_reduced.csv 23545 rows have been removed.
+
+For file 46_50_Aachen_Heidelberg.csv_reduced.csv 23688 rows have been removed.
+
+For file 01_05_Kln_Oberhausen.csv_reduced.csv 23712 rows have been removed.
+
+For file 01_05_Mnchen_Wrzburg.csv_reduced.csv 23432 rows have been removed.
+
+For file 01_05_Heidelberg_Karlsruhe.csv_reduced.csv 23620 rows have been removed.
+
+For file 26_30_Erfurt_Nrnberg.csv_reduced.csv 23547 rows have been removed.
+
+For file 41_45_Dsseldorf_Mannheim.csv_reduced.csv 23370 rows have been removed.
+
+For file 41_45_Nrnberg_Wrzburg.csv_reduced.csv 23516 rows have been removed.
+
+For file 26_30_Aachen_Solingen.csv_reduced.csv 23657 rows have been removed.
+
+For file 41_45_Mannheim_Osnabrck.csv_reduced.csv 23505 rows have been removed.
+
+For file 26_30_Mannheim_Nrnberg.csv_reduced.csv 23599 rows have been removed.
+
+For file 26_30_Heidelberg_Mannheim.csv_reduced.csv 23606 rows have been removed.
+
+For file 56_60_Leipzig_Hamburg.csv_reduced.csv 23514 rows have been removed.
+
+For file 21_25_Mannheim_Mnchen.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Mannheim_Darmstadt.csv_reduced.csv 23558 rows have been removed.
+
+For file 01_05_Leipzig_Erlangen.csv_reduced.csv 23592 rows have been removed.
+
+For file 16_20_Hamburg_Bochum.csv_reduced.csv 23396 rows have been removed.
+
+For file 31_35_Karlsruhe_Wrzburg.csv_reduced.csv 23643 rows have been removed.
+
+For file 51_55_Kln_Darmstadt.csv_reduced.csv 23653 rows have been removed.
+
+For file 56_60_Hamburg_Wrzburg.csv_reduced.csv 23493 rows have been removed.
+
+For file 31_35_Heidelberg_Bochum.csv_reduced.csv 23527 rows have been removed.
+
+For file 01_05_Dortmund_Hagen.csv_reduced.csv 23610 rows have been removed.
+
+For file 16_20_Bonn_Duisburg.csv_reduced.csv 23704 rows have been removed.
+
+For file 31_35_Ulm_Bamberg.csv_reduced.csv 23615 rows have been removed.
+
+For file 01_05_Karlsruhe_Mannheim.csv_reduced.csv 23510 rows have been removed.
+
+For file 06_10_Mnchen_Bamberg.csv_reduced.csv 23628 rows have been removed.
+
+For file 31_35_Gelsenkirchen_Mannheim.csv_reduced.csv 23506 rows have been removed.
+
+For file 26_30_Aachen_Kln.csv_reduced.csv 23610 rows have been removed.
+
+For file 01_05_Ulm_Karlsruhe.csv_reduced.csv 23538 rows have been removed.
+
+For file 31_35_Darmstadt_Ulm.csv_reduced.csv 23664 rows have been removed.
+
+For file 11_15_Mnchen_Karlsruhe.csv_reduced.csv 23649 rows have been removed.
+
+For file 01_05_Wuppertal_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 46_50_Wrzburg_Heidelberg.csv_reduced.csv 23634 rows have been removed.
+
+For file 01_05_Leipzig_Nrnberg.csv_reduced.csv 23461 rows have been removed.
+
+For file 31_35_Bonn_Karlsruhe.csv_reduced.csv 23703 rows have been removed.
+
+For file 31_35_Karlsruhe_Bamberg.csv_reduced.csv 23623 rows have been removed.
+
+For file 36_40_Dsseldorf_Duisburg.csv_reduced.csv 23623 rows have been removed.
+
+For file 01_05_Hamburg_Hagen.csv_reduced.csv 23619 rows have been removed.
+
+For file 46_50_Heidelberg_Oberhausen.csv_reduced.csv 23596 rows have been removed.
+
+For file 26_30_Wrzburg_Hagen.csv_reduced.csv 23843 rows have been removed.
+
+For file 01_05_Wuppertal_Oberhausen.csv_reduced.csv 23644 rows have been removed.
+
+For file 01_05_Oberhausen_Bochum.csv_reduced.csv 23591 rows have been removed.
+
+For file 01_05_Hamburg_Essen.csv_reduced.csv 23362 rows have been removed.
+
+For file 36_40_Darmstadt_Wuppertal.csv_reduced.csv 23658 rows have been removed.
+
+For file 46_50_Erfurt_Karlsruhe.csv_reduced.csv 23455 rows have been removed.
+
+For file 01_05_Aachen_Dsseldorf.csv_reduced.csv 23590 rows have been removed.
+
+For file 36_40_Mnchen_Heidelberg.csv_reduced.csv 23672 rows have been removed.
+
+For file 31_35_Oberhausen_Bonn.csv_reduced.csv 23627 rows have been removed.
+
+For file 26_30_Wrzburg_Bamberg.csv_reduced.csv 23615 rows have been removed.
+
+For file 01_05_Wrzburg_Karlsruhe.csv_reduced.csv 23637 rows have been removed.
+
+For file 01_05_Karlsruhe_Kln.csv_reduced.csv 23516 rows have been removed.
+
+For file 41_45_Heidelberg_Ulm.csv_reduced.csv 23631 rows have been removed.
+
+For file 46_50_Darmstadt_Solingen.csv_reduced.csv 23798 rows have been removed.
+
+For file 26_30_Wrzburg_Erfurt.csv_reduced.csv 23627 rows have been removed.
+
+For file 01_05_Nrnberg_Heidelberg.csv_reduced.csv 23629 rows have been removed.
+
+For file 16_20_Wrzburg_Stuttgart.csv_reduced.csv 23619 rows have been removed.
+
+For file 36_40_Wrzburg_Mnchen.csv_reduced.csv 23700 rows have been removed.
+
+For file 21_25_Oberhausen_Solingen.csv_reduced.csv 23671 rows have been removed.
+
+For file 16_20_Mannheim_Ulm.csv_reduced.csv 23697 rows have been removed.
+
+For file 01_05_Kln_Wuppertal.csv_reduced.csv 23556 rows have been removed.
+
+For file 01_05_Heidelberg_Erfurt.csv_reduced.csv 23664 rows have been removed.
+
+For file 41_45_Aachen_Essen.csv_reduced.csv 23623 rows have been removed.
+
+For file 36_40_Hagen_Mannheim.csv_reduced.csv 23550 rows have been removed.
+
+For file 26_30_Heidelberg_Bonn.csv_reduced.csv 23673 rows have been removed.
+
+For file 06_10_Dortmund_Erfurt.csv_reduced.csv 23618 rows have been removed.
+
+For file 41_45_Hagen_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 11_15_Wuppertal_Bonn.csv_reduced.csv 23629 rows have been removed.
+
+For file 16_20_Nrnberg_Dsseldorf.csv_reduced.csv 23552 rows have been removed.
+
+For file 26_30_Stuttgart_Ulm.csv_reduced.csv 23526 rows have been removed.
+
+For file 46_50_Erfurt_Hamburg.csv_reduced.csv 23546 rows have been removed.
+
+For file 36_40_Essen_Osnabrck.csv_reduced.csv 23588 rows have been removed.
+
+For file 36_40_Wrzburg_Bochum.csv_reduced.csv 23468 rows have been removed.
+
+For file 01_05_Dortmund_Bonn.csv_reduced.csv 23580 rows have been removed.
+
+For file 01_05_Bonn_Darmstadt.csv_reduced.csv 23633 rows have been removed.
+
+For file 31_35_Duisburg_Solingen.csv_reduced.csv 23698 rows have been removed.
+
+For file 36_40_Kln_Aachen.csv_reduced.csv 23568 rows have been removed.
+
+For file 01_05_Bonn_Heidelberg.csv_reduced.csv 23635 rows have been removed.
+
+For file 01_05_Essen_Oberhausen.csv_reduced.csv 23618 rows have been removed.
+
+For file 56_60_Stuttgart_Aachen.csv_reduced.csv 23525 rows have been removed.
+
+For file 51_55_Wuppertal_Mannheim.csv_reduced.csv 23645 rows have been removed.
+
+For file 41_45_Essen_Bonn.csv_reduced.csv 23697 rows have been removed.
+
+For file 56_60_Essen_Hagen.csv_reduced.csv 23557 rows have been removed.
+
+For file 01_05_Stuttgart_Darmstadt.csv_reduced.csv 23637 rows have been removed.
+
+For file 11_15_Stuttgart_Karlsruhe.csv_reduced.csv 23539 rows have been removed.
+
+For file 36_40_Oberhausen_Hagen.csv_reduced.csv 23688 rows have been removed.
+
+For file 01_05_Mannheim_Solingen.csv_reduced.csv 23563 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Wuppertal.csv_reduced.csv 23765 rows have been removed.
+
+For file 11_15_Heidelberg_Duisburg.csv_reduced.csv 23662 rows have been removed.
+
+For file 41_45_Oberhausen_Duisburg.csv_reduced.csv 23548 rows have been removed.
+
+For file 21_25_Stuttgart_Heidelberg.csv_reduced.csv 23534 rows have been removed.
+
+For file 31_35_Dsseldorf_Hagen.csv_reduced.csv 23600 rows have been removed.
+
+For file 26_30_Wuppertal_Duisburg.csv_reduced.csv 23543 rows have been removed.
+
+For file 56_60_Mannheim_Oberhausen.csv_reduced.csv 23521 rows have been removed.
+
+For file 41_45_Hamburg_Wuppertal.csv_reduced.csv 23610 rows have been removed.
+
+For file 26_30_Gelsenkirchen_Bonn.csv_reduced.csv 23633 rows have been removed.
+
+For file 26_30_Darmstadt_Mannheim.csv_reduced.csv 23521 rows have been removed.
+
+For file 06_10_Mannheim_Bonn.csv_reduced.csv 23653 rows have been removed.
+
+For file 31_35_Karlsruhe_Darmstadt.csv_reduced.csv 23668 rows have been removed.
+
+For file 16_20_Hamburg_Leipzig.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Bochum_Gelsenkirchen.csv_reduced.csv 23614 rows have been removed.
+
+For file 21_25_Berlin_Leipzig.csv_reduced.csv 23604 rows have been removed.
+
+For file 11_15_Karlsruhe_Ulm.csv_reduced.csv 23637 rows have been removed.
+
+For file 01_05_Aachen_Bochum.csv_reduced.csv 23660 rows have been removed.
+
+For file 41_45_Heidelberg_Darmstadt.csv_reduced.csv 23550 rows have been removed.
+
+For file 06_10_Wrzburg_Essen.csv_reduced.csv 23558 rows have been removed.
+
+For file 01_05_Bochum_Hagen.csv_reduced.csv 23594 rows have been removed.
+
+For file 56_60_Hagen_Bochum.csv_reduced.csv 23533 rows have been removed.
+
+For file 46_50_Ulm_Heidelberg.csv_reduced.csv 23570 rows have been removed.
+
+For file 26_30_Dortmund_Bochum.csv_reduced.csv 23493 rows have been removed.
+
+For file 26_30_Dsseldorf_Bochum.csv_reduced.csv 23468 rows have been removed.
+
+For file 11_15_Aachen_Duisburg.csv_reduced.csv 23716 rows have been removed.
+
+For file 01_05_Mnchen_Erlangen.csv_reduced.csv 23622 rows have been removed.
+
+For file 06_10_Erfurt_Berlin.csv_reduced.csv 23462 rows have been removed.
+
+For file 41_45_Erfurt_Leipzig.csv_reduced.csv 23508 rows have been removed.
+
+For file 01_05_Bonn_Oberhausen.csv_reduced.csv 23851 rows have been removed.
+
+For file 41_45_Erfurt_Wrzburg.csv_reduced.csv 23648 rows have been removed.
+
+For file 01_05_Wrzburg_Nrnberg.csv_reduced.csv 23511 rows have been removed.
+
+For file 26_30_Essen_Hamburg.csv_reduced.csv 23545 rows have been removed.
+
+For file 41_45_Ulm_Darmstadt.csv_reduced.csv 23709 rows have been removed.
+
+For file 01_05_Mannheim_Kln.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Bochum_Bonn.csv_reduced.csv 23636 rows have been removed.
+
+For file 11_15_Wrzburg_Bonn.csv_reduced.csv 23590 rows have been removed.
+
+For file 56_60_Nrnberg_Mnchen.csv_reduced.csv 23586 rows have been removed.
+
+For file 21_25_Dsseldorf_Solingen.csv_reduced.csv 23553 rows have been removed.
+
+For file 41_45_Ulm_Erlangen.csv_reduced.csv 23618 rows have been removed.
+
+For file 01_05_Mannheim_Erfurt.csv_reduced.csv 23544 rows have been removed.
+
+For file 01_05_Bochum_Duisburg.csv_reduced.csv 23561 rows have been removed.
+
+For file 46_50_Mannheim_Essen.csv_reduced.csv 23588 rows have been removed.
+
+For file 46_50_Mannheim_Hagen.csv_reduced.csv 23647 rows have been removed.
+
+For file 26_30_Hamburg_Dortmund.csv_reduced.csv 23604 rows have been removed.
+
+For file 11_15_Mannheim_Dortmund.csv_reduced.csv 23507 rows have been removed.
+
+For file 01_05_Erfurt_Heidelberg.csv_reduced.csv 23719 rows have been removed.
+
+For file 01_05_Wrzburg_Leipzig.csv_reduced.csv 23643 rows have been removed.
+
+For file 06_10_Leipzig_Heidelberg.csv_reduced.csv 23713 rows have been removed.
+
+For file 26_30_Aachen_Bonn.csv_reduced.csv 23613 rows have been removed.
+
+For file 51_55_Aachen_Hagen.csv_reduced.csv 23861 rows have been removed.
+
+For file 16_20_Ulm_Bonn.csv_reduced.csv 23538 rows have been removed.
+
+For file 56_60_Nrnberg_Stuttgart.csv_reduced.csv 23597 rows have been removed.
+
+For file 06_10_Aachen_Stuttgart.csv_reduced.csv 23547 rows have been removed.
+
+For file 51_55_Aachen_Mannheim.csv_reduced.csv 23520 rows have been removed.
+
+For file 01_05_Stuttgart_Wuppertal.csv_reduced.csv 23557 rows have been removed.
+
+For file 01_05_Bochum_Wuppertal.csv_reduced.csv 23572 rows have been removed.
+
+For file 26_30_Karlsruhe_Stuttgart.csv_reduced.csv 23523 rows have been removed.
+
+For file 16_20_Bonn_Aachen.csv_reduced.csv 23584 rows have been removed.
+
+For file 56_60_Leipzig_Bochum.csv_reduced.csv 23520 rows have been removed.
+
+For file 26_30_Kln_Heidelberg.csv_reduced.csv 23695 rows have been removed.
+
+For file 36_40_Bonn_Hagen.csv_reduced.csv 23872 rows have been removed.
+
+For file 21_25_Aachen_Gelsenkirchen.csv_reduced.csv 23732 rows have been removed.
+
+For file 41_45_Darmstadt_Karlsruhe.csv_reduced.csv 23536 rows have been removed.
+
+For file 01_05_Karlsruhe_Solingen.csv_reduced.csv 23581 rows have been removed.
+
+For file 51_55_Hagen_Duisburg.csv_reduced.csv 23632 rows have been removed.
+
+For file 26_30_Ulm_Solingen.csv_reduced.csv 23495 rows have been removed.
+
+For file 01_05_Aachen_Darmstadt.csv_reduced.csv 23658 rows have been removed.
+
+For file 41_45_Heidelberg_Gelsenkirchen.csv_reduced.csv 23549 rows have been removed.
+
+For file 41_45_Essen_Wuppertal.csv_reduced.csv 23568 rows have been removed.
+
+For file 01_05_Karlsruhe_Dsseldorf.csv_reduced.csv 23484 rows have been removed.
+
+For file 46_50_Wrzburg_Duisburg.csv_reduced.csv 23584 rows have been removed.
+
+For file 26_30_Wrzburg_Kln.csv_reduced.csv 23569 rows have been removed.
+
+For file 01_05_Mnchen_Darmstadt.csv_reduced.csv 23740 rows have been removed.
+
+For file 41_45_Essen_Bochum.csv_reduced.csv 23502 rows have been removed.
+
+For file 01_05_Mnchen_Stuttgart.csv_reduced.csv 23683 rows have been removed.
+
+For file 21_25_Dsseldorf_Aachen.csv_reduced.csv 23487 rows have been removed.
+
+For file 51_55_Mannheim_Duisburg.csv_reduced.csv 23573 rows have been removed.
+
+For file 56_60_Bonn_Solingen.csv_reduced.csv 23674 rows have been removed.
+
+For file 11_15_Leipzig_Hagen.csv_reduced.csv 23674 rows have been removed.
+
+For file 06_10_Wrzburg_Hamburg.csv_reduced.csv 23475 rows have been removed.
+
+For file 56_60_Gelsenkirchen_Solingen.csv_reduced.csv 23717 rows have been removed.
+
+For file 46_50_Leipzig_Wrzburg.csv_reduced.csv 23608 rows have been removed.
+
+For file 41_45_Kln_Bonn.csv_reduced.csv 23591 rows have been removed.
+
+For file 01_05_Nrnberg_Leipzig.csv_reduced.csv 23609 rows have been removed.
+
+For file 26_30_Hamburg_Berlin.csv_reduced.csv 23587 rows have been removed.
+
+For file 06_10_Wuppertal_Osnabrck.csv_reduced.csv 23643 rows have been removed.
+
+For file 41_45_Gelsenkirchen_Duisburg.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Wuppertal_Bochum.csv_reduced.csv 23566 rows have been removed.
+
+For file 41_45_Hagen_Oberhausen.csv_reduced.csv 23682 rows have been removed.
+
+For file 11_15_Hagen_Bonn.csv_reduced.csv 23671 rows have been removed.
+
+For file 01_05_Nrnberg_Erfurt.csv_reduced.csv 23511 rows have been removed.
+
+For file 26_30_Erfurt_Erlangen.csv_reduced.csv 23529 rows have been removed.
+
+For file 06_10_Aachen_Wrzburg.csv_reduced.csv 23577 rows have been removed.
+
+For file 21_25_Mannheim_Stuttgart.csv_reduced.csv 23724 rows have been removed.
+
+For file 56_60_Darmstadt_Erfurt.csv_reduced.csv 23636 rows have been removed.
+
+For file 01_05_Dsseldorf_Gelsenkirchen.csv_reduced.csv 23535 rows have been removed.
+
+For file 46_50_Erfurt_Ulm.csv_reduced.csv 23630 rows have been removed.
+
+For file 06_10_Aachen_Wuppertal.csv_reduced.csv 23657 rows have been removed.
+
+For file 01_05_Karlsruhe_Heidelberg.csv_reduced.csv 23620 rows have been removed.
+
+For file 36_40_Karlsruhe_Bonn.csv_reduced.csv 23628 rows have been removed.
+
+For file 06_10_Nrnberg_Kln.csv_reduced.csv 23525 rows have been removed.
+
+For file 56_60_Karlsruhe_Erfurt.csv_reduced.csv 23619 rows have been removed.
+
+For file 16_20_Darmstadt_Wrzburg.csv_reduced.csv 23547 rows have been removed.
+
+For file 41_45_Hagen_Aachen.csv_reduced.csv 23681 rows have been removed.
+
+For file 11_15_Leipzig_Darmstadt.csv_reduced.csv 23597 rows have been removed.
+
+For file 11_15_Ulm_Erfurt.csv_reduced.csv 23645 rows have been removed.
+
+For file 21_25_Kln_Wrzburg.csv_reduced.csv 23427 rows have been removed.
+
+For file 41_45_Solingen_Hagen.csv_reduced.csv 23574 rows have been removed.
+
+For file 26_30_Kln_Bochum.csv_reduced.csv 23554 rows have been removed.
+
+For file 26_30_Darmstadt_Hagen.csv_reduced.csv 23641 rows have been removed.
+
+For file 06_10_Bonn_Wuppertal.csv_reduced.csv 23667 rows have been removed.
+
+For file 46_50_Wrzburg_Oberhausen.csv_reduced.csv 23521 rows have been removed.
+
+For file 56_60_Leipzig_Mnchen.csv_reduced.csv 23520 rows have been removed.
+
+For file 01_05_Nrnberg_Mannheim.csv_reduced.csv 23585 rows have been removed.
+
+For file 01_05_Stuttgart_Solingen.csv_reduced.csv 23498 rows have been removed.
+
+For file 46_50_Darmstadt_Bonn.csv_reduced.csv 23655 rows have been removed.
+
+For file 06_10_Kln_Hamburg.csv_reduced.csv 23563 rows have been removed.
+
+For file 21_25_Nrnberg_Wuppertal.csv_reduced.csv 23672 rows have been removed.
+
+For file 26_30_Karlsruhe_Nrnberg.csv_reduced.csv 23534 rows have been removed.
+
+For file 21_25_Kln_Hagen.csv_reduced.csv 23775 rows have been removed.
+
+For file 11_15_Dortmund_Duisburg.csv_reduced.csv 23531 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Hagen.csv_reduced.csv 23759 rows have been removed.
+
+For file 26_30_Mnchen_Ulm.csv_reduced.csv 23639 rows have been removed.
+
+For file 26_30_Darmstadt_Gelsenkirchen.csv_reduced.csv 23670 rows have been removed.
+
+For file 36_40_Erfurt_Dsseldorf.csv_reduced.csv 23453 rows have been removed.
+
+For file 01_05_Bochum_Solingen.csv_reduced.csv 23638 rows have been removed.
+
+For file 11_15_Hamburg_Kln.csv_reduced.csv 23758 rows have been removed.
+
+For file 56_60_Mnchen_Mannheim.csv_reduced.csv 23680 rows have been removed.
+
+For file 51_55_Bonn_Bochum.csv_reduced.csv 23638 rows have been removed.
+
+For file 01_05_Leipzig_Bamberg.csv_reduced.csv 23582 rows have been removed.
+
+For file 56_60_Heidelberg_Wrzburg.csv_reduced.csv 23673 rows have been removed.
+
+For file 31_35_Erfurt_Stuttgart.csv_reduced.csv 23555 rows have been removed.
+
+For file 46_50_Ulm_Wuppertal.csv_reduced.csv 23554 rows have been removed.
+
+For file 01_05_Mnchen_Leipzig.csv_reduced.csv 23654 rows have been removed.
+
+For file 21_25_Nrnberg_Ulm.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Bochum_Oberhausen.csv_reduced.csv 23567 rows have been removed.
+
+For file 26_30_Dsseldorf_Oberhausen.csv_reduced.csv 23514 rows have been removed.
+
+For file 26_30_Erfurt_Bamberg.csv_reduced.csv 23541 rows have been removed.
+
+For file 11_15_Heidelberg_Erlangen.csv_reduced.csv 23760 rows have been removed.
+
+For file 16_20_Oberhausen_Mannheim.csv_reduced.csv 23475 rows have been removed.
+
+For file 51_55_Dortmund_Karlsruhe.csv_reduced.csv 23485 rows have been removed.
+
+For file 01_05_Stuttgart_Wrzburg.csv_reduced.csv 23601 rows have been removed.
+
+For file 41_45_Erfurt_Dortmund.csv_reduced.csv 23586 rows have been removed.
+
+For file 01_05_Nrnberg_Darmstadt.csv_reduced.csv 23465 rows have been removed.
+
+For file 46_50_Hagen_Gelsenkirchen.csv_reduced.csv 23584 rows have been removed.
+
+For file 51_55_Hagen_Heidelberg.csv_reduced.csv 23704 rows have been removed.
+
+For file 01_05_Dortmund_Wuppertal.csv_reduced.csv 23580 rows have been removed.
+
+For file 26_30_Dsseldorf_Darmstadt.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Mannheim_Karlsruhe.csv_reduced.csv 23481 rows have been removed.
+
+For file 41_45_Dortmund_Oberhausen.csv_reduced.csv 23609 rows have been removed.
+
+For file 01_05_Bonn_Mannheim.csv_reduced.csv 23584 rows have been removed.
+
+For file 51_55_Dortmund_Aachen.csv_reduced.csv 23600 rows have been removed.
+
+For file 56_60_Hamburg_Bonn.csv_reduced.csv 23765 rows have been removed.
+
+For file 41_45_Erfurt_Darmstadt.csv_reduced.csv 23523 rows have been removed.
+
+For file 41_45_Mnchen_Nrnberg.csv_reduced.csv 23500 rows have been removed.
+
+For file 01_05_Dortmund_Solingen.csv_reduced.csv 23580 rows have been removed.
+
+For file 31_35_Essen_Solingen.csv_reduced.csv 23570 rows have been removed.
+
+For file 26_30_Ulm_Mannheim.csv_reduced.csv 23694 rows have been removed.
+
+For file 36_40_Hamburg_Dsseldorf.csv_reduced.csv 23666 rows have been removed.
+
+For file 36_40_Dsseldorf_Osnabrck.csv_reduced.csv 23502 rows have been removed.
+
+For file 31_35_Wuppertal_Gelsenkirchen.csv_reduced.csv 23572 rows have been removed.
+
+For file 06_10_Dsseldorf_Wrzburg.csv_reduced.csv 23471 rows have been removed.
+
+For file 51_55_Hagen_Karlsruhe.csv_reduced.csv 23580 rows have been removed.
+
+For file 21_25_Leipzig_Dortmund.csv_reduced.csv 23692 rows have been removed.
+
+For file 01_05_Darmstadt_Heidelberg.csv_reduced.csv 23587 rows have been removed.
+
+For file 01_05_Kln_Gelsenkirchen.csv_reduced.csv 23613 rows have been removed.
+
+For file 56_60_Kln_Karlsruhe.csv_reduced.csv 23518 rows have been removed.
+
+For file 01_05_Mannheim_Heidelberg.csv_reduced.csv 23623 rows have been removed.
+
+For file 41_45_Nrnberg_Erlangen.csv_reduced.csv 23545 rows have been removed.
+
+For file 11_15_Erfurt_Mannheim.csv_reduced.csv 23545 rows have been removed.
+
+For file 56_60_Dortmund_Hamburg.csv_reduced.csv 23528 rows have been removed.
+
+For file 06_10_Wrzburg_Mannheim.csv_reduced.csv 23543 rows have been removed.
+
+For file 01_05_Oberhausen_Gelsenkirchen.csv_reduced.csv 23676 rows have been removed.
+
+For file 51_55_Erfurt_Kln.csv_reduced.csv 23375 rows have been removed.
+
+For file 01_05_Stuttgart_Mannheim.csv_reduced.csv 23669 rows have been removed.
+
+For file 01_05_Wuppertal_Hagen.csv_reduced.csv 23592 rows have been removed.
+
+For file 46_50_Kln_Duisburg.csv_reduced.csv 23576 rows have been removed.
+
+For file 06_10_Oberhausen_Wuppertal.csv_reduced.csv 23684 rows have been removed.
+
+For file 01_05_Nrnberg_Bamberg.csv_reduced.csv 23568 rows have been removed.
+
+For file 26_30_Kln_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 16_20_Essen_Aachen.csv_reduced.csv 23591 rows have been removed.
+
+For file 56_60_Dsseldorf_Bonn.csv_reduced.csv 23606 rows have been removed.
+
+For file 46_50_Wrzburg_Darmstadt.csv_reduced.csv 23537 rows have been removed.
+
+For file 01_05_Essen_Gelsenkirchen.csv_reduced.csv 23539 rows have been removed.
+
+For file 01_05_Mannheim_Wrzburg.csv_reduced.csv 23643 rows have been removed.
+
+For file 11_15_Stuttgart_Erfurt.csv_reduced.csv 23530 rows have been removed.
+
+For file 36_40_Hamburg_Duisburg.csv_reduced.csv 23542 rows have been removed.
+
+For file 01_05_Wrzburg_Dsseldorf.csv_reduced.csv 23596 rows have been removed.
+
+For file 01_05_Essen_Duisburg.csv_reduced.csv 23610 rows have been removed.
+
+For file 26_30_Dsseldorf_Wuppertal.csv_reduced.csv 23534 rows have been removed.
+
+Number of processed files: 300
+Processed files saved in folder:  /home/lisnux/Desktop/UniWien/WS2122/DS_Project/data/reduced_datasets/2dim/
+Selected columns:  ['totalTravelTimeInSec', 'totalPrice', 'totalNumberOfChanges', 'totalWalkingDistance', 'totalWaitingTime', 'objective', 'finiteAutomaton', 'consideredPreferences', 'finalSolutionUsedLabels', 'sourceName', 'targetName']
+For file 26_30_Aachen_Oberhausen.csv_reduced.csv 23812 rows have been removed.
+
+For file 36_40_Berlin_Hamburg.csv_reduced.csv 23627 rows have been removed.
+
+For file 26_30_Ulm_Wrzburg.csv_reduced.csv 23700 rows have been removed.
+
+For file 06_10_Stuttgart_Bonn.csv_reduced.csv 23561 rows have been removed.
+
+For file 26_30_Leipzig_Berlin.csv_reduced.csv 23565 rows have been removed.
+
+For file 16_20_Karlsruhe_Mnchen.csv_reduced.csv 23609 rows have been removed.
+
+For file 01_05_Aachen_Dortmund.csv_reduced.csv 23580 rows have been removed.
+
+For file 16_20_Wrzburg_Wuppertal.csv_reduced.csv 23918 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Bochum.csv_reduced.csv 23620 rows have been removed.
+
+For file 46_50_Mannheim_Wuppertal.csv_reduced.csv 23569 rows have been removed.
+
+For file 01_05_Hamburg_Solingen.csv_reduced.csv 23559 rows have been removed.
+
+For file 46_50_Wuppertal_Aachen.csv_reduced.csv 23661 rows have been removed.
+
+For file 16_20_Darmstadt_Oberhausen.csv_reduced.csv 23659 rows have been removed.
+
+For file 21_25_Solingen_Darmstadt.csv_reduced.csv 23707 rows have been removed.
+
+For file 56_60_Nrnberg_Hamburg.csv_reduced.csv 23431 rows have been removed.
+
+For file 56_60_Nrnberg_Bonn.csv_reduced.csv 23793 rows have been removed.
+
+For file 36_40_Mannheim_Dsseldorf.csv_reduced.csv 23492 rows have been removed.
+
+For file 41_45_Hagen_Wuppertal.csv_reduced.csv 23580 rows have been removed.
+
+For file 21_25_Dortmund_Mannheim.csv_reduced.csv 23429 rows have been removed.
+
+For file 01_05_Dortmund_Gelsenkirchen.csv_reduced.csv 23585 rows have been removed.
+
+For file 41_45_Wrzburg_Erlangen.csv_reduced.csv 23668 rows have been removed.
+
+For file 31_35_Kln_Mannheim.csv_reduced.csv 23602 rows have been removed.
+
+For file 21_25_Bonn_Gelsenkirchen.csv_reduced.csv 23677 rows have been removed.
+
+For file 56_60_Wrzburg_Ulm.csv_reduced.csv 23700 rows have been removed.
+
+For file 11_15_Nrnberg_Karlsruhe.csv_reduced.csv 23545 rows have been removed.
+
+For file 46_50_Aachen_Heidelberg.csv_reduced.csv 23688 rows have been removed.
+
+For file 01_05_Kln_Oberhausen.csv_reduced.csv 23712 rows have been removed.
+
+For file 01_05_Mnchen_Wrzburg.csv_reduced.csv 23432 rows have been removed.
+
+For file 01_05_Heidelberg_Karlsruhe.csv_reduced.csv 23620 rows have been removed.
+
+For file 26_30_Erfurt_Nrnberg.csv_reduced.csv 23547 rows have been removed.
+
+For file 41_45_Dsseldorf_Mannheim.csv_reduced.csv 23370 rows have been removed.
+
+For file 41_45_Nrnberg_Wrzburg.csv_reduced.csv 23516 rows have been removed.
+
+For file 26_30_Aachen_Solingen.csv_reduced.csv 23657 rows have been removed.
+
+For file 41_45_Mannheim_Osnabrck.csv_reduced.csv 23505 rows have been removed.
+
+For file 26_30_Mannheim_Nrnberg.csv_reduced.csv 23599 rows have been removed.
+
+For file 26_30_Heidelberg_Mannheim.csv_reduced.csv 23606 rows have been removed.
+
+For file 56_60_Leipzig_Hamburg.csv_reduced.csv 23514 rows have been removed.
+
+For file 21_25_Mannheim_Mnchen.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Mannheim_Darmstadt.csv_reduced.csv 23558 rows have been removed.
+
+For file 01_05_Leipzig_Erlangen.csv_reduced.csv 23592 rows have been removed.
+
+For file 16_20_Hamburg_Bochum.csv_reduced.csv 23396 rows have been removed.
+
+For file 31_35_Karlsruhe_Wrzburg.csv_reduced.csv 23643 rows have been removed.
+
+For file 51_55_Kln_Darmstadt.csv_reduced.csv 23653 rows have been removed.
+
+For file 56_60_Hamburg_Wrzburg.csv_reduced.csv 23493 rows have been removed.
+
+For file 31_35_Heidelberg_Bochum.csv_reduced.csv 23527 rows have been removed.
+
+For file 01_05_Dortmund_Hagen.csv_reduced.csv 23610 rows have been removed.
+
+For file 16_20_Bonn_Duisburg.csv_reduced.csv 23704 rows have been removed.
+
+For file 31_35_Ulm_Bamberg.csv_reduced.csv 23615 rows have been removed.
+
+For file 01_05_Karlsruhe_Mannheim.csv_reduced.csv 23510 rows have been removed.
+
+For file 06_10_Mnchen_Bamberg.csv_reduced.csv 23628 rows have been removed.
+
+For file 31_35_Gelsenkirchen_Mannheim.csv_reduced.csv 23506 rows have been removed.
+
+For file 26_30_Aachen_Kln.csv_reduced.csv 23610 rows have been removed.
+
+For file 01_05_Ulm_Karlsruhe.csv_reduced.csv 23538 rows have been removed.
+
+For file 31_35_Darmstadt_Ulm.csv_reduced.csv 23664 rows have been removed.
+
+For file 11_15_Mnchen_Karlsruhe.csv_reduced.csv 23649 rows have been removed.
+
+For file 01_05_Wuppertal_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 46_50_Wrzburg_Heidelberg.csv_reduced.csv 23634 rows have been removed.
+
+For file 01_05_Leipzig_Nrnberg.csv_reduced.csv 23461 rows have been removed.
+
+For file 31_35_Bonn_Karlsruhe.csv_reduced.csv 23703 rows have been removed.
+
+For file 31_35_Karlsruhe_Bamberg.csv_reduced.csv 23623 rows have been removed.
+
+For file 36_40_Dsseldorf_Duisburg.csv_reduced.csv 23623 rows have been removed.
+
+For file 01_05_Hamburg_Hagen.csv_reduced.csv 23619 rows have been removed.
+
+For file 46_50_Heidelberg_Oberhausen.csv_reduced.csv 23596 rows have been removed.
+
+For file 26_30_Wrzburg_Hagen.csv_reduced.csv 23843 rows have been removed.
+
+For file 01_05_Wuppertal_Oberhausen.csv_reduced.csv 23644 rows have been removed.
+
+For file 01_05_Oberhausen_Bochum.csv_reduced.csv 23591 rows have been removed.
+
+For file 01_05_Hamburg_Essen.csv_reduced.csv 23362 rows have been removed.
+
+For file 36_40_Darmstadt_Wuppertal.csv_reduced.csv 23658 rows have been removed.
+
+For file 46_50_Erfurt_Karlsruhe.csv_reduced.csv 23455 rows have been removed.
+
+For file 01_05_Aachen_Dsseldorf.csv_reduced.csv 23590 rows have been removed.
+
+For file 36_40_Mnchen_Heidelberg.csv_reduced.csv 23672 rows have been removed.
+
+For file 31_35_Oberhausen_Bonn.csv_reduced.csv 23627 rows have been removed.
+
+For file 26_30_Wrzburg_Bamberg.csv_reduced.csv 23615 rows have been removed.
+
+For file 01_05_Wrzburg_Karlsruhe.csv_reduced.csv 23637 rows have been removed.
+
+For file 01_05_Karlsruhe_Kln.csv_reduced.csv 23516 rows have been removed.
+
+For file 41_45_Heidelberg_Ulm.csv_reduced.csv 23631 rows have been removed.
+
+For file 46_50_Darmstadt_Solingen.csv_reduced.csv 23798 rows have been removed.
+
+For file 26_30_Wrzburg_Erfurt.csv_reduced.csv 23627 rows have been removed.
+
+For file 01_05_Nrnberg_Heidelberg.csv_reduced.csv 23629 rows have been removed.
+
+For file 16_20_Wrzburg_Stuttgart.csv_reduced.csv 23619 rows have been removed.
+
+For file 36_40_Wrzburg_Mnchen.csv_reduced.csv 23700 rows have been removed.
+
+For file 21_25_Oberhausen_Solingen.csv_reduced.csv 23671 rows have been removed.
+
+For file 16_20_Mannheim_Ulm.csv_reduced.csv 23697 rows have been removed.
+
+For file 01_05_Kln_Wuppertal.csv_reduced.csv 23556 rows have been removed.
+
+For file 01_05_Heidelberg_Erfurt.csv_reduced.csv 23664 rows have been removed.
+
+For file 41_45_Aachen_Essen.csv_reduced.csv 23623 rows have been removed.
+
+For file 36_40_Hagen_Mannheim.csv_reduced.csv 23550 rows have been removed.
+
+For file 26_30_Heidelberg_Bonn.csv_reduced.csv 23673 rows have been removed.
+
+For file 06_10_Dortmund_Erfurt.csv_reduced.csv 23618 rows have been removed.
+
+For file 41_45_Hagen_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 11_15_Wuppertal_Bonn.csv_reduced.csv 23629 rows have been removed.
+
+For file 16_20_Nrnberg_Dsseldorf.csv_reduced.csv 23552 rows have been removed.
+
+For file 26_30_Stuttgart_Ulm.csv_reduced.csv 23526 rows have been removed.
+
+For file 46_50_Erfurt_Hamburg.csv_reduced.csv 23546 rows have been removed.
+
+For file 36_40_Essen_Osnabrck.csv_reduced.csv 23588 rows have been removed.
+
+For file 36_40_Wrzburg_Bochum.csv_reduced.csv 23468 rows have been removed.
+
+For file 01_05_Dortmund_Bonn.csv_reduced.csv 23580 rows have been removed.
+
+For file 01_05_Bonn_Darmstadt.csv_reduced.csv 23633 rows have been removed.
+
+For file 31_35_Duisburg_Solingen.csv_reduced.csv 23698 rows have been removed.
+
+For file 36_40_Kln_Aachen.csv_reduced.csv 23568 rows have been removed.
+
+For file 01_05_Bonn_Heidelberg.csv_reduced.csv 23635 rows have been removed.
+
+For file 01_05_Essen_Oberhausen.csv_reduced.csv 23618 rows have been removed.
+
+For file 56_60_Stuttgart_Aachen.csv_reduced.csv 23525 rows have been removed.
+
+For file 51_55_Wuppertal_Mannheim.csv_reduced.csv 23645 rows have been removed.
+
+For file 41_45_Essen_Bonn.csv_reduced.csv 23697 rows have been removed.
+
+For file 56_60_Essen_Hagen.csv_reduced.csv 23557 rows have been removed.
+
+For file 01_05_Stuttgart_Darmstadt.csv_reduced.csv 23637 rows have been removed.
+
+For file 11_15_Stuttgart_Karlsruhe.csv_reduced.csv 23539 rows have been removed.
+
+For file 36_40_Oberhausen_Hagen.csv_reduced.csv 23688 rows have been removed.
+
+For file 01_05_Mannheim_Solingen.csv_reduced.csv 23563 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Wuppertal.csv_reduced.csv 23765 rows have been removed.
+
+For file 11_15_Heidelberg_Duisburg.csv_reduced.csv 23662 rows have been removed.
+
+For file 41_45_Oberhausen_Duisburg.csv_reduced.csv 23548 rows have been removed.
+
+For file 21_25_Stuttgart_Heidelberg.csv_reduced.csv 23534 rows have been removed.
+
+For file 31_35_Dsseldorf_Hagen.csv_reduced.csv 23600 rows have been removed.
+
+For file 26_30_Wuppertal_Duisburg.csv_reduced.csv 23543 rows have been removed.
+
+For file 56_60_Mannheim_Oberhausen.csv_reduced.csv 23521 rows have been removed.
+
+For file 41_45_Hamburg_Wuppertal.csv_reduced.csv 23610 rows have been removed.
+
+For file 26_30_Gelsenkirchen_Bonn.csv_reduced.csv 23633 rows have been removed.
+
+For file 26_30_Darmstadt_Mannheim.csv_reduced.csv 23521 rows have been removed.
+
+For file 06_10_Mannheim_Bonn.csv_reduced.csv 23653 rows have been removed.
+
+For file 31_35_Karlsruhe_Darmstadt.csv_reduced.csv 23668 rows have been removed.
+
+For file 16_20_Hamburg_Leipzig.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Bochum_Gelsenkirchen.csv_reduced.csv 23614 rows have been removed.
+
+For file 21_25_Berlin_Leipzig.csv_reduced.csv 23604 rows have been removed.
+
+For file 11_15_Karlsruhe_Ulm.csv_reduced.csv 23637 rows have been removed.
+
+For file 01_05_Aachen_Bochum.csv_reduced.csv 23660 rows have been removed.
+
+For file 41_45_Heidelberg_Darmstadt.csv_reduced.csv 23550 rows have been removed.
+
+For file 06_10_Wrzburg_Essen.csv_reduced.csv 23558 rows have been removed.
+
+For file 01_05_Bochum_Hagen.csv_reduced.csv 23594 rows have been removed.
+
+For file 56_60_Hagen_Bochum.csv_reduced.csv 23533 rows have been removed.
+
+For file 46_50_Ulm_Heidelberg.csv_reduced.csv 23570 rows have been removed.
+
+For file 26_30_Dortmund_Bochum.csv_reduced.csv 23493 rows have been removed.
+
+For file 26_30_Dsseldorf_Bochum.csv_reduced.csv 23468 rows have been removed.
+
+For file 11_15_Aachen_Duisburg.csv_reduced.csv 23716 rows have been removed.
+
+For file 01_05_Mnchen_Erlangen.csv_reduced.csv 23622 rows have been removed.
+
+For file 06_10_Erfurt_Berlin.csv_reduced.csv 23462 rows have been removed.
+
+For file 41_45_Erfurt_Leipzig.csv_reduced.csv 23508 rows have been removed.
+
+For file 01_05_Bonn_Oberhausen.csv_reduced.csv 23851 rows have been removed.
+
+For file 41_45_Erfurt_Wrzburg.csv_reduced.csv 23648 rows have been removed.
+
+For file 01_05_Wrzburg_Nrnberg.csv_reduced.csv 23511 rows have been removed.
+
+For file 26_30_Essen_Hamburg.csv_reduced.csv 23545 rows have been removed.
+
+For file 41_45_Ulm_Darmstadt.csv_reduced.csv 23709 rows have been removed.
+
+For file 01_05_Mannheim_Kln.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Bochum_Bonn.csv_reduced.csv 23636 rows have been removed.
+
+For file 11_15_Wrzburg_Bonn.csv_reduced.csv 23590 rows have been removed.
+
+For file 56_60_Nrnberg_Mnchen.csv_reduced.csv 23586 rows have been removed.
+
+For file 21_25_Dsseldorf_Solingen.csv_reduced.csv 23553 rows have been removed.
+
+For file 41_45_Ulm_Erlangen.csv_reduced.csv 23618 rows have been removed.
+
+For file 01_05_Mannheim_Erfurt.csv_reduced.csv 23544 rows have been removed.
+
+For file 01_05_Bochum_Duisburg.csv_reduced.csv 23561 rows have been removed.
+
+For file 46_50_Mannheim_Essen.csv_reduced.csv 23588 rows have been removed.
+
+For file 46_50_Mannheim_Hagen.csv_reduced.csv 23647 rows have been removed.
+
+For file 26_30_Hamburg_Dortmund.csv_reduced.csv 23604 rows have been removed.
+
+For file 11_15_Mannheim_Dortmund.csv_reduced.csv 23507 rows have been removed.
+
+For file 01_05_Erfurt_Heidelberg.csv_reduced.csv 23719 rows have been removed.
+
+For file 01_05_Wrzburg_Leipzig.csv_reduced.csv 23643 rows have been removed.
+
+For file 06_10_Leipzig_Heidelberg.csv_reduced.csv 23713 rows have been removed.
+
+For file 26_30_Aachen_Bonn.csv_reduced.csv 23613 rows have been removed.
+
+For file 51_55_Aachen_Hagen.csv_reduced.csv 23861 rows have been removed.
+
+For file 16_20_Ulm_Bonn.csv_reduced.csv 23538 rows have been removed.
+
+For file 56_60_Nrnberg_Stuttgart.csv_reduced.csv 23597 rows have been removed.
+
+For file 06_10_Aachen_Stuttgart.csv_reduced.csv 23547 rows have been removed.
+
+For file 51_55_Aachen_Mannheim.csv_reduced.csv 23520 rows have been removed.
+
+For file 01_05_Stuttgart_Wuppertal.csv_reduced.csv 23557 rows have been removed.
+
+For file 01_05_Bochum_Wuppertal.csv_reduced.csv 23572 rows have been removed.
+
+For file 26_30_Karlsruhe_Stuttgart.csv_reduced.csv 23523 rows have been removed.
+
+For file 16_20_Bonn_Aachen.csv_reduced.csv 23584 rows have been removed.
+
+For file 56_60_Leipzig_Bochum.csv_reduced.csv 23520 rows have been removed.
+
+For file 26_30_Kln_Heidelberg.csv_reduced.csv 23695 rows have been removed.
+
+For file 36_40_Bonn_Hagen.csv_reduced.csv 23872 rows have been removed.
+
+For file 21_25_Aachen_Gelsenkirchen.csv_reduced.csv 23732 rows have been removed.
+
+For file 41_45_Darmstadt_Karlsruhe.csv_reduced.csv 23536 rows have been removed.
+
+For file 01_05_Karlsruhe_Solingen.csv_reduced.csv 23581 rows have been removed.
+
+For file 51_55_Hagen_Duisburg.csv_reduced.csv 23632 rows have been removed.
+
+For file 26_30_Ulm_Solingen.csv_reduced.csv 23495 rows have been removed.
+
+For file 01_05_Aachen_Darmstadt.csv_reduced.csv 23658 rows have been removed.
+
+For file 41_45_Heidelberg_Gelsenkirchen.csv_reduced.csv 23549 rows have been removed.
+
+For file 41_45_Essen_Wuppertal.csv_reduced.csv 23568 rows have been removed.
+
+For file 01_05_Karlsruhe_Dsseldorf.csv_reduced.csv 23484 rows have been removed.
+
+For file 46_50_Wrzburg_Duisburg.csv_reduced.csv 23584 rows have been removed.
+
+For file 26_30_Wrzburg_Kln.csv_reduced.csv 23569 rows have been removed.
+
+For file 01_05_Mnchen_Darmstadt.csv_reduced.csv 23740 rows have been removed.
+
+For file 41_45_Essen_Bochum.csv_reduced.csv 23502 rows have been removed.
+
+For file 01_05_Mnchen_Stuttgart.csv_reduced.csv 23683 rows have been removed.
+
+For file 21_25_Dsseldorf_Aachen.csv_reduced.csv 23487 rows have been removed.
+
+For file 51_55_Mannheim_Duisburg.csv_reduced.csv 23573 rows have been removed.
+
+For file 56_60_Bonn_Solingen.csv_reduced.csv 23674 rows have been removed.
+
+For file 11_15_Leipzig_Hagen.csv_reduced.csv 23674 rows have been removed.
+
+For file 06_10_Wrzburg_Hamburg.csv_reduced.csv 23475 rows have been removed.
+
+For file 56_60_Gelsenkirchen_Solingen.csv_reduced.csv 23717 rows have been removed.
+
+For file 46_50_Leipzig_Wrzburg.csv_reduced.csv 23608 rows have been removed.
+
+For file 41_45_Kln_Bonn.csv_reduced.csv 23591 rows have been removed.
+
+For file 01_05_Nrnberg_Leipzig.csv_reduced.csv 23609 rows have been removed.
+
+For file 26_30_Hamburg_Berlin.csv_reduced.csv 23587 rows have been removed.
+
+For file 06_10_Wuppertal_Osnabrck.csv_reduced.csv 23643 rows have been removed.
+
+For file 41_45_Gelsenkirchen_Duisburg.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Wuppertal_Bochum.csv_reduced.csv 23566 rows have been removed.
+
+For file 41_45_Hagen_Oberhausen.csv_reduced.csv 23682 rows have been removed.
+
+For file 11_15_Hagen_Bonn.csv_reduced.csv 23671 rows have been removed.
+
+For file 01_05_Nrnberg_Erfurt.csv_reduced.csv 23511 rows have been removed.
+
+For file 26_30_Erfurt_Erlangen.csv_reduced.csv 23529 rows have been removed.
+
+For file 06_10_Aachen_Wrzburg.csv_reduced.csv 23577 rows have been removed.
+
+For file 21_25_Mannheim_Stuttgart.csv_reduced.csv 23724 rows have been removed.
+
+For file 56_60_Darmstadt_Erfurt.csv_reduced.csv 23636 rows have been removed.
+
+For file 01_05_Dsseldorf_Gelsenkirchen.csv_reduced.csv 23535 rows have been removed.
+
+For file 46_50_Erfurt_Ulm.csv_reduced.csv 23630 rows have been removed.
+
+For file 06_10_Aachen_Wuppertal.csv_reduced.csv 23657 rows have been removed.
+
+For file 01_05_Karlsruhe_Heidelberg.csv_reduced.csv 23620 rows have been removed.
+
+For file 36_40_Karlsruhe_Bonn.csv_reduced.csv 23628 rows have been removed.
+
+For file 06_10_Nrnberg_Kln.csv_reduced.csv 23525 rows have been removed.
+
+For file 56_60_Karlsruhe_Erfurt.csv_reduced.csv 23619 rows have been removed.
+
+For file 16_20_Darmstadt_Wrzburg.csv_reduced.csv 23547 rows have been removed.
+
+For file 41_45_Hagen_Aachen.csv_reduced.csv 23681 rows have been removed.
+
+For file 11_15_Leipzig_Darmstadt.csv_reduced.csv 23597 rows have been removed.
+
+For file 11_15_Ulm_Erfurt.csv_reduced.csv 23645 rows have been removed.
+
+For file 21_25_Kln_Wrzburg.csv_reduced.csv 23427 rows have been removed.
+
+For file 41_45_Solingen_Hagen.csv_reduced.csv 23574 rows have been removed.
+
+For file 26_30_Kln_Bochum.csv_reduced.csv 23554 rows have been removed.
+
+For file 26_30_Darmstadt_Hagen.csv_reduced.csv 23641 rows have been removed.
+
+For file 06_10_Bonn_Wuppertal.csv_reduced.csv 23667 rows have been removed.
+
+For file 46_50_Wrzburg_Oberhausen.csv_reduced.csv 23521 rows have been removed.
+
+For file 56_60_Leipzig_Mnchen.csv_reduced.csv 23520 rows have been removed.
+
+For file 01_05_Nrnberg_Mannheim.csv_reduced.csv 23585 rows have been removed.
+
+For file 01_05_Stuttgart_Solingen.csv_reduced.csv 23498 rows have been removed.
+
+For file 46_50_Darmstadt_Bonn.csv_reduced.csv 23655 rows have been removed.
+
+For file 06_10_Kln_Hamburg.csv_reduced.csv 23563 rows have been removed.
+
+For file 21_25_Nrnberg_Wuppertal.csv_reduced.csv 23672 rows have been removed.
+
+For file 26_30_Karlsruhe_Nrnberg.csv_reduced.csv 23534 rows have been removed.
+
+For file 21_25_Kln_Hagen.csv_reduced.csv 23775 rows have been removed.
+
+For file 11_15_Dortmund_Duisburg.csv_reduced.csv 23531 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Hagen.csv_reduced.csv 23759 rows have been removed.
+
+For file 26_30_Mnchen_Ulm.csv_reduced.csv 23639 rows have been removed.
+
+For file 26_30_Darmstadt_Gelsenkirchen.csv_reduced.csv 23670 rows have been removed.
+
+For file 36_40_Erfurt_Dsseldorf.csv_reduced.csv 23453 rows have been removed.
+
+For file 01_05_Bochum_Solingen.csv_reduced.csv 23638 rows have been removed.
+
+For file 11_15_Hamburg_Kln.csv_reduced.csv 23758 rows have been removed.
+
+For file 56_60_Mnchen_Mannheim.csv_reduced.csv 23680 rows have been removed.
+
+For file 51_55_Bonn_Bochum.csv_reduced.csv 23638 rows have been removed.
+
+For file 01_05_Leipzig_Bamberg.csv_reduced.csv 23582 rows have been removed.
+
+For file 56_60_Heidelberg_Wrzburg.csv_reduced.csv 23673 rows have been removed.
+
+For file 31_35_Erfurt_Stuttgart.csv_reduced.csv 23555 rows have been removed.
+
+For file 46_50_Ulm_Wuppertal.csv_reduced.csv 23554 rows have been removed.
+
+For file 01_05_Mnchen_Leipzig.csv_reduced.csv 23654 rows have been removed.
+
+For file 21_25_Nrnberg_Ulm.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Bochum_Oberhausen.csv_reduced.csv 23567 rows have been removed.
+
+For file 26_30_Dsseldorf_Oberhausen.csv_reduced.csv 23514 rows have been removed.
+
+For file 26_30_Erfurt_Bamberg.csv_reduced.csv 23541 rows have been removed.
+
+For file 11_15_Heidelberg_Erlangen.csv_reduced.csv 23760 rows have been removed.
+
+For file 16_20_Oberhausen_Mannheim.csv_reduced.csv 23475 rows have been removed.
+
+For file 51_55_Dortmund_Karlsruhe.csv_reduced.csv 23485 rows have been removed.
+
+For file 01_05_Stuttgart_Wrzburg.csv_reduced.csv 23601 rows have been removed.
+
+For file 41_45_Erfurt_Dortmund.csv_reduced.csv 23586 rows have been removed.
+
+For file 01_05_Nrnberg_Darmstadt.csv_reduced.csv 23465 rows have been removed.
+
+For file 46_50_Hagen_Gelsenkirchen.csv_reduced.csv 23584 rows have been removed.
+
+For file 51_55_Hagen_Heidelberg.csv_reduced.csv 23704 rows have been removed.
+
+For file 01_05_Dortmund_Wuppertal.csv_reduced.csv 23580 rows have been removed.
+
+For file 26_30_Dsseldorf_Darmstadt.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Mannheim_Karlsruhe.csv_reduced.csv 23481 rows have been removed.
+
+For file 41_45_Dortmund_Oberhausen.csv_reduced.csv 23609 rows have been removed.
+
+For file 01_05_Bonn_Mannheim.csv_reduced.csv 23584 rows have been removed.
+
+For file 51_55_Dortmund_Aachen.csv_reduced.csv 23600 rows have been removed.
+
+For file 56_60_Hamburg_Bonn.csv_reduced.csv 23765 rows have been removed.
+
+For file 41_45_Erfurt_Darmstadt.csv_reduced.csv 23523 rows have been removed.
+
+For file 41_45_Mnchen_Nrnberg.csv_reduced.csv 23500 rows have been removed.
+
+For file 01_05_Dortmund_Solingen.csv_reduced.csv 23580 rows have been removed.
+
+For file 31_35_Essen_Solingen.csv_reduced.csv 23570 rows have been removed.
+
+For file 26_30_Ulm_Mannheim.csv_reduced.csv 23694 rows have been removed.
+
+For file 36_40_Hamburg_Dsseldorf.csv_reduced.csv 23666 rows have been removed.
+
+For file 36_40_Dsseldorf_Osnabrck.csv_reduced.csv 23502 rows have been removed.
+
+For file 31_35_Wuppertal_Gelsenkirchen.csv_reduced.csv 23572 rows have been removed.
+
+For file 06_10_Dsseldorf_Wrzburg.csv_reduced.csv 23471 rows have been removed.
+
+For file 51_55_Hagen_Karlsruhe.csv_reduced.csv 23580 rows have been removed.
+
+For file 21_25_Leipzig_Dortmund.csv_reduced.csv 23692 rows have been removed.
+
+For file 01_05_Darmstadt_Heidelberg.csv_reduced.csv 23587 rows have been removed.
+
+For file 01_05_Kln_Gelsenkirchen.csv_reduced.csv 23613 rows have been removed.
+
+For file 56_60_Kln_Karlsruhe.csv_reduced.csv 23518 rows have been removed.
+
+For file 01_05_Mannheim_Heidelberg.csv_reduced.csv 23623 rows have been removed.
+
+For file 41_45_Nrnberg_Erlangen.csv_reduced.csv 23545 rows have been removed.
+
+For file 11_15_Erfurt_Mannheim.csv_reduced.csv 23545 rows have been removed.
+
+For file 56_60_Dortmund_Hamburg.csv_reduced.csv 23528 rows have been removed.
+
+For file 06_10_Wrzburg_Mannheim.csv_reduced.csv 23543 rows have been removed.
+
+For file 01_05_Oberhausen_Gelsenkirchen.csv_reduced.csv 23676 rows have been removed.
+
+For file 51_55_Erfurt_Kln.csv_reduced.csv 23375 rows have been removed.
+
+For file 01_05_Stuttgart_Mannheim.csv_reduced.csv 23669 rows have been removed.
+
+For file 01_05_Wuppertal_Hagen.csv_reduced.csv 23592 rows have been removed.
+
+For file 46_50_Kln_Duisburg.csv_reduced.csv 23576 rows have been removed.
+
+For file 06_10_Oberhausen_Wuppertal.csv_reduced.csv 23684 rows have been removed.
+
+For file 01_05_Nrnberg_Bamberg.csv_reduced.csv 23568 rows have been removed.
+
+For file 26_30_Kln_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 16_20_Essen_Aachen.csv_reduced.csv 23591 rows have been removed.
+
+For file 56_60_Dsseldorf_Bonn.csv_reduced.csv 23606 rows have been removed.
+
+For file 46_50_Wrzburg_Darmstadt.csv_reduced.csv 23537 rows have been removed.
+
+For file 01_05_Essen_Gelsenkirchen.csv_reduced.csv 23539 rows have been removed.
+
+For file 01_05_Mannheim_Wrzburg.csv_reduced.csv 23643 rows have been removed.
+
+For file 11_15_Stuttgart_Erfurt.csv_reduced.csv 23530 rows have been removed.
+
+For file 36_40_Hamburg_Duisburg.csv_reduced.csv 23542 rows have been removed.
+
+For file 01_05_Wrzburg_Dsseldorf.csv_reduced.csv 23596 rows have been removed.
+
+For file 01_05_Essen_Duisburg.csv_reduced.csv 23610 rows have been removed.
+
+For file 26_30_Dsseldorf_Wuppertal.csv_reduced.csv 23534 rows have been removed.
+
+Number of processed files: 300
+Processed files saved in folder:  /home/lisnux/Desktop/UniWien/WS2122/DS_Project/data/reduced_datasets/2dim/
+First part of combined csv:      totalTravelTimeInSec  totalPrice  ...  sourceName     targetName
+0                  1415.0    0.855116  ...       Essen  Gelsenkirchen
+1                   480.0    2.168422  ...       Essen  Gelsenkirchen
+129                 480.0    2.168422  ...       Essen  Gelsenkirchen
+130                1415.0    0.855116  ...       Essen  Gelsenkirchen
+506                1415.0    0.855116  ...       Essen  Gelsenkirchen
+
+[5 rows x 11 columns]
+Last part of combined csv:         totalTravelTimeInSec  totalPrice  ...  sourceName  targetName
+20870               23118.0   21.765596  ...    Nürnberg        Köln
+20963               27076.0   64.584266  ...    Nürnberg        Köln
+21005               19740.0   91.957924  ...    Nürnberg        Köln
+21045               16606.0   26.020018  ...    Nürnberg        Köln
+21128               23118.0   21.765596  ...    Nürnberg        Köln
+
+[5 rows x 11 columns]
+Merged file saved!
+Time needed for data processing: 61.968167181000354
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Selected columns:  ['totalTravelTimeInSec', 'totalPrice', 'totalNumberOfChanges', 'totalWalkingDistance', 'totalWaitingTime', 'objective', 'finiteAutomaton', 'consideredPreferences', 'finalSolutionUsedLabels', 'sourceName', 'targetName']
+For file 26_30_Aachen_Oberhausen.csv_reduced.csv 23812 rows have been removed.
+
+For file 36_40_Berlin_Hamburg.csv_reduced.csv 23627 rows have been removed.
+
+For file 26_30_Ulm_Wrzburg.csv_reduced.csv 23700 rows have been removed.
+
+For file 06_10_Stuttgart_Bonn.csv_reduced.csv 23561 rows have been removed.
+
+For file 26_30_Leipzig_Berlin.csv_reduced.csv 23565 rows have been removed.
+
+For file 16_20_Karlsruhe_Mnchen.csv_reduced.csv 23609 rows have been removed.
+
+For file 01_05_Aachen_Dortmund.csv_reduced.csv 23580 rows have been removed.
+
+For file 16_20_Wrzburg_Wuppertal.csv_reduced.csv 23918 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Bochum.csv_reduced.csv 23620 rows have been removed.
+
+For file 46_50_Mannheim_Wuppertal.csv_reduced.csv 23569 rows have been removed.
+
+For file 01_05_Hamburg_Solingen.csv_reduced.csv 23559 rows have been removed.
+
+For file 46_50_Wuppertal_Aachen.csv_reduced.csv 23661 rows have been removed.
+
+For file 16_20_Darmstadt_Oberhausen.csv_reduced.csv 23659 rows have been removed.
+
+For file 21_25_Solingen_Darmstadt.csv_reduced.csv 23707 rows have been removed.
+
+For file 56_60_Nrnberg_Hamburg.csv_reduced.csv 23431 rows have been removed.
+
+For file 56_60_Nrnberg_Bonn.csv_reduced.csv 23793 rows have been removed.
+
+For file 36_40_Mannheim_Dsseldorf.csv_reduced.csv 23492 rows have been removed.
+
+For file 41_45_Hagen_Wuppertal.csv_reduced.csv 23580 rows have been removed.
+
+For file 21_25_Dortmund_Mannheim.csv_reduced.csv 23429 rows have been removed.
+
+For file 01_05_Dortmund_Gelsenkirchen.csv_reduced.csv 23585 rows have been removed.
+
+For file 41_45_Wrzburg_Erlangen.csv_reduced.csv 23668 rows have been removed.
+
+For file 31_35_Kln_Mannheim.csv_reduced.csv 23602 rows have been removed.
+
+For file 21_25_Bonn_Gelsenkirchen.csv_reduced.csv 23677 rows have been removed.
+
+For file 56_60_Wrzburg_Ulm.csv_reduced.csv 23700 rows have been removed.
+
+For file 11_15_Nrnberg_Karlsruhe.csv_reduced.csv 23545 rows have been removed.
+
+For file 46_50_Aachen_Heidelberg.csv_reduced.csv 23688 rows have been removed.
+
+For file 01_05_Kln_Oberhausen.csv_reduced.csv 23712 rows have been removed.
+
+For file 01_05_Mnchen_Wrzburg.csv_reduced.csv 23432 rows have been removed.
+
+For file 01_05_Heidelberg_Karlsruhe.csv_reduced.csv 23620 rows have been removed.
+
+For file 26_30_Erfurt_Nrnberg.csv_reduced.csv 23547 rows have been removed.
+
+For file 41_45_Dsseldorf_Mannheim.csv_reduced.csv 23370 rows have been removed.
+
+For file 41_45_Nrnberg_Wrzburg.csv_reduced.csv 23516 rows have been removed.
+
+For file 26_30_Aachen_Solingen.csv_reduced.csv 23657 rows have been removed.
+
+For file 41_45_Mannheim_Osnabrck.csv_reduced.csv 23505 rows have been removed.
+
+For file 26_30_Mannheim_Nrnberg.csv_reduced.csv 23599 rows have been removed.
+
+For file 26_30_Heidelberg_Mannheim.csv_reduced.csv 23606 rows have been removed.
+
+For file 56_60_Leipzig_Hamburg.csv_reduced.csv 23514 rows have been removed.
+
+For file 21_25_Mannheim_Mnchen.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Mannheim_Darmstadt.csv_reduced.csv 23558 rows have been removed.
+
+For file 01_05_Leipzig_Erlangen.csv_reduced.csv 23592 rows have been removed.
+
+For file 16_20_Hamburg_Bochum.csv_reduced.csv 23396 rows have been removed.
+
+For file 31_35_Karlsruhe_Wrzburg.csv_reduced.csv 23643 rows have been removed.
+
+For file 51_55_Kln_Darmstadt.csv_reduced.csv 23653 rows have been removed.
+
+For file 56_60_Hamburg_Wrzburg.csv_reduced.csv 23493 rows have been removed.
+
+For file 31_35_Heidelberg_Bochum.csv_reduced.csv 23527 rows have been removed.
+
+For file 01_05_Dortmund_Hagen.csv_reduced.csv 23610 rows have been removed.
+
+For file 16_20_Bonn_Duisburg.csv_reduced.csv 23704 rows have been removed.
+
+For file 31_35_Ulm_Bamberg.csv_reduced.csv 23615 rows have been removed.
+
+For file 01_05_Karlsruhe_Mannheim.csv_reduced.csv 23510 rows have been removed.
+
+For file 06_10_Mnchen_Bamberg.csv_reduced.csv 23628 rows have been removed.
+
+For file 31_35_Gelsenkirchen_Mannheim.csv_reduced.csv 23506 rows have been removed.
+
+For file 26_30_Aachen_Kln.csv_reduced.csv 23610 rows have been removed.
+
+For file 01_05_Ulm_Karlsruhe.csv_reduced.csv 23538 rows have been removed.
+
+For file 31_35_Darmstadt_Ulm.csv_reduced.csv 23664 rows have been removed.
+
+For file 11_15_Mnchen_Karlsruhe.csv_reduced.csv 23649 rows have been removed.
+
+For file 01_05_Wuppertal_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 46_50_Wrzburg_Heidelberg.csv_reduced.csv 23634 rows have been removed.
+
+For file 01_05_Leipzig_Nrnberg.csv_reduced.csv 23461 rows have been removed.
+
+For file 31_35_Bonn_Karlsruhe.csv_reduced.csv 23703 rows have been removed.
+
+For file 31_35_Karlsruhe_Bamberg.csv_reduced.csv 23623 rows have been removed.
+
+For file 36_40_Dsseldorf_Duisburg.csv_reduced.csv 23623 rows have been removed.
+
+For file 01_05_Hamburg_Hagen.csv_reduced.csv 23619 rows have been removed.
+
+For file 46_50_Heidelberg_Oberhausen.csv_reduced.csv 23596 rows have been removed.
+
+For file 26_30_Wrzburg_Hagen.csv_reduced.csv 23843 rows have been removed.
+
+For file 01_05_Wuppertal_Oberhausen.csv_reduced.csv 23644 rows have been removed.
+
+For file 01_05_Oberhausen_Bochum.csv_reduced.csv 23591 rows have been removed.
+
+For file 01_05_Hamburg_Essen.csv_reduced.csv 23362 rows have been removed.
+
+For file 36_40_Darmstadt_Wuppertal.csv_reduced.csv 23658 rows have been removed.
+
+For file 46_50_Erfurt_Karlsruhe.csv_reduced.csv 23455 rows have been removed.
+
+For file 01_05_Aachen_Dsseldorf.csv_reduced.csv 23590 rows have been removed.
+
+For file 36_40_Mnchen_Heidelberg.csv_reduced.csv 23672 rows have been removed.
+
+For file 31_35_Oberhausen_Bonn.csv_reduced.csv 23627 rows have been removed.
+
+For file 26_30_Wrzburg_Bamberg.csv_reduced.csv 23615 rows have been removed.
+
+For file 01_05_Wrzburg_Karlsruhe.csv_reduced.csv 23637 rows have been removed.
+
+For file 01_05_Karlsruhe_Kln.csv_reduced.csv 23516 rows have been removed.
+
+For file 41_45_Heidelberg_Ulm.csv_reduced.csv 23631 rows have been removed.
+
+For file 46_50_Darmstadt_Solingen.csv_reduced.csv 23798 rows have been removed.
+
+For file 26_30_Wrzburg_Erfurt.csv_reduced.csv 23627 rows have been removed.
+
+For file 01_05_Nrnberg_Heidelberg.csv_reduced.csv 23629 rows have been removed.
+
+For file 16_20_Wrzburg_Stuttgart.csv_reduced.csv 23619 rows have been removed.
+
+For file 36_40_Wrzburg_Mnchen.csv_reduced.csv 23700 rows have been removed.
+
+For file 21_25_Oberhausen_Solingen.csv_reduced.csv 23671 rows have been removed.
+
+For file 16_20_Mannheim_Ulm.csv_reduced.csv 23697 rows have been removed.
+
+For file 01_05_Kln_Wuppertal.csv_reduced.csv 23556 rows have been removed.
+
+For file 01_05_Heidelberg_Erfurt.csv_reduced.csv 23664 rows have been removed.
+
+For file 41_45_Aachen_Essen.csv_reduced.csv 23623 rows have been removed.
+
+For file 36_40_Hagen_Mannheim.csv_reduced.csv 23550 rows have been removed.
+
+For file 26_30_Heidelberg_Bonn.csv_reduced.csv 23673 rows have been removed.
+
+For file 06_10_Dortmund_Erfurt.csv_reduced.csv 23618 rows have been removed.
+
+For file 41_45_Hagen_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 11_15_Wuppertal_Bonn.csv_reduced.csv 23629 rows have been removed.
+
+For file 16_20_Nrnberg_Dsseldorf.csv_reduced.csv 23552 rows have been removed.
+
+For file 26_30_Stuttgart_Ulm.csv_reduced.csv 23526 rows have been removed.
+
+For file 46_50_Erfurt_Hamburg.csv_reduced.csv 23546 rows have been removed.
+
+For file 36_40_Essen_Osnabrck.csv_reduced.csv 23588 rows have been removed.
+
+For file 36_40_Wrzburg_Bochum.csv_reduced.csv 23468 rows have been removed.
+
+For file 01_05_Dortmund_Bonn.csv_reduced.csv 23580 rows have been removed.
+
+For file 01_05_Bonn_Darmstadt.csv_reduced.csv 23633 rows have been removed.
+
+For file 31_35_Duisburg_Solingen.csv_reduced.csv 23698 rows have been removed.
+
+For file 36_40_Kln_Aachen.csv_reduced.csv 23568 rows have been removed.
+
+For file 01_05_Bonn_Heidelberg.csv_reduced.csv 23635 rows have been removed.
+
+For file 01_05_Essen_Oberhausen.csv_reduced.csv 23618 rows have been removed.
+
+For file 56_60_Stuttgart_Aachen.csv_reduced.csv 23525 rows have been removed.
+
+For file 51_55_Wuppertal_Mannheim.csv_reduced.csv 23645 rows have been removed.
+
+For file 41_45_Essen_Bonn.csv_reduced.csv 23697 rows have been removed.
+
+For file 56_60_Essen_Hagen.csv_reduced.csv 23557 rows have been removed.
+
+For file 01_05_Stuttgart_Darmstadt.csv_reduced.csv 23637 rows have been removed.
+
+For file 11_15_Stuttgart_Karlsruhe.csv_reduced.csv 23539 rows have been removed.
+
+For file 36_40_Oberhausen_Hagen.csv_reduced.csv 23688 rows have been removed.
+
+For file 01_05_Mannheim_Solingen.csv_reduced.csv 23563 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Wuppertal.csv_reduced.csv 23765 rows have been removed.
+
+For file 11_15_Heidelberg_Duisburg.csv_reduced.csv 23662 rows have been removed.
+
+For file 41_45_Oberhausen_Duisburg.csv_reduced.csv 23548 rows have been removed.
+
+For file 21_25_Stuttgart_Heidelberg.csv_reduced.csv 23534 rows have been removed.
+
+For file 31_35_Dsseldorf_Hagen.csv_reduced.csv 23600 rows have been removed.
+
+For file 26_30_Wuppertal_Duisburg.csv_reduced.csv 23543 rows have been removed.
+
+For file 56_60_Mannheim_Oberhausen.csv_reduced.csv 23521 rows have been removed.
+
+For file 41_45_Hamburg_Wuppertal.csv_reduced.csv 23610 rows have been removed.
+
+For file 26_30_Gelsenkirchen_Bonn.csv_reduced.csv 23633 rows have been removed.
+
+For file 26_30_Darmstadt_Mannheim.csv_reduced.csv 23521 rows have been removed.
+
+For file 06_10_Mannheim_Bonn.csv_reduced.csv 23653 rows have been removed.
+
+For file 31_35_Karlsruhe_Darmstadt.csv_reduced.csv 23668 rows have been removed.
+
+For file 16_20_Hamburg_Leipzig.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Bochum_Gelsenkirchen.csv_reduced.csv 23614 rows have been removed.
+
+For file 21_25_Berlin_Leipzig.csv_reduced.csv 23604 rows have been removed.
+
+For file 11_15_Karlsruhe_Ulm.csv_reduced.csv 23637 rows have been removed.
+
+For file 01_05_Aachen_Bochum.csv_reduced.csv 23660 rows have been removed.
+
+For file 41_45_Heidelberg_Darmstadt.csv_reduced.csv 23550 rows have been removed.
+
+For file 06_10_Wrzburg_Essen.csv_reduced.csv 23558 rows have been removed.
+
+For file 01_05_Bochum_Hagen.csv_reduced.csv 23594 rows have been removed.
+
+For file 56_60_Hagen_Bochum.csv_reduced.csv 23533 rows have been removed.
+
+For file 46_50_Ulm_Heidelberg.csv_reduced.csv 23570 rows have been removed.
+
+For file 26_30_Dortmund_Bochum.csv_reduced.csv 23493 rows have been removed.
+
+For file 26_30_Dsseldorf_Bochum.csv_reduced.csv 23468 rows have been removed.
+
+For file 11_15_Aachen_Duisburg.csv_reduced.csv 23716 rows have been removed.
+
+For file 01_05_Mnchen_Erlangen.csv_reduced.csv 23622 rows have been removed.
+
+For file 06_10_Erfurt_Berlin.csv_reduced.csv 23462 rows have been removed.
+
+For file 41_45_Erfurt_Leipzig.csv_reduced.csv 23508 rows have been removed.
+
+For file 01_05_Bonn_Oberhausen.csv_reduced.csv 23851 rows have been removed.
+
+For file 41_45_Erfurt_Wrzburg.csv_reduced.csv 23648 rows have been removed.
+
+For file 01_05_Wrzburg_Nrnberg.csv_reduced.csv 23511 rows have been removed.
+
+For file 26_30_Essen_Hamburg.csv_reduced.csv 23545 rows have been removed.
+
+For file 41_45_Ulm_Darmstadt.csv_reduced.csv 23709 rows have been removed.
+
+For file 01_05_Mannheim_Kln.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Bochum_Bonn.csv_reduced.csv 23636 rows have been removed.
+
+For file 11_15_Wrzburg_Bonn.csv_reduced.csv 23590 rows have been removed.
+
+For file 56_60_Nrnberg_Mnchen.csv_reduced.csv 23586 rows have been removed.
+
+For file 21_25_Dsseldorf_Solingen.csv_reduced.csv 23553 rows have been removed.
+
+For file 41_45_Ulm_Erlangen.csv_reduced.csv 23618 rows have been removed.
+
+For file 01_05_Mannheim_Erfurt.csv_reduced.csv 23544 rows have been removed.
+
+For file 01_05_Bochum_Duisburg.csv_reduced.csv 23561 rows have been removed.
+
+For file 46_50_Mannheim_Essen.csv_reduced.csv 23588 rows have been removed.
+
+For file 46_50_Mannheim_Hagen.csv_reduced.csv 23647 rows have been removed.
+
+For file 26_30_Hamburg_Dortmund.csv_reduced.csv 23604 rows have been removed.
+
+For file 11_15_Mannheim_Dortmund.csv_reduced.csv 23507 rows have been removed.
+
+For file 01_05_Erfurt_Heidelberg.csv_reduced.csv 23719 rows have been removed.
+
+For file 01_05_Wrzburg_Leipzig.csv_reduced.csv 23643 rows have been removed.
+
+For file 06_10_Leipzig_Heidelberg.csv_reduced.csv 23713 rows have been removed.
+
+For file 26_30_Aachen_Bonn.csv_reduced.csv 23613 rows have been removed.
+
+For file 51_55_Aachen_Hagen.csv_reduced.csv 23861 rows have been removed.
+
+For file 16_20_Ulm_Bonn.csv_reduced.csv 23538 rows have been removed.
+
+For file 56_60_Nrnberg_Stuttgart.csv_reduced.csv 23597 rows have been removed.
+
+For file 06_10_Aachen_Stuttgart.csv_reduced.csv 23547 rows have been removed.
+
+For file 51_55_Aachen_Mannheim.csv_reduced.csv 23520 rows have been removed.
+
+For file 01_05_Stuttgart_Wuppertal.csv_reduced.csv 23557 rows have been removed.
+
+For file 01_05_Bochum_Wuppertal.csv_reduced.csv 23572 rows have been removed.
+
+For file 26_30_Karlsruhe_Stuttgart.csv_reduced.csv 23523 rows have been removed.
+
+For file 16_20_Bonn_Aachen.csv_reduced.csv 23584 rows have been removed.
+
+For file 56_60_Leipzig_Bochum.csv_reduced.csv 23520 rows have been removed.
+
+For file 26_30_Kln_Heidelberg.csv_reduced.csv 23695 rows have been removed.
+
+For file 36_40_Bonn_Hagen.csv_reduced.csv 23872 rows have been removed.
+
+For file 21_25_Aachen_Gelsenkirchen.csv_reduced.csv 23732 rows have been removed.
+
+For file 41_45_Darmstadt_Karlsruhe.csv_reduced.csv 23536 rows have been removed.
+
+For file 01_05_Karlsruhe_Solingen.csv_reduced.csv 23581 rows have been removed.
+
+For file 51_55_Hagen_Duisburg.csv_reduced.csv 23632 rows have been removed.
+
+For file 26_30_Ulm_Solingen.csv_reduced.csv 23495 rows have been removed.
+
+For file 01_05_Aachen_Darmstadt.csv_reduced.csv 23658 rows have been removed.
+
+For file 41_45_Heidelberg_Gelsenkirchen.csv_reduced.csv 23549 rows have been removed.
+
+For file 41_45_Essen_Wuppertal.csv_reduced.csv 23568 rows have been removed.
+
+For file 01_05_Karlsruhe_Dsseldorf.csv_reduced.csv 23484 rows have been removed.
+
+For file 46_50_Wrzburg_Duisburg.csv_reduced.csv 23584 rows have been removed.
+
+For file 26_30_Wrzburg_Kln.csv_reduced.csv 23569 rows have been removed.
+
+For file 01_05_Mnchen_Darmstadt.csv_reduced.csv 23740 rows have been removed.
+
+For file 41_45_Essen_Bochum.csv_reduced.csv 23502 rows have been removed.
+
+For file 01_05_Mnchen_Stuttgart.csv_reduced.csv 23683 rows have been removed.
+
+For file 21_25_Dsseldorf_Aachen.csv_reduced.csv 23487 rows have been removed.
+
+For file 51_55_Mannheim_Duisburg.csv_reduced.csv 23573 rows have been removed.
+
+For file 56_60_Bonn_Solingen.csv_reduced.csv 23674 rows have been removed.
+
+For file 11_15_Leipzig_Hagen.csv_reduced.csv 23674 rows have been removed.
+
+For file 06_10_Wrzburg_Hamburg.csv_reduced.csv 23475 rows have been removed.
+
+For file 56_60_Gelsenkirchen_Solingen.csv_reduced.csv 23717 rows have been removed.
+
+For file 46_50_Leipzig_Wrzburg.csv_reduced.csv 23608 rows have been removed.
+
+For file 41_45_Kln_Bonn.csv_reduced.csv 23591 rows have been removed.
+
+For file 01_05_Nrnberg_Leipzig.csv_reduced.csv 23609 rows have been removed.
+
+For file 26_30_Hamburg_Berlin.csv_reduced.csv 23587 rows have been removed.
+
+For file 06_10_Wuppertal_Osnabrck.csv_reduced.csv 23643 rows have been removed.
+
+For file 41_45_Gelsenkirchen_Duisburg.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Wuppertal_Bochum.csv_reduced.csv 23566 rows have been removed.
+
+For file 41_45_Hagen_Oberhausen.csv_reduced.csv 23682 rows have been removed.
+
+For file 11_15_Hagen_Bonn.csv_reduced.csv 23671 rows have been removed.
+
+For file 01_05_Nrnberg_Erfurt.csv_reduced.csv 23511 rows have been removed.
+
+For file 26_30_Erfurt_Erlangen.csv_reduced.csv 23529 rows have been removed.
+
+For file 06_10_Aachen_Wrzburg.csv_reduced.csv 23577 rows have been removed.
+
+For file 21_25_Mannheim_Stuttgart.csv_reduced.csv 23724 rows have been removed.
+
+For file 56_60_Darmstadt_Erfurt.csv_reduced.csv 23636 rows have been removed.
+
+For file 01_05_Dsseldorf_Gelsenkirchen.csv_reduced.csv 23535 rows have been removed.
+
+For file 46_50_Erfurt_Ulm.csv_reduced.csv 23630 rows have been removed.
+
+For file 06_10_Aachen_Wuppertal.csv_reduced.csv 23657 rows have been removed.
+
+For file 01_05_Karlsruhe_Heidelberg.csv_reduced.csv 23620 rows have been removed.
+
+For file 36_40_Karlsruhe_Bonn.csv_reduced.csv 23628 rows have been removed.
+
+For file 06_10_Nrnberg_Kln.csv_reduced.csv 23525 rows have been removed.
+
+For file 56_60_Karlsruhe_Erfurt.csv_reduced.csv 23619 rows have been removed.
+
+For file 16_20_Darmstadt_Wrzburg.csv_reduced.csv 23547 rows have been removed.
+
+For file 41_45_Hagen_Aachen.csv_reduced.csv 23681 rows have been removed.
+
+For file 11_15_Leipzig_Darmstadt.csv_reduced.csv 23597 rows have been removed.
+
+For file 11_15_Ulm_Erfurt.csv_reduced.csv 23645 rows have been removed.
+
+For file 21_25_Kln_Wrzburg.csv_reduced.csv 23427 rows have been removed.
+
+For file 41_45_Solingen_Hagen.csv_reduced.csv 23574 rows have been removed.
+
+For file 26_30_Kln_Bochum.csv_reduced.csv 23554 rows have been removed.
+
+For file 26_30_Darmstadt_Hagen.csv_reduced.csv 23641 rows have been removed.
+
+For file 06_10_Bonn_Wuppertal.csv_reduced.csv 23667 rows have been removed.
+
+For file 46_50_Wrzburg_Oberhausen.csv_reduced.csv 23521 rows have been removed.
+
+For file 56_60_Leipzig_Mnchen.csv_reduced.csv 23520 rows have been removed.
+
+For file 01_05_Nrnberg_Mannheim.csv_reduced.csv 23585 rows have been removed.
+
+For file 01_05_Stuttgart_Solingen.csv_reduced.csv 23498 rows have been removed.
+
+For file 46_50_Darmstadt_Bonn.csv_reduced.csv 23655 rows have been removed.
+
+For file 06_10_Kln_Hamburg.csv_reduced.csv 23563 rows have been removed.
+
+For file 21_25_Nrnberg_Wuppertal.csv_reduced.csv 23672 rows have been removed.
+
+For file 26_30_Karlsruhe_Nrnberg.csv_reduced.csv 23534 rows have been removed.
+
+For file 21_25_Kln_Hagen.csv_reduced.csv 23775 rows have been removed.
+
+For file 11_15_Dortmund_Duisburg.csv_reduced.csv 23531 rows have been removed.
+
+For file 01_05_Gelsenkirchen_Hagen.csv_reduced.csv 23759 rows have been removed.
+
+For file 26_30_Mnchen_Ulm.csv_reduced.csv 23639 rows have been removed.
+
+For file 26_30_Darmstadt_Gelsenkirchen.csv_reduced.csv 23670 rows have been removed.
+
+For file 36_40_Erfurt_Dsseldorf.csv_reduced.csv 23453 rows have been removed.
+
+For file 01_05_Bochum_Solingen.csv_reduced.csv 23638 rows have been removed.
+
+For file 11_15_Hamburg_Kln.csv_reduced.csv 23758 rows have been removed.
+
+For file 56_60_Mnchen_Mannheim.csv_reduced.csv 23680 rows have been removed.
+
+For file 51_55_Bonn_Bochum.csv_reduced.csv 23638 rows have been removed.
+
+For file 01_05_Leipzig_Bamberg.csv_reduced.csv 23582 rows have been removed.
+
+For file 56_60_Heidelberg_Wrzburg.csv_reduced.csv 23673 rows have been removed.
+
+For file 31_35_Erfurt_Stuttgart.csv_reduced.csv 23555 rows have been removed.
+
+For file 46_50_Ulm_Wuppertal.csv_reduced.csv 23554 rows have been removed.
+
+For file 01_05_Mnchen_Leipzig.csv_reduced.csv 23654 rows have been removed.
+
+For file 21_25_Nrnberg_Ulm.csv_reduced.csv 23509 rows have been removed.
+
+For file 01_05_Bochum_Oberhausen.csv_reduced.csv 23567 rows have been removed.
+
+For file 26_30_Dsseldorf_Oberhausen.csv_reduced.csv 23514 rows have been removed.
+
+For file 26_30_Erfurt_Bamberg.csv_reduced.csv 23541 rows have been removed.
+
+For file 11_15_Heidelberg_Erlangen.csv_reduced.csv 23760 rows have been removed.
+
+For file 16_20_Oberhausen_Mannheim.csv_reduced.csv 23475 rows have been removed.
+
+For file 51_55_Dortmund_Karlsruhe.csv_reduced.csv 23485 rows have been removed.
+
+For file 01_05_Stuttgart_Wrzburg.csv_reduced.csv 23601 rows have been removed.
+
+For file 41_45_Erfurt_Dortmund.csv_reduced.csv 23586 rows have been removed.
+
+For file 01_05_Nrnberg_Darmstadt.csv_reduced.csv 23465 rows have been removed.
+
+For file 46_50_Hagen_Gelsenkirchen.csv_reduced.csv 23584 rows have been removed.
+
+For file 51_55_Hagen_Heidelberg.csv_reduced.csv 23704 rows have been removed.
+
+For file 01_05_Dortmund_Wuppertal.csv_reduced.csv 23580 rows have been removed.
+
+For file 26_30_Dsseldorf_Darmstadt.csv_reduced.csv 23562 rows have been removed.
+
+For file 01_05_Mannheim_Karlsruhe.csv_reduced.csv 23481 rows have been removed.
+
+For file 41_45_Dortmund_Oberhausen.csv_reduced.csv 23609 rows have been removed.
+
+For file 01_05_Bonn_Mannheim.csv_reduced.csv 23584 rows have been removed.
+
+For file 51_55_Dortmund_Aachen.csv_reduced.csv 23600 rows have been removed.
+
+For file 56_60_Hamburg_Bonn.csv_reduced.csv 23765 rows have been removed.
+
+For file 41_45_Erfurt_Darmstadt.csv_reduced.csv 23523 rows have been removed.
+
+For file 41_45_Mnchen_Nrnberg.csv_reduced.csv 23500 rows have been removed.
+
+For file 01_05_Dortmund_Solingen.csv_reduced.csv 23580 rows have been removed.
+
+For file 31_35_Essen_Solingen.csv_reduced.csv 23570 rows have been removed.
+
+For file 26_30_Ulm_Mannheim.csv_reduced.csv 23694 rows have been removed.
+
+For file 36_40_Hamburg_Dsseldorf.csv_reduced.csv 23666 rows have been removed.
+
+For file 36_40_Dsseldorf_Osnabrck.csv_reduced.csv 23502 rows have been removed.
+
+For file 31_35_Wuppertal_Gelsenkirchen.csv_reduced.csv 23572 rows have been removed.
+
+For file 06_10_Dsseldorf_Wrzburg.csv_reduced.csv 23471 rows have been removed.
+
+For file 51_55_Hagen_Karlsruhe.csv_reduced.csv 23580 rows have been removed.
+
+For file 21_25_Leipzig_Dortmund.csv_reduced.csv 23692 rows have been removed.
+
+For file 01_05_Darmstadt_Heidelberg.csv_reduced.csv 23587 rows have been removed.
+
+For file 01_05_Kln_Gelsenkirchen.csv_reduced.csv 23613 rows have been removed.
+
+For file 56_60_Kln_Karlsruhe.csv_reduced.csv 23518 rows have been removed.
+
+For file 01_05_Mannheim_Heidelberg.csv_reduced.csv 23623 rows have been removed.
+
+For file 41_45_Nrnberg_Erlangen.csv_reduced.csv 23545 rows have been removed.
+
+For file 11_15_Erfurt_Mannheim.csv_reduced.csv 23545 rows have been removed.
+
+For file 56_60_Dortmund_Hamburg.csv_reduced.csv 23528 rows have been removed.
+
+For file 06_10_Wrzburg_Mannheim.csv_reduced.csv 23543 rows have been removed.
+
+For file 01_05_Oberhausen_Gelsenkirchen.csv_reduced.csv 23676 rows have been removed.
+
+For file 51_55_Erfurt_Kln.csv_reduced.csv 23375 rows have been removed.
+
+For file 01_05_Stuttgart_Mannheim.csv_reduced.csv 23669 rows have been removed.
+
+For file 01_05_Wuppertal_Hagen.csv_reduced.csv 23592 rows have been removed.
+
+For file 46_50_Kln_Duisburg.csv_reduced.csv 23576 rows have been removed.
+
+For file 06_10_Oberhausen_Wuppertal.csv_reduced.csv 23684 rows have been removed.
+
+For file 01_05_Nrnberg_Bamberg.csv_reduced.csv 23568 rows have been removed.
+
+For file 26_30_Kln_Solingen.csv_reduced.csv 23568 rows have been removed.
+
+For file 16_20_Essen_Aachen.csv_reduced.csv 23591 rows have been removed.
+
+For file 56_60_Dsseldorf_Bonn.csv_reduced.csv 23606 rows have been removed.
+
+For file 46_50_Wrzburg_Darmstadt.csv_reduced.csv 23537 rows have been removed.
+
+For file 01_05_Essen_Gelsenkirchen.csv_reduced.csv 23539 rows have been removed.
+
+For file 01_05_Mannheim_Wrzburg.csv_reduced.csv 23643 rows have been removed.
+
+For file 11_15_Stuttgart_Erfurt.csv_reduced.csv 23530 rows have been removed.
+
+For file 36_40_Hamburg_Duisburg.csv_reduced.csv 23542 rows have been removed.
+
+For file 01_05_Wrzburg_Dsseldorf.csv_reduced.csv 23596 rows have been removed.
+
+For file 01_05_Essen_Duisburg.csv_reduced.csv 23610 rows have been removed.
+
+For file 26_30_Dsseldorf_Wuppertal.csv_reduced.csv 23534 rows have been removed.
+
+Number of processed files: 300
+Processed files saved in folder:  /home/lisnux/Desktop/UniWien/WS2122/DS_Project/data/reduced_datasets/2dim/
+First part of combined csv:      totalTravelTimeInSec  totalPrice  ...  sourceName     targetName
+0                  1415.0    0.855116  ...       Essen  Gelsenkirchen
+1                   480.0    2.168422  ...       Essen  Gelsenkirchen
+129                 480.0    2.168422  ...       Essen  Gelsenkirchen
+130                1415.0    0.855116  ...       Essen  Gelsenkirchen
+506                1415.0    0.855116  ...       Essen  Gelsenkirchen
+
+[5 rows x 11 columns]
+Last part of combined csv:         totalTravelTimeInSec  totalPrice  ...  sourceName  targetName
+20870               23118.0   21.765596  ...    Nürnberg        Köln
+20963               27076.0   64.584266  ...    Nürnberg        Köln
+21005               19740.0   91.957924  ...    Nürnberg        Köln
+21045               16606.0   26.020018  ...    Nürnberg        Köln
+21128               23118.0   21.765596  ...    Nürnberg        Köln
+
+[5 rows x 11 columns]
+Merged file saved!
+Time needed for data processing: 57.96833424500028
+------------------------------------------------------------------------------------------------------------------------------------------------------
