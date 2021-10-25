@@ -62,6 +62,8 @@ def main():
     #add column to dataset with ID of origin-destination pairs:
     df = add_numIDColumn(df, city_id_dict)
     print("Dataframe with new column: ", df.head())
+    #save new df
+    df.to_csv("combined_csvs/combined_csv_2dim_withIDs.csv", encoding = 'utf-8')
 
     #calculate statistics per od-pair (min, mean, max):
 
