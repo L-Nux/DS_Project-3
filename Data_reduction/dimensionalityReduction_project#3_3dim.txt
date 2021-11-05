@@ -1,0 +1,923 @@
+Files originate in folder:  /media/lisnux/EXTERNE FESTPLATTE LISA NUX/20211007_3dim_rohdaten_rezipped.zip
+Selected columns:  ['totalTravelTimeInSec', 'totalPrice', 'totalNumberOfChanges', 'totalWalkingDistance', 'totalWaitingTime', 'objective', 'finiteAutomaton', 'consideredPreferences', 'finalSolutionUsedLabels', 'sourceName', 'targetName']
+[<ZipInfo filename='16_20_Essen_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=764508417 compress_size=6124521>, <ZipInfo filename='01_05_Bochum_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754350541 compress_size=5936629>, <ZipInfo filename='01_05_Bochum_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=739735417 compress_size=5757805>, <ZipInfo filename='01_05_Bochum_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751652401 compress_size=6027961>, <ZipInfo filename='01_05_Bochum_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=699962932 compress_size=2613196>, <ZipInfo filename='01_05_Bochum_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=698725031 compress_size=2537359>, <ZipInfo filename='01_05_Bonn_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768361624 compress_size=6282885>, <ZipInfo filename='01_05_Bonn_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=716680998 compress_size=5049915>, <ZipInfo filename='01_05_Bonn_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=739475326 compress_size=5809857>, <ZipInfo filename='01_05_Bonn_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=773799680 compress_size=6077820>, <ZipInfo filename='01_05_Darmstadt_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=741169413 compress_size=5008953>, <ZipInfo filename='01_05_Dortmund_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=737156418 compress_size=5788605>, <ZipInfo filename='01_05_Dortmund_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751462209 compress_size=5286294>, <ZipInfo filename='01_05_Dortmund_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=684351461 compress_size=2010013>, <ZipInfo filename='01_05_Dortmund_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=688914463 compress_size=2042652>, <ZipInfo filename='01_05_Düsseldorf_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747026293 compress_size=4912953>, <ZipInfo filename='01_05_Erfurt_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=732796365 compress_size=5576314>, <ZipInfo filename='01_05_Essen_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756993819 compress_size=5133140>, <ZipInfo filename='01_05_Essen_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=732247638 compress_size=4698518>, <ZipInfo filename='01_05_Essen_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=739714157 compress_size=5072542>, <ZipInfo filename='01_05_Gelsenkirchen_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=755346486 compress_size=5654656>, <ZipInfo filename='01_05_Gelsenkirchen_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768307925 compress_size=5782207>, <ZipInfo filename='01_05_Gelsenkirchen_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=776786058 compress_size=6002839>, <ZipInfo filename='01_05_Hamburg_Essen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=761219241 compress_size=6633364>, <ZipInfo filename='01_05_Hamburg_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=750342992 compress_size=5875874>, <ZipInfo filename='01_05_Aachen_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=765041333 compress_size=6082529>, <ZipInfo filename='01_05_Aachen_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=720645418 compress_size=5666655>, <ZipInfo filename='01_05_Aachen_Dortmund.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=766957051 compress_size=6351488>, <ZipInfo filename='01_05_Aachen_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=704293601 compress_size=2657261>, <ZipInfo filename='01_05_Bochum_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=755158963 compress_size=6041570>, <ZipInfo filename='01_05_Bochum_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=732318360 compress_size=4928656>, <ZipInfo filename='01_05_Dortmund_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=676352435 compress_size=1933856>, <ZipInfo filename='01_05_Hamburg_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=759520791 compress_size=6014948>, <ZipInfo filename='01_05_Leipzig_Nürnberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=733713795 compress_size=4824815>, <ZipInfo filename='01_05_Nürnberg_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=728485556 compress_size=4717946>, <ZipInfo filename='01_05_Ulm_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=744123773 compress_size=5969675>, <ZipInfo filename='06_10_Leipzig_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=738120456 compress_size=5450242>, <ZipInfo filename='11_15_Heidelberg_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=769839069 compress_size=6058907>, <ZipInfo filename='01_05_Heidelberg_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763458764 compress_size=5874913>, <ZipInfo filename='01_05_Heidelberg_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=745216372 compress_size=4855051>, <ZipInfo filename='01_05_Karlsruhe_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=765780086 compress_size=6077501>, <ZipInfo filename='01_05_Karlsruhe_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746072039 compress_size=4850125>, <ZipInfo filename='01_05_Karlsruhe_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=750297036 compress_size=5986285>, <ZipInfo filename='01_05_Karlsruhe_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=731084445 compress_size=4708884>, <ZipInfo filename='01_05_Karlsruhe_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=725639372 compress_size=5774792>, <ZipInfo filename='01_05_Köln_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=771887086 compress_size=5971894>, <ZipInfo filename='01_05_Köln_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=752727185 compress_size=5714276>, <ZipInfo filename='01_05_Köln_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=680869701 compress_size=2447191>, <ZipInfo filename='01_05_Leipzig_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=741997609 compress_size=6004077>, <ZipInfo filename='01_05_Leipzig_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=766501902 compress_size=6470311>, <ZipInfo filename='01_05_Mannheim_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=715326267 compress_size=4930394>, <ZipInfo filename='01_05_Mannheim_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=733493237 compress_size=4837547>, <ZipInfo filename='01_05_Mannheim_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754376817 compress_size=5182915>, <ZipInfo filename='01_05_Mannheim_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=729599251 compress_size=4739992>, <ZipInfo filename='01_05_Mannheim_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=738531067 compress_size=5804954>, <ZipInfo filename='01_05_Mannheim_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=722709886 compress_size=5839434>, <ZipInfo filename='01_05_Mannheim_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=718863489 compress_size=5236460>, <ZipInfo filename='01_05_München_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=767788569 compress_size=5966599>, <ZipInfo filename='01_05_München_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=765712972 compress_size=5961339>, <ZipInfo filename='01_05_München_Leipzig.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=722730113 compress_size=5667073>, <ZipInfo filename='01_05_München_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756566927 compress_size=5973278>, <ZipInfo filename='01_05_München_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757850358 compress_size=5845856>, <ZipInfo filename='01_05_Nürnberg_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=734314468 compress_size=5947286>, <ZipInfo filename='01_05_Nürnberg_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=764369399 compress_size=6215524>, <ZipInfo filename='01_05_Nürnberg_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=752406581 compress_size=5225242>, <ZipInfo filename='01_05_Nürnberg_Leipzig.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746066033 compress_size=5759288>, <ZipInfo filename='01_05_Nürnberg_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747552438 compress_size=5294689>, <ZipInfo filename='01_05_Oberhausen_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=745651351 compress_size=5758587>, <ZipInfo filename='01_05_Oberhausen_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747095553 compress_size=5811632>, <ZipInfo filename='01_05_Stuttgart_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=734664140 compress_size=5678228>, <ZipInfo filename='01_05_Stuttgart_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=761584536 compress_size=6071093>, <ZipInfo filename='01_05_Stuttgart_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=735844259 compress_size=5657848>, <ZipInfo filename='01_05_Stuttgart_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757451499 compress_size=5906050>, <ZipInfo filename='01_05_Stuttgart_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=715448176 compress_size=5076298>, <ZipInfo filename='01_05_Wuppertal_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=699410497 compress_size=2565374>, <ZipInfo filename='01_05_Wuppertal_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=673010705 compress_size=2379089>, <ZipInfo filename='01_05_Wuppertal_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762689527 compress_size=5944785>, <ZipInfo filename='01_05_Wuppertal_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=679167931 compress_size=2471382>, <ZipInfo filename='01_05_Würzburg_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=778451266 compress_size=6503313>, <ZipInfo filename='01_05_Würzburg_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=748651858 compress_size=5329697>, <ZipInfo filename='01_05_Würzburg_Leipzig.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758835659 compress_size=5911964>, <ZipInfo filename='01_05_Würzburg_Nürnberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=731776192 compress_size=4634985>, <ZipInfo filename='06_10_Aachen_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754680079 compress_size=5941408>, <ZipInfo filename='06_10_Aachen_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=697519883 compress_size=3266372>, <ZipInfo filename='06_10_Aachen_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=772762708 compress_size=6287178>, <ZipInfo filename='06_10_Bonn_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=691649090 compress_size=3123534>, <ZipInfo filename='06_10_Dortmund_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747697117 compress_size=6017034>, <ZipInfo filename='06_10_Düsseldorf_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=745844017 compress_size=5396765>, <ZipInfo filename='06_10_Erfurt_Berlin.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=777807972 compress_size=6493226>, <ZipInfo filename='06_10_Köln_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=712136596 compress_size=5013891>, <ZipInfo filename='06_10_Mannheim_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=706463658 compress_size=5504142>, <ZipInfo filename='06_10_München_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762228251 compress_size=5869175>, <ZipInfo filename='06_10_Nürnberg_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=761840007 compress_size=6105395>, <ZipInfo filename='06_10_Oberhausen_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768575569 compress_size=5906306>, <ZipInfo filename='06_10_Stuttgart_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757093540 compress_size=6108703>, <ZipInfo filename='06_10_Wuppertal_Osnabrück.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763859686 compress_size=5952623>, <ZipInfo filename='06_10_Würzburg_Essen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=772845734 compress_size=6528352>, <ZipInfo filename='06_10_Würzburg_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=735296012 compress_size=4912447>, <ZipInfo filename='06_10_Würzburg_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=753384208 compress_size=6112860>, <ZipInfo filename='11_15_Aachen_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=785033663 compress_size=6109284>, <ZipInfo filename='11_15_Dortmund_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=767751417 compress_size=6008800>, <ZipInfo filename='11_15_Erfurt_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=753880278 compress_size=5894531>, <ZipInfo filename='11_15_Hagen_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=740736118 compress_size=5836480>, <ZipInfo filename='11_15_Hamburg_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=733760295 compress_size=5839832>, <ZipInfo filename='11_15_Heidelberg_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754740241 compress_size=6202111>, <ZipInfo filename='11_15_Karlsruhe_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746104776 compress_size=5980836>, <ZipInfo filename='11_15_Leipzig_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=765871008 compress_size=6224936>, <ZipInfo filename='11_15_Leipzig_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=761934508 compress_size=6148590>, <ZipInfo filename='11_15_Mannheim_Dortmund.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751117795 compress_size=6161790>, <ZipInfo filename='11_15_München_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=752150368 compress_size=5647398>, <ZipInfo filename='11_15_Nürnberg_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=717244896 compress_size=4955893>, <ZipInfo filename='11_15_Stuttgart_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=727038579 compress_size=5708236>, <ZipInfo filename='11_15_Stuttgart_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=712764664 compress_size=4631815>, <ZipInfo filename='11_15_Ulm_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757735376 compress_size=6068029>, <ZipInfo filename='11_15_Wuppertal_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=694258365 compress_size=3215633>, <ZipInfo filename='11_15_Würzburg_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754565444 compress_size=5989074>, <ZipInfo filename='16_20_Bonn_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746448796 compress_size=5952551>, <ZipInfo filename='16_20_Bonn_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=781126053 compress_size=5831659>, <ZipInfo filename='16_20_Darmstadt_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758826746 compress_size=6098301>, <ZipInfo filename='16_20_Darmstadt_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756654598 compress_size=6158212>, <ZipInfo filename='16_20_Hamburg_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=764122121 compress_size=6406094>, <ZipInfo filename='16_20_Hamburg_Leipzig.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756653990 compress_size=6228916>, <ZipInfo filename='16_20_Karlsruhe_München.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=725866131 compress_size=5675362>, <ZipInfo filename='16_20_Mannheim_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=741172070 compress_size=5947109>, <ZipInfo filename='16_20_Nürnberg_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=786978575 compress_size=6534623>, <ZipInfo filename='16_20_Oberhausen_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762211837 compress_size=6217934>, <ZipInfo filename='16_20_Ulm_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746846472 compress_size=6038207>, <ZipInfo filename='16_20_Würzburg_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=719228028 compress_size=5122348>, <ZipInfo filename='16_20_Würzburg_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=784333201 compress_size=6310617>, <ZipInfo filename='21_25_Aachen_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=783187254 compress_size=6100393>, <ZipInfo filename='21_25_Berlin_Leipzig.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763206813 compress_size=6133069>, <ZipInfo filename='21_25_Bonn_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=782452725 compress_size=6228447>, <ZipInfo filename='21_25_Dortmund_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758160954 compress_size=6259481>, <ZipInfo filename='21_25_Düsseldorf_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=774454221 compress_size=6172390>, <ZipInfo filename='21_25_Köln_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=744435572 compress_size=5831821>, <ZipInfo filename='21_25_Köln_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756463131 compress_size=6374919>, <ZipInfo filename='21_25_Leipzig_Dortmund.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=727094581 compress_size=5723213>, <ZipInfo filename='21_25_Mannheim_München.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747890321 compress_size=5909454>, <ZipInfo filename='21_25_Mannheim_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751799511 compress_size=5890148>, <ZipInfo filename='21_25_Nürnberg_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747822721 compress_size=5936074>, <ZipInfo filename='21_25_Nürnberg_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=769424851 compress_size=6036645>, <ZipInfo filename='21_25_Oberhausen_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768719190 compress_size=5881760>, <ZipInfo filename='21_25_Solingen_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=770224480 compress_size=6253144>, <ZipInfo filename='21_25_Stuttgart_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768929678 compress_size=5893790>, <ZipInfo filename='26_30_Darmstadt_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=735968443 compress_size=4833540>, <ZipInfo filename='26_30_Dortmund_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=723629992 compress_size=4695689>, <ZipInfo filename='26_30_Düsseldorf_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=732885319 compress_size=4889361>, <ZipInfo filename='26_30_Düsseldorf_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=777314944 compress_size=6615406>, <ZipInfo filename='26_30_Düsseldorf_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=739973144 compress_size=4806438>, <ZipInfo filename='26_30_Düsseldorf_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=706575669 compress_size=2584347>, <ZipInfo filename='26_30_Erfurt_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=730472655 compress_size=4807610>, <ZipInfo filename='26_30_Erfurt_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=730637683 compress_size=4793532>, <ZipInfo filename='26_30_Erfurt_Nürnberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=734146951 compress_size=4871852>, <ZipInfo filename='26_30_Essen_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746912949 compress_size=6031964>, <ZipInfo filename='26_30_Gelsenkirchen_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=752295541 compress_size=5696333>, <ZipInfo filename='26_30_Hamburg_Berlin.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763616706 compress_size=6295936>, <ZipInfo filename='26_30_Heidelberg_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=748485363 compress_size=6014021>, <ZipInfo filename='26_30_Heidelberg_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=742932785 compress_size=4949954>, <ZipInfo filename='26_30_Karlsruhe_Nürnberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=764832105 compress_size=6222030>, <ZipInfo filename='26_30_Karlsruhe_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=708239543 compress_size=4668082>, <ZipInfo filename='26_30_Köln_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=735992885 compress_size=5769876>, <ZipInfo filename='26_30_Köln_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=727567008 compress_size=5505660>, <ZipInfo filename='26_30_Köln_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=674794644 compress_size=2393289>, <ZipInfo filename='26_30_Leipzig_Berlin.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=771805110 compress_size=6269113>, <ZipInfo filename='26_30_Mannheim_Nürnberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=746066531 compress_size=5448238>, <ZipInfo filename='26_30_München_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=687602046 compress_size=3228779>, <ZipInfo filename='26_30_Stuttgart_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=677289484 compress_size=2356247>, <ZipInfo filename='26_30_Ulm_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757186826 compress_size=6236637>, <ZipInfo filename='26_30_Aachen_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=683833810 compress_size=3123104>, <ZipInfo filename='26_30_Aachen_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=672674495 compress_size=1859001>, <ZipInfo filename='26_30_Aachen_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=773005340 compress_size=6139612>, <ZipInfo filename='26_30_Aachen_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=720937520 compress_size=5756754>, <ZipInfo filename='26_30_Darmstadt_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=772996927 compress_size=6237074>, <ZipInfo filename='26_30_Ulm_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=744151346 compress_size=5820941>, <ZipInfo filename='26_30_Wuppertal_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=723385812 compress_size=2720545>, <ZipInfo filename='26_30_Würzburg_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=741051374 compress_size=4868279>, <ZipInfo filename='26_30_Würzburg_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=749201161 compress_size=5784281>, <ZipInfo filename='26_30_Würzburg_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=776624819 compress_size=6423406>, <ZipInfo filename='26_30_Würzburg_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=744049560 compress_size=5932376>, <ZipInfo filename='31_35_Darmstadt_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=760499347 compress_size=6202993>, <ZipInfo filename='31_35_Duisburg_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=725077273 compress_size=2660455>, <ZipInfo filename='31_35_Düsseldorf_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754540719 compress_size=5982330>, <ZipInfo filename='31_35_Erfurt_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=720656484 compress_size=5188116>, <ZipInfo filename='31_35_Essen_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=697197690 compress_size=2603532>, <ZipInfo filename='31_35_Gelsenkirchen_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=771288562 compress_size=6328509>, <ZipInfo filename='31_35_Heidelberg_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=770926033 compress_size=6299939>, <ZipInfo filename='31_35_Karlsruhe_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=764314165 compress_size=6303517>, <ZipInfo filename='31_35_Karlsruhe_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=731827959 compress_size=5670287>, <ZipInfo filename='31_35_Karlsruhe_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747916390 compress_size=5247543>, <ZipInfo filename='31_35_Köln_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=713110715 compress_size=5668324>, <ZipInfo filename='31_35_Oberhausen_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=750332374 compress_size=5941284>, <ZipInfo filename='31_35_Wuppertal_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=717578623 compress_size=2759226>, <ZipInfo filename='36_40_Berlin_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=772387708 compress_size=6235207>, <ZipInfo filename='36_40_Bonn_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=752244026 compress_size=5877423>, <ZipInfo filename='36_40_Düsseldorf_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=769619614 compress_size=5853814>, <ZipInfo filename='36_40_Düsseldorf_Osnabrück.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=765713153 compress_size=6213623>, <ZipInfo filename='36_40_Erfurt_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762513126 compress_size=6137005>, <ZipInfo filename='36_40_Essen_Osnabrück.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751368145 compress_size=5935650>, <ZipInfo filename='36_40_Hagen_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754129424 compress_size=6040393>, <ZipInfo filename='36_40_Hamburg_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=787464815 compress_size=6424569>, <ZipInfo filename='36_40_Hamburg_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=740866444 compress_size=5567519>, <ZipInfo filename='36_40_Karlsruhe_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754192475 compress_size=5868807>, <ZipInfo filename='36_40_Köln_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=698226523 compress_size=4557233>, <ZipInfo filename='36_40_Mannheim_Düsseldorf.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=764197363 compress_size=6134182>, <ZipInfo filename='36_40_München_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=773754141 compress_size=5864138>, <ZipInfo filename='36_40_Oberhausen_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758878609 compress_size=5884923>, <ZipInfo filename='36_40_Würzburg_München.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754155036 compress_size=6053294>, <ZipInfo filename='41_45_Aachen_Essen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=744649656 compress_size=5933757>, <ZipInfo filename='41_45_Darmstadt_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=734675638 compress_size=4814410>, <ZipInfo filename='41_45_Dortmund_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=742917589 compress_size=5193692>, <ZipInfo filename='41_45_Erfurt_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=742868668 compress_size=6166878>, <ZipInfo filename='41_45_Erfurt_Dortmund.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763404449 compress_size=6046900>, <ZipInfo filename='41_45_Erfurt_Leipzig.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=698849311 compress_size=4634102>, <ZipInfo filename='41_45_Erfurt_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=717654101 compress_size=5617955>, <ZipInfo filename='41_45_Essen_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=717756513 compress_size=4475781>, <ZipInfo filename='41_45_Essen_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=740810342 compress_size=5664910>, <ZipInfo filename='41_45_Essen_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=696589699 compress_size=2630849>, <ZipInfo filename='41_45_Gelsenkirchen_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762181568 compress_size=5077468>, <ZipInfo filename='41_45_Hagen_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=759640879 compress_size=6003749>, <ZipInfo filename='41_45_Hagen_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758310253 compress_size=5997556>, <ZipInfo filename='41_45_Hagen_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=680385576 compress_size=2025015>, <ZipInfo filename='41_45_Hagen_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=670376281 compress_size=1983213>, <ZipInfo filename='41_45_Heidelberg_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=710661799 compress_size=4627742>, <ZipInfo filename='41_45_Heidelberg_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=791536155 compress_size=6685601>, <ZipInfo filename='41_45_Heidelberg_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763512545 compress_size=5957535>, <ZipInfo filename='41_45_Köln_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=669276311 compress_size=2376750>, <ZipInfo filename='41_45_Mannheim_Osnabrück.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=763719053 compress_size=6304078>, <ZipInfo filename='41_45_München_Nürnberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=708310882 compress_size=4799576>, <ZipInfo filename='41_45_Nürnberg_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=731866581 compress_size=4883801>, <ZipInfo filename='41_45_Nürnberg_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=728867743 compress_size=4545182>, <ZipInfo filename='41_45_Oberhausen_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756392259 compress_size=4627848>, <ZipInfo filename='41_45_Solingen_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=679278472 compress_size=2387158>, <ZipInfo filename='41_45_Ulm_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=760131793 compress_size=6097011>, <ZipInfo filename='41_45_Ulm_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757852906 compress_size=6371397>, <ZipInfo filename='21_25_Düsseldorf_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=706151409 compress_size=2552359>, <ZipInfo filename='26_30_Darmstadt_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762946763 compress_size=6186888>, <ZipInfo filename='26_30_Hamburg_Dortmund.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762589713 compress_size=6212585>, <ZipInfo filename='26_30_Ulm_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757493752 compress_size=6154830>, <ZipInfo filename='31_35_Bonn_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754879645 compress_size=5967722>, <ZipInfo filename='31_35_Ulm_Bamberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751068210 compress_size=6258880>, <ZipInfo filename='36_40_Darmstadt_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=776381864 compress_size=6314463>, <ZipInfo filename='36_40_Würzburg_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=769337768 compress_size=6499042>, <ZipInfo filename='41_45_Düsseldorf_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758122908 compress_size=6382775>, <ZipInfo filename='41_45_Hamburg_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=756784350 compress_size=5912363>, <ZipInfo filename='41_45_Würzburg_Erlangen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=744636987 compress_size=5258185>, <ZipInfo filename='46_50_Erfurt_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=757768113 compress_size=6100433>, <ZipInfo filename='46_50_Würzburg_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=755013646 compress_size=6024795>, <ZipInfo filename='51_55_Aachen_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=740227966 compress_size=5827361>, <ZipInfo filename='55_60_Essen_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=736180259 compress_size=5888712>, <ZipInfo filename='46_50_Aachen_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=773488831 compress_size=5998953>, <ZipInfo filename='46_50_Darmstadt_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758247437 compress_size=6124652>, <ZipInfo filename='46_50_Darmstadt_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=731578449 compress_size=5811394>, <ZipInfo filename='46_50_Erfurt_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768805211 compress_size=6303157>, <ZipInfo filename='46_50_Erfurt_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=745932457 compress_size=6029175>, <ZipInfo filename='46_50_Hagen_Gelsenkirchen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=766654179 compress_size=6083469>, <ZipInfo filename='46_50_Heidelberg_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=783614653 compress_size=5983398>, <ZipInfo filename='46_50_Köln_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=774855345 compress_size=5885219>, <ZipInfo filename='46_50_Leipzig_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=759051874 compress_size=6016873>, <ZipInfo filename='46_50_Mannheim_Essen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=769403185 compress_size=6590851>, <ZipInfo filename='46_50_Mannheim_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754591140 compress_size=6197843>, <ZipInfo filename='46_50_Mannheim_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751981736 compress_size=5981736>, <ZipInfo filename='46_50_Ulm_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=767212816 compress_size=5968117>, <ZipInfo filename='46_50_Ulm_Wuppertal.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754446324 compress_size=6130008>, <ZipInfo filename='46_50_Wuppertal_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=758910713 compress_size=6020104>, <ZipInfo filename='46_50_Würzburg_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=735308694 compress_size=5088807>, <ZipInfo filename='46_50_Würzburg_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762222360 compress_size=5980892>, <ZipInfo filename='46_50_Würzburg_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=762127208 compress_size=6156210>, <ZipInfo filename='51_55_Aachen_Hagen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=754492740 compress_size=5820500>, <ZipInfo filename='51_55_Dortmund_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=729369851 compress_size=5759068>, <ZipInfo filename='51_55_Dortmund_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=760999717 compress_size=6141334>, <ZipInfo filename='51_55_Erfurt_Köln.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=747633200 compress_size=6046061>, <ZipInfo filename='51_55_Hagen_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=781248301 compress_size=6269436>, <ZipInfo filename='51_55_Hagen_Heidelberg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=726094193 compress_size=5199643>, <ZipInfo filename='51_55_Hagen_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=750330805 compress_size=5937140>, <ZipInfo filename='51_55_Köln_Darmstadt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=729852969 compress_size=5814992>, <ZipInfo filename='51_55_Mannheim_Duisburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=752862731 compress_size=6179489>, <ZipInfo filename='51_55_Wuppertal_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=772218062 compress_size=6273699>, <ZipInfo filename='55_60_Bonn_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751878570 compress_size=5821620>, <ZipInfo filename='55_60_Bonn_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=688980053 compress_size=3166158>, <ZipInfo filename='55_60_Darmstadt_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=742427845 compress_size=5848597>, <ZipInfo filename='55_60_Dortmund_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=714882777 compress_size=4760746>, <ZipInfo filename='55_60_Düsseldorf_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=743979363 compress_size=5826912>, <ZipInfo filename='55_60_Gelsenkirchen_Solingen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=778835996 compress_size=5972615>, <ZipInfo filename='55_60_Hagen_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=741019108 compress_size=5954751>, <ZipInfo filename='55_60_Hamburg_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=768267579 compress_size=6084722>, <ZipInfo filename='55_60_Hamburg_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=718362514 compress_size=4793589>, <ZipInfo filename='55_60_Heidelberg_Würzburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=759846403 compress_size=5670143>, <ZipInfo filename='55_60_Karlsruhe_Erfurt.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=725411207 compress_size=5702590>, <ZipInfo filename='55_60_Köln_Karlsruhe.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=751281414 compress_size=5826876>, <ZipInfo filename='55_60_Leipzig_Bochum.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=755172645 compress_size=6062869>, <ZipInfo filename='55_60_Leipzig_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=708769064 compress_size=4807494>, <ZipInfo filename='55_60_Leipzig_München.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=765846136 compress_size=6110759>, <ZipInfo filename='55_60_Mannheim_Oberhausen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=774285752 compress_size=6416302>, <ZipInfo filename='55_60_München_Mannheim.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=782205474 compress_size=6440538>, <ZipInfo filename='55_60_Nürnberg_Bonn.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=729103733 compress_size=5834162>, <ZipInfo filename='55_60_Nürnberg_Hamburg.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=760225191 compress_size=6155873>, <ZipInfo filename='55_60_Nürnberg_München.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=725367940 compress_size=5692809>, <ZipInfo filename='55_60_Nürnberg_Stuttgart.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=713069653 compress_size=5048013>, <ZipInfo filename='55_60_Stuttgart_Aachen.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=725520452 compress_size=5815142>, <ZipInfo filename='55_60_Würzburg_Ulm.csv_reduced.csv' compress_type=bzip2 filemode='-rwxrwxrwx' file_size=748096699 compress_size=5977074>]
+16_20_Essen_Aachen.csv_reduced.csv
+For file 16_20_Essen_Aachen.csv_reduced.csv 1719462 rows have been removed!
+
+01_05_Bochum_Gelsenkirchen.csv_reduced.csv
+For file 01_05_Bochum_Gelsenkirchen.csv_reduced.csv 1699482 rows have been removed!
+
+01_05_Bochum_Hagen.csv_reduced.csv
+For file 01_05_Bochum_Hagen.csv_reduced.csv 1699478 rows have been removed!
+
+01_05_Bochum_Oberhausen.csv_reduced.csv
+For file 01_05_Bochum_Oberhausen.csv_reduced.csv 1699402 rows have been removed!
+
+01_05_Bochum_Solingen.csv_reduced.csv
+For file 01_05_Bochum_Solingen.csv_reduced.csv 1699524 rows have been removed!
+
+01_05_Bochum_Wuppertal.csv_reduced.csv
+For file 01_05_Bochum_Wuppertal.csv_reduced.csv 1689463 rows have been removed!
+
+01_05_Bonn_Darmstadt.csv_reduced.csv
+For file 01_05_Bonn_Darmstadt.csv_reduced.csv 1719466 rows have been removed!
+
+01_05_Bonn_Heidelberg.csv_reduced.csv
+For file 01_05_Bonn_Heidelberg.csv_reduced.csv 1699528 rows have been removed!
+
+01_05_Bonn_Mannheim.csv_reduced.csv
+For file 01_05_Bonn_Mannheim.csv_reduced.csv 1704472 rows have been removed!
+
+01_05_Bonn_Oberhausen.csv_reduced.csv
+For file 01_05_Bonn_Oberhausen.csv_reduced.csv 1734727 rows have been removed!
+
+01_05_Darmstadt_Heidelberg.csv_reduced.csv
+For file 01_05_Darmstadt_Heidelberg.csv_reduced.csv 1693963 rows have been removed!
+
+01_05_Dortmund_Bonn.csv_reduced.csv
+For file 01_05_Dortmund_Bonn.csv_reduced.csv 1704467 rows have been removed!
+
+01_05_Dortmund_Gelsenkirchen.csv_reduced.csv
+For file 01_05_Dortmund_Gelsenkirchen.csv_reduced.csv 1694428 rows have been removed!
+
+01_05_Dortmund_Solingen.csv_reduced.csv
+For file 01_05_Dortmund_Solingen.csv_reduced.csv 1689481 rows have been removed!
+
+01_05_Dortmund_Wuppertal.csv_reduced.csv
+For file 01_05_Dortmund_Wuppertal.csv_reduced.csv 1689481 rows have been removed!
+
+01_05_Düsseldorf_Gelsenkirchen.csv_reduced.csv
+For file 01_05_Düsseldorf_Gelsenkirchen.csv_reduced.csv 1689417 rows have been removed!
+
+01_05_Erfurt_Heidelberg.csv_reduced.csv
+For file 01_05_Erfurt_Heidelberg.csv_reduced.csv 1709132 rows have been removed!
+
+01_05_Essen_Duisburg.csv_reduced.csv
+For file 01_05_Essen_Duisburg.csv_reduced.csv 1698504 rows have been removed!
+
+01_05_Essen_Gelsenkirchen.csv_reduced.csv
+For file 01_05_Essen_Gelsenkirchen.csv_reduced.csv 1689417 rows have been removed!
+
+01_05_Essen_Oberhausen.csv_reduced.csv
+For file 01_05_Essen_Oberhausen.csv_reduced.csv 1694011 rows have been removed!
+
+01_05_Gelsenkirchen_Bochum.csv_reduced.csv
+For file 01_05_Gelsenkirchen_Bochum.csv_reduced.csv 1699458 rows have been removed!
+
+01_05_Gelsenkirchen_Hagen.csv_reduced.csv
+For file 01_05_Gelsenkirchen_Hagen.csv_reduced.csv 1717678 rows have been removed!
+
+01_05_Gelsenkirchen_Wuppertal.csv_reduced.csv
+For file 01_05_Gelsenkirchen_Wuppertal.csv_reduced.csv 1717718 rows have been removed!
+
+01_05_Hamburg_Essen.csv_reduced.csv
+For file 01_05_Hamburg_Essen.csv_reduced.csv 1713613 rows have been removed!
+
+01_05_Hamburg_Hagen.csv_reduced.csv
+For file 01_05_Hamburg_Hagen.csv_reduced.csv 1704487 rows have been removed!
+
+01_05_Aachen_Bochum.csv_reduced.csv
+For file 01_05_Aachen_Bochum.csv_reduced.csv 1717527 rows have been removed!
+
+01_05_Aachen_Darmstadt.csv_reduced.csv
+For file 01_05_Aachen_Darmstadt.csv_reduced.csv 1704572 rows have been removed!
+
+01_05_Aachen_Dortmund.csv_reduced.csv
+For file 01_05_Aachen_Dortmund.csv_reduced.csv 1717296 rows have been removed!
+
+01_05_Aachen_Düsseldorf.csv_reduced.csv
+For file 01_05_Aachen_Düsseldorf.csv_reduced.csv 1694451 rows have been removed!
+
+01_05_Bochum_Bonn.csv_reduced.csv
+For file 01_05_Bochum_Bonn.csv_reduced.csv 1719473 rows have been removed!
+
+01_05_Bochum_Duisburg.csv_reduced.csv
+For file 01_05_Bochum_Duisburg.csv_reduced.csv 1698418 rows have been removed!
+
+01_05_Dortmund_Hagen.csv_reduced.csv
+For file 01_05_Dortmund_Hagen.csv_reduced.csv 1689507 rows have been removed!
+
+01_05_Hamburg_Solingen.csv_reduced.csv
+For file 01_05_Hamburg_Solingen.csv_reduced.csv 1704389 rows have been removed!
+
+01_05_Leipzig_Nürnberg.csv_reduced.csv
+For file 01_05_Leipzig_Nürnberg.csv_reduced.csv 1689367 rows have been removed!
+
+01_05_Nürnberg_Bamberg.csv_reduced.csv
+For file 01_05_Nürnberg_Bamberg.csv_reduced.csv 1689441 rows have been removed!
+
+01_05_Ulm_Karlsruhe.csv_reduced.csv
+For file 01_05_Ulm_Karlsruhe.csv_reduced.csv 1704417 rows have been removed!
+
+06_10_Leipzig_Heidelberg.csv_reduced.csv
+For file 06_10_Leipzig_Heidelberg.csv_reduced.csv 1709132 rows have been removed!
+
+11_15_Heidelberg_Erlangen.csv_reduced.csv
+For file 11_15_Heidelberg_Erlangen.csv_reduced.csv 1719652 rows have been removed!
+
+01_05_Heidelberg_Erfurt.csv_reduced.csv
+For file 01_05_Heidelberg_Erfurt.csv_reduced.csv 1709020 rows have been removed!
+
+01_05_Heidelberg_Karlsruhe.csv_reduced.csv
+For file 01_05_Heidelberg_Karlsruhe.csv_reduced.csv 1694014 rows have been removed!
+
+01_05_Karlsruhe_Düsseldorf.csv_reduced.csv
+For file 01_05_Karlsruhe_Düsseldorf.csv_reduced.csv 1704221 rows have been removed!
+
+01_05_Karlsruhe_Heidelberg.csv_reduced.csv
+For file 01_05_Karlsruhe_Heidelberg.csv_reduced.csv 1694014 rows have been removed!
+
+01_05_Karlsruhe_Köln.csv_reduced.csv
+For file 01_05_Karlsruhe_Köln.csv_reduced.csv 1704369 rows have been removed!
+
+01_05_Karlsruhe_Mannheim.csv_reduced.csv
+For file 01_05_Karlsruhe_Mannheim.csv_reduced.csv 1689375 rows have been removed!
+
+01_05_Karlsruhe_Solingen.csv_reduced.csv
+For file 01_05_Karlsruhe_Solingen.csv_reduced.csv 1704475 rows have been removed!
+
+01_05_Köln_Gelsenkirchen.csv_reduced.csv
+For file 01_05_Köln_Gelsenkirchen.csv_reduced.csv 1704484 rows have been removed!
+
+01_05_Köln_Oberhausen.csv_reduced.csv
+For file 01_05_Köln_Oberhausen.csv_reduced.csv 1719649 rows have been removed!
+
+01_05_Köln_Wuppertal.csv_reduced.csv
+For file 01_05_Köln_Wuppertal.csv_reduced.csv 1689427 rows have been removed!
+
+01_05_Leipzig_Bamberg.csv_reduced.csv
+For file 01_05_Leipzig_Bamberg.csv_reduced.csv 1704457 rows have been removed!
+
+01_05_Leipzig_Erlangen.csv_reduced.csv
+For file 01_05_Leipzig_Erlangen.csv_reduced.csv 1719348 rows have been removed!
+
+01_05_Mannheim_Darmstadt.csv_reduced.csv
+For file 01_05_Mannheim_Darmstadt.csv_reduced.csv 1693934 rows have been removed!
+
+01_05_Mannheim_Erfurt.csv_reduced.csv
+For file 01_05_Mannheim_Erfurt.csv_reduced.csv 1689441 rows have been removed!
+
+01_05_Mannheim_Heidelberg.csv_reduced.csv
+For file 01_05_Mannheim_Heidelberg.csv_reduced.csv 1698486 rows have been removed!
+
+01_05_Mannheim_Karlsruhe.csv_reduced.csv
+For file 01_05_Mannheim_Karlsruhe.csv_reduced.csv 1689353 rows have been removed!
+
+01_05_Mannheim_Köln.csv_reduced.csv
+For file 01_05_Mannheim_Köln.csv_reduced.csv 1704465 rows have been removed!
+
+01_05_Mannheim_Solingen.csv_reduced.csv
+For file 01_05_Mannheim_Solingen.csv_reduced.csv 1704456 rows have been removed!
+
+01_05_Mannheim_Würzburg.csv_reduced.csv
+For file 01_05_Mannheim_Würzburg.csv_reduced.csv 1704515 rows have been removed!
+
+01_05_München_Darmstadt.csv_reduced.csv
+For file 01_05_München_Darmstadt.csv_reduced.csv 1719624 rows have been removed!
+
+01_05_München_Erlangen.csv_reduced.csv
+For file 01_05_München_Erlangen.csv_reduced.csv 1704489 rows have been removed!
+
+01_05_München_Leipzig.csv_reduced.csv
+For file 01_05_München_Leipzig.csv_reduced.csv 1704564 rows have been removed!
+
+01_05_München_Stuttgart.csv_reduced.csv
+For file 01_05_München_Stuttgart.csv_reduced.csv 1719650 rows have been removed!
+
+01_05_München_Würzburg.csv_reduced.csv
+For file 01_05_München_Würzburg.csv_reduced.csv 1704175 rows have been removed!
+
+01_05_Nürnberg_Darmstadt.csv_reduced.csv
+For file 01_05_Nürnberg_Darmstadt.csv_reduced.csv 1704225 rows have been removed!
+
+01_05_Nürnberg_Erfurt.csv_reduced.csv
+For file 01_05_Nürnberg_Erfurt.csv_reduced.csv 1704337 rows have been removed!
+
+01_05_Nürnberg_Heidelberg.csv_reduced.csv
+For file 01_05_Nürnberg_Heidelberg.csv_reduced.csv 1698531 rows have been removed!
+
+01_05_Nürnberg_Leipzig.csv_reduced.csv
+For file 01_05_Nürnberg_Leipzig.csv_reduced.csv 1704516 rows have been removed!
+
+01_05_Nürnberg_Mannheim.csv_reduced.csv
+For file 01_05_Nürnberg_Mannheim.csv_reduced.csv 1704449 rows have been removed!
+
+01_05_Oberhausen_Bochum.csv_reduced.csv
+For file 01_05_Oberhausen_Bochum.csv_reduced.csv 1699468 rows have been removed!
+
+01_05_Oberhausen_Gelsenkirchen.csv_reduced.csv
+For file 01_05_Oberhausen_Gelsenkirchen.csv_reduced.csv 1704582 rows have been removed!
+
+01_05_Stuttgart_Darmstadt.csv_reduced.csv
+For file 01_05_Stuttgart_Darmstadt.csv_reduced.csv 1704471 rows have been removed!
+
+01_05_Stuttgart_Mannheim.csv_reduced.csv
+For file 01_05_Stuttgart_Mannheim.csv_reduced.csv 1719445 rows have been removed!
+
+01_05_Stuttgart_Solingen.csv_reduced.csv
+For file 01_05_Stuttgart_Solingen.csv_reduced.csv 1699330 rows have been removed!
+
+01_05_Stuttgart_Wuppertal.csv_reduced.csv
+For file 01_05_Stuttgart_Wuppertal.csv_reduced.csv 1704413 rows have been removed!
+
+01_05_Stuttgart_Würzburg.csv_reduced.csv
+For file 01_05_Stuttgart_Würzburg.csv_reduced.csv 1693956 rows have been removed!
+
+01_05_Wuppertal_Bochum.csv_reduced.csv
+For file 01_05_Wuppertal_Bochum.csv_reduced.csv 1689413 rows have been removed!
+
+01_05_Wuppertal_Hagen.csv_reduced.csv
+For file 01_05_Wuppertal_Hagen.csv_reduced.csv 1689489 rows have been removed!
+
+01_05_Wuppertal_Oberhausen.csv_reduced.csv
+For file 01_05_Wuppertal_Oberhausen.csv_reduced.csv 1699557 rows have been removed!
+
+01_05_Wuppertal_Solingen.csv_reduced.csv
+For file 01_05_Wuppertal_Solingen.csv_reduced.csv 1689457 rows have been removed!
+
+01_05_Würzburg_Düsseldorf.csv_reduced.csv
+For file 01_05_Würzburg_Düsseldorf.csv_reduced.csv 1719292 rows have been removed!
+
+01_05_Würzburg_Karlsruhe.csv_reduced.csv
+For file 01_05_Würzburg_Karlsruhe.csv_reduced.csv 1704504 rows have been removed!
+
+01_05_Würzburg_Leipzig.csv_reduced.csv
+For file 01_05_Würzburg_Leipzig.csv_reduced.csv 1704516 rows have been removed!
+
+01_05_Würzburg_Nürnberg.csv_reduced.csv
+For file 01_05_Würzburg_Nürnberg.csv_reduced.csv 1689378 rows have been removed!
+
+06_10_Aachen_Stuttgart.csv_reduced.csv
+For file 06_10_Aachen_Stuttgart.csv_reduced.csv 1699411 rows have been removed!
+
+06_10_Aachen_Wuppertal.csv_reduced.csv
+For file 06_10_Aachen_Wuppertal.csv_reduced.csv 1699553 rows have been removed!
+
+06_10_Aachen_Würzburg.csv_reduced.csv
+For file 06_10_Aachen_Würzburg.csv_reduced.csv 1714208 rows have been removed!
+
+06_10_Bonn_Wuppertal.csv_reduced.csv
+For file 06_10_Bonn_Wuppertal.csv_reduced.csv 1704567 rows have been removed!
+
+06_10_Dortmund_Erfurt.csv_reduced.csv
+For file 06_10_Dortmund_Erfurt.csv_reduced.csv 1704477 rows have been removed!
+
+06_10_Düsseldorf_Würzburg.csv_reduced.csv
+For file 06_10_Düsseldorf_Würzburg.csv_reduced.csv 1693868 rows have been removed!
+
+06_10_Erfurt_Berlin.csv_reduced.csv
+For file 06_10_Erfurt_Berlin.csv_reduced.csv 1733920 rows have been removed!
+
+06_10_Köln_Hamburg.csv_reduced.csv
+For file 06_10_Köln_Hamburg.csv_reduced.csv 1693982 rows have been removed!
+
+06_10_Mannheim_Bonn.csv_reduced.csv
+For file 06_10_Mannheim_Bonn.csv_reduced.csv 1704564 rows have been removed!
+
+06_10_München_Bamberg.csv_reduced.csv
+For file 06_10_München_Bamberg.csv_reduced.csv 1704483 rows have been removed!
+
+06_10_Nürnberg_Köln.csv_reduced.csv
+For file 06_10_Nürnberg_Köln.csv_reduced.csv 1704339 rows have been removed!
+
+06_10_Oberhausen_Wuppertal.csv_reduced.csv
+For file 06_10_Oberhausen_Wuppertal.csv_reduced.csv 1705595 rows have been removed!
+
+06_10_Stuttgart_Bonn.csv_reduced.csv
+For file 06_10_Stuttgart_Bonn.csv_reduced.csv 1719446 rows have been removed!
+
+06_10_Wuppertal_Osnabrück.csv_reduced.csv
+For file 06_10_Wuppertal_Osnabrück.csv_reduced.csv 1704555 rows have been removed!
+
+06_10_Würzburg_Essen.csv_reduced.csv
+For file 06_10_Würzburg_Essen.csv_reduced.csv 1719010 rows have been removed!
+
+06_10_Würzburg_Hamburg.csv_reduced.csv
+For file 06_10_Würzburg_Hamburg.csv_reduced.csv 1689363 rows have been removed!
+
+06_10_Würzburg_Mannheim.csv_reduced.csv
+For file 06_10_Würzburg_Mannheim.csv_reduced.csv 1704384 rows have been removed!
+
+11_15_Aachen_Duisburg.csv_reduced.csv
+For file 11_15_Aachen_Duisburg.csv_reduced.csv 1714607 rows have been removed!
+
+11_15_Dortmund_Duisburg.csv_reduced.csv
+For file 11_15_Dortmund_Duisburg.csv_reduced.csv 1708841 rows have been removed!
+
+11_15_Erfurt_Mannheim.csv_reduced.csv
+For file 11_15_Erfurt_Mannheim.csv_reduced.csv 1704327 rows have been removed!
+
+11_15_Hagen_Bonn.csv_reduced.csv
+For file 11_15_Hagen_Bonn.csv_reduced.csv 1719615 rows have been removed!
+
+11_15_Hamburg_Köln.csv_reduced.csv
+For file 11_15_Hamburg_Köln.csv_reduced.csv 1724620 rows have been removed!
+
+11_15_Heidelberg_Duisburg.csv_reduced.csv
+For file 11_15_Heidelberg_Duisburg.csv_reduced.csv 1719359 rows have been removed!
+
+11_15_Karlsruhe_Ulm.csv_reduced.csv
+For file 11_15_Karlsruhe_Ulm.csv_reduced.csv 1719553 rows have been removed!
+
+11_15_Leipzig_Darmstadt.csv_reduced.csv
+For file 11_15_Leipzig_Darmstadt.csv_reduced.csv 1708880 rows have been removed!
+
+11_15_Leipzig_Hagen.csv_reduced.csv
+For file 11_15_Leipzig_Hagen.csv_reduced.csv 1719586 rows have been removed!
+
+11_15_Mannheim_Dortmund.csv_reduced.csv
+For file 11_15_Mannheim_Dortmund.csv_reduced.csv 1704253 rows have been removed!
+
+11_15_München_Karlsruhe.csv_reduced.csv
+For file 11_15_München_Karlsruhe.csv_reduced.csv 1704530 rows have been removed!
+
+11_15_Nürnberg_Karlsruhe.csv_reduced.csv
+For file 11_15_Nürnberg_Karlsruhe.csv_reduced.csv 1694400 rows have been removed!
+
+11_15_Stuttgart_Erfurt.csv_reduced.csv
+For file 11_15_Stuttgart_Erfurt.csv_reduced.csv 1704387 rows have been removed!
+
+11_15_Stuttgart_Karlsruhe.csv_reduced.csv
+For file 11_15_Stuttgart_Karlsruhe.csv_reduced.csv 1689423 rows have been removed!
+
+11_15_Ulm_Erfurt.csv_reduced.csv
+For file 11_15_Ulm_Erfurt.csv_reduced.csv 1719517 rows have been removed!
+
+11_15_Wuppertal_Bonn.csv_reduced.csv
+For file 11_15_Wuppertal_Bonn.csv_reduced.csv 1704531 rows have been removed!
+
+11_15_Würzburg_Bonn.csv_reduced.csv
+For file 11_15_Würzburg_Bonn.csv_reduced.csv 1709455 rows have been removed!
+
+16_20_Bonn_Aachen.csv_reduced.csv
+For file 16_20_Bonn_Aachen.csv_reduced.csv 1699476 rows have been removed!
+
+16_20_Bonn_Duisburg.csv_reduced.csv
+For file 16_20_Bonn_Duisburg.csv_reduced.csv 1719605 rows have been removed!
+
+16_20_Darmstadt_Oberhausen.csv_reduced.csv
+For file 16_20_Darmstadt_Oberhausen.csv_reduced.csv 1704589 rows have been removed!
+
+16_20_Darmstadt_Würzburg.csv_reduced.csv
+For file 16_20_Darmstadt_Würzburg.csv_reduced.csv 1699391 rows have been removed!
+
+16_20_Hamburg_Bochum.csv_reduced.csv
+For file 16_20_Hamburg_Bochum.csv_reduced.csv 1708681 rows have been removed!
+
+16_20_Hamburg_Leipzig.csv_reduced.csv
+For file 16_20_Hamburg_Leipzig.csv_reduced.csv 1704184 rows have been removed!
+
+16_20_Karlsruhe_München.csv_reduced.csv
+For file 16_20_Karlsruhe_München.csv_reduced.csv 1704495 rows have been removed!
+
+16_20_Mannheim_Ulm.csv_reduced.csv
+For file 16_20_Mannheim_Ulm.csv_reduced.csv 1719630 rows have been removed!
+
+16_20_Nürnberg_Düsseldorf.csv_reduced.csv
+For file 16_20_Nürnberg_Düsseldorf.csv_reduced.csv 1719044 rows have been removed!
+
+16_20_Oberhausen_Mannheim.csv_reduced.csv
+For file 16_20_Oberhausen_Mannheim.csv_reduced.csv 1704265 rows have been removed!
+
+16_20_Ulm_Bonn.csv_reduced.csv
+For file 16_20_Ulm_Bonn.csv_reduced.csv 1719310 rows have been removed!
+
+16_20_Würzburg_Stuttgart.csv_reduced.csv
+For file 16_20_Würzburg_Stuttgart.csv_reduced.csv 1693980 rows have been removed!
+
+16_20_Würzburg_Wuppertal.csv_reduced.csv
+For file 16_20_Würzburg_Wuppertal.csv_reduced.csv 1749802 rows have been removed!
+
+21_25_Aachen_Gelsenkirchen.csv_reduced.csv
+For file 21_25_Aachen_Gelsenkirchen.csv_reduced.csv 1717610 rows have been removed!
+
+21_25_Berlin_Leipzig.csv_reduced.csv
+For file 21_25_Berlin_Leipzig.csv_reduced.csv 1704426 rows have been removed!
+
+21_25_Bonn_Gelsenkirchen.csv_reduced.csv
+For file 21_25_Bonn_Gelsenkirchen.csv_reduced.csv 1719539 rows have been removed!
+
+21_25_Dortmund_Mannheim.csv_reduced.csv
+For file 21_25_Dortmund_Mannheim.csv_reduced.csv 1704124 rows have been removed!
+
+21_25_Düsseldorf_Aachen.csv_reduced.csv
+For file 21_25_Düsseldorf_Aachen.csv_reduced.csv 1702311 rows have been removed!
+
+21_25_Köln_Hagen.csv_reduced.csv
+For file 21_25_Köln_Hagen.csv_reduced.csv 1719715 rows have been removed!
+
+21_25_Köln_Würzburg.csv_reduced.csv
+For file 21_25_Köln_Würzburg.csv_reduced.csv 1704051 rows have been removed!
+
+21_25_Leipzig_Dortmund.csv_reduced.csv
+For file 21_25_Leipzig_Dortmund.csv_reduced.csv 1704590 rows have been removed!
+
+21_25_Mannheim_München.csv_reduced.csv
+For file 21_25_Mannheim_München.csv_reduced.csv 1704406 rows have been removed!
+
+21_25_Mannheim_Stuttgart.csv_reduced.csv
+For file 21_25_Mannheim_Stuttgart.csv_reduced.csv 1719687 rows have been removed!
+
+21_25_Nürnberg_Ulm.csv_reduced.csv
+For file 21_25_Nürnberg_Ulm.csv_reduced.csv 1699343 rows have been removed!
+
+21_25_Nürnberg_Wuppertal.csv_reduced.csv
+For file 21_25_Nürnberg_Wuppertal.csv_reduced.csv 1719495 rows have been removed!
+
+21_25_Oberhausen_Solingen.csv_reduced.csv
+For file 21_25_Oberhausen_Solingen.csv_reduced.csv 1705549 rows have been removed!
+
+21_25_Solingen_Darmstadt.csv_reduced.csv
+For file 21_25_Solingen_Darmstadt.csv_reduced.csv 1724594 rows have been removed!
+
+21_25_Stuttgart_Heidelberg.csv_reduced.csv
+For file 21_25_Stuttgart_Heidelberg.csv_reduced.csv 1699385 rows have been removed!
+
+26_30_Darmstadt_Mannheim.csv_reduced.csv
+For file 26_30_Darmstadt_Mannheim.csv_reduced.csv 1689400 rows have been removed!
+
+26_30_Dortmund_Bochum.csv_reduced.csv
+For file 26_30_Dortmund_Bochum.csv_reduced.csv 1689362 rows have been removed!
+
+26_30_Düsseldorf_Bochum.csv_reduced.csv
+For file 26_30_Düsseldorf_Bochum.csv_reduced.csv 1689367 rows have been removed!
+
+26_30_Düsseldorf_Darmstadt.csv_reduced.csv
+For file 26_30_Düsseldorf_Darmstadt.csv_reduced.csv 1719028 rows have been removed!
+
+26_30_Düsseldorf_Oberhausen.csv_reduced.csv
+For file 26_30_Düsseldorf_Oberhausen.csv_reduced.csv 1689372 rows have been removed!
+
+26_30_Düsseldorf_Wuppertal.csv_reduced.csv
+For file 26_30_Düsseldorf_Wuppertal.csv_reduced.csv 1689413 rows have been removed!
+
+26_30_Erfurt_Bamberg.csv_reduced.csv
+For file 26_30_Erfurt_Bamberg.csv_reduced.csv 1689414 rows have been removed!
+
+26_30_Erfurt_Erlangen.csv_reduced.csv
+For file 26_30_Erfurt_Erlangen.csv_reduced.csv 1689414 rows have been removed!
+
+26_30_Erfurt_Nürnberg.csv_reduced.csv
+For file 26_30_Erfurt_Nürnberg.csv_reduced.csv 1689441 rows have been removed!
+
+26_30_Essen_Hamburg.csv_reduced.csv
+For file 26_30_Essen_Hamburg.csv_reduced.csv 1704359 rows have been removed!
+
+26_30_Gelsenkirchen_Bonn.csv_reduced.csv
+For file 26_30_Gelsenkirchen_Bonn.csv_reduced.csv 1704501 rows have been removed!
+
+26_30_Hamburg_Berlin.csv_reduced.csv
+For file 26_30_Hamburg_Berlin.csv_reduced.csv 1719431 rows have been removed!
+
+26_30_Heidelberg_Bonn.csv_reduced.csv
+For file 26_30_Heidelberg_Bonn.csv_reduced.csv 1709582 rows have been removed!
+
+26_30_Heidelberg_Mannheim.csv_reduced.csv
+For file 26_30_Heidelberg_Mannheim.csv_reduced.csv 1693997 rows have been removed!
+
+26_30_Karlsruhe_Nürnberg.csv_reduced.csv
+For file 26_30_Karlsruhe_Nürnberg.csv_reduced.csv 1704342 rows have been removed!
+
+26_30_Karlsruhe_Stuttgart.csv_reduced.csv
+For file 26_30_Karlsruhe_Stuttgart.csv_reduced.csv 1689396 rows have been removed!
+
+26_30_Köln_Bochum.csv_reduced.csv
+For file 26_30_Köln_Bochum.csv_reduced.csv 1704397 rows have been removed!
+
+26_30_Köln_Heidelberg.csv_reduced.csv
+For file 26_30_Köln_Heidelberg.csv_reduced.csv 1709116 rows have been removed!
+
+26_30_Köln_Solingen.csv_reduced.csv
+For file 26_30_Köln_Solingen.csv_reduced.csv 1689457 rows have been removed!
+
+26_30_Leipzig_Berlin.csv_reduced.csv
+For file 26_30_Leipzig_Berlin.csv_reduced.csv 1719338 rows have been removed!
+
+26_30_Mannheim_Nürnberg.csv_reduced.csv
+For file 26_30_Mannheim_Nürnberg.csv_reduced.csv 1704464 rows have been removed!
+
+26_30_München_Ulm.csv_reduced.csv
+For file 26_30_München_Ulm.csv_reduced.csv 1704572 rows have been removed!
+
+26_30_Stuttgart_Ulm.csv_reduced.csv
+For file 26_30_Stuttgart_Ulm.csv_reduced.csv 1689417 rows have been removed!
+
+26_30_Ulm_Mannheim.csv_reduced.csv
+For file 26_30_Ulm_Mannheim.csv_reduced.csv 1734588 rows have been removed!
+
+26_30_Aachen_Bonn.csv_reduced.csv
+For file 26_30_Aachen_Bonn.csv_reduced.csv 1699506 rows have been removed!
+
+26_30_Aachen_Köln.csv_reduced.csv
+For file 26_30_Aachen_Köln.csv_reduced.csv 1689507 rows have been removed!
+
+26_30_Aachen_Oberhausen.csv_reduced.csv
+For file 26_30_Aachen_Oberhausen.csv_reduced.csv 1729696 rows have been removed!
+
+26_30_Aachen_Solingen.csv_reduced.csv
+For file 26_30_Aachen_Solingen.csv_reduced.csv 1704561 rows have been removed!
+
+26_30_Darmstadt_Gelsenkirchen.csv_reduced.csv
+For file 26_30_Darmstadt_Gelsenkirchen.csv_reduced.csv 1712514 rows have been removed!
+
+26_30_Ulm_Würzburg.csv_reduced.csv
+For file 26_30_Ulm_Würzburg.csv_reduced.csv 1704607 rows have been removed!
+
+26_30_Wuppertal_Duisburg.csv_reduced.csv
+For file 26_30_Wuppertal_Duisburg.csv_reduced.csv 1694382 rows have been removed!
+
+26_30_Würzburg_Bamberg.csv_reduced.csv
+For file 26_30_Würzburg_Bamberg.csv_reduced.csv 1694014 rows have been removed!
+
+26_30_Würzburg_Erfurt.csv_reduced.csv
+For file 26_30_Würzburg_Erfurt.csv_reduced.csv 1704514 rows have been removed!
+
+26_30_Würzburg_Hagen.csv_reduced.csv
+For file 26_30_Würzburg_Hagen.csv_reduced.csv 1749660 rows have been removed!
+
+26_30_Würzburg_Köln.csv_reduced.csv
+For file 26_30_Würzburg_Köln.csv_reduced.csv 1704426 rows have been removed!
+
+31_35_Darmstadt_Ulm.csv_reduced.csv
+For file 31_35_Darmstadt_Ulm.csv_reduced.csv 1719461 rows have been removed!
+
+31_35_Duisburg_Solingen.csv_reduced.csv
+For file 31_35_Duisburg_Solingen.csv_reduced.csv 1707622 rows have been removed!
+
+31_35_Düsseldorf_Hagen.csv_reduced.csv
+For file 31_35_Düsseldorf_Hagen.csv_reduced.csv 1699489 rows have been removed!
+
+31_35_Erfurt_Stuttgart.csv_reduced.csv
+For file 31_35_Erfurt_Stuttgart.csv_reduced.csv 1693965 rows have been removed!
+
+31_35_Essen_Solingen.csv_reduced.csv
+For file 31_35_Essen_Solingen.csv_reduced.csv 1694438 rows have been removed!
+
+31_35_Gelsenkirchen_Mannheim.csv_reduced.csv
+For file 31_35_Gelsenkirchen_Mannheim.csv_reduced.csv 1714153 rows have been removed!
+
+31_35_Heidelberg_Bochum.csv_reduced.csv
+For file 31_35_Heidelberg_Bochum.csv_reduced.csv 1708762 rows have been removed!
+
+31_35_Karlsruhe_Bamberg.csv_reduced.csv
+For file 31_35_Karlsruhe_Bamberg.csv_reduced.csv 1709448 rows have been removed!
+
+31_35_Karlsruhe_Darmstadt.csv_reduced.csv
+For file 31_35_Karlsruhe_Darmstadt.csv_reduced.csv 1704573 rows have been removed!
+
+31_35_Karlsruhe_Würzburg.csv_reduced.csv
+For file 31_35_Karlsruhe_Würzburg.csv_reduced.csv 1704495 rows have been removed!
+
+31_35_Köln_Mannheim.csv_reduced.csv
+For file 31_35_Köln_Mannheim.csv_reduced.csv 1704514 rows have been removed!
+
+31_35_Oberhausen_Bonn.csv_reduced.csv
+For file 31_35_Oberhausen_Bonn.csv_reduced.csv 1704476 rows have been removed!
+
+31_35_Wuppertal_Gelsenkirchen.csv_reduced.csv
+For file 31_35_Wuppertal_Gelsenkirchen.csv_reduced.csv 1693886 rows have been removed!
+
+36_40_Berlin_Hamburg.csv_reduced.csv
+For file 36_40_Berlin_Hamburg.csv_reduced.csv 1719469 rows have been removed!
+
+36_40_Bonn_Hagen.csv_reduced.csv
+For file 36_40_Bonn_Hagen.csv_reduced.csv 1734844 rows have been removed!
+
+36_40_Düsseldorf_Duisburg.csv_reduced.csv
+For file 36_40_Düsseldorf_Duisburg.csv_reduced.csv 1704520 rows have been removed!
+
+36_40_Düsseldorf_Osnabrück.csv_reduced.csv
+For file 36_40_Düsseldorf_Osnabrück.csv_reduced.csv 1704251 rows have been removed!
+
+36_40_Erfurt_Düsseldorf.csv_reduced.csv
+For file 36_40_Erfurt_Düsseldorf.csv_reduced.csv 1704221 rows have been removed!
+
+36_40_Essen_Osnabrück.csv_reduced.csv
+For file 36_40_Essen_Osnabrück.csv_reduced.csv 1704444 rows have been removed!
+
+36_40_Hagen_Mannheim.csv_reduced.csv
+For file 36_40_Hagen_Mannheim.csv_reduced.csv 1704374 rows have been removed!
+
+36_40_Hamburg_Duisburg.csv_reduced.csv
+For file 36_40_Hamburg_Duisburg.csv_reduced.csv 1714319 rows have been removed!
+
+36_40_Hamburg_Düsseldorf.csv_reduced.csv
+For file 36_40_Hamburg_Düsseldorf.csv_reduced.csv 1709477 rows have been removed!
+
+36_40_Karlsruhe_Bonn.csv_reduced.csv
+For file 36_40_Karlsruhe_Bonn.csv_reduced.csv 1704529 rows have been removed!
+
+36_40_Köln_Aachen.csv_reduced.csv
+For file 36_40_Köln_Aachen.csv_reduced.csv 1689441 rows have been removed!
+
+36_40_Mannheim_Düsseldorf.csv_reduced.csv
+For file 36_40_Mannheim_Düsseldorf.csv_reduced.csv 1704275 rows have been removed!
+
+36_40_München_Heidelberg.csv_reduced.csv
+For file 36_40_München_Heidelberg.csv_reduced.csv 1714474 rows have been removed!
+
+36_40_Oberhausen_Hagen.csv_reduced.csv
+For file 36_40_Oberhausen_Hagen.csv_reduced.csv 1707597 rows have been removed!
+
+36_40_Würzburg_München.csv_reduced.csv
+For file 36_40_Würzburg_München.csv_reduced.csv 1734516 rows have been removed!
+
+41_45_Aachen_Essen.csv_reduced.csv
+For file 41_45_Aachen_Essen.csv_reduced.csv 1699532 rows have been removed!
+
+41_45_Darmstadt_Karlsruhe.csv_reduced.csv
+For file 41_45_Darmstadt_Karlsruhe.csv_reduced.csv 1689430 rows have been removed!
+
+41_45_Dortmund_Oberhausen.csv_reduced.csv
+For file 41_45_Dortmund_Oberhausen.csv_reduced.csv 1694507 rows have been removed!
+
+41_45_Erfurt_Darmstadt.csv_reduced.csv
+For file 41_45_Erfurt_Darmstadt.csv_reduced.csv 1704317 rows have been removed!
+
+41_45_Erfurt_Dortmund.csv_reduced.csv
+For file 41_45_Erfurt_Dortmund.csv_reduced.csv 1719275 rows have been removed!
+
+41_45_Erfurt_Leipzig.csv_reduced.csv
+For file 41_45_Erfurt_Leipzig.csv_reduced.csv 1689378 rows have been removed!
+
+41_45_Erfurt_Würzburg.csv_reduced.csv
+For file 41_45_Erfurt_Würzburg.csv_reduced.csv 1704552 rows have been removed!
+
+41_45_Essen_Bochum.csv_reduced.csv
+For file 41_45_Essen_Bochum.csv_reduced.csv 1689364 rows have been removed!
+
+41_45_Essen_Bonn.csv_reduced.csv
+For file 41_45_Essen_Bonn.csv_reduced.csv 1719553 rows have been removed!
+
+41_45_Essen_Wuppertal.csv_reduced.csv
+For file 41_45_Essen_Wuppertal.csv_reduced.csv 1692444 rows have been removed!
+
+41_45_Gelsenkirchen_Duisburg.csv_reduced.csv
+For file 41_45_Gelsenkirchen_Duisburg.csv_reduced.csv 1693943 rows have been removed!
+
+41_45_Hagen_Aachen.csv_reduced.csv
+For file 41_45_Hagen_Aachen.csv_reduced.csv 1714550 rows have been removed!
+
+41_45_Hagen_Oberhausen.csv_reduced.csv
+For file 41_45_Hagen_Oberhausen.csv_reduced.csv 1704585 rows have been removed!
+
+41_45_Hagen_Solingen.csv_reduced.csv
+For file 41_45_Hagen_Solingen.csv_reduced.csv 1689469 rows have been removed!
+
+41_45_Hagen_Wuppertal.csv_reduced.csv
+For file 41_45_Hagen_Wuppertal.csv_reduced.csv 1689481 rows have been removed!
+
+41_45_Heidelberg_Darmstadt.csv_reduced.csv
+For file 41_45_Heidelberg_Darmstadt.csv_reduced.csv 1689426 rows have been removed!
+
+41_45_Heidelberg_Gelsenkirchen.csv_reduced.csv
+For file 41_45_Heidelberg_Gelsenkirchen.csv_reduced.csv 1716955 rows have been removed!
+
+41_45_Heidelberg_Ulm.csv_reduced.csv
+For file 41_45_Heidelberg_Ulm.csv_reduced.csv 1714517 rows have been removed!
+
+41_45_Köln_Bonn.csv_reduced.csv
+For file 41_45_Köln_Bonn.csv_reduced.csv 1689489 rows have been removed!
+
+41_45_Mannheim_Osnabrück.csv_reduced.csv
+For file 41_45_Mannheim_Osnabrück.csv_reduced.csv 1704285 rows have been removed!
+
+41_45_München_Nürnberg.csv_reduced.csv
+For file 41_45_München_Nürnberg.csv_reduced.csv 1689372 rows have been removed!
+
+41_45_Nürnberg_Erlangen.csv_reduced.csv
+For file 41_45_Nürnberg_Erlangen.csv_reduced.csv 1689412 rows have been removed!
+
+41_45_Nürnberg_Würzburg.csv_reduced.csv
+For file 41_45_Nürnberg_Würzburg.csv_reduced.csv 1689391 rows have been removed!
+
+41_45_Oberhausen_Duisburg.csv_reduced.csv
+For file 41_45_Oberhausen_Duisburg.csv_reduced.csv 1689414 rows have been removed!
+
+41_45_Solingen_Hagen.csv_reduced.csv
+For file 41_45_Solingen_Hagen.csv_reduced.csv 1689471 rows have been removed!
+
+41_45_Ulm_Darmstadt.csv_reduced.csv
+For file 41_45_Ulm_Darmstadt.csv_reduced.csv 1719594 rows have been removed!
+
+41_45_Ulm_Erlangen.csv_reduced.csv
+For file 41_45_Ulm_Erlangen.csv_reduced.csv 1729550 rows have been removed!
+
+21_25_Düsseldorf_Solingen.csv_reduced.csv
+For file 21_25_Düsseldorf_Solingen.csv_reduced.csv 1689433 rows have been removed!
+
+26_30_Darmstadt_Hagen.csv_reduced.csv
+For file 26_30_Darmstadt_Hagen.csv_reduced.csv 1714433 rows have been removed!
+
+26_30_Hamburg_Dortmund.csv_reduced.csv
+For file 26_30_Hamburg_Dortmund.csv_reduced.csv 1704148 rows have been removed!
+
+26_30_Ulm_Solingen.csv_reduced.csv
+For file 26_30_Ulm_Solingen.csv_reduced.csv 1714210 rows have been removed!
+
+31_35_Bonn_Karlsruhe.csv_reduced.csv
+For file 31_35_Bonn_Karlsruhe.csv_reduced.csv 1719590 rows have been removed!
+
+31_35_Ulm_Bamberg.csv_reduced.csv
+For file 31_35_Ulm_Bamberg.csv_reduced.csv 1729450 rows have been removed!
+
+36_40_Darmstadt_Wuppertal.csv_reduced.csv
+For file 36_40_Darmstadt_Wuppertal.csv_reduced.csv 1719479 rows have been removed!
+
+36_40_Würzburg_Bochum.csv_reduced.csv
+For file 36_40_Würzburg_Bochum.csv_reduced.csv 1719018 rows have been removed!
+
+41_45_Düsseldorf_Mannheim.csv_reduced.csv
+For file 41_45_Düsseldorf_Mannheim.csv_reduced.csv 1704118 rows have been removed!
+
+41_45_Hamburg_Wuppertal.csv_reduced.csv
+For file 41_45_Hamburg_Wuppertal.csv_reduced.csv 1704490 rows have been removed!
+
+41_45_Würzburg_Erlangen.csv_reduced.csv
+For file 41_45_Würzburg_Erlangen.csv_reduced.csv 1704573 rows have been removed!
+
+46_50_Erfurt_Hamburg.csv_reduced.csv
+For file 46_50_Erfurt_Hamburg.csv_reduced.csv 1704350 rows have been removed!
+
+46_50_Würzburg_Darmstadt.csv_reduced.csv
+For file 46_50_Würzburg_Darmstadt.csv_reduced.csv 1704408 rows have been removed!
+
+51_55_Aachen_Mannheim.csv_reduced.csv
+For file 51_55_Aachen_Mannheim.csv_reduced.csv 1699413 rows have been removed!
+
+55_60_Essen_Hagen.csv_reduced.csv
+For file 55_60_Essen_Hagen.csv_reduced.csv 1702428 rows have been removed!
+
+46_50_Aachen_Heidelberg.csv_reduced.csv
+For file 46_50_Aachen_Heidelberg.csv_reduced.csv 1717533 rows have been removed!
+
+46_50_Darmstadt_Bonn.csv_reduced.csv
+For file 46_50_Darmstadt_Bonn.csv_reduced.csv 1709505 rows have been removed!
+
+46_50_Darmstadt_Solingen.csv_reduced.csv
+For file 46_50_Darmstadt_Solingen.csv_reduced.csv 1719737 rows have been removed!
+
+46_50_Erfurt_Karlsruhe.csv_reduced.csv
+For file 46_50_Erfurt_Karlsruhe.csv_reduced.csv 1704024 rows have been removed!
+
+46_50_Erfurt_Ulm.csv_reduced.csv
+For file 46_50_Erfurt_Ulm.csv_reduced.csv 1704536 rows have been removed!
+
+46_50_Hagen_Gelsenkirchen.csv_reduced.csv
+For file 46_50_Hagen_Gelsenkirchen.csv_reduced.csv 1704419 rows have been removed!
+
+46_50_Heidelberg_Oberhausen.csv_reduced.csv
+For file 46_50_Heidelberg_Oberhausen.csv_reduced.csv 1703980 rows have been removed!
+
+46_50_Köln_Duisburg.csv_reduced.csv
+For file 46_50_Köln_Duisburg.csv_reduced.csv 1704433 rows have been removed!
+
+46_50_Leipzig_Würzburg.csv_reduced.csv
+For file 46_50_Leipzig_Würzburg.csv_reduced.csv 1704447 rows have been removed!
+
+46_50_Mannheim_Essen.csv_reduced.csv
+For file 46_50_Mannheim_Essen.csv_reduced.csv 1734000 rows have been removed!
+
+46_50_Mannheim_Hagen.csv_reduced.csv
+For file 46_50_Mannheim_Hagen.csv_reduced.csv 1719418 rows have been removed!
+
+46_50_Mannheim_Wuppertal.csv_reduced.csv
+For file 46_50_Mannheim_Wuppertal.csv_reduced.csv 1704419 rows have been removed!
+
+46_50_Ulm_Heidelberg.csv_reduced.csv
+For file 46_50_Ulm_Heidelberg.csv_reduced.csv 1714436 rows have been removed!
+
+46_50_Ulm_Wuppertal.csv_reduced.csv
+For file 46_50_Ulm_Wuppertal.csv_reduced.csv 1714344 rows have been removed!
+
+46_50_Wuppertal_Aachen.csv_reduced.csv
+For file 46_50_Wuppertal_Aachen.csv_reduced.csv 1702543 rows have been removed!
+
+46_50_Würzburg_Duisburg.csv_reduced.csv
+For file 46_50_Würzburg_Duisburg.csv_reduced.csv 1698448 rows have been removed!
+
+46_50_Würzburg_Heidelberg.csv_reduced.csv
+For file 46_50_Würzburg_Heidelberg.csv_reduced.csv 1704502 rows have been removed!
+
+46_50_Würzburg_Oberhausen.csv_reduced.csv
+For file 46_50_Würzburg_Oberhausen.csv_reduced.csv 1699372 rows have been removed!
+
+51_55_Aachen_Hagen.csv_reduced.csv
+For file 51_55_Aachen_Hagen.csv_reduced.csv 1729829 rows have been removed!
+
+51_55_Dortmund_Aachen.csv_reduced.csv
+For file 51_55_Dortmund_Aachen.csv_reduced.csv 1704447 rows have been removed!
+
+51_55_Dortmund_Karlsruhe.csv_reduced.csv
+For file 51_55_Dortmund_Karlsruhe.csv_reduced.csv 1704243 rows have been removed!
+
+51_55_Erfurt_Köln.csv_reduced.csv
+For file 51_55_Erfurt_Köln.csv_reduced.csv 1699164 rows have been removed!
+
+51_55_Hagen_Duisburg.csv_reduced.csv
+For file 51_55_Hagen_Duisburg.csv_reduced.csv 1718909 rows have been removed!
+
+51_55_Hagen_Heidelberg.csv_reduced.csv
+For file 51_55_Hagen_Heidelberg.csv_reduced.csv 1704617 rows have been removed!
+
+51_55_Hagen_Karlsruhe.csv_reduced.csv
+For file 51_55_Hagen_Karlsruhe.csv_reduced.csv 1704478 rows have been removed!
+
+51_55_Köln_Darmstadt.csv_reduced.csv
+For file 51_55_Köln_Darmstadt.csv_reduced.csv 1714527 rows have been removed!
+
+51_55_Mannheim_Duisburg.csv_reduced.csv
+For file 51_55_Mannheim_Duisburg.csv_reduced.csv 1719324 rows have been removed!
+
+51_55_Wuppertal_Mannheim.csv_reduced.csv
+For file 51_55_Wuppertal_Mannheim.csv_reduced.csv 1719480 rows have been removed!
+
+55_60_Bonn_Bochum.csv_reduced.csv
+For file 55_60_Bonn_Bochum.csv_reduced.csv 1719444 rows have been removed!
+
+55_60_Bonn_Solingen.csv_reduced.csv
+For file 55_60_Bonn_Solingen.csv_reduced.csv 1704579 rows have been removed!
+
+55_60_Darmstadt_Erfurt.csv_reduced.csv
+For file 55_60_Darmstadt_Erfurt.csv_reduced.csv 1704522 rows have been removed!
+
+55_60_Dortmund_Hamburg.csv_reduced.csv
+For file 55_60_Dortmund_Hamburg.csv_reduced.csv 1689416 rows have been removed!
+
+55_60_Düsseldorf_Bonn.csv_reduced.csv
+For file 55_60_Düsseldorf_Bonn.csv_reduced.csv 1704498 rows have been removed!
+
+55_60_Gelsenkirchen_Solingen.csv_reduced.csv
+For file 55_60_Gelsenkirchen_Solingen.csv_reduced.csv 1717648 rows have been removed!
+
+55_60_Hagen_Bochum.csv_reduced.csv
+For file 55_60_Hagen_Bochum.csv_reduced.csv 1699340 rows have been removed!
+
+55_60_Hamburg_Bonn.csv_reduced.csv
+For file 55_60_Hamburg_Bonn.csv_reduced.csv 1724624 rows have been removed!
+
+55_60_Hamburg_Würzburg.csv_reduced.csv
+For file 55_60_Hamburg_Würzburg.csv_reduced.csv 1689384 rows have been removed!
+
+55_60_Heidelberg_Würzburg.csv_reduced.csv
+For file 55_60_Heidelberg_Würzburg.csv_reduced.csv 1704540 rows have been removed!
+
+55_60_Karlsruhe_Erfurt.csv_reduced.csv
+For file 55_60_Karlsruhe_Erfurt.csv_reduced.csv 1704519 rows have been removed!
+
+55_60_Köln_Karlsruhe.csv_reduced.csv
+For file 55_60_Köln_Karlsruhe.csv_reduced.csv 1704294 rows have been removed!
+
+55_60_Leipzig_Bochum.csv_reduced.csv
+For file 55_60_Leipzig_Bochum.csv_reduced.csv 1704328 rows have been removed!
+
+55_60_Leipzig_Hamburg.csv_reduced.csv
+For file 55_60_Leipzig_Hamburg.csv_reduced.csv 1689402 rows have been removed!
+
+55_60_Leipzig_München.csv_reduced.csv
+For file 55_60_Leipzig_München.csv_reduced.csv 1704333 rows have been removed!
+
+55_60_Mannheim_Oberhausen.csv_reduced.csv
+For file 55_60_Mannheim_Oberhausen.csv_reduced.csv 1719115 rows have been removed!
+
+55_60_München_Mannheim.csv_reduced.csv
+For file 55_60_München_Mannheim.csv_reduced.csv 1734411 rows have been removed!
+
+55_60_Nürnberg_Bonn.csv_reduced.csv
+For file 55_60_Nürnberg_Bonn.csv_reduced.csv 1719759 rows have been removed!
+
+55_60_Nürnberg_Hamburg.csv_reduced.csv
+For file 55_60_Nürnberg_Hamburg.csv_reduced.csv 1704228 rows have been removed!
+
+55_60_Nürnberg_München.csv_reduced.csv
+For file 55_60_Nürnberg_München.csv_reduced.csv 1704507 rows have been removed!
+
+55_60_Nürnberg_Stuttgart.csv_reduced.csv
+For file 55_60_Nürnberg_Stuttgart.csv_reduced.csv 1693995 rows have been removed!
+
+55_60_Stuttgart_Aachen.csv_reduced.csv
+For file 55_60_Stuttgart_Aachen.csv_reduced.csv 1699418 rows have been removed!
+
+55_60_Würzburg_Ulm.csv_reduced.csv
+For file 55_60_Würzburg_Ulm.csv_reduced.csv 1714607 rows have been removed!
+
+Number of processed files: 300
+     totalTravelTimeInSec  totalPrice  ...  sourceName  targetName
+0                 14400.0  159.572997  ...     Hamburg    Würzburg
+1                 18300.0  106.669693  ...     Hamburg    Würzburg
+51                21643.0   26.000000  ...     Hamburg    Würzburg
+129               21643.0   26.000000  ...     Hamburg    Würzburg
+130               18300.0  106.669693  ...     Hamburg    Würzburg
+
+[5 rows x 11 columns]
+         totalTravelTimeInSec     totalPrice  ...  sourceName  targetName
+1560190               13020.0     109.023555  ...    Würzburg  Oberhausen
+1560202               12780.0     109.722654  ...    Würzburg  Oberhausen
+1560210              999999.0  999999.000000  ...    Würzburg  Oberhausen
+1693922              999999.0  999999.000000  ...    Würzburg  Oberhausen
+1698855              999999.0  999999.000000  ...    Würzburg  Oberhausen
+
+[5 rows x 11 columns]
+Merged file saved!
+Time needed for data processing: 7572.456745727002
+------------------------------------------------------------------------------------------------------------------------------------------------------
