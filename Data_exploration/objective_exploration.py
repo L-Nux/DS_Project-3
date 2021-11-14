@@ -115,4 +115,5 @@ number_of_rows = len(index)
 dropped = df.drop_duplicates(subset=['totaltraveltimeinsec', 'totalprice', 'totalnumberofchanges',
                                      'totalwalkingdistance', 'totalwaitingtime', 'finiteautomaton',
                                      'finalsolutionusedlabels', 'sourcename', 'targetname'])
+
 # Number of rows drops from 85153 to 24009
