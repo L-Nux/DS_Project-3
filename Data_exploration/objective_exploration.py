@@ -4,6 +4,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 from pandas.plotting import parallel_coordinates
+import plotly.express as px
 
 '''
 Investigation of the "objective" column
@@ -11,13 +12,15 @@ Investigation of the "objective" column
 How does it relate to other columns? 
 Can we drop it? 
 How does it influence the dataset? 
-How to distinguish dominating and dominated rows?
+Should dominated rows be dropped?
 
 '''
 # %%
 # importing the dataset
 df = pd.read_csv(Path().joinpath('Data_exploration', 'withoutcolumns.csv'), encoding='utf-8')
 df.head()
+
+
 # %%
 # dropping unnecessary columns
 
@@ -27,9 +30,6 @@ def drop_column(column_name):
             del df[col]
 
 
-
-drop_column('Unnamed: 0')
-drop_column('index')
 # %%
 df.info()
 statistics = df.describe()
@@ -44,6 +44,7 @@ group_count = group.size()
 group = group.agg({'totalprice': 'nunique', 'totaltraveltimeinsec': 'nunique', 'totalnumberofchanges': 'nunique',
                    'totalwalkingdistance': 'nunique', 'totalwaitingtime': 'nunique'})
 group = group.reset_index()
+# %%
 group_price = group[group['objective'] == 'price']
 # %%
 # dropping unnecessary columns for plotting
@@ -67,23 +68,32 @@ numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
 for c in [c for c in refined_df_essen.columns if refined_df_essen[c].dtype in numerics]:
     refined_df_essen[c] = (refined_df_essen[c] - np.min(refined_df_essen[c])) / (
             np.max(refined_df_essen[c]) - np.min(refined_df_essen[c]) + 0.000000001)
-
 # %%
 # plotting the graph with the specific OD and normalized values
-parallel_coordinates(refined_df_essen, 'objective', colormap=plt.get_cmap("Set2"))
+parallel_coordinates(refined_df_essen, 'objective', colormap=plt.get_cmap("Set2"), sort_labels=True)
 plt.show()
-
+# %%
+# encode objectives for better representation
+obj_nums = {"objective": {"price": 1, "travelTime": 2, "numberofChanges": 3, "walkingDistance": 4,
+                          "waitingTime": 5}}
+obj_df = refined_df_essen.replace(obj_nums)
+obj_df.head()
 # %%
 # plotting the graph with the specific OD and normalized values
-parallel_coordinates(refined_df_essen, 'objective', colormap=plt.get_cmap("Set2"))
-plt.show()
+fig = px.parallel_coordinates(
+    obj_df,
+    color='objective',
+    color_continuous_scale=px.colors.diverging.Tealrose,
+    color_continuous_midpoint=3)
+fig.show()
+fig.write_html(Path().joinpath('Data_exploration', 'parallel-coordinate-plot-plotly.html'))
 # %%
 # filtering dataset to have only price objectives
-refined_df_essen = refined_df_essen[refined_df_essen['objective'] == 'price']
-refined_df_essen.drop_duplicates(inplace = True)
+refined_df_essen_price = refined_df_essen[refined_df_essen['objective'] == 'price']
+refined_df_essen_price.drop_duplicates(inplace=True)
 # %%
 # plotting the graph with the specific OD and normalized values and only one objective
-parallel_coordinates(refined_df_essen, 'objective', colormap=plt.get_cmap("Set3"))
+parallel_coordinates(refined_df_essen_price, 'objective', colormap=plt.get_cmap("Set3"))
 plt.show()
 
 # %%
@@ -93,9 +103,16 @@ number_of_rows = len(index)
 # %%
 del df['objective']
 # %%
-df.drop_duplicates(inplace = True)
+df.drop_duplicates(inplace=True)
+# %%
+df.drop_duplicates(inplace=True)
 index = df.index
 number_of_rows = len(index)
 
 # Number of rows drops from 85153 to 30486
-
+# %%
+# dropping the instances with the same attributes for the different objectives
+dropped = df.drop_duplicates(subset=['totaltraveltimeinsec', 'totalprice', 'totalnumberofchanges',
+                                     'totalwalkingdistance', 'totalwaitingtime', 'finiteautomaton',
+                                     'finalsolutionusedlabels', 'sourcename', 'targetname'])
+# Number of rows drops from 85153 to 24009
