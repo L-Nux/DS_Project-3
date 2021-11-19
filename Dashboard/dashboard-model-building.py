@@ -3,7 +3,6 @@ import pandas as pd
 routes = pd.read_csv('combined_csv_2dim.csv')
 
 # Ordinal feature encoding
-# https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
 df = routes.copy()
 target = 'finiteAutomaton'
 encode = ['objective', 'consideredPreferences', 'sourceName', 'targetName','finalSolutionUsedLabels']
