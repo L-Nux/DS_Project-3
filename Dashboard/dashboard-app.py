@@ -19,11 +19,11 @@ targets = routes_raw['targetname'].sort_values().unique()
 # Setting up the sidebar
 sourceName = st.sidebar.selectbox('Origin', sources)
 targetName = st.sidebar.selectbox('Destination', targets)
-totalPrice = st.sidebar.slider('Price', 0, 59, 362)
-totalNumberOfChanges = st.sidebar.slider('Number of changes', 0, 7)
-totalWalkingDistance = st.sidebar.slider('Walking distance', 0.0, 0.5, 0.96485)
-totalWaitingTime = st.sidebar.slider('Waiting time', 0, 6300, 76630)
-totalTravelTimeInSec = st.sidebar.slider('Travel time', 0, 260)
+totalPrice = st.sidebar.slider('Price (Euro)', 0, 59, 25)
+totalNumberOfChanges = st.sidebar.slider('Number of changes (km)', 0, 7, 0)
+totalWalkingDistance = st.sidebar.slider('Walking distance (km)', 0, 965, 0)
+totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, 0.0)
+totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0, 260, 0)
 
 
 # Accepting the user input
