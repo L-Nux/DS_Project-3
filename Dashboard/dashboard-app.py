@@ -27,31 +27,31 @@ st.write("#### Configure filters and press the button on the sidebar to get the 
 
 
 # Questionnaire for the traveler to preconfigure filters
-
-
 form = st.empty()
 with form.form("my_form"):
     st.write("What is the most important value for you in your itinerary?")
     preference = st.selectbox('Filter type', ('Price', 'Waiting Time'))
     submitted = st.form_submit_button("Submit")
+
+
     if submitted:
         form.empty()
 
 
 if preference == 'Price':
-    price_default = 0
-    waiting_time_default = 1.0
+        price_default = 0
+        waiting_time_default = 1.0
 else:
-    waiting_time_default = 0.0
-    price_default = 20
+        waiting_time_default = 0.0
+        price_default = 20
 
-# Setting up the sidebar
+    # Setting up the sidebar
 sourceName = st.sidebar.selectbox('Origin', sources)
 targetName = st.sidebar.selectbox('Destination', targets, index=1)
 totalPrice = st.sidebar.slider('Price (Euro)', 0, 59, price_default)
 totalNumberOfChanges = st.sidebar.slider('Number of changes', 0, 7, 1)
 totalWalkingDistance = st.sidebar.slider('Walking distance (m)', 0, 965, 200)
-totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, waiting_time_default)
+totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, waiting_time_default, step=0.5)
 totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0, 260, 4)
 
 
@@ -78,8 +78,9 @@ def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges
 
 # Predicting functionality
 if st.sidebar.button('Predict'):
-
+    form.empty()
     with st.spinner('Processing...'):
+
 
         if sourceName != targetName:
 
@@ -127,8 +128,8 @@ if st.sidebar.button('Predict'):
             # A bit of a celebration mood
             # st.balloons()
 
-            st.subheader('Prediction Probability')
-            st.write(prediction_proba)
+            # st.subheader('Prediction Probability')
+            # st.write(prediction_proba)
 
             # st.write('Do you want to see adjusted propositions?')
             # if st.button('Yes!'):
@@ -139,6 +140,8 @@ if st.sidebar.button('Predict'):
 
             with st.expander('Explanation of your recommendation'):
                 st.write('#### Here goes the explanation')
+
+
 
         else:
             st.error('Recommendation cannot be done. Please select the destination that is different from the origin')
