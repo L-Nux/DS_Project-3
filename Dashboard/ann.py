@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 # import tensorflow as tf
 
-df = pd.read_csv("./withoutcolumns.csv")
+df = pd.read_csv("withoutcolumns.csv")
 
 df.info()
 

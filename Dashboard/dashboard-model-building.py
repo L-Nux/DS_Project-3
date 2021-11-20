@@ -4,8 +4,8 @@ routes = pd.read_csv('combined_csv_2dim.csv')
 
 # Ordinal feature encoding
 df = routes.copy()
-target = 'finiteAutomaton'
-encode = ['objective', 'consideredPreferences', 'sourceName', 'targetName','finalSolutionUsedLabels']
+target = 'finalsolutionusedlabels'
+encode = ['objective', 'consideredPreferences', 'sourceName', 'targetName','finiteautomaton']
 
 insight = df.describe()
 
