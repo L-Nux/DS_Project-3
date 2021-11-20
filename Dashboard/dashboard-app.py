@@ -1,5 +1,5 @@
 import pickle
-
+import re
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -16,14 +16,43 @@ routes_raw = pd.read_csv('data.csv')
 sources = routes_raw['sourcename'].sort_values().unique()
 targets = routes_raw['targetname'].sort_values().unique()
 
+# Check the input of select boxes
+# def ods_input_check(sourceName, targets):
+#     for element in targets:
+#         if element == sourceName:
+#             return np.delete(targets, element.index(element))
+
+
+st.write("#### Configure filters and press the button on the sidebar to get the recommended mode for your choice")
+
+
+# Questionnaire for the traveler to preconfigure filters
+
+
+form = st.empty()
+with form.form("my_form"):
+    st.write("What is the most important value for you in your itinerary?")
+    preference = st.selectbox('Filter type', ('Price', 'Waiting Time'))
+    submitted = st.form_submit_button("Submit")
+    if submitted:
+        form.empty()
+
+
+if preference == 'Price':
+    price_default = 0
+    waiting_time_default = 1.0
+else:
+    waiting_time_default = 0.0
+    price_default = 20
+
 # Setting up the sidebar
 sourceName = st.sidebar.selectbox('Origin', sources)
-targetName = st.sidebar.selectbox('Destination', targets)
-totalPrice = st.sidebar.slider('Price (Euro)', 0, 59, 25)
-totalNumberOfChanges = st.sidebar.slider('Number of changes (km)', 0, 7, 0)
-totalWalkingDistance = st.sidebar.slider('Walking distance (km)', 0, 965, 0)
-totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, 0.0)
-totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0, 260, 0)
+targetName = st.sidebar.selectbox('Destination', targets, index=1)
+totalPrice = st.sidebar.slider('Price (Euro)', 0, 59, price_default)
+totalNumberOfChanges = st.sidebar.slider('Number of changes', 0, 7, 1)
+totalWalkingDistance = st.sidebar.slider('Walking distance (m)', 0, 965, 200)
+totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, waiting_time_default)
+totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0, 260, 4)
 
 
 # Accepting the user input
@@ -47,50 +76,69 @@ def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges
 # st.write(df)
 
 
-st.write("### Press the button to get the recommended mode for your choice")
-
 # Predicting functionality
 if st.sidebar.button('Predict'):
 
-    input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges, totalWalkingDistance,
-                                   totalWaitingTime, totalTravelTimeInSec)
+    with st.spinner('Processing...'):
 
-    # Combines user input features with entire routes dataset
+        if sourceName != targetName:
 
-    routes = routes_raw.drop(columns=['finalsolutionusedlabels'])
-    df = pd.concat([input_df, routes], axis=0)
+            input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges,
+                                           totalWalkingDistance,
+                                           totalWaitingTime, totalTravelTimeInSec)
 
-    # Encoding of ordinal features
-    encode = ['objective', 'consideredpreferences', 'sourcename', 'targetname', 'finiteautomaton']
-    for col in encode:
-        dummy = pd.get_dummies(df[col], prefix=col)
-        df = pd.concat([df, dummy], axis=1)
-        del df[col]
-    df = df[:1]  # Selects only the first row (the user input data)
+            # Combines user input features with entire routes dataset
 
-    # Reads in saved classification model
-    load_clf = pickle.load(open('routes_clf.pkl', 'rb'))
+            routes = routes_raw.drop(columns=['finalsolutionusedlabels'])
+            df = pd.concat([input_df, routes], axis=0)
 
-    # Apply model to make predictions
-    prediction = load_clf.predict(df).astype(int)
-    prediction_proba = load_clf.predict_proba(df)
+            # Encoding of ordinal features
+            encode = ['objective', 'consideredpreferences', 'sourcename', 'targetname', 'finiteautomaton']
+            for col in encode:
+                dummy = pd.get_dummies(df[col], prefix=col)
+                df = pd.concat([df, dummy], axis=1)
+                del df[col]
+            df = df[:1]  # Selects only the first row (the user input data)
 
-    st.subheader('Prediction')
+            # Reads in saved classification model
+            load_clf = pickle.load(open('routes_clf.pkl', 'rb'))
 
-    # Extracting the mapped to the encoded values list of ODs
-    ord_enc = OrdinalEncoder()
-    routes_raw["finalsolutionusedlabels_code"] = ord_enc.fit_transform(routes_raw[["finalsolutionusedlabels"]])
+            # Apply model to make predictions
+            prediction = load_clf.predict(df).astype(int)
+            prediction_proba = load_clf.predict_proba(df)
 
-    ods_ordered_df = routes_raw.drop_duplicates(subset=['finalsolutionusedlabels', 'finalsolutionusedlabels_code'])
-    ods_ordered_df = ods_ordered_df[['finalsolutionusedlabels', 'finalsolutionusedlabels_code']]
-    ods_ordered_df.sort_values(by=['finalsolutionusedlabels_code'], inplace=True)
-    ods_ordered_lst = np.array(ods_ordered_df['finalsolutionusedlabels'])
+            st.subheader('Recommendation')
 
-    # Outputing the prediction
-    st.write(ods_ordered_lst[prediction[0]])
+            # Extracting the mapped to the encoded values list of ODs
+            ord_enc = OrdinalEncoder()
+            routes_raw["finalsolutionusedlabels_code"] = ord_enc.fit_transform(routes_raw[["finalsolutionusedlabels"]])
 
-    # A bit of a celebration mood
-    st.balloons()
+            ods_ordered_df = routes_raw.drop_duplicates(
+                subset=['finalsolutionusedlabels', 'finalsolutionusedlabels_code'])
+            ods_ordered_df = ods_ordered_df[['finalsolutionusedlabels', 'finalsolutionusedlabels_code']]
+            ods_ordered_df.sort_values(by=['finalsolutionusedlabels_code'], inplace=True)
+            ods_ordered_lst = np.array(ods_ordered_df['finalsolutionusedlabels'])
 
-    st.subheader('Prediction Probability')
-    st.write(prediction_proba)
+            clean_prediction = re.sub(r"[\[\]]", "", ods_ordered_lst[prediction[0]])
+
+            # Outputing the prediction
+            st.write(f'{clean_prediction} :station:')
+
+            # A bit of a celebration mood
+            # st.balloons()
+
+            st.subheader('Prediction Probability')
+            st.write(prediction_proba)
+
+            # st.write('Do you want to see adjusted propositions?')
+            # if st.button('Yes!'):
+            #     st.write('Choose the filter to adjust')
+            #     st.selectbox('Filter type', ('Price, Waiting Time'))
+
+            # st.success('Your recommendation is ready!')
+
+            with st.expander('Explanation of your recommendation'):
+                st.write('#### Here goes the explanation')
+
+        else:
+            st.error('Recommendation cannot be done. Please select the destination that is different from the origin')
