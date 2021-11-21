@@ -52,7 +52,7 @@ totalPrice = st.sidebar.slider('Price (Euro)', 0, 59, price_default)
 totalNumberOfChanges = st.sidebar.slider('Number of changes', 0, 7, 1)
 totalWalkingDistance = st.sidebar.slider('Walking distance (m)', 0, 965, 200)
 totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, waiting_time_default, step=0.5)
-totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0, 4.5, 3,step=0.5)
+totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0.0, 4.5, 3.0,step=0.5)
 
 
 # Accepting the user input
