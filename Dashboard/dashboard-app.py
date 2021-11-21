@@ -102,7 +102,7 @@ if st.sidebar.button('Recommend'):
             df = df[:1]  # Selects only the first row (the user input data)
 
             # Reads in saved classification model
-            load_clf = pickle.load(open('routes_clf.pkl', 'rb'))
+            load_clf = pickle.load(open('Dashboard/routes_clf.pkl', 'rb'))
 
             # Apply model to make predictions
             prediction = load_clf.predict(df).astype(int)
