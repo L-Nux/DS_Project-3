@@ -33,5 +33,5 @@ describe = df.describe()
 
 df.to_csv("data.csv", index=False)
 
-data = pd.read_csv("data.csv")
+data = pd.read_csv("../data.csv")
 print(data.head())
