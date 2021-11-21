@@ -2,7 +2,6 @@ import pandas as pd
 
 df = pd.read_csv("withoutcolumns.csv")
 
-
 def drop_column(df, column_name):
     for col in df.columns:
         if column_name in col:
