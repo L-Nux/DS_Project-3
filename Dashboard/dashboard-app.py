@@ -77,7 +77,7 @@ def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges
 
 
 # Predicting functionality
-if st.sidebar.button('Predict'):
+if st.sidebar.button('Recommend'):
     form.empty()
     with st.spinner('Processing...'):
 
