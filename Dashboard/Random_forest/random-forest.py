@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
 
-routes = pd.read_csv('data.csv')
+routes = pd.read_csv('./data.csv')
 
 # Ordinal feature encoding
 df = routes.copy()
