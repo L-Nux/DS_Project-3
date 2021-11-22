@@ -1,5 +1,6 @@
 import pickle
 import re
+
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -33,26 +34,34 @@ with form.form("my_form"):
     preference = st.selectbox('Filter type', ('Price', 'Waiting Time'))
     submitted = st.form_submit_button("Submit")
 
-
     if submitted:
         form.empty()
-
+    else:
+        preference = ""
 
 if preference == 'Price':
-        price_default = 0
-        waiting_time_default = 1.0
+    price_default = 0
+    waiting_time_default = 1.0
 else:
-        waiting_time_default = 0.0
-        price_default = 20
+    waiting_time_default = 0.0
+    price_default = 20
 
-    # Setting up the sidebar
+# Mechanism for additional routes propositions
+# Vars for additional route propositions
+step_number_changes = 1
+step_walking_distance = 50
+step_waiting_time = 0.5
+step_price = 10
+step_travel_time = 0.5
+
+# Setting up the sidebar
 sourceName = st.sidebar.selectbox('Origin', sources)
 targetName = st.sidebar.selectbox('Destination', targets, index=1)
 totalPrice = st.sidebar.slider('Price (Euro)', 0, 59, price_default)
 totalNumberOfChanges = st.sidebar.slider('Number of changes', 0, 7, 1)
 totalWalkingDistance = st.sidebar.slider('Walking distance (m)', 0, 965, 200)
 totalWaitingTime = st.sidebar.slider('Waiting time (h)', 0.0, 3.5, waiting_time_default, step=0.5)
-totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0.0, 4.5, 3.0,step=0.5)
+totalTravelTimeInSec = st.sidebar.slider('Travel time (h)', 0.0, 4.5, 3.0, step=0.5)
 
 
 # Accepting the user input
@@ -80,7 +89,6 @@ def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges
 if st.sidebar.button('Recommend'):
     form.empty()
     with st.spinner('Processing...'):
-
 
         if sourceName != targetName:
 
