@@ -161,7 +161,7 @@ def app2(prev_vars):  # Second page
                 df = df[:1]  # Selects only the first row (the user input data)
 
                 # Reads in saved classification model
-                load_clf = pickle.load(open('../routes_clf.pkl', 'rb'))
+                load_clf = pickle.load(open('./routes_clf.pkl', 'rb'))
 
 
                 # Apply model to make predictions
