@@ -7,6 +7,12 @@ from sklearn.preprocessing import OrdinalEncoder
 
 from multipage import *
 
+"""
+References: 
+1. Streamlit multipage framework
+https://github.com/YanAlmeida/streamlit-multipage-framework
+"""
+
 # Config and setup
 st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard")
 
@@ -16,7 +22,6 @@ app = MultiPage()
 
 app.start_button = "Let's start!"
 app.navbar_name = "Navigation"
-
 
 app.next_page_button = "Next Page"
 app.previous_page_button = "Previous Page"
@@ -35,7 +40,6 @@ def app1(prev_vars):  # First page
 
         if st.form_submit_button("Submit"):
             change_page(1)
-
 
 
 def app2(prev_vars):  # Second page
@@ -58,7 +62,6 @@ def app2(prev_vars):  # Second page
     else:
         waiting_time_default = 0.0
         price_default = 20
-
 
     # Mechanism for additional routes propositions
     # Vars for additional route propositions
