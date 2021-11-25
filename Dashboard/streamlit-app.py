@@ -38,8 +38,8 @@ def app1(prev_vars):  # First page
 
     with st.form("myform"):
         st.write("What is the most important value for you in your itinerary?")
-        st.session_state.preference = st.selectbox('Filter type', ('Price', 'Waiting Time'))
-
+        preference = st.selectbox('Filter type', ('Price', 'Waiting Time'))
+        save(var_list=[preference], name="Survey", page_names=["Dashboard"])
         if st.form_submit_button("Submit"):
             change_page(1)
 
@@ -57,8 +57,7 @@ def app2(prev_vars):  # Second page
     targets = routes_raw['targetname'].sort_values().unique()
 
     st.write("#### Configure filters and press the button to get the recommended mode for your choice")
-
-    if st.session_state.preference == 'Price':
+    if prev_vars == 'Price':
         price_default = 0
         waiting_time_default = 1.0
     else:
