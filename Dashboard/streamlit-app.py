@@ -7,14 +7,16 @@ from sklearn.preprocessing import OrdinalEncoder
 
 from multipage import *
 
-"""
-References: 
-1. Streamlit multipage framework
-https://github.com/YanAlmeida/streamlit-multipage-framework
-"""
-
 # Config and setup
 st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard")
+
+
+# References:
+# 1. Streamlit multipage framework
+# https://github.com/YanAlmeida/streamlit-multipage-framework
+
+
+
 
 start_app()  # Clears the cache when the app is started
 
@@ -28,7 +30,7 @@ app.previous_page_button = "Previous Page"
 
 
 def startpage():
-    st.write("Welcome :")
+    st.write("# Welcome :wave:")
 
 
 def app1(prev_vars):  # First page
