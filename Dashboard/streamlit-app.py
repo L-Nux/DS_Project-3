@@ -50,7 +50,7 @@ def app2(prev_vars):  # Second page
     st.header('User Input Features')
 
     # Reading the dataset
-    routes_raw = pd.read_csv('data.csv')
+    routes_raw = pd.read_csv('./data.csv')
 
     # Extracting only unique and sorted lists of ODs
     sources = routes_raw['sourcename'].sort_values().unique()
@@ -146,7 +146,7 @@ def app2(prev_vars):  # Second page
                 df = df[:1]  # Selects only the first row (the user input data)
 
                 # Reads in saved classification model
-                load_clf = pickle.load(open('routes_clf.pkl', 'rb'))
+                load_clf = pickle.load(open('./routes_clf.pkl', 'rb'))
 
                 # Apply model to make predictions
                 prediction = load_clf.predict(df).astype(int)
@@ -192,34 +192,6 @@ def app2(prev_vars):  # Second page
                 st.error(
                     'Recommendation cannot be done. Please select the destination that is different from the origin')
 
-
-# if type(prev_vars) is int:  # Checks if the user saved the variables previously
-# 	st.write("Ooops... You forgot to save the variables...")
-# 	start_index = prev_vars
-# 	save([start_index], "placeholder", ["App1"])
-#
-# else:
-# 	start_index, var1, var2 = prev_vars  # Reads the variables previously saved
-# 	if st.button("Click here to sum the variables"):
-# 		sum_var = var1 + var2
-# 		st.write(sum_var)
-#
-# 	if st.button("Click here to save a new variable"):
-# 		var3 = 27
-# 		st.write(var3)
-# 		save(var_list=[var3], name="last_var", page_names=["App3"])
-# 	save([start_index], "placeholder", ["App1"])
-
-
-# module_str = "dashboard-pages.questionnaire"
-# current_page = importlib.import_module(module_str)
-# current_page.display()
-#
-# if st.session_state.form_submitted == True:
-#     st.write(st.session_state.preference)
-#     module_str = "dashboard-pages.dashboard"
-#     current_page = importlib.import_module(module_str)
-#     current_page.display()
 
 
 app.set_initial_page(startpage)
