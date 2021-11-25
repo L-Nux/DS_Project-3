@@ -76,11 +76,11 @@ def app2(prev_vars):  # Second page
     # Setting up filters
     sourceName = st.selectbox('Origin', sources)
     targetName = st.selectbox('Destination', targets, index=1)
-    totalPrice = st.slider('Price (Euro)', 0, 59, price_default)
+    totalPrice = st.slider('Price (Euro)', 1, 59, price_default)
     totalNumberOfChanges = st.slider('Number of changes', 0, 7, 1)
     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, 200)
     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, waiting_time_default, step=0.5)
-    totalTravelTimeInSec = st.slider('Travel time (h)', 0.0, 4.5, 3.0, step=0.5)
+    totalTravelTimeInSec = st.slider('Travel time (h)', 0.5, 4.5, 3.0, step=0.5)
 
     # Accepting the user input
     def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges, totalWalkingDistance,
@@ -111,25 +111,40 @@ def app2(prev_vars):  # Second page
                 input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges,
                                                totalWalkingDistance,
                                                totalWaitingTime, totalTravelTimeInSec)
+                # data = []
+                #
+                # for i in range(3):
+                #     data.append((sourceName, targetName, totalPrice,
+                #                                    totalNumberOfChanges + step_number_changes,
+                #                                    totalWalkingDistance + step_walking_distance,
+                #                                    totalWaitingTime + step_waiting_time,
+                #                                    totalTravelTimeInSec + step_travel_time))
+                #     step_number_changes += 1
+                #     step_walking_distance += 50
+                #     step_waiting_time += 0.5
+                #     step_travel_time += 0.5
+                #
+                # dataf = pd.DataFrame(data)
+                # st.write(dataf)
 
-                i = 0
-                size = 2
-                while i < size:
-                    generate = user_input_features(sourceName, targetName, totalPrice,
-                                                   totalNumberOfChanges + step_number_changes,
-                                                   totalWalkingDistance + step_walking_distance,
-                                                   totalWaitingTime + step_waiting_time,
-                                                   totalTravelTimeInSec + step_travel_time)
-                    input_df.append(generate)
-                    # combined = pd.concat([input_df,user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges + step_number_changes,
-                    #                                     totalWalkingDistance + step_walking_distance,
-                    #                                     totalWaitingTime + step_waiting_time, totalTravelTimeInSec + step_travel_time)], ignore_index=True)
-                    # st.write(input_df)
-                    i += 1
-                    step_number_changes += 1
-                    step_walking_distance += 50
-                    step_waiting_time += 0.5
-                    step_travel_time += 0.5
+                # i = 0
+                # size = 2
+                # while i < size:
+                #     generate = user_input_features(sourceName, targetName, totalPrice,
+                #                                    totalNumberOfChanges + step_number_changes,
+                #                                    totalWalkingDistance + step_walking_distance,
+                #                                    totalWaitingTime + step_waiting_time,
+                #                                    totalTravelTimeInSec + step_travel_time)
+                #     input_df.append(generate)
+                #     # combined = pd.concat([input_df,user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges + step_number_changes,
+                #     #                                     totalWalkingDistance + step_walking_distance,
+                #     #                                     totalWaitingTime + step_waiting_time, totalTravelTimeInSec + step_travel_time)], ignore_index=True)
+                #     # st.write(input_df)
+                #     i += 1
+                #     step_number_changes += 1
+                #     step_walking_distance += 50
+                #     step_waiting_time += 0.5
+                #     step_travel_time += 0.5
                 # st.write(input_df)
 
                 # Combines user input features with entire routes dataset
@@ -146,11 +161,16 @@ def app2(prev_vars):  # Second page
                 df = df[:1]  # Selects only the first row (the user input data)
 
                 # Reads in saved classification model
-                load_clf = pickle.load(open('./routes_clf.pkl', 'rb'))
+                load_clf = pickle.load(open('../routes_clf.pkl', 'rb'))
+
 
                 # Apply model to make predictions
                 prediction = load_clf.predict(df).astype(int)
                 prediction_proba = load_clf.predict_proba(df)
+
+                # # Apply model to make predictions for additional inputs
+                # dataf1 = dataf[:2]
+                # prediction1 = load_clf.predict(dataf).astype(int)
 
                 st.subheader('Recommendation')
 
@@ -184,7 +204,8 @@ def app2(prev_vars):  # Second page
                 # st.success('Your recommendation is ready!')
 
                 with st.expander('Explanation of your recommendation'):
-                    st.write('#### Here goes the explanation')
+                    st.write('- If you *increase waiting time for 1h* then it will be better to take **bla bla car** and then **flixbus**\n'
+                             '- If you *increase traveling time time for 2h* then it will be better to take **train** and then **flixbus**')
 
 
 
