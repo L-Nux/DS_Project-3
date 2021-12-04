@@ -43,6 +43,7 @@ def app1(prev_vars):  # First page
         if st.form_submit_button("Submit"):
             change_page(1)
 
+
 # Recommendation page
 def app2(prev_vars):  # Second page
     st.write("# Transport Recommendation App")
@@ -51,12 +52,6 @@ def app2(prev_vars):  # Second page
 
     # Reading the dataset
     routes_raw = pd.read_csv('../data.csv')
-    routes_raw.drop_duplicates(inplace = True)
-
-    # dropping the instances with the same attributes for the different objectives
-    routes_raw = routes_raw.drop_duplicates(subset=['totaltraveltimeinsec', 'totalprice', 'totalnumberofchanges',
-                                    'totalwalkingdistance', 'totalwaitingtime', 'finiteautomaton',
-                                    'finalsolutionusedlabels', 'sourcename', 'targetname'])
 
     # Extracting only unique and sorted lists of ODs
     sources = routes_raw['sourcename'].sort_values().unique()
@@ -82,14 +77,11 @@ def app2(prev_vars):  # Second page
     sourceName = st.selectbox('Origin', sources)
     targetName = st.selectbox('Destination', targets, index=1)
 
-
     totalPrice = st.slider('Price (Euro)', 1, 59, (0, 59))
     totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
-    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0,965))
+    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-    totalTravelTimeInSec = st.slider('Travel time (h)', 0.5, 4.5, (0.0,4.5), step=0.5)
-
-
+    totalTravelTimeInSec = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
     # Accepting the user input
     def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges, totalWalkingDistance,
@@ -123,31 +115,36 @@ def app2(prev_vars):  # Second page
 
                 st.subheader('Recommendation')
 
-                chosenODs = routes_raw.loc[(routes_raw.sourcename==sourceName) & (routes_raw.targetname==targetName)
-                                           & (routes_raw.totalprice >= totalPrice[0]) & (routes_raw.totalprice <= totalPrice[1])
-                                           & (routes_raw.totalwalkingdistance >= totalWalkingDistance[0]) & (routes_raw.totalwalkingdistance <= totalWalkingDistance[1])
+                chosenODs = routes_raw.loc[(routes_raw.sourcename == sourceName) & (routes_raw.targetname == targetName)
+                                           & (routes_raw.totalprice >= totalPrice[0]) & (
+                                                   routes_raw.totalprice <= totalPrice[1])
+                                           & (routes_raw.totalwalkingdistance >= totalWalkingDistance[0]) & (
+                                                   routes_raw.totalwalkingdistance <= totalWalkingDistance[1])
                                            & (routes_raw.totalnumberofchanges >= totalNumberOfChanges[0]) & (
-                                                       routes_raw.totalnumberofchanges <= totalNumberOfChanges[1])
+                                                   routes_raw.totalnumberofchanges <= totalNumberOfChanges[1])
                                            & (routes_raw.totaltraveltimeinsec >= totalTravelTimeInSec[0]) & (
                                                    routes_raw.totaltraveltimeinsec <= totalTravelTimeInSec[1])
                                            & (routes_raw.totalwaitingtime >= totalWaitingTime[0]) & (
                                                    routes_raw.totalwaitingtime <= totalWaitingTime[1])
                                            ]
 
-                fig = px.parallel_coordinates(
-                    chosenODs,
+                chosenODs.reset_index(drop=True, inplace=True)
 
-                    color_continuous_scale=px.colors.diverging.Tealrose,
-                    color_continuous_midpoint=3)
+                chosenODs = chosenODs.assign(
+                    id=(chosenODs['totalprice'].astype(str) + '_' + chosenODs['totalwalkingdistance'].astype(str)
+                        + '_' + chosenODs['totalnumberofchanges'].astype(str)
+                        + '_' + chosenODs['totaltraveltimeinsec'].astype(str)
+                        + '_' + chosenODs['totalwaitingtime'].astype(str))
 
+                    .astype('category').cat.codes)
 
-                st.plotly_chart (fig, use_container_width=True)
+                chosenODs['id'] = chosenODs['id'].astype(np.int64)
+
 
                 st.write(chosenODs)
                 st.write(totalPrice)
 
                 # final_solutions = chosenODs['finalsolutionusedlabels']
-
 
                 # Make the transport labels look user-friendly
                 clean_recommendation = []
@@ -161,13 +158,27 @@ def app2(prev_vars):  # Second page
                 #
                 #     st.write(el)
 
-
                 # st.write('Do you want to see adjusted propositions?')
                 # if st.button('Yes!'):
                 #     st.write('Choose the filter to adjust')
                 #     st.selectbox('Filter type', ('Price, Waiting Time'))
 
                 with st.expander('Explanation of your recommendation'):
+                    fig = px.parallel_coordinates(
+                        chosenODs,
+                        color="id",
+                        labels={"totalprice": "Price",
+                                "totalwalkingdistance": "Walking Distance", "totalnumberofchanges": "Number of Changes",
+                                "totaltraveltimeinsec": "Travel Time", "totalwaitingtime": "Waiting Time",
+                                "id": "Route"},
+                    )
+
+                    st.plotly_chart(fig, use_container_width=True)
+
+                    friendly_amount_lines = 7
+                    if (len(chosenODs.index) > friendly_amount_lines):
+                        st.info("Looks complicated? Please try to filter your preferences a bit more.")
+
                     st.write(
                         '- If you *increase waiting time for 1h* then it will be better to take **bla bla car** and then **flixbus**\n'
                         '- If you *increase traveling time time for 2h* then it will be better to take **train** and then **flixbus**')
