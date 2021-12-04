@@ -166,3 +166,4 @@ class MultiPage:
 
 				if st.sidebar.button("Party mode"):
 					st.balloons()
+

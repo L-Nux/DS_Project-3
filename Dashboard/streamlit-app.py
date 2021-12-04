@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 
+import plotly.express as px
+
 from multipage import *
 
 # Config and setup
@@ -133,12 +135,13 @@ def app2(prev_vars):  # Second page
                                            ]
 
                 fig = px.parallel_coordinates(
-                    obj_df,
-                    color='objective',
+                    chosenODs,
+
                     color_continuous_scale=px.colors.diverging.Tealrose,
                     color_continuous_midpoint=3)
-                fig.show()
-                fig.write_html(Path().joinpath('Data_exploration', 'parallel-coordinate-plot-plotly.html'))
+
+
+                st.plotly_chart (fig, use_container_width=True)
 
                 st.write(chosenODs)
                 st.write(totalPrice)
@@ -198,7 +201,7 @@ def app3(prev_vars):  # Third page
     totalPrice = st.slider('Price (Euro)', 1, 59, 0)
     totalNumberOfChanges = st.slider('Number of changes', 0, 7, 1)
     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, 200)
-    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, 0, step=0.5)
+    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, 0.0, step=0.5)
     totalTravelTimeInSec = st.slider('Travel time (h)', 0.5, 4.5, 3.0, step=0.5)
 
     # Accepting the user input

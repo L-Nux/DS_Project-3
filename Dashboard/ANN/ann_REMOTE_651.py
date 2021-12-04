@@ -24,10 +24,6 @@ for feature in columns:
     df[feature] = le.fit_transform(df[feature])
 df = df.drop(["objective"], axis=1)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a4662928692fb6a0dc5c789977a53494b26e4e03
 # Encode Y
 y_le = LabelEncoder()
 df["finalsolutionusedlabels"] = y_le.fit_transform(df["finalsolutionusedlabels"])
