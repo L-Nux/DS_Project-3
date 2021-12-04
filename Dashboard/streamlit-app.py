@@ -132,7 +132,13 @@ def app2(prev_vars):  # Second page
                                                    routes_raw.totalwaitingtime <= totalWaitingTime[1])
                                            ]
 
-
+                fig = px.parallel_coordinates(
+                    obj_df,
+                    color='objective',
+                    color_continuous_scale=px.colors.diverging.Tealrose,
+                    color_continuous_midpoint=3)
+                fig.show()
+                fig.write_html(Path().joinpath('Data_exploration', 'parallel-coordinate-plot-plotly.html'))
 
                 st.write(chosenODs)
                 st.write(totalPrice)
