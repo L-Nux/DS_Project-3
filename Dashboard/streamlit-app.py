@@ -270,8 +270,6 @@ def app2(prev_vars):  # Second page
 def app3(prev_vars):  # Third page
     st.write("# Transport Prediction")
 
-    st.header('User Input Features')
-
     st.write("#### Configure filters and press the button to get the recommended mode for your choice")
 
     # Setting up filters
@@ -312,49 +310,7 @@ def app3(prev_vars):  # Third page
                 input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges,
                                                totalWalkingDistance,
                                                totalWaitingTime, totalTravelTimeInSec)
-                # data = []
-                #
-                # for i in range(3):
-                #     data.append((sourceName, targetName, totalPrice,
-                #                  totalNumberOfChanges + step_number_changes,
-                #                  totalWalkingDistance + step_walking_distance,
-                #                  totalWaitingTime + step_waiting_time,
-                #                  totalTravelTimeInSec + step_travel_time))
-                #     step_number_changes += 1
-                #     step_walking_distance += 50
-                #     step_waiting_time += 0.5
-                #     step_travel_time += 0.5
-                #
-                # dataf = pd.DataFrame(data)
-                # st.write(dataf)
-                #
-                # i = 0
-                # size = 2
-                # while i < size:
-                #     generate = user_input_features(sourceName, targetName, totalPrice,
-                #                                    totalNumberOfChanges + step_number_changes,
-                #                                    totalWalkingDistance + step_walking_distance,
-                #                                    totalWaitingTime + step_waiting_time,
-                #                                    totalTravelTimeInSec + step_travel_time)
-                #
-                #     input_df.append(generate)
-                #
-                #     combined = pd.concat([input_df, user_input_features(sourceName, targetName, totalPrice,
-                #                                                         totalNumberOfChanges + step_number_changes,
-                #                                                         totalWalkingDistance + step_walking_distance,
-                #                                                         totalWaitingTime + step_waiting_time,
-                #                                                         totalTravelTimeInSec + step_travel_time)],
-                #                          ignore_index=True)
-                #
-                #     st.write(input_df)
-                #
-                #     i += 1
-                #     step_number_changes += 1
-                #     step_walking_distance += 50
-                #     step_waiting_time += 0.5
-                #     step_travel_time += 0.5
-                #
-                #     st.write(input_df)
+
 
                 # Combines user input features with entire routes dataset
 
