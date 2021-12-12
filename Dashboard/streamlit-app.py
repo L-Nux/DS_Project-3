@@ -1,4 +1,3 @@
-import ast
 import pickle
 import re
 
@@ -8,9 +7,9 @@ from sklearn.preprocessing import OrdinalEncoder
 
 import plotly.express as px
 
-import operator
 
 from multipage import *
+from dashboardCalculations import *
 
 # Config and setup
 st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard", menu_items={
@@ -35,7 +34,7 @@ app.next_page_button = "Next Page"
 app.previous_page_button = "Previous Page"
 
 # Reading the dataset
-routes_raw = pd.read_csv('../data.csv')
+routes_raw = pd.read_csv('./data.csv')
 # routes_raw.rename({'sourcename': 'Source Name'}, axis=1, inplace=True)
 
 # Extracting only unique and sorted lists of ODs
@@ -72,32 +71,6 @@ def app1(prev_vars):  # First page
                 'Recommendation cannot be done. Please select the destination that is different from the origin')
 
 
-preference = {
-    "totalprice": 0,
-    "totalwaitingtime": 0,
-    "totaltraveltime": 0,
-    "totalwalkingdistance": 0,
-    "numberoftransfers": 0
-}
-
-
-# Based on survey preference calculation
-def survey_pref_calc(travel_kids):
-    if travel_kids == "Yes":
-        preference["totalprice"] += 0.5
-        preference["totalwaitingtime"] += 0.9
-        preference["totaltraveltime"] += 0.9
-        preference["totalwalkingdistance"] += 1
-        preference["numberoftransfers"] += 1
-    else:
-        preference["totalprice"] += 0.7
-        preference["totalwaitingtime"] += 0.5
-        preference["totaltraveltime"] += 0.5
-        preference["totalwalkingdistance"] += 0.5
-        preference["numberoftransfers"] += 0.5
-
-    return max(preference.items(), key=operator.itemgetter(1))[0]
-
 
 # Recommendation page
 def app2(prev_vars):  # Second page
@@ -120,24 +93,7 @@ def app2(prev_vars):  # Second page
         return "### Please fill in the survey to get the best recommendation based on our algorithm"
 
 
-# Function for generating additional recommendations
-    def additional_recommendation(df, preference):
-        minvalue = df[preference].min()
 
-        threshold = 0.25
-
-        additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
-
-        while additional_recommendation_df.empty:
-
-            threshold += 0.25
-            additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
-            if not additional_recommendation_df.empty:
-                additional_recommendation_df.drop_duplicates(subset=["finalsolutionusedlabels"], inplace = True)
-                st.write(f"If you increase __{preference}__ by __{threshold}__ units you can consider taking next options:")
-                st.write(additional_recommendation_df["finalsolutionusedlabels"].to_string(index=False))
-                break
-        return additional_recommendation_df
 
     if not best_recommendation_df.empty:
         st.write(best_recommendation_df["sourcename"].to_string(index=False))
@@ -149,10 +105,10 @@ def app2(prev_vars):  # Second page
         comparison_best_additional.reset_index(drop=True, inplace=True)
 
         comparison_best_additional = comparison_best_additional.assign(
-            id=(comparison_best_additional['totalprice'].astype(str) + '_' + comparison_best_additional['totalwalkingdistance'].astype(str)
+            id=(comparison_best_additional['totalprice'].astype(str) + '_' + comparison_best_additional['totalwalkingdistanceinm'].astype(str)
                 + '_' + comparison_best_additional['totalnumberofchanges'].astype(str)
-                + '_' + comparison_best_additional['totaltraveltimeinsec'].astype(str)
-                + '_' + comparison_best_additional['totalwaitingtime'].astype(str))
+                + '_' + comparison_best_additional['totaltraveltimeinhours'].astype(str)
+                + '_' + comparison_best_additional['totalwaitingtimeinhours'].astype(str))
 
                 .astype('category').cat.codes)
 
@@ -162,8 +118,8 @@ def app2(prev_vars):  # Second page
             comparison_best_additional,
             color="id",
             labels={"totalprice": "Price",
-                    "totalwalkingdistance": "Walking Distance", "totalnumberofchanges": "Number of Changes",
-                    "totaltraveltimeinsec": "Travel Time", "totalwaitingtime": "Waiting Time",
+                    "totalwalkingdistanceinm": "Walking Distance", "totalnumberofchanges": "Number of Changes",
+                    "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
                     "id": "Route"},
         )
 
@@ -188,7 +144,7 @@ def app2(prev_vars):  # Second page
         totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
         totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
         totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-        totalTravelTimeInSec = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+        totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
         # Recommending functionality
         if st.button('Recommend'):
@@ -199,26 +155,26 @@ def app2(prev_vars):  # Second page
                     st.subheader('Recommendation')
 
                     chosenODs = routes_raw.loc[
-                        (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+                        (routes_raw.sourcename == sourceName) & (routes_raw.targetname == targetName)
                         & (routes_raw.totalprice >= totalPrice[0]) & (
                                 routes_raw.totalprice <= totalPrice[1])
-                        & (routes_raw.totalwalkingdistance >= totalWalkingDistance[0]) & (
-                                routes_raw.totalwalkingdistance <= totalWalkingDistance[1])
+                        & (routes_raw.totalwalkingdistanceinm >= totalWalkingDistance[0]) & (
+                                routes_raw.totalwalkingdistanceinm <= totalWalkingDistance[1])
                         & (routes_raw.totalnumberofchanges >= totalNumberOfChanges[0]) & (
                                 routes_raw.totalnumberofchanges <= totalNumberOfChanges[1])
-                        & (routes_raw.totaltraveltimeinsec >= totalTravelTimeInSec[0]) & (
-                                routes_raw.totaltraveltimeinsec <= totalTravelTimeInSec[1])
-                        & (routes_raw.totalwaitingtime >= totalWaitingTime[0]) & (
-                                routes_raw.totalwaitingtime <= totalWaitingTime[1])
+                        & (routes_raw.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
+                                routes_raw.totaltraveltimeinhours <= totalTravelTimeInHours[1])
+                        & (routes_raw.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
+                                routes_raw.totalwaitingtimeinhours <= totalWaitingTime[1])
                         ]
 
                     chosenODs.reset_index(drop=True, inplace=True)
 
                     chosenODs = chosenODs.assign(
-                        id=(chosenODs['totalprice'].astype(str) + '_' + chosenODs['totalwalkingdistance'].astype(str)
+                        id=(chosenODs['totalprice'].astype(str) + '_' + chosenODs['totalwalkingdistanceinm'].astype(str)
                             + '_' + chosenODs['totalnumberofchanges'].astype(str)
-                            + '_' + chosenODs['totaltraveltimeinsec'].astype(str)
-                            + '_' + chosenODs['totalwaitingtime'].astype(str))
+                            + '_' + chosenODs['totaltraveltimeinhours'].astype(str)
+                            + '_' + chosenODs['totalwaitingtimeinhours'].astype(str))
 
                             .astype('category').cat.codes)
 
@@ -249,8 +205,8 @@ def app2(prev_vars):  # Second page
                         chosenODs,
                         color="id",
                         labels={"totalprice": "Price",
-                                "totalwalkingdistance": "Walking Distance", "totalnumberofchanges": "Number of Changes",
-                                "totaltraveltimeinsec": "Travel Time", "totalwaitingtime": "Waiting Time",
+                                "totalwalkingdistanceinm": "Walking Distance", "totalnumberofchanges": "Number of Changes",
+                                "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
                                 "id": "Route"},
                     )
 
@@ -279,17 +235,17 @@ def app3(prev_vars):  # Third page
     totalNumberOfChanges = st.slider('Number of changes', 0, 7, 1)
     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, 200)
     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, 0.0, step=0.5)
-    totalTravelTimeInSec = st.slider('Travel time (h)', 0.5, 4.5, 3.0, step=0.5)
+    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, 3.0, step=0.5)
 
     # Accepting the user input
     def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges, totalWalkingDistance,
-                            totalWaitingTime, totalTravelTimeInSec):
+                            totalWaitingTime, totalTravelTimeInHours):
         data = {
-            'totaltraveltimeinsec': totalTravelTimeInSec,
+            'totaltraveltimeinhours': totalTravelTimeInHours,
             'totalprice': totalPrice,
             'totalnumberofchanges': totalNumberOfChanges,
-            'totalwalkingdistance': totalWalkingDistance,
-            'totalwaitingtime': totalWaitingTime,
+            'totalwalkingdistanceinm': totalWalkingDistance,
+            'totalwaitingtimeinhours': totalWaitingTime,
             'sourcename': sourceName,
             'targetname': targetName}
         features = pd.DataFrame(data, index=[0])
@@ -309,7 +265,7 @@ def app3(prev_vars):  # Third page
 
                 input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges,
                                                totalWalkingDistance,
-                                               totalWaitingTime, totalTravelTimeInSec)
+                                               totalWaitingTime, totalTravelTimeInHours)
 
 
                 # Combines user input features with entire routes dataset

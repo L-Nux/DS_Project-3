@@ -31,7 +31,7 @@ df = df.drop_duplicates(subset=['totaltraveltimeinsec', 'totalprice', 'totalnumb
                                 'finalsolutionusedlabels', 'sourcename', 'targetname'])
 
 df = df.rename(columns={'totaltraveltimeinsec': 'totaltraveltimeinhours', 'totalwaitingtime': 'totalwaitingtimeinhours',
-                        'totalwalkingdistance': 'totalwalkingdistanceinkms'})
+                        'totalwalkingdistance': 'totalwalkingdistanceinm'})
 
 describe = df.describe()
 
