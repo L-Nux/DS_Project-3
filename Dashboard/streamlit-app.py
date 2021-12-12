@@ -7,7 +7,6 @@ from sklearn.preprocessing import OrdinalEncoder
 
 import plotly.express as px
 
-
 from multipage import *
 from dashboardCalculations import *
 
@@ -71,67 +70,67 @@ def app1(prev_vars):  # First page
                 'Recommendation cannot be done. Please select the destination that is different from the origin')
 
 
-
 # Recommendation page
 def app2(prev_vars):  # Second page
     st.write("# Transport Recommendation App")
 
-    preference = prev_vars[0]
-    sourceName = prev_vars[1]
-    targetName = prev_vars[2]
+    if prev_vars is not None:
+        preference = prev_vars[0]
+        sourceName = prev_vars[1]
+        targetName = prev_vars[2]
 
-    chosenODs = routes_raw.loc[
-        (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
-        ]
+        chosenODs = routes_raw.loc[
+            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+            ]
 
-# Checking if survey was filled in
-    if preference:
+        # Checking if survey was filled in
+        if preference:
 
-        best_recommendation_df =  chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
+            best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
+            st.write("The best recommendation (based on your survey):")
+            st.write(best_recommendation_df["finalsolutionusedlabels"].to_string(index=False))
+
+        else:
+            return "### Please fill in the survey to get the best recommendation based on our algorithm"
+
+        if not best_recommendation_df.empty:
+            # st.write(best_recommendation_df["sourcename"].to_string(index=False))
+            additional_recommendation_df = additional_recommendation(chosenODs, preference)
+
+            comparison_best_additional = pd.concat([best_recommendation_df, additional_recommendation_df], axis=0)
+
+            comparison_best_additional.reset_index(drop=True, inplace=True)
+
+            comparison_best_additional = comparison_best_additional.assign(
+                id=(comparison_best_additional['totalprice'].astype(str) + '_' + comparison_best_additional[
+                    'totalwalkingdistanceinm'].astype(str)
+                    + '_' + comparison_best_additional['totalnumberofchanges'].astype(str)
+                    + '_' + comparison_best_additional['totaltraveltimeinhours'].astype(str)
+                    + '_' + comparison_best_additional['totalwaitingtimeinhours'].astype(str))
+
+                    .astype('category').cat.codes)
+
+            comparison_best_additional['id'] = comparison_best_additional['id'].astype(np.int64)
+
+            comparison_best_additional_fig = px.parallel_coordinates(
+                comparison_best_additional,
+                color="id",
+                labels={"id": "Route", "totalprice": "Price",
+                        "totalwalkingdistanceinm": "Walking Distance", "totalnumberofchanges": "Number of Changes",
+                        "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
+                        },
+            )
+
+            st.plotly_chart(comparison_best_additional_fig, use_container_width=True)
+
+
+        else:
+            st.warning("Unfortunately, there is no recommendation for the chosen itinerary. Please select another one")
 
     else:
-        return "### Please fill in the survey to get the best recommendation based on our algorithm"
+        st.info("Please fill in the survey to get the best recommendation.")
 
-
-
-
-    if not best_recommendation_df.empty:
-        st.write(best_recommendation_df["sourcename"].to_string(index=False))
-        additional_recommendation_df = additional_recommendation(chosenODs, preference)
-
-
-        comparison_best_additional = pd.concat([best_recommendation_df, additional_recommendation_df], axis=0)
-
-        comparison_best_additional.reset_index(drop=True, inplace=True)
-
-        comparison_best_additional = comparison_best_additional.assign(
-            id=(comparison_best_additional['totalprice'].astype(str) + '_' + comparison_best_additional['totalwalkingdistanceinm'].astype(str)
-                + '_' + comparison_best_additional['totalnumberofchanges'].astype(str)
-                + '_' + comparison_best_additional['totaltraveltimeinhours'].astype(str)
-                + '_' + comparison_best_additional['totalwaitingtimeinhours'].astype(str))
-
-                .astype('category').cat.codes)
-
-        comparison_best_additional['id'] = comparison_best_additional['id'].astype(np.int64)
-
-        comparison_best_additional_fig = px.parallel_coordinates(
-            comparison_best_additional,
-            color="id",
-            labels={"totalprice": "Price",
-                    "totalwalkingdistanceinm": "Walking Distance", "totalnumberofchanges": "Number of Changes",
-                    "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
-                    "id": "Route"},
-        )
-
-        st.plotly_chart(comparison_best_additional_fig, use_container_width=True)
-
-
-    else:
-        st.warning("Unfortunately, there is no recommendation for the chosen itinerary. Please select another one")
-
-
-
-# Manual filtering section
+    # Manual filtering section
     with st.expander('Manual filtering'):
 
         st.write("#### Configure filters and press the button to get the recommended mode for your choice")
@@ -204,10 +203,11 @@ def app2(prev_vars):  # Second page
                     fig = px.parallel_coordinates(
                         chosenODs,
                         color="id",
-                        labels={"totalprice": "Price",
-                                "totalwalkingdistanceinm": "Walking Distance", "totalnumberofchanges": "Number of Changes",
+                        labels={"id": "Route", "totalprice": "Price",
+                                "totalwalkingdistanceinm": "Walking Distance",
+                                "totalnumberofchanges": "Number of Changes",
                                 "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
-                                "id": "Route"},
+                                },
                     )
 
                     st.plotly_chart(fig, use_container_width=True)
@@ -266,7 +266,6 @@ def app3(prev_vars):  # Third page
                 input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges,
                                                totalWalkingDistance,
                                                totalWaitingTime, totalTravelTimeInHours)
-
 
                 # Combines user input features with entire routes dataset
 
