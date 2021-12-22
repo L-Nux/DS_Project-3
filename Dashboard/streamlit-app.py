@@ -1,3 +1,4 @@
+import ast
 import pickle
 import re
 
@@ -51,6 +52,7 @@ def app1(prev_vars):  # First page
 
     with st.form("myform"):
         st.write("### Survey to provide you with the best recommendation")
+        st.info("We do not store the information provided by you in this survey!")
         sourceName = st.selectbox('Origin', sources)
         targetName = st.selectbox('Destination', targets, index=1)
         # st.write("What is the most important value for you in your itinerary?")
@@ -93,6 +95,7 @@ def app2(prev_vars):  # Second page
         else:
             return "### Please fill in the survey to get the best recommendation based on our algorithm"
 
+        # Generating the additional recommendation
         if not best_recommendation_df.empty:
             # st.write(best_recommendation_df["sourcename"].to_string(index=False))
             additional_recommendation_df = additional_recommendation(chosenODs, preference)
@@ -135,15 +138,55 @@ def app2(prev_vars):  # Second page
 
         st.write("#### Configure filters and press the button to get the recommended mode for your choice")
 
-        # Setting up filters
-        sourceName = st.selectbox('Origin', sources)
-        targetName = st.selectbox('Destination', targets, index=1)
+        # Setting up filters based on the survey
+        if prev_vars is not None:
+            st.write(preference)
+            sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
+            targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
-        totalPrice = st.slider('Price (Euro)', 1, 59, (0, 59))
-        totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
-        totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-        totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-        totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+
+            match preference:
+                case 'totalprice':
+                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 1.0),step=0.5)
+                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
+                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+                case 'totalwaitingtimeinhours':
+                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
+                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 0.0), step=0.5)
+                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+                case 'totaltraveltimeinhours':
+                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
+                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 0.0), step=0.5)
+                case 'totalwalkingdistanceinm':
+                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
+                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 0))
+                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+                case 'numberoftransfers':
+                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 0))
+                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+
+        # Setting up filters
+        else:
+            sourceName = st.selectbox('Origin', sources)
+            targetName = st.selectbox('Destination', targets, index=1)
+
+            totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0),step=0.5)
+            totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
+            totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+            totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
         # Recommending functionality
         if st.button('Recommend'):
@@ -231,7 +274,7 @@ def app3(prev_vars):  # Third page
     # Setting up filters
     sourceName = st.selectbox('Origin', sources)
     targetName = st.selectbox('Destination', targets, index=1)
-    totalPrice = st.slider('Price (Euro)', 1, 59, 0)
+    totalPrice = st.slider('Price (Euro)', 1, 363, 0)
     totalNumberOfChanges = st.slider('Number of changes', 0, 7, 1)
     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, 200)
     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, 0.0, step=0.5)
