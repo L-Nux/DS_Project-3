@@ -40,8 +40,17 @@ def additional_recommendation(df, preference):
         additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
         if not additional_recommendation_df.empty:
             additional_recommendation_df.drop_duplicates(subset=["finalsolutionusedlabels"], inplace = True)
-            st.write(f"If you increase __{preference}__ by __{threshold}__ units, the features of your trip and "
-                     f"the transport you should choose are the next (Route 1):")
+            st.write(f"When the __{preference}__ is __{threshold}__ units, the features of your trip and "
+                     f"the transport you should choose are the next (Route 1 on the diagram):")
             st.write(additional_recommendation_df["finalsolutionusedlabels"].to_string(index=False))
             break
     return additional_recommendation_df
+
+# def increase_calculation (feature, filterTuple, df_initial, df_filtered):
+#     if chosenODs["totalprice"].max() > totalPrice[1] or chosenODs["totalprice"].min() < totalPrice[0]:
+#
+#         if (len(chosenODs.index) - len(chosenODsFiltered.index)) == increaseIndicator:
+#
+#             st.write("Price :arrow_up:")
+#
+#         else if (len(chosenODs.index) - len(chosenODsFiltered.index)) == increaseIndicator
