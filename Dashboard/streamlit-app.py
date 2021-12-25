@@ -193,6 +193,8 @@ def app2(prev_vars):  # Second page
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
+
+        filters = [totalPrice,totalNumberOfChanges,totalWalkingDistance,totalWaitingTime,totalTravelTimeInHours]
         # Recommending functionality
         if st.button('Recommend'):
             with st.spinner('Processing...'):
@@ -230,38 +232,19 @@ def app2(prev_vars):  # Second page
                     chosenODs_filtered['id'] = chosenODs_filtered['id'].astype(np.int64)
 
                     st.write(chosenODs_filtered)
-                    st.write(totalPrice)
 
-                    st.write(chosenODs["totalprice"].max())
-                    st.write(chosenODs["totalprice"].min())
 
-                    chosenODs_filtered.info()
 
                     chosenODs_filtered.drop_duplicates(subset = ["totaltraveltimeinhours","id", "totalprice","totalnumberofchanges","totalwalkingdistanceinm","totalwaitingtimeinhours","objective","sourcename","targetname", "finalsolutionusedlabels" ],inplace=True)
-                    st.write(chosenODs_filtered)
+                    chosenODs.reset_index(drop=True, inplace=True)
+                    chosenODs.drop_duplicates(
+                        subset=["totaltraveltimeinhours", "totalprice", "totalnumberofchanges",
+                                "totalwalkingdistanceinm", "totalwaitingtimeinhours", "objective", "sourcename",
+                                "targetname", "finalsolutionusedlabels"], inplace=True)
+
+
                     st.write(len(chosenODs_filtered.index))
                     st.write(len(chosenODs.index))
-                    st.write(chosenODs)
-
-                    increase_indicator = 5
-
-                    # Indicator showing the extent to which the search results change due to an adjustment of the filters
-
-                    if chosenODs["totalprice"].max() > totalPrice[1] or chosenODs["totalprice"].min() < totalPrice[0]:
-
-                        if (len(chosenODs.index) - len(chosenODs_filtered.index)) == increase_indicator:
-
-                            st.write("Price :arrow_up:")
-
-                        elif (len(chosenODs.index) - len(chosenODs_filtered.index)) == increase_indicator * 2:
-
-                            st.write("Price :arrow_up: :arrow_up:")
-                        else:
-                            st.write("Price :arrow_up: :arrow_up: :arrow_up:")
-
-                        st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
-                            "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
-                            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n")
 
                     # final_solutions = chosenODs['finalsolutionusedlabels']
 
@@ -296,6 +279,22 @@ def app2(prev_vars):  # Second page
                     friendly_amount_lines = 7
                     if (len(chosenODs_filtered.index) > friendly_amount_lines):
                         st.info("Looks complicated? Please try to filter your preferences a bit more.")
+
+                    dataTypeDict = dict(chosenODs_filtered.dtypes)
+                    st.write(dataTypeDict)
+
+
+                    # Showing the indicators
+                    for feature, filter in zip(chosenODs_filtered,filters):
+
+                        if chosenODs_filtered.dtypes[feature] == np.float64 or chosenODs_filtered.dtypes[feature] == np.int64:
+                            indicator_calculation(feature, filter,chosenODs,chosenODs_filtered)
+
+
+                    # TODO: output it only when the indicator appears
+                    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
+                        "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
+                        "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n")
 
                 else:
                     st.error(
