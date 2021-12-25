@@ -48,7 +48,7 @@ def additional_recommendation(df, preference):
             break
     return additional_recommendation_df
 
-
+# TODO: make the feature name to look nice
 # Indicator showing the extent to which the search results change due to an adjustment of the filters
 def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
     increase_indicator = 5
