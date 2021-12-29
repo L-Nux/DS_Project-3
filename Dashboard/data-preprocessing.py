@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("./Dashboard/withoutcolumns.csv")
+df = pd.read_csv("withoutcolumns.csv")
 
 def drop_column(df, column_name):
     for col in df.columns:
@@ -15,8 +15,8 @@ drop_column(df, "index")
 
 # Transform minutes to hours, metres to kilometres, round the price value
 def transform_values(d):
-    d['totaltraveltimeinsec'] = d['totaltraveltimeinsec'].div(60).round(2)
-    d['totalwaitingtime'] = d['totalwaitingtime'].div(60).round(2)
+    d['totaltraveltimeinsec'] = d['totaltraveltimeinsec'].div(10).round(2)
+    d['totalwaitingtime'] = d['totalwaitingtime'].div(10).round(2)
     d['totalwalkingdistance'] = (d['totalwalkingdistance'] * 1000).round(2).astype(int)
     d['totalprice'] = d['totalprice'].round(2)
 
