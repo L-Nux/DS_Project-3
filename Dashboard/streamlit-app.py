@@ -1,8 +1,6 @@
-import ast
 import pickle
 import re
 
-import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 
@@ -106,25 +104,11 @@ def app2(prev_vars):  # Second page
 
             comparison_best_additional.reset_index(drop=True, inplace=True)
 
-            comparison_best_additional = comparison_best_additional.assign(
-                id=(comparison_best_additional['totalprice'].astype(str) + '_' + comparison_best_additional[
-                    'totalwalkingdistanceinm'].astype(str)
-                    + '_' + comparison_best_additional['totalnumberofchanges'].astype(str)
-                    + '_' + comparison_best_additional['totaltraveltimeinhours'].astype(str)
-                    + '_' + comparison_best_additional['totalwaitingtimeinhours'].astype(str))
+            comparison_best_additional.drop(["distance", "multimodality"], axis=1, inplace=True)
 
-                    .astype('category').cat.codes)
+            comparison_best_additional = assign_ids(comparison_best_additional)
 
-            comparison_best_additional['id'] = comparison_best_additional['id'].astype(np.int64)
-
-            comparison_best_additional_fig = px.parallel_coordinates(
-                comparison_best_additional,
-                color="id",
-                labels={"id": "Route", "totalprice": "Price",
-                        "totalwalkingdistanceinm": "Walking Distance", "totalnumberofchanges": "Number of Changes",
-                        "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
-                        },
-            )
+            comparison_best_additional_fig = draw_parallel_coord(comparison_best_additional)
 
             st.plotly_chart(comparison_best_additional_fig, use_container_width=True)
 
@@ -146,37 +130,56 @@ def app2(prev_vars):  # Second page
             sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
             targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
+            price_upper_limit = routes_raw["totalprice"].max()
+
+            total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
+            total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
+            total_walking_distance_upper_limit = routes_raw["totalwalkingdistanceinm"].max()
+
+
+
+
             match preference:
                 case 'totalprice':
-                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 1.0), step=0.5)
-                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
-                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+
+                    price_upper_limit = 1
+
                 case 'totalwaitingtimeinhours':
-                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
-                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 0.0), step=0.5)
-                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+                    total_waiting_time_upper_limit = 0
                 case 'totaltraveltimeinhours':
-                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
-                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 0.0), step=0.5)
+
+                    total_travel_time_upper_limit = 0
+
                 case 'totalwalkingdistanceinm':
-                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
-                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 0))
-                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
-                case 'numberoftransfers':
-                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-                    totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 0))
-                    totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-                    totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-                    totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+                    total_walking_distance_upper_limit = 0
+
+            totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
+            totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, int(total_walking_distance_upper_limit)))
+            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, float(total_waiting_time_upper_limit)), step=0.5)
+            totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, float(total_travel_time_upper_limit)),
+                                               step=0.5)
+            safest_route = st.checkbox("Safest route")
+
+            # case 'totalprice':
+            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 1.0), step=0.5)
+            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+            # case 'totalwaitingtimeinhours':
+            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, ), step=0.5)
+            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 0.0), step=0.5)
+            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+            # case 'totaltraveltimeinhours':
+            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 0.0), step=0.5)
+            # case 'totalwalkingdistanceinm':
+            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 0))
+            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
+            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
             chosenODs = routes_raw.loc[
                 (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
@@ -188,13 +191,11 @@ def app2(prev_vars):  # Second page
             targetName = st.selectbox('Destination', targets, index=1)
 
             totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-            totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
             totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
-
-        filters = [totalPrice,totalNumberOfChanges,totalWalkingDistance,totalWaitingTime,totalTravelTimeInHours]
+        filters = [totalPrice, totalWalkingDistance, totalWaitingTime, totalTravelTimeInHours]
         # Recommending functionality
         if st.button('Recommend'):
             with st.spinner('Processing...'):
@@ -210,38 +211,18 @@ def app2(prev_vars):  # Second page
                                 routes_raw.totalprice <= totalPrice[1])
                         & (routes_raw.totalwalkingdistanceinm >= totalWalkingDistance[0]) & (
                                 routes_raw.totalwalkingdistanceinm <= totalWalkingDistance[1])
-                        & (routes_raw.totalnumberofchanges >= totalNumberOfChanges[0]) & (
-                                routes_raw.totalnumberofchanges <= totalNumberOfChanges[1])
                         & (routes_raw.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
                                 routes_raw.totaltraveltimeinhours <= totalTravelTimeInHours[1])
                         & (routes_raw.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
                                 routes_raw.totalwaitingtimeinhours <= totalWaitingTime[1])
                         ]
 
+
                     chosenODs_filtered.reset_index(drop=True, inplace=True)
 
-                    chosenODs_filtered = chosenODs_filtered.assign(
-                        id=(chosenODs_filtered['totalprice'].astype(str) + '_' + chosenODs_filtered[
-                            'totalwalkingdistanceinm'].astype(str)
-                            + '_' + chosenODs_filtered['totalnumberofchanges'].astype(str)
-                            + '_' + chosenODs_filtered['totaltraveltimeinhours'].astype(str)
-                            + '_' + chosenODs_filtered['totalwaitingtimeinhours'].astype(str))
-
-                            .astype('category').cat.codes)
-
-                    chosenODs_filtered['id'] = chosenODs_filtered['id'].astype(np.int64)
+                    chosenODs_filtered = assign_ids(chosenODs_filtered)
 
                     st.write(chosenODs_filtered)
-
-
-
-                    chosenODs_filtered.drop_duplicates(subset = ["totaltraveltimeinhours","id", "totalprice","totalnumberofchanges","totalwalkingdistanceinm","totalwaitingtimeinhours","objective","sourcename","targetname", "finalsolutionusedlabels" ],inplace=True)
-                    chosenODs.reset_index(drop=True, inplace=True)
-                    chosenODs.drop_duplicates(
-                        subset=["totaltraveltimeinhours", "totalprice", "totalnumberofchanges",
-                                "totalwalkingdistanceinm", "totalwaitingtimeinhours", "objective", "sourcename",
-                                "targetname", "finalsolutionusedlabels"], inplace=True)
-
 
                     st.write(len(chosenODs_filtered.index))
                     st.write(len(chosenODs.index))
@@ -264,15 +245,8 @@ def app2(prev_vars):  # Second page
                     st.info("* Drag the lines along the axes to filter regions.\n"
                             "* Double click on the axes releases selection.\n"
                             "* Drag different attributes for better comparison of choices.\n")
-                    fig = px.parallel_coordinates(
-                        chosenODs_filtered,
-                        color="id",
-                        labels={"id": "Route", "totalprice": "Price",
-                                "totalwalkingdistanceinm": "Walking Distance",
-                                "totalnumberofchanges": "Number of Changes",
-                                "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
-                                },
-                    )
+
+                    fig = draw_parallel_coord(chosenODs_filtered)
 
                     st.plotly_chart(fig, use_container_width=True)
 
@@ -280,21 +254,9 @@ def app2(prev_vars):  # Second page
                     if (len(chosenODs_filtered.index) > friendly_amount_lines):
                         st.info("Looks complicated? Please try to filter your preferences a bit more.")
 
-                    dataTypeDict = dict(chosenODs_filtered.dtypes)
-                    st.write(dataTypeDict)
+                    show_indicators(chosenODs_filtered, chosenODs, filters)
 
 
-                    # Showing the indicators
-                    for feature, filter in zip(chosenODs_filtered,filters):
-
-                        if chosenODs_filtered.dtypes[feature] == np.float64 or chosenODs_filtered.dtypes[feature] == np.int64:
-                            indicator_calculation(feature, filter,chosenODs,chosenODs_filtered)
-
-
-                    # TODO: output it only when the indicator appears
-                    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
-                        "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
-                        "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n")
 
                 else:
                     st.error(
@@ -312,18 +274,16 @@ def app3(prev_vars):  # Third page
     sourceName = st.selectbox('Origin', sources)
     targetName = st.selectbox('Destination', targets, index=1)
     totalPrice = st.slider('Price (Euro)', 1, 363, 0)
-    totalNumberOfChanges = st.slider('Number of changes', 0, 7, 1)
     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, 200)
     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, 0.0, step=0.5)
     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, 3.0, step=0.5)
 
     # Accepting the user input
-    def user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges, totalWalkingDistance,
+    def user_input_features(sourceName, targetName, totalPrice, totalWalkingDistance,
                             totalWaitingTime, totalTravelTimeInHours):
         data = {
             'totaltraveltimeinhours': totalTravelTimeInHours,
             'totalprice': totalPrice,
-            'totalnumberofchanges': totalNumberOfChanges,
             'totalwalkingdistanceinm': totalWalkingDistance,
             'totalwaitingtimeinhours': totalWaitingTime,
             'sourcename': sourceName,
@@ -343,7 +303,7 @@ def app3(prev_vars):  # Third page
 
             if sourceName != targetName:
 
-                input_df = user_input_features(sourceName, targetName, totalPrice, totalNumberOfChanges,
+                input_df = user_input_features(sourceName, targetName, totalPrice,
                                                totalWalkingDistance,
                                                totalWaitingTime, totalTravelTimeInHours)
 
