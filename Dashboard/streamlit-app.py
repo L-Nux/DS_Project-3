@@ -89,14 +89,16 @@ def app2(prev_vars):  # Second page
         if preference:
 
             best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
-            st.write("The best recommendation (based on your survey):")
-            st.write(best_recommendation_df["finalsolutionusedlabels"].to_string(index=False))
+            st.write(f"Your preference is: {preference}.")
+            st.write("The best recommendation (based on your preference) is:")
+            st.write("__" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False) + "__")
 
         else:
             return "### Please fill in the survey to get the best recommendation based on our algorithm"
 
         # Generating the additional recommendation
         if not best_recommendation_df.empty:
+            # User-friendly output
             # st.write(best_recommendation_df["sourcename"].to_string(index=False))
             additional_recommendation_df = additional_recommendation(chosenODs, preference)
 
@@ -140,14 +142,13 @@ def app2(prev_vars):  # Second page
 
         # Setting up filters based on the survey
         if prev_vars is not None:
-            st.write(preference)
+            # st.write(preference)
             sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
             targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
-
             match preference:
                 case 'totalprice':
-                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 1.0),step=0.5)
+                    totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 1.0), step=0.5)
                     totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
                     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
                     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
@@ -177,17 +178,23 @@ def app2(prev_vars):  # Second page
                     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
                     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
+            chosenODs = routes_raw.loc[
+                (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+                ]
+
         # Setting up filters
         else:
             sourceName = st.selectbox('Origin', sources)
             targetName = st.selectbox('Destination', targets, index=1)
 
-            totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0),step=0.5)
+            totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
             totalNumberOfChanges = st.slider('Number of changes', 0, 7, (0, 7))
             totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
+
+        filters = [totalPrice,totalNumberOfChanges,totalWalkingDistance,totalWaitingTime,totalTravelTimeInHours]
         # Recommending functionality
         if st.button('Recommend'):
             with st.spinner('Processing...'):
@@ -196,7 +203,8 @@ def app2(prev_vars):  # Second page
 
                     st.subheader('Recommendation')
 
-                    chosenODs = routes_raw.loc[
+                    # Chosen ODs with applied filters
+                    chosenODs_filtered = routes_raw.loc[
                         (routes_raw.sourcename == sourceName) & (routes_raw.targetname == targetName)
                         & (routes_raw.totalprice >= totalPrice[0]) & (
                                 routes_raw.totalprice <= totalPrice[1])
@@ -210,25 +218,38 @@ def app2(prev_vars):  # Second page
                                 routes_raw.totalwaitingtimeinhours <= totalWaitingTime[1])
                         ]
 
-                    chosenODs.reset_index(drop=True, inplace=True)
+                    chosenODs_filtered.reset_index(drop=True, inplace=True)
 
-                    chosenODs = chosenODs.assign(
-                        id=(chosenODs['totalprice'].astype(str) + '_' + chosenODs['totalwalkingdistanceinm'].astype(str)
-                            + '_' + chosenODs['totalnumberofchanges'].astype(str)
-                            + '_' + chosenODs['totaltraveltimeinhours'].astype(str)
-                            + '_' + chosenODs['totalwaitingtimeinhours'].astype(str))
+                    chosenODs_filtered = chosenODs_filtered.assign(
+                        id=(chosenODs_filtered['totalprice'].astype(str) + '_' + chosenODs_filtered[
+                            'totalwalkingdistanceinm'].astype(str)
+                            + '_' + chosenODs_filtered['totalnumberofchanges'].astype(str)
+                            + '_' + chosenODs_filtered['totaltraveltimeinhours'].astype(str)
+                            + '_' + chosenODs_filtered['totalwaitingtimeinhours'].astype(str))
 
                             .astype('category').cat.codes)
 
-                    chosenODs['id'] = chosenODs['id'].astype(np.int64)
+                    chosenODs_filtered['id'] = chosenODs_filtered['id'].astype(np.int64)
 
-                    st.write(chosenODs)
-                    st.write(totalPrice)
+                    st.write(chosenODs_filtered)
+
+
+
+                    chosenODs_filtered.drop_duplicates(subset = ["totaltraveltimeinhours","id", "totalprice","totalnumberofchanges","totalwalkingdistanceinm","totalwaitingtimeinhours","objective","sourcename","targetname", "finalsolutionusedlabels" ],inplace=True)
+                    chosenODs.reset_index(drop=True, inplace=True)
+                    chosenODs.drop_duplicates(
+                        subset=["totaltraveltimeinhours", "totalprice", "totalnumberofchanges",
+                                "totalwalkingdistanceinm", "totalwaitingtimeinhours", "objective", "sourcename",
+                                "targetname", "finalsolutionusedlabels"], inplace=True)
+
+
+                    st.write(len(chosenODs_filtered.index))
+                    st.write(len(chosenODs.index))
 
                     # final_solutions = chosenODs['finalsolutionusedlabels']
 
                     # Make the transport labels look user-friendly
-                    clean_recommendation = []
+                    # clean_recommendation = []
 
                     # for el in final_solutions:
                     #
@@ -244,7 +265,7 @@ def app2(prev_vars):  # Second page
                             "* Double click on the axes releases selection.\n"
                             "* Drag different attributes for better comparison of choices.\n")
                     fig = px.parallel_coordinates(
-                        chosenODs,
+                        chosenODs_filtered,
                         color="id",
                         labels={"id": "Route", "totalprice": "Price",
                                 "totalwalkingdistanceinm": "Walking Distance",
@@ -256,8 +277,24 @@ def app2(prev_vars):  # Second page
                     st.plotly_chart(fig, use_container_width=True)
 
                     friendly_amount_lines = 7
-                    if (len(chosenODs.index) > friendly_amount_lines):
+                    if (len(chosenODs_filtered.index) > friendly_amount_lines):
                         st.info("Looks complicated? Please try to filter your preferences a bit more.")
+
+                    dataTypeDict = dict(chosenODs_filtered.dtypes)
+                    st.write(dataTypeDict)
+
+
+                    # Showing the indicators
+                    for feature, filter in zip(chosenODs_filtered,filters):
+
+                        if chosenODs_filtered.dtypes[feature] == np.float64 or chosenODs_filtered.dtypes[feature] == np.int64:
+                            indicator_calculation(feature, filter,chosenODs,chosenODs_filtered)
+
+
+                    # TODO: output it only when the indicator appears
+                    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
+                        "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
+                        "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n")
 
                 else:
                     st.error(
