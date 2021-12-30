@@ -58,10 +58,6 @@ def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
 
     if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
 
-        st.write(df_initial[feature].max())
-        st.write(filterTuple[1])
-        st.write(df_initial[feature].min())
-        st.write(filterTuple[0])
 
         if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
                 len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:

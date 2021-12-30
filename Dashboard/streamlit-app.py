@@ -61,7 +61,6 @@ def app1(prev_vars):  # First page
 
             if st.form_submit_button("Submit"):
                 # Saving variables to use them on the recommendation page
-                # save(var_list=[preference], name="Survey", page_names=["Dashboard"])
                 save(var_list=[survey_pref_calc(travel_kids), sourceName, targetName], name="Survey",
                      page_names=["Dashboard"])
                 change_page(1)
@@ -126,7 +125,6 @@ def app2(prev_vars):  # Second page
 
         # Setting up filters based on the survey
         if prev_vars is not None:
-            # st.write(preference)
             sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
             targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
@@ -135,9 +133,6 @@ def app2(prev_vars):  # Second page
             total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
             total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
             total_walking_distance_upper_limit = routes_raw["totalwalkingdistanceinm"].max()
-
-
-
 
             match preference:
                 case 'totalprice':
@@ -154,36 +149,21 @@ def app2(prev_vars):  # Second page
                     total_walking_distance_upper_limit = 0
 
             totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
-            totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, int(total_walking_distance_upper_limit)))
-            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, float(total_waiting_time_upper_limit)), step=0.5)
+
+            totalWalkingDistance = st.slider('Walking distance (m)', 0, 965,
+                                             (0, int(total_walking_distance_upper_limit)))
+
+            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, float(total_waiting_time_upper_limit)),
+                                         step=0.5)
+
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, float(total_travel_time_upper_limit)),
                                                step=0.5)
+
             safest_route = st.checkbox("Safest route")
 
-            # case 'totalprice':
-            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 1.0), step=0.5)
-            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
-            # case 'totalwaitingtimeinhours':
-            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, ), step=0.5)
-            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 0.0), step=0.5)
-            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
-            # case 'totaltraveltimeinhours':
-            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 0.0), step=0.5)
-            # case 'totalwalkingdistanceinm':
-            #     totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-            #     totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 0))
-            #     totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-            #     totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
-            chosenODs = routes_raw.loc[
-                (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
-                ]
+
+
 
         # Setting up filters
         else:
@@ -194,8 +174,12 @@ def app2(prev_vars):  # Second page
             totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+            safest_route = st.checkbox("Safest route")
 
-        filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime ]
+        chosenODs = routes_raw.loc[
+            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+            ]
+        filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime]
         # Recommending functionality
         if st.button('Recommend'):
             with st.spinner('Processing...'):
@@ -205,24 +189,48 @@ def app2(prev_vars):  # Second page
                     st.subheader('Recommendation')
 
                     # Chosen ODs with applied filters
-                    chosenODs_filtered = routes_raw.loc[
-                        (routes_raw.sourcename == sourceName) & (routes_raw.targetname == targetName)
-                        & (routes_raw.totalprice >= totalPrice[0]) & (
-                                routes_raw.totalprice <= totalPrice[1])
-                        & (routes_raw.totalwalkingdistanceinm >= totalWalkingDistance[0]) & (
-                                routes_raw.totalwalkingdistanceinm <= totalWalkingDistance[1])
-                        & (routes_raw.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
-                                routes_raw.totaltraveltimeinhours <= totalTravelTimeInHours[1])
-                        & (routes_raw.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
-                                routes_raw.totalwaitingtimeinhours <= totalWaitingTime[1])
-                        ]
+                    chosenODs_filtered = chosenODs.loc[(chosenODs.totalprice >= totalPrice[0]) & (
+                            chosenODs.totalprice <= totalPrice[1])
+                                                       & (chosenODs.totalwalkingdistanceinm >= totalWalkingDistance[
+                        0]) & (
+                                                               chosenODs.totalwalkingdistanceinm <=
+                                                               totalWalkingDistance[1])
+                                                       & (chosenODs.totaltraveltimeinhours >= totalTravelTimeInHours[
+                        0]) & (
+                                                               chosenODs.totaltraveltimeinhours <=
+                                                               totalTravelTimeInHours[1])
+                                                       & (chosenODs.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
+                                                               chosenODs.totalwaitingtimeinhours <= totalWaitingTime[1])
+                                                       ]
 
+                    # If safest route option is chosen
+                    if safest_route:
+                        chosenODs_filtered = chosenODs.loc[(chosenODs.totalprice >= totalPrice[0]) & (
+                                chosenODs.totalprice <= totalPrice[1])
+                                                           & (chosenODs.totalwalkingdistanceinm >= totalWalkingDistance[
+                            0]) & (
+                                                                   chosenODs.totalwalkingdistanceinm <=
+                                                                   totalWalkingDistance[1])
+                                                           & (chosenODs.totaltraveltimeinhours >=
+                                                              totalTravelTimeInHours[0]) & (
+                                                                   chosenODs.totaltraveltimeinhours <=
+                                                                   totalTravelTimeInHours[1])
+                                                           & (chosenODs.totalwaitingtimeinhours >= totalWaitingTime[
+                            0]) & (
+                                                                   chosenODs.totalwaitingtimeinhours <=
+                                                                   totalWaitingTime[1])
+                                                           & (chosenODs.safety_boost == chosenODs.safety_boost.max())
+                                                           ]
 
                     chosenODs_filtered.reset_index(drop=True, inplace=True)
 
                     chosenODs_filtered = assign_ids(chosenODs_filtered)
 
-                    st.write(chosenODs_filtered)
+                    if chosenODs_filtered.empty:
+                        st.warning(
+                            "Unfortunately, there is no recommendation for the chosen itinerary. Please select another one")
+                    else:
+                        st.write(chosenODs_filtered)
 
                     st.write(len(chosenODs_filtered.index))
                     st.write(len(chosenODs.index))
