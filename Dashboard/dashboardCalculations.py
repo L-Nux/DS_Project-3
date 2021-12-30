@@ -58,6 +58,11 @@ def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
 
     if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
 
+        st.write(df_initial[feature].max())
+        st.write(filterTuple[1])
+        st.write(df_initial[feature].min())
+        st.write(filterTuple[0])
+
         if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
                 len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
 
@@ -99,11 +104,11 @@ def draw_parallel_coord(df):
 
 # Showing the indicators
 def show_indicators(df_filtered, df, filters):
-    for feature, filter in zip(df_filtered, filters):
+    for feature, filter1 in zip(df_filtered, filters):
 
         if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
             feature] == np.int64:
-            indicator_calculation(feature, filter, df, df_filtered)
+            indicator_calculation(feature, filter1, df, df_filtered)
 
     # TODO: output it only when the indicator appears
     st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"

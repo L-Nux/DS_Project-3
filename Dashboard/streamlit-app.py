@@ -195,7 +195,7 @@ def app2(prev_vars):  # Second page
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
-        filters = [totalPrice, totalWalkingDistance, totalWaitingTime, totalTravelTimeInHours]
+        filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime ]
         # Recommending functionality
         if st.button('Recommend'):
             with st.spinner('Processing...'):
