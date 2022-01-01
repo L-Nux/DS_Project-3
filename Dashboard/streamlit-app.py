@@ -2,6 +2,7 @@ import pickle
 import re
 
 import pandas as pd
+import streamlit
 from sklearn.preprocessing import OrdinalEncoder
 
 import plotly.express as px
@@ -128,8 +129,9 @@ def app2(prev_vars):  # Second page
             sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
             targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
-            price_upper_limit = routes_raw["totalprice"].max()
+            # Setting up upper limits for filters
 
+            price_upper_limit = routes_raw["totalprice"].max()
             total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
             total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
             total_walking_distance_upper_limit = routes_raw["totalwalkingdistanceinm"].max()
@@ -150,23 +152,29 @@ def app2(prev_vars):  # Second page
 
             totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
 
+            # totalPrice_upper_value = totalPrice[1]
+            # totalPrice_lower_value = totalPrice[0]
+            # change_in_total_price = change_in_filter(totalPrice_upper_value, totalPrice_lower_value, totalPrice)
+
             totalWalkingDistance = st.slider('Walking distance (m)', 0, 965,
                                              (0, int(total_walking_distance_upper_limit)))
 
-            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, float(total_waiting_time_upper_limit)),
+            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5,
+                                         (0.0, float(total_waiting_time_upper_limit)),
                                          step=0.5)
 
-            totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, float(total_travel_time_upper_limit)),
+            totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5,
+                                               (0.0, float(total_travel_time_upper_limit)),
                                                step=0.5)
 
             safest_route = st.checkbox("Safest route")
 
-
-
+            special_needs = st.checkbox("Special needs")
 
 
         # Setting up filters
         else:
+
             sourceName = st.selectbox('Origin', sources)
             targetName = st.selectbox('Destination', targets, index=1)
 
@@ -174,104 +182,74 @@ def app2(prev_vars):  # Second page
             totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
+
             safest_route = st.checkbox("Safest route")
+            special_needs = st.checkbox("Special needs")
 
-        chosenODs = routes_raw.loc[
-            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
-            ]
+        chosenODs_filtered = chosenODs
         filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime]
-        # Recommending functionality
-        if st.button('Recommend'):
-            with st.spinner('Processing...'):
 
-                if sourceName != targetName:
+        if sourceName != targetName:
 
-                    st.subheader('Recommendation')
+            chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered.totalprice >= totalPrice[0]) & (
+                    chosenODs_filtered.totalprice <= totalPrice[1])]
+            chosenODs_filtered = chosenODs_filtered.loc[
+                (chosenODs_filtered.totalwalkingdistanceinm >= totalWalkingDistance[
+                    0]) & (
+                        chosenODs_filtered.totalwalkingdistanceinm <=
+                        totalWalkingDistance[1])]
+            if safest_route:
+                chosenODs_filtered = chosenODs_filtered.loc[
+                    (chosenODs_filtered.safety_boost == chosenODs_filtered.safety_boost.max())]
 
-                    # Chosen ODs with applied filters
-                    chosenODs_filtered = chosenODs.loc[(chosenODs.totalprice >= totalPrice[0]) & (
-                            chosenODs.totalprice <= totalPrice[1])
-                                                       & (chosenODs.totalwalkingdistanceinm >= totalWalkingDistance[
-                        0]) & (
-                                                               chosenODs.totalwalkingdistanceinm <=
-                                                               totalWalkingDistance[1])
-                                                       & (chosenODs.totaltraveltimeinhours >= totalTravelTimeInHours[
-                        0]) & (
-                                                               chosenODs.totaltraveltimeinhours <=
-                                                               totalTravelTimeInHours[1])
-                                                       & (chosenODs.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
-                                                               chosenODs.totalwaitingtimeinhours <= totalWaitingTime[1])
-                                                       ]
+            chosenODs_filtered.reset_index(drop=True, inplace=True)
+            chosenODs_filtered = assign_ids(chosenODs_filtered)
 
-                    # If safest route option is chosen
-                    if safest_route:
-                        chosenODs_filtered = chosenODs.loc[(chosenODs.totalprice >= totalPrice[0]) & (
-                                chosenODs.totalprice <= totalPrice[1])
-                                                           & (chosenODs.totalwalkingdistanceinm >= totalWalkingDistance[
-                            0]) & (
-                                                                   chosenODs.totalwalkingdistanceinm <=
-                                                                   totalWalkingDistance[1])
-                                                           & (chosenODs.totaltraveltimeinhours >=
-                                                              totalTravelTimeInHours[0]) & (
-                                                                   chosenODs.totaltraveltimeinhours <=
-                                                                   totalTravelTimeInHours[1])
-                                                           & (chosenODs.totalwaitingtimeinhours >= totalWaitingTime[
-                            0]) & (
-                                                                   chosenODs.totalwaitingtimeinhours <=
-                                                                   totalWaitingTime[1])
-                                                           & (chosenODs.safety_boost == chosenODs.safety_boost.max())
-                                                           ]
+            if chosenODs_filtered.empty:
+                st.warning(
+                    "Unfortunately, there is no recommendation for the chosen filters. Please choose different values")
+            else:
 
-                    chosenODs_filtered.reset_index(drop=True, inplace=True)
+                st.write(chosenODs_filtered)
 
-                    chosenODs_filtered = assign_ids(chosenODs_filtered)
+            st.write(len(chosenODs.index))
+            st.write(len(chosenODs_filtered.index))
 
-                    if chosenODs_filtered.empty:
-                        st.warning(
-                            "Unfortunately, there is no recommendation for the chosen itinerary. Please select another one")
-                    else:
-                        st.write(chosenODs_filtered)
+            # final_solutions = chosenODs['finalsolutionusedlabels']
 
-                    st.write(len(chosenODs_filtered.index))
-                    st.write(len(chosenODs.index))
+            # Make the transport labels look user-friendly
+            # clean_recommendation = []
 
-                    # final_solutions = chosenODs['finalsolutionusedlabels']
+            # for el in final_solutions:
+            #
+            #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
+            #
+            # # Output the recommendation
+            # for el in clean_recommendation:
+            #
+            #     st.write(el)
 
-                    # Make the transport labels look user-friendly
-                    # clean_recommendation = []
+            st.write('### Explanation of your recommendation')
+            st.info("* Drag the lines along the axes to filter regions.\n"
+                    "* Double click on the axes releases selection.\n"
+                    "* Drag different attributes for better comparison of choices.\n")
 
-                    # for el in final_solutions:
-                    #
-                    #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
-                    #
-                    # # Output the recommendation
-                    # for el in clean_recommendation:
-                    #
-                    #     st.write(el)
+            fig = draw_parallel_coord(chosenODs_filtered)
 
-                    st.write('### Explanation of your recommendation')
-                    st.info("* Drag the lines along the axes to filter regions.\n"
-                            "* Double click on the axes releases selection.\n"
-                            "* Drag different attributes for better comparison of choices.\n")
+            st.plotly_chart(fig, use_container_width=True)
 
-                    fig = draw_parallel_coord(chosenODs_filtered)
+            # Checking the amount of lines on the graph. If a lot, then show an advice
+            friendly_amount_lines = 7
+            check_amount_lines(chosenODs_filtered, friendly_amount_lines)
 
-                    st.plotly_chart(fig, use_container_width=True)
+            show_indicators(chosenODs_filtered, chosenODs, filters)
 
-                    friendly_amount_lines = 7
-                    if (len(chosenODs_filtered.index) > friendly_amount_lines):
-                        st.info("Looks complicated? Please try to filter your preferences a bit more.")
+        else:
+            st.error(
+                'Recommendation cannot be done. Please select the destination that is different from the origin')
 
-                    show_indicators(chosenODs_filtered, chosenODs, filters)
+        # Page for the transport mode prediction using random forest model
 
-
-
-                else:
-                    st.error(
-                        'Recommendation cannot be done. Please select the destination that is different from the origin')
-
-
-# Page for the transport mode prediction using random forest model
 
 def app3(prev_vars):  # Third page
     st.write("# Transport Prediction")

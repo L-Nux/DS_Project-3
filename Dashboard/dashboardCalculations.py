@@ -58,7 +58,6 @@ def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
 
     if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
 
-
         if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
                 len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
 
@@ -110,3 +109,15 @@ def show_indicators(df_filtered, df, filters):
     st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
             "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
             "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n")
+
+
+def check_amount_lines(df_filtered, amount_lines):
+    if (len(df_filtered.index) > amount_lines):
+        st.info("Looks complicated? Please try to filter your preferences a bit more.")
+
+
+# def change_in_filter(filter_initial_upper_value, filter_initial_lower_value, filter_tuple):
+#     if filter_initial_upper_value != filter_tuple[1] or filter_initial_lower_value != filter_tuple[0]:
+#         st.write(filter_initial_upper_value)
+#         st.write(filter_tuple[1])
+#         return True

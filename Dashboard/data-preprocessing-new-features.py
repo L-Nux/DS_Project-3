@@ -40,4 +40,4 @@ df.rename({'totalwalkingdistance': 'totalwalkingdistanceinm',
               ,}, axis=1, inplace=True)
 
 
-df.to_csv("data.csv", index=False)
+df.to_csv("../data.csv", index=False)
