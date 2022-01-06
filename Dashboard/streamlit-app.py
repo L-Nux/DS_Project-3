@@ -2,7 +2,6 @@ import pickle
 import re
 
 import pandas as pd
-import streamlit
 from sklearn.preprocessing import OrdinalEncoder
 
 import plotly.express as px
@@ -124,6 +123,11 @@ def app2(prev_vars):  # Second page
 
         st.write("#### Configure filters and press the button to get the recommended mode for your choice")
 
+
+        chosenODs = routes_raw.loc[
+            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+            ]
+
         # Setting up filters based on the survey
         if prev_vars is not None:
             sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
@@ -167,9 +171,7 @@ def app2(prev_vars):  # Second page
                                                (0.0, float(total_travel_time_upper_limit)),
                                                step=0.5)
 
-            safest_route = st.checkbox("Safest route")
 
-            special_needs = st.checkbox("Special needs")
 
 
         # Setting up filters
@@ -183,24 +185,58 @@ def app2(prev_vars):  # Second page
             totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
             totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
-            safest_route = st.checkbox("Safest route")
-            special_needs = st.checkbox("Special needs")
+        safest_route = st.checkbox("Safest route")
+        special_needs = st.checkbox("Special needs")
+        stress_level = st.radio("Stress level", ("Low", "Moderate", "High"))
 
         chosenODs_filtered = chosenODs
         filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime]
 
         if sourceName != targetName:
-
+            # Filter by price
             chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered.totalprice >= totalPrice[0]) & (
                     chosenODs_filtered.totalprice <= totalPrice[1])]
+            # Filter by total walking distance
             chosenODs_filtered = chosenODs_filtered.loc[
                 (chosenODs_filtered.totalwalkingdistanceinm >= totalWalkingDistance[
                     0]) & (
                         chosenODs_filtered.totalwalkingdistanceinm <=
                         totalWalkingDistance[1])]
+            # Filter by total waiting time
+
+            chosenODs_filtered = chosenODs_filtered.loc[
+                (chosenODs_filtered.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
+                    chosenODs_filtered.totalwaitingtimeinhours <= totalWaitingTime[1])]
+
+            # Filter by total travel time
+
+            chosenODs_filtered = chosenODs_filtered.loc[
+                (chosenODs_filtered.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
+                    chosenODs_filtered.totaltraveltimeinhours <= totalTravelTimeInHours[1])]
+
+            # Filter by the safest route
+
             if safest_route:
                 chosenODs_filtered = chosenODs_filtered.loc[
                     (chosenODs_filtered.safety_boost == chosenODs_filtered.safety_boost.max())]
+
+            # Filter by the special needs
+            if special_needs:
+                chosenODs_filtered = chosenODs_filtered.loc[
+                    (chosenODs_filtered.totalwalkingdistanceinm == chosenODs_filtered.totalwalkingdistanceinm.min())]
+
+
+            # Filter by the stress level
+
+            if stress_level == "Low":
+                chosenODs_filtered = chosenODs_filtered.loc[
+                    chosenODs_filtered.stresslevel == "low"]
+            if stress_level == "Moderate":
+                chosenODs_filtered = chosenODs_filtered.loc[
+                    chosenODs_filtered.stresslevel == "moderate"]
+            if stress_level == "High":
+                chosenODs_filtered = chosenODs_filtered.loc[
+                    chosenODs_filtered.stresslevel == "high"]
 
             chosenODs_filtered.reset_index(drop=True, inplace=True)
             chosenODs_filtered = assign_ids(chosenODs_filtered)

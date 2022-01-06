@@ -31,6 +31,7 @@ drop_column(df, "finiteautomaton")
 
 df.drop_duplicates(inplace=True)
 df.info()
+df['stresslevel'].unique()
 
 df['totalwalkingdistance'] = (df['totalwalkingdistance'] * 1000).round(2).astype(int)
 
