@@ -57,13 +57,54 @@ def app1(prev_vars):  # First page
         # preference = st.selectbox('Filter type', ('Price', 'Waiting Time'))
         travel_kids = st.selectbox('Do you travel with kids?', ('Yes', 'No'))
 
+        chosenODs = routes_raw.loc[
+            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+            ]
+
+        preference = survey_pref_calc(travel_kids)
+
+
+
+
+
+
         if sourceName != targetName:
 
             if st.form_submit_button("Submit"):
                 # Saving variables to use them on the recommendation page
                 save(var_list=[survey_pref_calc(travel_kids), sourceName, targetName], name="Survey",
                      page_names=["Dashboard"])
-                change_page(1)
+
+                best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
+                st.write(f"Your preference is: {preference}.")
+                st.write("The best recommendation (based on your preference) is:")
+                st.write("__" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False) + "__")
+
+                # Generating the additional recommendation
+                if not best_recommendation_df.empty:
+                    # User-friendly output
+                    # st.write(best_recommendation_df["sourcename"].to_string(index=False))
+                    additional_recommendation_df = additional_recommendation(chosenODs, preference)
+
+                    comparison_best_additional = pd.concat([best_recommendation_df, additional_recommendation_df],
+                                                           axis=0)
+
+                    comparison_best_additional.reset_index(drop=True, inplace=True)
+
+                    comparison_best_additional.drop(["distance", "multimodality"], axis=1, inplace=True)
+
+                    comparison_best_additional = assign_ids(comparison_best_additional)
+
+                    comparison_best_additional_fig = draw_parallel_coord(comparison_best_additional)
+
+                    st.plotly_chart(comparison_best_additional_fig, use_container_width=True)
+
+                else:
+                    st.warning(
+                        "Unfortunately, there is no recommendation for the chosen itinerary. Please select another one")
+
+                #change_page(1)
+
         else:
             st.error(
                 'Recommendation cannot be done. Please select the destination that is different from the origin')
@@ -78,42 +119,17 @@ def app2(prev_vars):  # Second page
         sourceName = prev_vars[1]
         targetName = prev_vars[2]
 
-        chosenODs = routes_raw.loc[
-            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
-            ]
+
 
         # Checking if survey was filled in
-        if preference:
-
-            best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
-            st.write(f"Your preference is: {preference}.")
-            st.write("The best recommendation (based on your preference) is:")
-            st.write("__" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False) + "__")
-
-        else:
-            return "### Please fill in the survey to get the best recommendation based on our algorithm"
-
-        # Generating the additional recommendation
-        if not best_recommendation_df.empty:
-            # User-friendly output
-            # st.write(best_recommendation_df["sourcename"].to_string(index=False))
-            additional_recommendation_df = additional_recommendation(chosenODs, preference)
-
-            comparison_best_additional = pd.concat([best_recommendation_df, additional_recommendation_df], axis=0)
-
-            comparison_best_additional.reset_index(drop=True, inplace=True)
-
-            comparison_best_additional.drop(["distance", "multimodality"], axis=1, inplace=True)
-
-            comparison_best_additional = assign_ids(comparison_best_additional)
-
-            comparison_best_additional_fig = draw_parallel_coord(comparison_best_additional)
-
-            st.plotly_chart(comparison_best_additional_fig, use_container_width=True)
+        # if preference:
+        #
+        #
+        #
+        # else:
+        #     return "### Please fill in the survey to get the best recommendation based on our algorithm"
 
 
-        else:
-            st.warning("Unfortunately, there is no recommendation for the chosen itinerary. Please select another one")
 
     else:
         st.info("Please fill in the survey to get the best recommendation.")
