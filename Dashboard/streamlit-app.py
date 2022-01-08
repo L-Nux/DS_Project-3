@@ -1,3 +1,4 @@
+import ast
 import pickle
 import re
 
@@ -11,7 +12,7 @@ from dashboardCalculations import *
 st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard", menu_items={
     'Get Help': 'https://plotly.com/python/parallel-coordinates-plot/',
     'About': "# App for the route recommendation. \n"
-             "Version 0.1"
+             "Version 1.0"
 })
 
 # References:
@@ -39,7 +40,7 @@ targets = routes_raw['targetname'].sort_values().unique()
 
 
 def startpage():
-    st.write("# Welcome :wave:")
+    st.write("# Welcome to the Itinerary Planning Dashboard :wave: ")
 
 
 # First page
@@ -92,10 +93,30 @@ def app1(prev_vars):
                      page_names=["Manual Filters"])
 
                 best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
-                st.write(f":thumbsup: Your preference is: {preference}.")
+                st.write(f":thumbsup: Your preference is: __{preference}__.")
                 st.write(" The best recommendation (based on your preference) is:")
                 st.success(":minibus: __" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip("[]") + "__")
-                st.write()
+                st.write(f":beginner: This choice is {best_recommendation_df.safety_boost.to_string(index=False)} times safer than driving by car")
+
+                if best_recommendation_df.stresslevel.to_string(index=False)=="low":
+                    st.write(":mask: The COVID-19 incidence rate is relatively small. But better __do the test before traveling and keep the distance__")
+                elif best_recommendation_df.stresslevel.to_string(index=False)=="moderate":
+                    st.write(":mask: Travelers without vaccination who are at increased risk for severe illness from COVID-19 should __avoid nonessential travel to this destination__")
+                elif best_recommendation_df.stresslevel.to_string(index=False)=="high":
+                    st.write(":mask: Travelers without vaccination should __avoid nonessential travel to this destination__")
+
+                st.write(f":muscle: You will burn approximately __{best_recommendation_df.caloriesBurnt_avg.to_string(index=False)}__ calories during your trip")
+
+                if best_recommendation_df.mood_upgrade.to_string(index=False) == "achieved":
+
+                    st.write(":blush: The weather in your target destination is pleasant. Expect to spend your time there with the __elevated mood__")
+                elif best_recommendation_df.mood_upgrade.to_string(index=False) == "not_achieved ":
+                    st.write(
+                        ":worried: The weather in your target destination is not the best. It could __influence your mood in a bad way__")
+
+                st.write(f":moneybag: If you worked the amount of time you would spend in your trip, you would earn __{best_recommendation_df.earnings_gross.to_string(index=False)} Euro__")
+                st.write(
+                    f":traffic_light: Probability that you will not arrive on time is __{best_recommendation_df.delay_probability.to_string(index=False)}__")
 
                 # Generating the additional recommendation
                 if not best_recommendation_df.empty:
