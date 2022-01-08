@@ -4,7 +4,6 @@ import re
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 
-import plotly.express as px
 
 from multipage import *
 from dashboardCalculations import *
@@ -43,8 +42,8 @@ targets = routes_raw['targetname'].sort_values().unique()
 def startpage():
     st.write("# Welcome :wave:")
 
-
-def app1(prev_vars):  # First page
+# First page
+def app1(prev_vars):
 
     # Questionnaire for the traveler to preconfigure filters
 
@@ -64,16 +63,12 @@ def app1(prev_vars):  # First page
         preference = survey_pref_calc(travel_kids)
 
 
-
-
-
-
         if sourceName != targetName:
 
             if st.form_submit_button("Submit"):
                 # Saving variables to use them on the recommendation page
                 save(var_list=[survey_pref_calc(travel_kids), sourceName, targetName], name="Survey",
-                     page_names=["Dashboard"])
+                     page_names=["Manual Filters"])
 
                 best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
                 st.write(f"Your preference is: {preference}.")
@@ -114,12 +109,6 @@ def app1(prev_vars):  # First page
 def app2(prev_vars):  # Second page
     st.write("# Transport Recommendation App")
 
-    if prev_vars is not None:
-        preference = prev_vars[0]
-        sourceName = prev_vars[1]
-        targetName = prev_vars[2]
-
-
 
         # Checking if survey was filled in
         # if preference:
@@ -129,133 +118,176 @@ def app2(prev_vars):  # Second page
         # else:
         #     return "### Please fill in the survey to get the best recommendation based on our algorithm"
 
-
-
-    else:
-        st.info("Please fill in the survey to get the best recommendation.")
+    # else:
+    #     st.info("Please fill in the survey to get the best recommendation.")
 
     # Manual filtering section
-    with st.expander('Manual filtering'):
+    # with st.expander('Manual filtering'):
 
-        st.write("#### Configure filters and press the button to get the recommended mode for your choice")
-
-
-        chosenODs = routes_raw.loc[
-            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
-            ]
-
-        # Setting up filters based on the survey
-        if prev_vars is not None:
-            sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
-            targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
-
-            # Setting up upper limits for filters
-
-            price_upper_limit = routes_raw["totalprice"].max()
-            total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
-            total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
-            total_walking_distance_upper_limit = routes_raw["totalwalkingdistanceinm"].max()
-
-            match preference:
-                case 'totalprice':
-
-                    price_upper_limit = 1
-
-                case 'totalwaitingtimeinhours':
-                    total_waiting_time_upper_limit = 0
-                case 'totaltraveltimeinhours':
-
-                    total_travel_time_upper_limit = 0
-
-                case 'totalwalkingdistanceinm':
-                    total_walking_distance_upper_limit = 0
-
-            totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
-
-            # totalPrice_upper_value = totalPrice[1]
-            # totalPrice_lower_value = totalPrice[0]
-            # change_in_total_price = change_in_filter(totalPrice_upper_value, totalPrice_lower_value, totalPrice)
-
-            totalWalkingDistance = st.slider('Walking distance (m)', 0, 965,
-                                             (0, int(total_walking_distance_upper_limit)))
-
-            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5,
-                                         (0.0, float(total_waiting_time_upper_limit)),
-                                         step=0.5)
-
-            totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5,
-                                               (0.0, float(total_travel_time_upper_limit)),
-                                               step=0.5)
+    st.write("#### Configure filters and press the button to get the recommended mode for your choice")
 
 
 
 
-        # Setting up filters
-        else:
 
-            sourceName = st.selectbox('Origin', sources)
-            targetName = st.selectbox('Destination', targets, index=1)
+    # Setting up filters based on the survey
+    if prev_vars is not None:
+        preference = prev_vars[0]
+        sourceName = prev_vars[1]
+        targetName = prev_vars[2]
 
-            totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
-            totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
-            totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5, (0.0, 3.5), step=0.5)
-            totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5, (0.0, 4.5), step=0.5)
 
-        safest_route = st.checkbox("Safest route")
-        special_needs = st.checkbox("Special needs")
-        stress_level = st.radio("Stress level", ("Low", "Moderate", "High"))
+        sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
+        targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
-        chosenODs_filtered = chosenODs
-        filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime]
+        # Setting up upper limits for filters
 
-        if sourceName != targetName:
-            # Filter by price
-            chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered.totalprice >= totalPrice[0]) & (
-                    chosenODs_filtered.totalprice <= totalPrice[1])]
-            # Filter by total walking distance
+        price_upper_limit = routes_raw["totalprice"].max()
+        total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
+        total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
+        total_walking_distance_upper_limit = routes_raw["totalwalkingdistanceinm"].max()
+
+        match preference:
+            case 'totalprice':
+
+                price_upper_limit = 1
+
+            case 'totalwaitingtimeinhours':
+                total_waiting_time_upper_limit = 0
+            case 'totaltraveltimeinhours':
+
+                total_travel_time_upper_limit = 0
+
+            case 'totalwalkingdistanceinm':
+                total_walking_distance_upper_limit = 0
+
+        totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
+
+        # totalPrice_upper_value = totalPrice[1]
+        # totalPrice_lower_value = totalPrice[0]
+        # change_in_total_price = change_in_filter(totalPrice_upper_value, totalPrice_lower_value, totalPrice)
+
+        totalWalkingDistance = st.slider('Walking distance (m)', 0, 965,
+                                         (0, int(total_walking_distance_upper_limit)))
+
+        totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5,
+                                     (0.0, float(total_waiting_time_upper_limit)),
+                                     step=0.5)
+
+        totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 4.5,
+                                           (0.0, float(total_travel_time_upper_limit)),
+                                           step=0.5)
+
+
+
+    # Setting up filters
+    else:
+
+
+        sourceName = st.selectbox('Origin', sources)
+        targetName = st.selectbox('Destination', targets, index=1)
+
+
+
+        totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, 363.0), step=0.5)
+        totalWalkingDistance = st.slider('Walking distance (m)', 0, 965, (0, 965))
+        totalWaitingTime = st.slider('Waiting time (h)', 0.0, 22.0, (0.0, 22.0), step=0.5)
+        totalTravelTimeInHours = st.slider('Travel time (h)', 0.5, 24.0, (0.0, 24.0), step=0.5)
+
+
+        caloriesBurnt = st.slider('Calories burnt',10,2125,(10, 2125),step=5)
+
+        col1, col2 = st.columns(2)
+
+    with col1:
+        safest_route = st.checkbox("Safest Route")
+        special_needs = st.checkbox("Special Needs")
+        delay = st.checkbox("Smallest Chance of Trip Delay")
+
+    with col2:
+
+        multimodality = st.checkbox("Without Transport Change")
+        mood_upgrade = st.checkbox("Improve Mood")
+
+    stress_level = st.multiselect("Stress level", ["low", "moderate", "high"], ["low", "moderate", "high"])
+
+
+    chosenODs = routes_raw.loc[
+        (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+        ]
+
+
+    chosenODs_filtered = chosenODs
+    filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime, caloriesBurnt]
+
+
+    if sourceName != targetName:
+        # Filter by price
+        chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered.totalprice >= totalPrice[0]) & (
+                chosenODs_filtered.totalprice <= totalPrice[1])]
+        # Filter by total walking distance
+        chosenODs_filtered = chosenODs_filtered.loc[
+            (chosenODs_filtered.totalwalkingdistanceinm >= totalWalkingDistance[
+                0]) & (
+                    chosenODs_filtered.totalwalkingdistanceinm <=
+                    totalWalkingDistance[1])]
+        # Filter by total waiting time
+
+        chosenODs_filtered = chosenODs_filtered.loc[
+            (chosenODs_filtered.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
+                chosenODs_filtered.totalwaitingtimeinhours <= totalWaitingTime[1])]
+
+        # Filter by total travel time
+
+        chosenODs_filtered = chosenODs_filtered.loc[
+            (chosenODs_filtered.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
+                chosenODs_filtered.totaltraveltimeinhours <= totalTravelTimeInHours[1])]
+
+        # Filter by calories burnt
+
+        chosenODs_filtered = chosenODs_filtered.loc[
+            (chosenODs_filtered.caloriesBurnt_avg >= caloriesBurnt[0]) & (
+                    chosenODs_filtered.caloriesBurnt_avg <= caloriesBurnt[1])]
+
+        # Filter by the multimodality
+        if multimodality:
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered.totalwalkingdistanceinm >= totalWalkingDistance[
-                    0]) & (
-                        chosenODs_filtered.totalwalkingdistanceinm <=
-                        totalWalkingDistance[1])]
-            # Filter by total waiting time
+                (chosenODs_filtered.multimodality == 0)]
 
+        # Filter by the safest route
+
+        if safest_route:
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
-                    chosenODs_filtered.totalwaitingtimeinhours <= totalWaitingTime[1])]
+                (chosenODs_filtered.safety_boost == chosenODs_filtered.safety_boost.max())]
 
-            # Filter by total travel time
-
+        # Filter by the special needs
+        if special_needs:
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
-                    chosenODs_filtered.totaltraveltimeinhours <= totalTravelTimeInHours[1])]
+                (chosenODs_filtered.totalwalkingdistanceinm == chosenODs_filtered.totalwalkingdistanceinm.min())]
 
-            # Filter by the safest route
+        # Filter by the stress level
 
-            if safest_route:
-                chosenODs_filtered = chosenODs_filtered.loc[
-                    (chosenODs_filtered.safety_boost == chosenODs_filtered.safety_boost.max())]
+        if  stress_level:
+            chosenODs_filtered=chosenODs_filtered[chosenODs_filtered.stresslevel.isin(stress_level)]
 
-            # Filter by the special needs
-            if special_needs:
-                chosenODs_filtered = chosenODs_filtered.loc[
-                    (chosenODs_filtered.totalwalkingdistanceinm == chosenODs_filtered.totalwalkingdistanceinm.min())]
+        # Filter by the mood upgrade
+
+        if mood_upgrade:
+            chosenODs_filtered = chosenODs_filtered[chosenODs_filtered.mood_upgrade == "achieved"]
 
 
-            # Filter by the stress level
 
-            if stress_level == "Low":
-                chosenODs_filtered = chosenODs_filtered.loc[
-                    chosenODs_filtered.stresslevel == "low"]
-            if stress_level == "Moderate":
-                chosenODs_filtered = chosenODs_filtered.loc[
-                    chosenODs_filtered.stresslevel == "moderate"]
-            if stress_level == "High":
-                chosenODs_filtered = chosenODs_filtered.loc[
-                    chosenODs_filtered.stresslevel == "high"]
 
-            chosenODs_filtered.reset_index(drop=True, inplace=True)
-            chosenODs_filtered = assign_ids(chosenODs_filtered)
+        # Filter by the delay
+        if delay:
+            chosenODs_filtered=chosenODs_filtered[chosenODs_filtered.delay_probability == chosenODs_filtered.delay_probability.min()]
+
+
+        chosenODs_filtered.reset_index(drop=True, inplace=True)
+        chosenODs_filtered = assign_ids(chosenODs_filtered)
+
+        if st.button("Recommend"):
+
 
             if chosenODs_filtered.empty:
                 st.warning(
@@ -267,19 +299,19 @@ def app2(prev_vars):  # Second page
             st.write(len(chosenODs.index))
             st.write(len(chosenODs_filtered.index))
 
-            # final_solutions = chosenODs['finalsolutionusedlabels']
+        # final_solutions = chosenODs['finalsolutionusedlabels']
 
-            # Make the transport labels look user-friendly
-            # clean_recommendation = []
+        # Make the transport labels look user-friendly
+        # clean_recommendation = []
 
-            # for el in final_solutions:
-            #
-            #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
-            #
-            # # Output the recommendation
-            # for el in clean_recommendation:
-            #
-            #     st.write(el)
+        # for el in final_solutions:
+        #
+        #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
+        #
+        # # Output the recommendation
+        # for el in clean_recommendation:
+        #
+        #     st.write(el)
 
             st.write('### Explanation of your recommendation')
             st.info("* Drag the lines along the axes to filter regions.\n"
@@ -296,12 +328,13 @@ def app2(prev_vars):  # Second page
 
             show_indicators(chosenODs_filtered, chosenODs, filters)
 
-        else:
-            st.error(
-                'Recommendation cannot be done. Please select the destination that is different from the origin')
+    else:
+        st.error(
+            'Recommendation cannot be done. Please select the destination that is different from the origin')
 
-        # Page for the transport mode prediction using random forest model
 
+
+# Page for the transport mode prediction using random forest model
 
 def app3(prev_vars):  # Third page
     st.write("# Transport Prediction")
@@ -394,6 +427,6 @@ def app3(prev_vars):  # Third page
 
 app.set_initial_page(startpage)
 app.add_app("Survey", app1)
-app.add_app("Dashboard", app2)
+app.add_app("Manual Filters", app2)
 app.add_app("Prediction", app3)
 app.run()

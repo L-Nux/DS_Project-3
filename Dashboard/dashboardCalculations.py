@@ -79,7 +79,12 @@ def assign_ids(df):
             + '_' + df['totaltraveltimeinhours'].astype(str)
             + '_' + df['totalwaitingtimeinhours'].astype(str)
             + '_' + df['safety_boost'].astype(str)
-            + '_' + df['caloriesBurnt_avg'].astype(str))
+            + '_' + df['caloriesBurnt_avg'].astype(str)
+            + '_' + df['multimodality'].astype(str)
+            + '_' + df['stresslevel'].astype(str)
+            + '_' + df['mood_upgrade'].astype(str)
+            + '_' + df['earnings_gross'].astype(str)
+            + '_' + df['distance'].astype(str))
             .astype('category').cat.codes)
     df_with_ids['id'] = df_with_ids['id'].astype(np.int64)
 
@@ -93,6 +98,8 @@ def draw_parallel_coord(df):
         labels={"id": "Route", "totalprice": "Price",
                 "totalwalkingdistanceinm": "Walking Distance",
                 "totaltraveltimeinhours": "Travel Time", "totalwaitingtimeinhours": "Waiting Time",
+                "distance": "Distance", "multimodality": "Multimodality", "safety_boost": "Safety Degree",
+                "earnings_gross": "Earnings", "caloriesBurnt_avg": "Calories Burnt", "delay_probability":"Delay Chance"
                 },
     )
 
@@ -114,7 +121,6 @@ def show_indicators(df_filtered, df, filters):
 def check_amount_lines(df_filtered, amount_lines):
     if (len(df_filtered.index) > amount_lines):
         st.info("Looks complicated? Please try to filter your preferences a bit more.")
-
 
 # def change_in_filter(filter_initial_upper_value, filter_initial_lower_value, filter_tuple):
 #     if filter_initial_upper_value != filter_tuple[1] or filter_initial_lower_value != filter_tuple[0]:
