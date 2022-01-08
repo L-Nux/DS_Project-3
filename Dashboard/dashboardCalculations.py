@@ -249,7 +249,8 @@ def show_indicators(df_filtered, df, filters):
     # TODO: output it only when the indicator appears
     st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
             "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
-            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n")
+            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n"
+            "* Also, try to deselect all checkboxes  \n")
 
 
 def check_amount_lines(df_filtered, amount_lines):
