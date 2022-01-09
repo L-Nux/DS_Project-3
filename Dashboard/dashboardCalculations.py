@@ -186,7 +186,6 @@ def additional_recommendation(df, preference):
 # Indicator showing the extent to which the search results change due to an adjustment of the filters
 def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
     increase_indicator = 5
-    indicator_show = False
     if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
 
         if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
@@ -200,8 +199,7 @@ def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
             st.write(f"{feature} :arrow_up: :arrow_up:")
         elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 3:
             st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
-        indicator_show = True
-    return indicator_show
+
 
 # Assigning unique ids to the rows
 def assign_ids(df):
@@ -241,14 +239,17 @@ def draw_parallel_coord(df):
 # TODO: enhance with the Boolean filters
 # Showing the indicators
 def show_indicators(df_filtered, df, filters):
+
+    indicator_show = False
+
     for feature, filter1 in zip(df_filtered, filters):
 
         if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
             feature] == np.int64:
             indicator_calculation(feature, filter1, df, df_filtered)
+            indicator_show = True
 
-    if indicator_calculation(feature, filter1, df, df_filtered):
-
+    if indicator_show:
         # TODO: output it only when the indicator appears
         st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
                 "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
