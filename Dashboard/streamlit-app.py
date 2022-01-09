@@ -97,13 +97,13 @@ def app1(prev_vars):
                 # Generating the additional recommendation and showing all messages
                 if not best_recommendation_df.empty:
 
-                    st.write(f":thumbsup: Your preference is: __{preference}__.")
-                    st.write(" The best recommendation (based on your preference) is:")
+                    st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
+                    st.write(" The best transport recommendation (based on your preference) is:")
                     st.success(
                         ":minibus: __" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip(
                             "[]") + "__")
                     st.write(
-                        f":beginner: This choice is {best_recommendation_df.safety_boost.to_string(index=False)} times safer than driving by car")
+                        f":beginner: This choice is __{best_recommendation_df.safety_boost.to_string(index=False)}__ times safer than driving by car")
 
                     if best_recommendation_df.stresslevel.to_string(index=False) == "low":
                         st.write(
@@ -113,7 +113,8 @@ def app1(prev_vars):
                             ":mask: Travelers without vaccination who are at increased risk for severe illness from COVID-19 should __avoid nonessential travel to this destination__")
                     elif best_recommendation_df.stresslevel.to_string(index=False) == "high":
                         st.write(
-                            ":mask: Travelers without vaccination should __avoid nonessential travel to this destination__")
+                            ":mask: Travelers without vaccination should __avoid nonessential travel to this "
+                            "destination__")
 
                     st.write(
                         f":muscle: You will burn approximately __{best_recommendation_df.caloriesBurnt_avg.to_string(index=False)}__ calories during your trip")
@@ -127,10 +128,11 @@ def app1(prev_vars):
                             ":worried: The weather in your target destination is not the best. It could __influence your mood in a bad way__")
 
                     st.write(
-                        f":moneybag: If you worked the amount of time you would spend in your trip, you would earn __{best_recommendation_df.earnings_gross.to_string(index=False)} Euro__")
+                        f":moneybag: You can earn __{best_recommendation_df.earnings_gross.to_string(index=False)} Euro__ working instead of traveling this amount of time")
                     st.write(
                         f":traffic_light: Probability that you will not arrive on time is __{best_recommendation_df.delay_probability.to_string(index=False)}__")
-
+                    st.info(
+                        "For more flexibility in filtering, move to the next page")
 
 
                     with st.expander("Additional recommendation"):
@@ -188,6 +190,9 @@ def app2(prev_vars):  # Second page
     # TODO: preconfigure more filters
     # Setting up filters based on the survey
     if prev_vars is not None:
+
+        st.info("Your filters are preconfigured based on your survey")
+
         preference = prev_vars[0]
         sourceName = prev_vars[1]
         targetName = prev_vars[2]
@@ -271,10 +276,14 @@ def app2(prev_vars):  # Second page
     filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime, caloriesBurnt]
 
     if sourceName != targetName:
-        # Filter by price
 
 
         if st.button("Recommend"):
+
+
+            st.subheader("Your itinerary recommendations")
+
+            # Filter by price
 
             chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered.totalprice >= totalPrice[0]) & (
                     chosenODs_filtered.totalprice <= totalPrice[1])]
@@ -378,6 +387,7 @@ def app2(prev_vars):  # Second page
             friendly_amount_lines = 7
             check_amount_lines(chosenODs_filtered, friendly_amount_lines)
 
+            st.subheader("Filter indicators")
             show_indicators(chosenODs_filtered, chosenODs, filters)
 
     else:

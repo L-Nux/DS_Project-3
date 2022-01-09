@@ -175,7 +175,7 @@ def additional_recommendation(df, preference):
         additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
         if not additional_recommendation_df.empty:
             additional_recommendation_df.drop_duplicates(subset=["finalsolutionusedlabels"], inplace=True)
-            st.write(f":information_source: When the __{preference}__ is __{threshold}__ units, the features of your trip and "
+            st.write(f":information_source: When the __{preference}__ is __{additional_recommendation_df.preference.to_string(index=False)}__ units, the features of your trip and "
                      f"the transport you should choose are the next (Route 1 on the chart):")
             st.info(":minibus:" + "__" + additional_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip("[]") + "__")
             break
@@ -186,7 +186,7 @@ def additional_recommendation(df, preference):
 # Indicator showing the extent to which the search results change due to an adjustment of the filters
 def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
     increase_indicator = 5
-
+    indicator_show = False
     if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
 
         if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
@@ -200,7 +200,8 @@ def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
             st.write(f"{feature} :arrow_up: :arrow_up:")
         elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 3:
             st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
-
+        indicator_show = True
+    return indicator_show
 
 # Assigning unique ids to the rows
 def assign_ids(df):
@@ -246,11 +247,13 @@ def show_indicators(df_filtered, df, filters):
             feature] == np.int64:
             indicator_calculation(feature, filter1, df, df_filtered)
 
-    # TODO: output it only when the indicator appears
-    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
-            "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
-            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n"
-            "* Also, try to deselect all checkboxes  \n")
+    if indicator_calculation(feature, filter1, df, df_filtered):
+
+        # TODO: output it only when the indicator appears
+        st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
+                "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
+                "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n"
+                "* Also, try to deselect all checkboxes  \n")
 
 
 def check_amount_lines(df_filtered, amount_lines):
