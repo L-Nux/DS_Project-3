@@ -185,7 +185,7 @@ def app2(prev_vars):  # Second page
     # Manual filtering section
     # with st.expander('Manual filtering'):
 
-    st.write("#### Configure filters and press the button to get the recommended mode for your choice")
+    st.write("#### Configure filters and press the button to get the recommendations")
 
     # TODO: preconfigure more filters
     # Setting up filters based on the survey
@@ -263,7 +263,7 @@ def app2(prev_vars):  # Second page
     with col2:
 
         multimodality = st.checkbox("Without Transport Change")
-        mood_upgrade = st.checkbox("Improve Mood")
+        mood_upgrade = st.checkbox("Improved Mood")
 
     stress_level = st.multiselect("Stress level", ["low", "moderate", "high"], ["low", "moderate", "high"])
 
@@ -388,6 +388,7 @@ def app2(prev_vars):  # Second page
             check_amount_lines(chosenODs_filtered, friendly_amount_lines)
 
             st.subheader("Filter indicators")
+
             show_indicators(chosenODs_filtered, chosenODs, filters)
 
     else:
