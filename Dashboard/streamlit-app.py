@@ -62,7 +62,7 @@ def app1(prev_vars):
         with col1:
 
             goal = st.selectbox('What goal do you have for your trip?',
-                                ('Rest', 'Adventure', 'Quality time with family',
+                                ('Leisure', 'Adventure', 'Quality time with family',
                                  'Learn about experience/culture', 'Daily business',
                                  'Other'))
             travel_kids = st.selectbox('Do you travel with kids?', ('Yes', 'No'))
