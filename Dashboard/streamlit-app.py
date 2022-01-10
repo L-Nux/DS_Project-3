@@ -90,7 +90,7 @@ def app1(prev_vars):
             if st.form_submit_button("Submit"):
                 # Saving variables to use them on the recommendation page
                 save(var_list=[preference, sourceName, targetName], name="Survey",
-                     page_names=["Manual Filters"])
+                     page_names=["Filters"])
 
                 best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
 
@@ -489,6 +489,6 @@ def app3(prev_vars):  # Third page
 
 app.set_initial_page(startpage)
 app.add_app("Survey", app1)
-app.add_app("Manual Filters", app2)
+app.add_app("Filters", app2)
 app.add_app("Prediction", app3)
 app.run()
