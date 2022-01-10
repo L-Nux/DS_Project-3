@@ -165,17 +165,17 @@ def survey_pref_calc(goal, travel_kids, age, trip_duration, comfort_level, disab
 def additional_recommendation(df, preference):
     minvalue = df[preference].min()
 
-    threshold = 0.1
+    threshold = 0.05
 
     additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
 
     while additional_recommendation_df.empty:
 
-        threshold += 0.1
+        threshold += 0.05
         additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
         if not additional_recommendation_df.empty:
             additional_recommendation_df.drop_duplicates(subset=["finalsolutionusedlabels"], inplace=True)
-            st.write(f":information_source: When the __{preference}__ is __{additional_recommendation_df.preference.to_string(index=False)}__ units, the features of your trip and "
+            st.write(f":information_source: When the __{preference}__ is __{additional_recommendation_df[preference].to_string(index=False)}__ units, the features of your trip and "
                      f"the transport you should choose are the next (Route 1 on the chart):")
             st.info(":minibus:" + "__" + additional_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip("[]") + "__")
             break

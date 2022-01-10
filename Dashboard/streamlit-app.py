@@ -31,7 +31,7 @@ app.next_page_button = "Next Page"
 app.previous_page_button = "Previous Page"
 
 # Reading the dataset
-routes_raw = pd.read_csv('./data.csv')
+routes_raw = pd.read_csv('../data.csv')
 # routes_raw.rename({'sourcename': 'Source Name'}, axis=1, inplace=True)
 
 # Extracting only unique and sorted lists of ODs
@@ -51,7 +51,6 @@ def app1(prev_vars):
 
     with st.form("myform"):
         st.write("### Survey to provide you with the best recommendation")
-        st.info("We do not store the information provided by you in this survey!")
         sourceName = st.selectbox('Origin', sources)
         targetName = st.selectbox('Destination', targets, index=1)
 
@@ -78,6 +77,8 @@ def app1(prev_vars):
                                           'I prefer to have full comfort (better faster)'))
             disability = st.selectbox('Do you have a disability that could impact your traveling experience?',
                                       ('Yes', 'No', 'I prefer not to answer'))
+        st.warning("We do not store your answers on the questions!")
+
 
         chosenODs = routes_raw.loc[
             (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
@@ -132,7 +133,7 @@ def app1(prev_vars):
                     st.write(
                         f":traffic_light: Probability that you will not arrive on time is __{best_recommendation_df.delay_probability.to_string(index=False)}__")
                     st.info(
-                        "For more flexibility in filtering, move to the next page")
+                        "For more flexibility in filtering, move to the \"Filters\" page")
 
 
                     with st.expander("Additional recommendation"):
