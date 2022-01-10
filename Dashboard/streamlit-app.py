@@ -31,7 +31,7 @@ app.next_page_button = "Next Page"
 app.previous_page_button = "Previous Page"
 
 # Reading the dataset
-routes_raw = pd.read_csv('../data.csv')
+routes_raw = pd.read_csv('./data.csv')
 # routes_raw.rename({'sourcename': 'Source Name'}, axis=1, inplace=True)
 
 # Extracting only unique and sorted lists of ODs
