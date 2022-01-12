@@ -38,6 +38,12 @@ sources = routes_raw['sourcename'].sort_values().unique()
 targets = routes_raw['targetname'].sort_values().unique()
 
 
+totalprice = "Price"
+totalwaitingtimeinhours = "Total Waiting Time"
+totaltraveltimeinhours = "Total Travel Time"
+totalwalkingdistance = "Total Walking Distance"
+
+
 def startpage():
     st.write("# Welcome to the Itinerary Planning Dashboard :wave: ")
 
@@ -191,7 +197,7 @@ def app2(prev_vars):  # Second page
     # Setting up filters based on the survey
     if prev_vars is not None:
 
-        st.info("Your filters are preconfigured based on your survey")
+        st.info("Your filters are preconfigured based on your preference calculated from your answers to the survey")
 
         preference = prev_vars[0]
         sourceName = prev_vars[1]
@@ -202,10 +208,10 @@ def app2(prev_vars):  # Second page
 
         # Setting up upper limits for filters
 
-        price_upper_limit = routes_raw["totalprice"].max()
-        total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
-        total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
-        total_walking_distance_upper_limit = routes_raw["Total Walking Distance"].max()
+        price_upper_limit = routes_raw[totalprice].max()
+        total_waiting_time_upper_limit = routes_raw[totalwaitingtimeinhours].max()
+        total_travel_time_upper_limit = routes_raw[totaltraveltimeinhours].max()
+        total_walking_distance_upper_limit = routes_raw[totalwalkingdistance].max()
 
         match preference:
             case 'totalprice':
@@ -285,25 +291,25 @@ def app2(prev_vars):  # Second page
 
             # Filter by price
 
-            chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered.totalprice >= totalPrice[0]) & (
-                    chosenODs_filtered.totalprice <= totalPrice[1])]
+            chosenODs_filtered = chosenODs_filtered.loc[(chosenODs_filtered[totalprice] >= totalPrice[0]) & (
+                    chosenODs_filtered[totalprice] <= totalPrice[1])]
             # Filter by total walking distance
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered["Total Walking Distance"] >= totalWalkingDistance[
+                (chosenODs_filtered[totalwalkingdistance] >= totalWalkingDistance[
                     0]) & (
-                        chosenODs_filtered["Total Walking Distance"] <=
+                        chosenODs_filtered[totalwalkingdistance] <=
                         totalWalkingDistance[1])]
             # Filter by total waiting time
 
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered.totalwaitingtimeinhours >= totalWaitingTime[0]) & (
-                        chosenODs_filtered.totalwaitingtimeinhours <= totalWaitingTime[1])]
+                (chosenODs_filtered[totalwaitingtimeinhours] >= totalWaitingTime[0]) & (
+                        chosenODs_filtered[totalwaitingtimeinhours]<= totalWaitingTime[1])]
 
             # Filter by total travel time
 
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered.totaltraveltimeinhours >= totalTravelTimeInHours[0]) & (
-                        chosenODs_filtered.totaltraveltimeinhours <= totalTravelTimeInHours[1])]
+                (chosenODs_filtered[totaltraveltimeinhours] >= totalTravelTimeInHours[0]) & (
+                        chosenODs_filtered[totaltraveltimeinhours] <= totalTravelTimeInHours[1])]
 
             # Filter by calories burnt
 
@@ -490,5 +496,5 @@ def app3(prev_vars):  # Third page
 app.set_initial_page(startpage)
 app.add_app("Survey", app1)
 app.add_app("Filters", app2)
-app.add_app("Prediction", app3)
+# app.add_app("Prediction", app3)
 app.run()

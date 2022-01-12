@@ -182,7 +182,7 @@ def additional_recommendation(df, preference):
         if not additional_recommendation_df.empty:
             additional_recommendation_df.drop_duplicates(subset=["finalsolutionusedlabels"], inplace=True)
             st.write(f":information_source: When the __{preference}__ is __{additional_recommendation_df[preference].to_string(index=False)}__ units, the features of your trip and "
-                     f"the transport you should choose are the next (Route 1 on the chart):")
+                     f"the transport you should choose are the next:")
             st.info(":minibus:" + "__" + additional_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip("[]") + "__")
             break
     return additional_recommendation_df
