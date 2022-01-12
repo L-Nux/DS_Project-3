@@ -1,4 +1,3 @@
-import ast
 import pickle
 import re
 
@@ -31,7 +30,7 @@ app.next_page_button = "Next Page"
 app.previous_page_button = "Previous Page"
 
 # Reading the dataset
-routes_raw = pd.read_csv('./data.csv')
+routes_raw = pd.read_csv('../data.csv')
 # routes_raw.rename({'sourcename': 'Source Name'}, axis=1, inplace=True)
 
 # Extracting only unique and sorted lists of ODs
@@ -206,7 +205,7 @@ def app2(prev_vars):  # Second page
         price_upper_limit = routes_raw["totalprice"].max()
         total_waiting_time_upper_limit = routes_raw["totalwaitingtimeinhours"].max()
         total_travel_time_upper_limit = routes_raw["totaltraveltimeinhours"].max()
-        total_walking_distance_upper_limit = routes_raw["totalwalkingdistanceinm"].max()
+        total_walking_distance_upper_limit = routes_raw["Total Walking Distance"].max()
 
         match preference:
             case 'totalprice':
@@ -219,7 +218,7 @@ def app2(prev_vars):  # Second page
 
                 total_travel_time_upper_limit = 0
 
-            case 'totalwalkingdistanceinm':
+            case 'Total Walking Distance':
                 total_walking_distance_upper_limit = 0
 
         totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
@@ -290,9 +289,9 @@ def app2(prev_vars):  # Second page
                     chosenODs_filtered.totalprice <= totalPrice[1])]
             # Filter by total walking distance
             chosenODs_filtered = chosenODs_filtered.loc[
-                (chosenODs_filtered.totalwalkingdistanceinm >= totalWalkingDistance[
+                (chosenODs_filtered["Total Walking Distance"] >= totalWalkingDistance[
                     0]) & (
-                        chosenODs_filtered.totalwalkingdistanceinm <=
+                        chosenODs_filtered["Total Walking Distance"] <=
                         totalWalkingDistance[1])]
             # Filter by total waiting time
 
@@ -326,7 +325,7 @@ def app2(prev_vars):  # Second page
             # Filter by the special needs
             if special_needs:
                 chosenODs_filtered = chosenODs_filtered.loc[
-                    (chosenODs_filtered.totalwalkingdistanceinm == chosenODs_filtered.totalwalkingdistanceinm.min())]
+                    (chosenODs_filtered["Total Walking Distance"] == chosenODs_filtered["Total Walking Distance"].min())]
 
             # Filter by the stress level
 
@@ -418,7 +417,7 @@ def app3(prev_vars):  # Third page
         data = {
             'totaltraveltimeinhours': totalTravelTimeInHours,
             'totalprice': totalPrice,
-            'totalwalkingdistanceinm': totalWalkingDistance,
+            'Total Walking Distance': totalWalkingDistance,
             'totalwaitingtimeinhours': totalWaitingTime,
             'sourcename': sourceName,
             'targetname': targetName}

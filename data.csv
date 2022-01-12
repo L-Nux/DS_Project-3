@@ -1,4 +1,4 @@
-totaltraveltimeinhours,totalprice,totalwalkingdistanceinm,totalwaitingtimeinhours,finalsolutionusedlabels,sourcename,targetname,distance,stresslevel,multimodality,safety_boost,caloriesBurnt_avg,mood_upgrade,earnings_gross,delay_probability
+Total Travel Time,Price,Total Walking Distance,Total Waiting Time,finalsolutionusedlabels,sourcename,targetname,distance,stresslevel,multimodality,safety_boost,caloriesBurnt_avg,mood_upgrade,earnings_gross,delay_probability
 0.39,0.86,0,0.0,[flixbus],Essen,Gelsenkirchen,10.305,low,0,13,33,achieved,9.53,0.7
 0.13,2.17,0,0.0,[db_fv],Essen,Gelsenkirchen,10.305,low,0,11,11,achieved,3.18,0.6
 0.13,2.89,0,0.0,[db_fv],Essen,Gelsenkirchen,10.305,low,0,11,11,achieved,3.18,0.6
