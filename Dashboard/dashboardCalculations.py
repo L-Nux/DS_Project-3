@@ -1,7 +1,8 @@
 import operator
-import streamlit as st
+
 import numpy as np
 import plotly.express as px
+import streamlit as st
 
 
 # Preference calculation based on survey
@@ -10,7 +11,6 @@ def survey_pref_calc(goal, travel_kids, age, trip_duration, comfort_level, disab
     totalwaitingtimeinhours = "Total Waiting Time"
     totaltraveltimeinhours = "Total Travel Time"
     totalwalkingdistance = "Total Walking Distance"
-
 
     preference = {
         totalprice: 0,
@@ -163,7 +163,6 @@ def survey_pref_calc(goal, travel_kids, age, trip_duration, comfort_level, disab
         preference[totaltraveltimeinhours] += 0.5
         preference[totalwalkingdistance] += 0.5
 
-
     return max(preference.items(), key=operator.itemgetter(1))[0]
 
 
@@ -181,18 +180,20 @@ def additional_recommendation(df, preference):
         additional_recommendation_df = df.loc[(df[preference] > minvalue) & (df[preference] <= (minvalue + threshold))]
         if not additional_recommendation_df.empty:
             additional_recommendation_df.drop_duplicates(subset=["finalsolutionusedlabels"], inplace=True)
-            st.write(f":information_source: When the __{preference}__ is __{additional_recommendation_df[preference].to_string(index=False)}__ units, the features of your trip and "
-                     f"the transport you should choose are the next:")
-            st.info(":minibus:" + "__" + additional_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip("[]") + "__")
+            st.write(
+                f":information_source: When the __{preference}__ is __{additional_recommendation_df[preference].to_string(index=False)}__ units, the features of your trip and "
+                f"the transport you should choose are the next:")
+            st.info(":minibus:" + "__" + additional_recommendation_df["finalsolutionusedlabels"].to_string(
+                index=False).strip("[]") + "__")
             break
     return additional_recommendation_df
 
 
-# TODO: make the feature name look nice
-# Indicator showing the extent to which the search results change due to an adjustment of the filters
-def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
+# Indicator showing the extent to which the search results change due to an adjustment of the slider filters
+def indicator_calculation_sliders(feature, filterTuple, df_initial, df_filtered):
     increase_indicator = 5
 
+    # Check if the filter range of a particular feature doesn't cover the whole dataframe
     if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
 
         if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
@@ -206,6 +207,24 @@ def indicator_calculation(feature, filterTuple, df_initial, df_filtered):
             st.write(f"{feature} :arrow_up: :arrow_up:")
         elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 3:
             st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
+
+
+# TODO: enhance with the Boolean filters
+# Showing the indicators
+def show_indicators_sliders(df_filtered, df, filters):
+    for feature, filter1 in zip(df_filtered, filters):
+
+        if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
+            feature] == np.int64:
+            indicator_calculation_sliders(feature, filter1, df, df_filtered)
+
+    # TODO: output it only when the indicator appears
+    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
+            "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
+            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n"
+            "* Also, try to deselect all checkboxes  \n")
+
+
 
 # Assigning unique ids to the rows
 def assign_ids(df):
@@ -229,8 +248,6 @@ def assign_ids(df):
 
 
 def draw_parallel_coord(df):
-
-    st.write(df)
     return px.parallel_coordinates(
         df,
         color="id",
@@ -242,31 +259,22 @@ def draw_parallel_coord(df):
                 "safety_boost": "Safety Degree",
                 "earnings_gross": "Earnings",
                 "caloriesBurnt_avg": "Calories Burnt",
-                "delay_probability":"Delay Chance",
+                "delay_probability": "Delay Chance",
                 "multimodality": "Transport Change"
                 },
     )
-
-# TODO: enhance with the Boolean filters
-# Showing the indicators
-def show_indicators(df_filtered, df, filters):
-
-    for feature, filter1 in zip(df_filtered, filters):
-
-        if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
-            feature] == np.int64:
-            indicator_calculation(feature, filter1, df, df_filtered)
-
-    # TODO: output it only when the indicator appears
-    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
-            "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
-            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n"
-            "* Also, try to deselect all checkboxes  \n")
 
 
 def check_amount_lines(df_filtered, amount_lines):
     if (len(df_filtered.index) > amount_lines):
         st.info("Looks complicated? Please try to filter your preferences a bit more.")
+
+
+def graph_interaction_instructions():
+    st.write('### Graph interaction instructions')
+    st.info("* Drag the lines along the axes to filter regions.\n"
+            "* Double click on the axes releases selection.\n"
+            "* Drag different attributes for better comparison of choices.\n")
 
 # def change_in_filter(filter_initial_upper_value, filter_initial_lower_value, filter_tuple):
 #     if filter_initial_upper_value != filter_tuple[1] or filter_initial_lower_value != filter_tuple[0]:

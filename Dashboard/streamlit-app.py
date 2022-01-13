@@ -1,11 +1,12 @@
+import ast
 import pickle
 import re
 
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 
-from multipage import *
 from dashboardCalculations import *
+from multipage import *
 
 # Config and setup
 st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard", menu_items={
@@ -15,7 +16,7 @@ st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard
 })
 
 # References:
-# 1. Streamlit multipage framework
+# Streamlit multipage framework:
 # https://github.com/YanAlmeida/streamlit-multipage-framework
 
 
@@ -31,12 +32,10 @@ app.previous_page_button = "Previous Page"
 
 # Reading the dataset
 routes_raw = pd.read_csv('../data.csv')
-# routes_raw.rename({'sourcename': 'Source Name'}, axis=1, inplace=True)
 
 # Extracting only unique and sorted lists of ODs
 sources = routes_raw['sourcename'].sort_values().unique()
 targets = routes_raw['targetname'].sort_values().unique()
-
 
 totalprice = "Price"
 totalwaitingtimeinhours = "Total Waiting Time"
@@ -50,9 +49,9 @@ def startpage():
 
 # First page
 def app1(prev_vars):
-    # Questionnaire for the traveler to preconfigure filters
+    # Questionnaire for the traveler
 
-    # TODO: make output look better and with additional info
+    st.write("# Transport Recommendation Dashboard")
 
     with st.form("myform"):
         st.write("### Survey to provide you with the best recommendation")
@@ -79,11 +78,10 @@ def app1(prev_vars):
             comfort_level = st.selectbox('What comfort level do you prefer?',
                                          ('Comfort does not matter much to me (better cheaper)',
                                           'I am fine to be a bit uncomfortable during the trip',
-                                          'I prefer to have full comfort (better faster)'))
+                                          'I prefer to have full comfort'))
             disability = st.selectbox('Do you have a disability that could impact your traveling experience?',
                                       ('Yes', 'No', 'I prefer not to answer'))
         st.warning("We do not store your answers on the questions!")
-
 
         chosenODs = routes_raw.loc[
             (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
@@ -94,7 +92,7 @@ def app1(prev_vars):
         if sourceName != targetName:
 
             if st.form_submit_button("Submit"):
-                # Saving variables to use them on the recommendation page
+                # Saving variables to use them on the filters page
                 save(var_list=[preference, sourceName, targetName], name="Survey",
                      page_names=["Filters"])
 
@@ -134,12 +132,11 @@ def app1(prev_vars):
                             ":worried: The weather in your target destination is not the best. It could __influence your mood in a bad way__")
 
                     st.write(
-                        f":moneybag: You can earn __{best_recommendation_df.earnings_gross.to_string(index=False)} Euro__ working instead of traveling this amount of time")
+                        f":moneybag: You could earn __{best_recommendation_df.earnings_gross.to_string(index=False)} Euro__ working instead of traveling this amount of time")
                     st.write(
                         f":traffic_light: Probability that you will not arrive on time is __{best_recommendation_df.delay_probability.to_string(index=False)}__")
                     st.info(
                         "For more flexibility in filtering, move to the \"Filters\" page")
-
 
                     with st.expander("Additional recommendation"):
                         # Receiving the additional recommendation
@@ -156,6 +153,8 @@ def app1(prev_vars):
                         comparison_best_additional.drop_duplicates(inplace=True)
 
                         comparison_best_additional = assign_ids(comparison_best_additional)
+
+                        graph_interaction_instructions()
 
                         # Drawing the chart
                         comparison_best_additional_fig = draw_parallel_coord(comparison_best_additional)
@@ -175,7 +174,7 @@ def app1(prev_vars):
 
 # Recommendation page
 def app2(prev_vars):  # Second page
-    st.write("# Transport Recommendation App")
+    st.write("# Transport Recommendation Dashboard")
 
     # Checking if survey was filled in
     # if preference:
@@ -214,17 +213,17 @@ def app2(prev_vars):  # Second page
         total_walking_distance_upper_limit = routes_raw[totalwalkingdistance].max()
 
         match preference:
-            case 'totalprice':
+            case "Price":
 
                 price_upper_limit = 1
 
-            case 'totalwaitingtimeinhours':
+            case "Total Waiting Time":
                 total_waiting_time_upper_limit = 0
-            case 'totaltraveltimeinhours':
+            case "Total Travel Time":
 
                 total_travel_time_upper_limit = 0
 
-            case 'Total Walking Distance':
+            case "Total Walking Distance":
                 total_walking_distance_upper_limit = 0
 
         totalPrice = st.slider('Price (Euro)', 1.0, 363.0, (1.0, float(price_upper_limit)), step=0.5)
@@ -264,7 +263,7 @@ def app2(prev_vars):  # Second page
     with col1:
         safest_route = st.checkbox("Safest Route")
         special_needs = st.checkbox("Special Needs")
-        delay = st.checkbox("Smallest Chance of Trip Delay")
+        delay = st.checkbox("Lowest Chance of Trip Delay")
 
     with col2:
 
@@ -278,16 +277,15 @@ def app2(prev_vars):  # Second page
         ]
 
     chosenODs_filtered = chosenODs
+    # max_safety_boost = chosenODs.safety_boost.max()
+    # min_totalwalkingdistance = chosenODs[totalwalkingdistance].min()
 
     filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime, caloriesBurnt]
 
     if sourceName != targetName:
 
-
         if st.button("Recommend"):
 
-
-            st.subheader("Your itinerary recommendations")
 
             # Filter by price
 
@@ -303,7 +301,7 @@ def app2(prev_vars):  # Second page
 
             chosenODs_filtered = chosenODs_filtered.loc[
                 (chosenODs_filtered[totalwaitingtimeinhours] >= totalWaitingTime[0]) & (
-                        chosenODs_filtered[totalwaitingtimeinhours]<= totalWaitingTime[1])]
+                        chosenODs_filtered[totalwaitingtimeinhours] <= totalWaitingTime[1])]
 
             # Filter by total travel time
 
@@ -317,47 +315,198 @@ def app2(prev_vars):  # Second page
                 (chosenODs_filtered.caloriesBurnt_avg >= caloriesBurnt[0]) & (
                         chosenODs_filtered.caloriesBurnt_avg <= caloriesBurnt[1])]
 
+
+
+            increase_indicator = 5
+
+
+            # Array for storing dictionaries of feature_name and the corresponding value of the indicator
+            array_checkbox_feature_indicator = []
+
+
+
+            number_indicators = 0
+            feature_name= ""
+
             # Filter by the multimodality
             if multimodality:
                 chosenODs_filtered = chosenODs_filtered.loc[
                     (chosenODs_filtered.multimodality == 0)]
+                feature_name = "Without Transport Change"
 
+                # Check if the initial df bigger than filtered df and to what extent. Then assign value for an indicator
+                if (len(chosenODs.index) - len(chosenODs.loc[
+                            (chosenODs.multimodality == 0)].index)) >= increase_indicator and (
+                        len(chosenODs.index) - len(chosenODs.loc[
+                                                       (chosenODs.multimodality == 0)].index)) < increase_indicator * 2:
+                    number_indicators = 1
+
+                elif (len(chosenODs.index) - len(chosenODs.loc[
+                            (chosenODs.multimodality == 0)].index)) >= increase_indicator * 2 and (
+                        (len(chosenODs.index) - len(chosenODs.loc[
+                            (chosenODs.multimodality == 0)].index))) < increase_indicator * 3:
+
+                    number_indicators = 2
+
+                elif (len(chosenODs.index) - len(chosenODs.loc[
+                            (chosenODs.multimodality == 0)].index)) >= increase_indicator * 3:
+                    number_indicators = 3
+
+                array_checkbox_feature_indicator.append({"feature_name":feature_name, "number_indicators":number_indicators})
+                number_indicators = 0
             # Filter by the safest route
 
             if safest_route:
                 chosenODs_filtered = chosenODs_filtered.loc[
                     (chosenODs_filtered.safety_boost == chosenODs_filtered.safety_boost.max())]
+                feature_name = "Safest Route"
 
+
+                if (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs.safety_boost == chosenODs.safety_boost.max())].index)) >= increase_indicator and (
+                        len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs.safety_boost == chosenODs.safety_boost.max())].index)) < increase_indicator * 2:
+                    number_indicators = 1
+
+                elif (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs.safety_boost == chosenODs.safety_boost.max())].index)) >= increase_indicator * 2 and (
+                        (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs.safety_boost == chosenODs.safety_boost.max())].index))) < increase_indicator * 3:
+
+                    number_indicators = 2
+
+                elif (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs.safety_boost == chosenODs.safety_boost.max())].index)) >= increase_indicator * 3:
+                    number_indicators = 3
+
+                array_checkbox_feature_indicator.append({"feature_name":feature_name, "number_indicators":number_indicators})
+                number_indicators = 0
             # Filter by the special needs
             if special_needs:
                 chosenODs_filtered = chosenODs_filtered.loc[
-                    (chosenODs_filtered["Total Walking Distance"] == chosenODs_filtered["Total Walking Distance"].min())]
+                    (chosenODs_filtered[totalwalkingdistance] == chosenODs_filtered[
+                        totalwalkingdistance].min())]
+
+                feature_name = "Special Needs"
+                if (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs[totalwalkingdistance] == chosenODs[
+                        totalwalkingdistance].min())].index)) >= increase_indicator and (
+                        len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs[totalwalkingdistance] == chosenODs[
+                        totalwalkingdistance].min())].index)) < increase_indicator * 2:
+                    number_indicators = 1
+
+                elif (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs[totalwalkingdistance] == chosenODs[
+                        totalwalkingdistance].min())].index)) >= increase_indicator * 2 and (
+                        (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs[totalwalkingdistance] == chosenODs[
+                        totalwalkingdistance].min())].index))) < increase_indicator * 3:
+
+                    number_indicators = 2
+
+                elif (len(chosenODs.index) - len(chosenODs.loc[
+                    (chosenODs[totalwalkingdistance] == chosenODs[
+                        totalwalkingdistance].min())].index)) >= increase_indicator * 3:
+                    number_indicators = 3
+
+                array_checkbox_feature_indicator.append(
+                    {"feature_name": feature_name, "number_indicators": number_indicators})
+
+                number_indicators = 0
 
             # Filter by the stress level
 
             if stress_level:
                 chosenODs_filtered = chosenODs_filtered[chosenODs_filtered.stresslevel.isin(stress_level)]
 
+
+                feature_name = "Stress Level"
+                if (len(chosenODs.index) - len(chosenODs[chosenODs.stresslevel.isin(stress_level)].index)) >= increase_indicator and (
+                        len(chosenODs.index) - len(chosenODs[chosenODs.stresslevel.isin(stress_level)].index)) < increase_indicator * 2:
+                    number_indicators = 1
+
+                elif (len(chosenODs.index) - len(chosenODs[chosenODs.stresslevel.isin(stress_level)].index)) >= increase_indicator * 2 and (
+                        (len(chosenODs.index) - len(chosenODs[chosenODs.stresslevel.isin(stress_level)].index))) < increase_indicator * 3:
+
+                    number_indicators = 2
+
+                elif (len(chosenODs.index) - len(chosenODs[chosenODs.stresslevel.isin(stress_level)].index)) >= increase_indicator * 3:
+                    number_indicators = 3
+
+                array_checkbox_feature_indicator.append(
+                        {"feature_name": feature_name, "number_indicators": number_indicators})
+
             # Filter by the mood upgrade
 
             if mood_upgrade:
                 chosenODs_filtered = chosenODs_filtered[chosenODs_filtered.mood_upgrade == "achieved"]
+
+                feature_name = "Mood Upgrade"
+                if (len(chosenODs.index) - len(
+                        chosenODs[chosenODs.mood_upgrade == "achieved"].index)) >= increase_indicator and (
+                        len(chosenODs.index) - len(
+                    chosenODs[chosenODs.mood_upgrade == "achieved"].index)) < increase_indicator * 2:
+                    number_indicators = 1
+
+                elif (len(chosenODs.index) - len(
+                        chosenODs[chosenODs.mood_upgrade == "achieved"].index)) >= increase_indicator * 2 and (
+                        (len(chosenODs.index) - len(
+                            chosenODs[chosenODs.mood_upgrade == "achieved"].index))) < increase_indicator * 3:
+
+                    number_indicators = 2
+
+                elif (len(chosenODs.index) - len(
+                        chosenODs[chosenODs.mood_upgrade == "achieved"].index)) >= increase_indicator * 3:
+                    number_indicators = 3
+
+                array_checkbox_feature_indicator.append(
+                    {"feature_name": feature_name, "number_indicators": number_indicators})
+                number_indicators = 0
 
             # Filter by the delay
             if delay:
                 chosenODs_filtered = chosenODs_filtered[
                     chosenODs_filtered.delay_probability == chosenODs_filtered.delay_probability.min()]
 
+
+
+                feature_name = "Lowest Chance of Trip Delay"
+                if (len(chosenODs.index) - len(
+                        chosenODs[
+                            chosenODs.delay_probability == chosenODs.delay_probability.min()].index)) >= increase_indicator and (
+                        len(chosenODs.index) - len(
+                    chosenODs[
+                        chosenODs.delay_probability == chosenODs.delay_probability.min()].index)) < increase_indicator * 2:
+                    number_indicators = 1
+
+                elif (len(chosenODs.index) - len(
+                        chosenODs[
+                            chosenODs.delay_probability == chosenODs.delay_probability.min()].index)) >= increase_indicator * 2 and (
+                        (len(chosenODs.index) - len(
+                            chosenODs[
+                                chosenODs.delay_probability == chosenODs.delay_probability.min()].index))) < increase_indicator * 3:
+
+                    number_indicators = 2
+
+                elif (len(chosenODs.index) - len(
+                        chosenODs[
+                            chosenODs.delay_probability == chosenODs.delay_probability.min()].index)) >= increase_indicator * 3:
+                    number_indicators = 3
+
+                array_checkbox_feature_indicator.append(
+                    {"feature_name": feature_name, "number_indicators": number_indicators})
+
+                number_indicators = 0
+
+
+
             chosenODs_filtered.reset_index(drop=True, inplace=True)
             chosenODs_filtered = assign_ids(chosenODs_filtered)
-
-
-
 
             if chosenODs_filtered.empty:
                 st.warning(
                     "Unfortunately, there is no recommendation for the chosen filters. Please choose different values")
-
 
             st.write(len(chosenODs.index))
             st.write(len(chosenODs_filtered.index))
@@ -376,14 +525,17 @@ def app2(prev_vars):  # Second page
             #
             #     st.write(el)
 
-            st.write('### Explanation of your recommendation')
-            st.info("* Drag the lines along the axes to filter regions.\n"
-                    "* Double click on the axes releases selection.\n"
-                    "* Drag different attributes for better comparison of choices.\n")
+
+
+            st.subheader("Your route recommendations")
 
             chosenODs_filtered.drop(["distance"], axis=1, inplace=True)
 
             chosenODs_filtered.drop_duplicates(inplace=True)
+
+            st.write(chosenODs_filtered)
+
+            graph_interaction_instructions()
 
             fig = draw_parallel_coord(chosenODs_filtered)
 
@@ -395,8 +547,17 @@ def app2(prev_vars):  # Second page
 
             st.subheader("Filter indicators")
 
-            show_indicators(chosenODs_filtered, chosenODs, filters)
+            show_indicators_sliders(chosenODs_filtered, chosenODs, filters)
 
+            # Check each object in dictionary and if it has specific value of an indicator, show the name and value of the indicator
+            for el in array_checkbox_feature_indicator:
+
+                if el["number_indicators"] == 1:
+                    st.write(f"{el['feature_name']} :arrow_up:")
+                elif el["number_indicators"] == 2:
+                    st.write(f"{el['feature_name']} :arrow_up: :arrow_up:")
+                elif el["number_indicators"] == 3:
+                    st.write(f"{el['feature_name']} :arrow_up: :arrow_up: :arrow_up:")
     else:
         st.error(
             'Recommendation cannot be done. Please select the destination that is different from the origin')
