@@ -190,39 +190,27 @@ def additional_recommendation(df, preference):
 
 
 # Indicator showing the extent to which the search results change due to an adjustment of the slider filters
-def indicator_calculation_sliders(feature, filterTuple, df_initial, df_filtered):
-    increase_indicator = 5
+def indicator_calculation_sliders(increase_indicator, filters, df_initial, df_filtered):
 
-    # Check if the filter range of a particular feature doesn't cover the whole dataframe
-    if df_initial[feature].max() > filterTuple[1] or df_initial[feature].min() < filterTuple[0]:
-
-        if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
-                len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
-
-            st.write(f"{feature} :arrow_up:")
-
-        elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 2 and (
-                len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 3:
-
-            st.write(f"{feature} :arrow_up: :arrow_up:")
-        elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 3:
-            st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
-
-
-# TODO: enhance with the Boolean filters
-# Showing the indicators
-def show_indicators_sliders(df_filtered, df, filters):
     for feature, filter1 in zip(df_filtered, filters):
 
         if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
             feature] == np.int64:
-            indicator_calculation_sliders(feature, filter1, df, df_filtered)
 
-    # TODO: output it only when the indicator appears
-    st.info("* 1 arrow = if you adjust this feature a few of additional recommendations appear \n"
-            "* 2 arrows = if you adjust this feature a dozen of additional recommendations appear \n"
-            "* 3 arrows = if you adjust this feature a lot of additional recommendations appear \n"
-            "* Also, try to deselect all checkboxes  \n")
+            # Check if the filter range of a particular feature doesn't cover the whole dataframe
+            if df_initial[feature].max() > filter1[1] or df_initial[feature].min() < filter1[0]:
+
+                if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
+                        len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
+
+                    st.write(f"{feature} :arrow_up:")
+
+                elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 2 and (
+                        len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 3:
+
+                    st.write(f"{feature} :arrow_up: :arrow_up:")
+                elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 3:
+                    st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
 
 
 
