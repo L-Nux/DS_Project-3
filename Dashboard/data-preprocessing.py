@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("withoutcolumns.csv")
+df = pd.read_csv(r"withoutcolumns.csv")
 
 def drop_column(df, column_name):
     for col in df.columns:
@@ -35,5 +35,5 @@ df = df.rename(columns={'totaltraveltimeinsec': 'totaltraveltimeinhours', 'total
 
 describe = df.describe()
 
-df.to_csv("data.csv", index=False)
+df.to_csv("model-training.csv", index=False)
 

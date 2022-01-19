@@ -14,6 +14,8 @@ st.set_page_config(layout="wide", page_title="Transport Recommendation Dashboard
              "Version 1.0"
 })
 
+pd.options.display.max_colwidth = 300
+
 # References:
 # Streamlit multipage framework:
 # https://github.com/YanAlmeida/streamlit-multipage-framework
@@ -97,6 +99,8 @@ def app1(prev_vars):
 
                 best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
 
+                st.write(best_recommendation_df)
+
                 # Generating the additional recommendation and showing all messages
                 if not best_recommendation_df.empty:
 
@@ -134,6 +138,93 @@ def app1(prev_vars):
                         f":moneybag: You could earn __{best_recommendation_df.earnings_gross.to_string(index=False)} Euro__ working instead of traveling this amount of time")
                     st.write(
                         f":traffic_light: Probability that you will not arrive on time is __{best_recommendation_df.delay_probability.to_string(index=False)}__")
+
+                    if best_recommendation_df.luggage_transportation.to_string(
+                            index=False) == "unlimited carry-on and standard bags,no extra charge":
+                        st.write(
+                            ":handbag: The luggage policy is generous, enjoy your trip with no limitations on board of RE/RB, Deutsche Bahn- trains")
+                    elif best_recommendation_df.luggage_transportation.to_string(
+                            index=False) == "1 carry-on bag up to 7 kg, 1 free checked baggage up to 20 kg, additional bags per fee":
+                        st.write(
+                            ":handbag: The luggage policy is pretty strict, although suitcases may not be checked and weighed. However, it is recommended to follow the rules of the carrier company: an upper bound is 1 carry-on bag up to 7 kg& 1 free checked baggage up to 20 kg. Additional bags might be included per fee")
+                    elif best_recommendation_df.luggage_transportation.to_string(
+                            index=False) == "2 pieces of hand luggage, 2 free pieces of checked baggage up to 23 kg, additional bags per fee":
+                        st.write(
+                            ":handbag: The luggage policy is moderate and you can bring a lot of things with you.The suitcases may not be checked and weighed. However, it is recommended to follow the rules of the carrier company: an upper bound is 2 pieces of hand luggage, 2 free pieces of checked baggage up to 23 kg, additional bags per fee ")
+
+                    elif best_recommendation_df.luggage_transportation.to_string(
+                            index=False) == "several hand bags, 6 bags, unlimited weight":
+                        st.write(
+                            ":handbag: You are the host of your own baggage policy, since you are traveling by your private car. It is recommended to take into account the number of passengers in the car and the volume of the trunk to calculate the luggage that can be placed inside ")
+
+                    elif best_recommendation_df.luggage_transportation.to_string(
+                            index=False) == "1 carry-on bag up to 8kg, 1 free checked baggage up to 23 kg, additional bags per fee":
+                        st.write(
+                            ":handbag: The luggage policy is strict, the suitcases will be 100% checked with respect to the dimensions and weighed. It is highly recommended to follow the rules of the carrier company: an upper bound is 1 carry-on bag up to 8kg, 1 free checked baggage up to 23 kg, additional bags per fee ")
+
+                    if best_recommendation_df.meal_option.to_string(
+                            index=False) == "catering trolley, on-board catering with 2-g rule":
+                        st.write(
+                            ":stew: There is no need to prepare the snacks in advance, you can buy them on board. Restaurant serving options are possible in compliance with 2-g rule ")
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared own snacks, on-board purshase of low cost snacks&drinks + catering trolley, on-board catering with 2-g rule":
+                        st.write(
+                            ":stew: There is no need to bring the snacks with you, it would be possible to buy them in a bus. Restaurant serving options are available in compliance with 2-g rule in trains. However, your trip is combined and you may consider to buy your own edibles in advance. ")
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared cold food&drinks, no alcohol + catering trolley, on-board catering with 2-g rule":
+                        st.write(
+                            ":stew: You could only eat your own cold food in a bus.Catering trolley and the restaurant serving options are possible in compliance with 2-g rule in trains ")
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared own snacks, on-board purshase of low cost snacks&drinks":
+                        st.write(
+                            ":stew: You can either prepare your own simple snacks and drinks in advance or purchase them on board the bus ")
+
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared own snacks, buying at gas stations":
+                        st.write(
+                            ":stew: Driving your own car, consider the possibility of having a meal prepared in advance or stop at a gas station to satisfy your hunger ")
+
+
+
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "catering trolley, on-board catering with 2-g rule+ prepared own snacks, on-board purshase of low cost snacks&drinks+ prepared cold food&drinks, no alcohol":
+                        st.write(
+                            ":stew: Your trip incudes 3 different transports, where you can either buy food on board or bring your own food in advance. To get service in a restaurant , you must follow the 2-g rule ")
+
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared cold food&drinks, no alcohol+ prepared own snacks, on-board purshase of low cost snacks&drinks":
+                        st.write(
+                            ":stew: Not all buses are equipped with the option of buying food, it is better to take care of your own nutritious cold snacks and beverages in advance ")
+
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared cold food&drinks, no alcohol":
+                        st.write(
+                            ":stew: It is necessary to bring food with you, buying on board would be impossible, just like drinking alcohol ")
+
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared own snacks, on-board purshase of low cost snacks&drinks+ up to 30 min- chocolate, up to 60 min - free water, 60+ min snacks, beverages,cold vegetarian dish, alcohol is possible+ catering trolley, on-board catering with 2-g rule":
+                        st.write(
+                            ":stew: Your trip involves an airplane, where meals are already included and a train where, according to the 2-g rule, you can get service in a restaurant. If you want to eat more on the bus, you can buy light snacks on board ")
+
+                    elif best_recommendation_df.meal_option.to_string(
+                            index=False) == "prepared own snacks, on-board purshase of low cost snacks&drinks+ up to 30 min- chocolate, up to 60 min - free water, 60+ min snacks, beverages,cold vegetarian dish, alcohol is possible":
+                        st.write(
+                            ":stew: Your trip involves an airplane where meals are already included. If you want to eat more on the bus, you can buy light snacks on board or prepare the cold dishes & drinks in advance ")
+
+                    if (best_recommendation_df.possible_expences == 4).bool():
+                        st.write(
+                            ":money_with_wings: The cost of living is relatively modest, enjoy your journey without high prices for goods and services")
+                    elif (best_recommendation_df.possible_expences == 3).bool():
+                        st.write(
+                            ":money_with_wings: The cost of living is moderate, prices for goods and services are in the middle range. Most likely you will not find increased prices for goods and services ")
+                    elif (best_recommendation_df.possible_expences == 2).bool():
+                        st.write(
+                            ":money_with_wings: Salaries in this city are quite high, which may directly indicate increased prices for goods and services, be prepared that the expenses may be significant ")
+                    elif (best_recommendation_df.possible_expences == 1).bool():
+                        st.write(
+                            ":money_with_wings: Be prepared to spend spend quite a lot of money in the town of your choice, prices for goods and services will be above average, taking into account the cost of living and average net salaries of city residents ")
+
+                    # Notification about the Filters page
                     st.info(
                         "For more flexibility in filtering, move to the \"Filters\" page")
 
@@ -153,7 +244,7 @@ def app1(prev_vars):
 
                         comparison_best_additional = assign_ids(comparison_best_additional)
 
-                        graph_interaction_instructions()
+                        show_graph_interaction_instructions()
 
                         # Drawing the chart
                         comparison_best_additional_fig = draw_parallel_coord(comparison_best_additional)
@@ -161,14 +252,12 @@ def app1(prev_vars):
                         st.plotly_chart(comparison_best_additional_fig, use_container_width=True)
 
                 else:
-                    st.warning(
-                        "Unfortunately, there is no recommendation for the chosen itinerary :pensive: Please select another one")
+                    notify_no_recommendation()
 
                 # change_page(1)
 
         else:
-            st.error(
-                'Recommendation cannot be done. Please select the destination that is different from the origin')
+            notify_different_source_origin()
 
 
 # Recommendation page
@@ -303,10 +392,11 @@ def app2(prev_vars):  # Second page
             number_indicators = 0
             feature_name = ""
 
-            #TODO: fix the representation of indicators for the whole filtered dataframe (currently it is represented only for the whole frame, desired state is to represent for the
+            # TODO: Fix the representation of indicators for the whole filtered dataframe (currently it is represented only for the whole frame, desired state is to represent for the
             # only filtered part of the dataset. E.g. we applied safest_route filter and the amount of rows became 12. Thus, if application of the e.g. filter delay will increase this amount, only
             #     then represent the indicators
 
+            # TODO: Filter checkboxes by the whole dataframe
 
             # Filter by the multimodality
             if multimodality:
@@ -377,25 +467,30 @@ def app2(prev_vars):  # Second page
 
                 feature_name = "Special Needs"
                 if (len(chosenODs_filtered.index) - len(chosenODs_filtered.loc[
-                                                   (chosenODs_filtered[totalwalkingdistance] == chosenODs_filtered[
-                                                       totalwalkingdistance].min())].index)) >= increase_indicator and (
+                                                            (chosenODs_filtered[totalwalkingdistance] ==
+                                                             chosenODs_filtered[
+                                                                 totalwalkingdistance].min())].index)) >= increase_indicator and (
                         len(chosenODs_filtered.index) - len(chosenODs_filtered.loc[
-                                                       (chosenODs_filtered[totalwalkingdistance] == chosenODs_filtered[
-                                                           totalwalkingdistance].min())].index)) < increase_indicator * 2:
+                                                                (chosenODs_filtered[totalwalkingdistance] ==
+                                                                 chosenODs_filtered[
+                                                                     totalwalkingdistance].min())].index)) < increase_indicator * 2:
                     number_indicators = 1
 
                 elif (len(chosenODs_filtered.index) - len(chosenODs_filtered.loc[
-                                                     (chosenODs_filtered[totalwalkingdistance] == chosenODs_filtered[
-                                                         totalwalkingdistance].min())].index)) >= increase_indicator * 2 and (
+                                                              (chosenODs_filtered[totalwalkingdistance] ==
+                                                               chosenODs_filtered[
+                                                                   totalwalkingdistance].min())].index)) >= increase_indicator * 2 and (
                         (len(chosenODs_filtered.index) - len(chosenODs_filtered.loc[
-                                                        (chosenODs_filtered[totalwalkingdistance] == chosenODs_filtered[
-                                                            totalwalkingdistance].min())].index))) < increase_indicator * 3:
+                                                                 (chosenODs_filtered[totalwalkingdistance] ==
+                                                                  chosenODs_filtered[
+                                                                      totalwalkingdistance].min())].index))) < increase_indicator * 3:
 
                     number_indicators = 2
 
                 elif (len(chosenODs_filtered.index) - len(chosenODs_filtered.loc[
-                                                     (chosenODs_filtered[totalwalkingdistance] == chosenODs_filtered[
-                                                         totalwalkingdistance].min())].index)) >= increase_indicator * 3:
+                                                              (chosenODs_filtered[totalwalkingdistance] ==
+                                                               chosenODs_filtered[
+                                                                   totalwalkingdistance].min())].index)) >= increase_indicator * 3:
                     number_indicators = 3
 
                 array_checkbox_feature_indicator.append(
@@ -493,67 +588,67 @@ def app2(prev_vars):  # Second page
             chosenODs_filtered = assign_ids(chosenODs_filtered)
 
             if chosenODs_filtered.empty:
-                st.warning(
-                    "Unfortunately, there is no recommendation for the chosen filters. Please choose different values")
+                notify_no_recommendation()
 
-            st.write(len(chosenODs.index))
-            st.write(len(chosenODs_filtered.index))
+            else:
+                st.write(len(chosenODs.index))
+                st.write(len(chosenODs_filtered.index))
 
-            # final_solutions = chosenODs['finalsolutionusedlabels']
+                # final_solutions = chosenODs['finalsolutionusedlabels']
 
-            # Make the transport labels look user-friendly
-            # clean_recommendation = []
+                # Make the transport labels look user-friendly
+                # clean_recommendation = []
 
-            # for el in final_solutions:
-            #
-            #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
-            #
-            # # Output the recommendation
-            # for el in clean_recommendation:
-            #
-            #     st.write(el)
+                # for el in final_solutions:
+                #
+                #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
+                #
+                # # Output the recommendation
+                # for el in clean_recommendation:
+                #
+                #     st.write(el)
 
-            st.subheader("Your route recommendations")
+                st.subheader("Your route recommendations")
 
-            chosenODs_filtered.drop(["distance"], axis=1, inplace=True)
+                chosenODs_filtered.drop(["distance"], axis=1, inplace=True)
 
-            chosenODs_filtered.drop_duplicates(inplace=True)
+                chosenODs_filtered.drop_duplicates(inplace=True)
 
-            st.write(chosenODs_filtered)
+                st.write(chosenODs_filtered)
 
-            graph_interaction_instructions()
+                show_graph_interaction_instructions()
 
-            fig = draw_parallel_coord(chosenODs_filtered)
+                fig = draw_parallel_coord(chosenODs_filtered)
 
-            st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True)
 
-            # Checking the amount of lines on the graph. If a lot, then show an advice
-            friendly_amount_lines = 7
-            check_amount_lines(chosenODs_filtered, friendly_amount_lines)
+                # Checking the amount of lines on the graph. If a lot, then show an advice
+                friendly_amount_lines = 7
+                check_amount_lines(chosenODs_filtered, friendly_amount_lines)
 
-            # Show filter indicators section
-            if len(chosenODs.index) - len(chosenODs_filtered.index) >= increase_indicator:
-                st.subheader("Filter indicators")
+                # Show filter indicators section
+                if len(chosenODs.index) - len(chosenODs_filtered.index) >= increase_indicator:
+                    st.subheader("Filter indicators")
 
-                indicator_calculation_sliders(increase_indicator, filters, chosenODs, chosenODs_filtered)
+                    indicator_calculation_sliders(increase_indicator, filters, chosenODs, chosenODs_filtered)
 
-                # Check each object in dictionary and if it has specific value of an indicator, show the name and
-                # value of the indicator
-                for el in array_checkbox_feature_indicator:
+                    # Check each object in dictionary and if it has specific value of an indicator, show the name and
+                    # value of the indicator
+                    for el in array_checkbox_feature_indicator:
 
-                    if el["number_indicators"] == 1:
-                        st.write(f"{el['feature_name']} :arrow_up:")
-                    elif el["number_indicators"] == 2:
-                        st.write(f"{el['feature_name']} :arrow_up: :arrow_up:")
-                    elif el["number_indicators"] == 3:
-                        st.write(f"{el['feature_name']} :arrow_up: :arrow_up: :arrow_up:")
+                        if el["number_indicators"] == 1:
+                            st.write(f"{el['feature_name']} :arrow_up:")
+                        elif el["number_indicators"] == 2:
+                            st.write(f"{el['feature_name']} :arrow_up: :arrow_up:")
+                        elif el["number_indicators"] == 3:
+                            st.write(f"{el['feature_name']} :arrow_up: :arrow_up: :arrow_up:")
 
-                st.info("- :arrow_up: -- by adjusting this feature, a few of additional recommendations will appear \n"
+                    st.info(
+                        "- :arrow_up: -- by adjusting this feature, a few of additional recommendations will appear \n"
                         "- :arrow_up: :arrow_up: -- by adjusting this feature, a dozen of additional recommendations will appear \n"
                         "- :arrow_up: :arrow_up: :arrow_up: -- by adjusting this feature, a lot of additional recommendations will appear \n")
     else:
-        st.error(
-            'Recommendation cannot be done. Please select the destination that is different from the origin')
+        notify_different_source_origin()
 
 
 # Page for the transport mode prediction using random forest model

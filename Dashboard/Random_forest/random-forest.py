@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
 
-routes = pd.read_csv('./data.csv')
+routes = pd.read_csv('./model-training.csv')
 
 # Ordinal feature encoding
 df = routes.copy()
@@ -22,6 +22,8 @@ df["finalsolutionusedlabels_code"] = ord_enc.fit_transform(df[["finalsolutionuse
 # Separating X and y
 X = df.drop(['finalsolutionusedlabels_code', 'finalsolutionusedlabels'], axis=1)
 Y = df['finalsolutionusedlabels_code']
+
+y_shape = Y.shape[0]
 
 # Splitting the dataset
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3)

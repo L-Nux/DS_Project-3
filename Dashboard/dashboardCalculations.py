@@ -258,11 +258,18 @@ def check_amount_lines(df_filtered, amount_lines):
         st.info("Looks complicated? Please try to filter your preferences a bit more.")
 
 
-def graph_interaction_instructions():
+def show_graph_interaction_instructions():
     st.write('### Graph interaction instructions')
     st.info("* Drag the lines along the axes to filter regions.\n"
             "* Double click on the axes releases selection.\n"
             "* Drag different attributes for better comparison of choices.\n")
+
+def notify_no_recommendation():
+    st.warning(
+        "Unfortunately, there is no recommendation for the chosen itinerary :pensive: Please select another one")
+def notify_different_source_origin():
+    st.error(
+        'Recommendation cannot be done. The destination and the origin should be different. Please select them according to this requirement')
 
 # def change_in_filter(filter_initial_upper_value, filter_initial_lower_value, filter_tuple):
 #     if filter_initial_upper_value != filter_tuple[1] or filter_initial_lower_value != filter_tuple[0]:

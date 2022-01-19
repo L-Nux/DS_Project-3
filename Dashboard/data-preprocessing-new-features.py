@@ -5,31 +5,17 @@ df = pd.read_csv(r"I:\University of Vienna\3 term\Data Analysis Project\DS_Proje
 df.info()
 
 
-def drop_column(df, column_name):
-    for col in df.columns:
-        if column_name in col:
-            del df[col]
-
-
 # dropping unnecessary columns
 
-drop_column(df, "Unnamed: 0")
-drop_column(df, "objective")
-drop_column(df, "consideredpreferences")
-drop_column(df, "travelfrom")
-drop_column(df, "travelto")
-drop_column(df, "numtravelfrom")
-drop_column(df, "numtravelto")
-drop_column(df, "totalnumberofchanges")
-drop_column(df, "temperaturefrom")
-drop_column(df, "temperatureto")
-drop_column(df, "humidityfrom")
-drop_column(df, "humidityto")
-drop_column(df, "pressurefrom")
-drop_column(df, "pressureto")
-drop_column(df, "finiteautomaton")
+
+df.drop(['Unnamed: 0', 'objective', 'col', 'final', 'finiteautomaton',  'totalnumberofchanges', 'numtravelto', 'numtravelfrom', 'travelto', 'travelfrom',
+         'consideredpreferences'], inplace = True, axis = 1)
+
 
 df.drop_duplicates(inplace=True)
+
+
+df['luggage_transportation'].unique()
 
 df['totalwalkingdistance'] = (df['totalwalkingdistance'] * 1000).round(2).astype(int)
 
