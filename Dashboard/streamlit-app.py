@@ -59,11 +59,11 @@ def upload_distances():
         
 # get distance between two cities from runtime memory
 def get_distance(source_city, target_city):
-  s = source_city + "_" + target_city
-  if s in cities_distance:
-    return cities_distance[s]
-  else:
-    return "-1"
+    s = source_city + "_" + target_city
+    if s in cities_distance:
+        return cities_distance[s]
+    else:
+        return "-1"
    
 # First page
 def app1(prev_vars):
