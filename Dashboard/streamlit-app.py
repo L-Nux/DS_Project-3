@@ -173,7 +173,7 @@ def app1(prev_vars):
                     elif best_recommendation_df.meal_option.to_string(
                             index=False) == "prepared cold food&drinks, no alcohol + catering trolley, on-board catering with 2-g rule":
                         st.write(
-                            ":stew: You could only eat your own cold food in a bus.Catering trolley and the restaurant serving options are possible in compliance with 2-g rule in trains ")
+                            ":stew: You could only eat your own cold food in a bus. Catering trolley and the restaurant serving options are possible in compliance with 2-g rule in trains ")
                     elif best_recommendation_df.meal_option.to_string(
                             index=False) == "prepared own snacks, on-board purshase of low cost snacks&drinks":
                         st.write(
@@ -222,7 +222,7 @@ def app1(prev_vars):
                             ":money_with_wings: Salaries in this city are quite high, which may directly indicate increased prices for goods and services, be prepared that the expenses may be significant ")
                     elif (best_recommendation_df.possible_expences == 1).bool():
                         st.write(
-                            ":money_with_wings: Be prepared to spend spend quite a lot of money in the town of your choice, prices for goods and services will be above average, taking into account the cost of living and average net salaries of city residents ")
+                            ":money_with_wings: Be prepared to spend quite a lot of money in the town of your choice, prices for goods and services will be above average, taking into account the cost of living and average net salaries of city residents ")
 
                     # Notification about the Filters page
                     st.info(
