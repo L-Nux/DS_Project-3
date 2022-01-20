@@ -71,6 +71,7 @@ Drop sourcename and targetname for the algorithm- we would need to consider the 
 PLUS also categorical travelfrom and travelto got dropped-we will use numerical replacements to check the behavious of the alghorithm
 """
 
+
 #the duplicates were removed
 df.drop_duplicates(keep='last', inplace=True)
 
