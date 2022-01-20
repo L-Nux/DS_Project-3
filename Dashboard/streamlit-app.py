@@ -36,18 +36,35 @@ routes_raw = pd.read_csv('../data.csv')
 
 # Extracting only unique and sorted lists of ODs
 sources = routes_raw['sourcename'].sort_values().unique()
-targets = routes_raw['targetname'].sort_values().unique()
+targets = routes_rawroutes_raw['targetname'].sort_values().unique()
 
 totalprice = "Price"
 totalwaitingtimeinhours = "Total Waiting Time"
 totaltraveltimeinhours = "Total Travel Time"
 totalwalkingdistance = "Total Walking Distance"
 
+cities_distance = {}
 
 def startpage():
+    upload_distance()
     st.write("# Welcome to the Itinerary Planning Dashboard :wave: ")
 
-
+# upload distances between cities into the runtime memory
+def upload_distances():
+    for row in range(0, len(df)):
+      k = routes_raw["sourcename"][row] + "_" + routes_raw["targetname"][row]
+      v = routes_raw["distance"][row]
+      if k not in cities_distance:
+        cities_distance[k] = v
+        
+# get distance between two cities from runtime memory
+def get_distance(source_city, target_city):
+  s = source_city + "_" + target_city
+  if s in cities_distance:
+    return cities_distance[s]
+  else:
+    return "-1"
+   
 # First page
 def app1(prev_vars):
     # Questionnaire for the traveler
@@ -102,8 +119,10 @@ def app1(prev_vars):
                 st.write(best_recommendation_df)
 
                 # Generating the additional recommendation and showing all messages
+                
                 if not best_recommendation_df.empty:
-
+                    dist = get_distance(sourceName, targetName)
+                    st.write(f":home: In order to reach the final destination you need to cover : __{dist}__ km."
                     st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
                     st.write(" The best transport recommendation (based on your preference) is:")
                     st.success(
