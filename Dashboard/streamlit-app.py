@@ -46,12 +46,12 @@ totalwalkingdistance = "Total Walking Distance"
 cities_distance = {}
 
 def startpage():
-    upload_distance()
+    upload_distance() #open on a start page
     st.write("# Welcome to the Itinerary Planning Dashboard :wave: ")
 
 # upload distances between cities into the runtime memory
 def upload_distances():
-    for row in range(0, len(df)):
+    for row in range(0, len(routes_raw)):
       k = routes_raw["sourcename"][row] + "_" + routes_raw["targetname"][row]
       v = routes_raw["distance"][row]
       if k not in cities_distance:
@@ -122,7 +122,7 @@ def app1(prev_vars):
                 
                 if not best_recommendation_df.empty:
                     dist = get_distance(sourceName, targetName)
-                    st.write(f":home: In order to reach the final destination you need to cover : __{dist}__ km."
+                    st.write(f":arrow: In order to reach the final destination you need to cover : __{dist}__ km."
                     st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
                     st.write(" The best transport recommendation (based on your preference) is:")
                     st.success(
