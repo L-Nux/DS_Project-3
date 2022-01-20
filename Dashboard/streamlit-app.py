@@ -36,7 +36,7 @@ routes_raw = pd.read_csv('../data.csv')
 
 # Extracting only unique and sorted lists of ODs
 sources = routes_raw['sourcename'].sort_values().unique()
-targets = routes_rawroutes_raw['targetname'].sort_values().unique()
+targets = routes_raw['targetname'].sort_values().unique()
 
 totalprice = "Price"
 totalwaitingtimeinhours = "Total Waiting Time"
