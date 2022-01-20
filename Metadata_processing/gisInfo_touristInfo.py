@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from itertools import combinations
+from itertools import permutations
 
 os.chdir("/home/lisnux/Desktop/UniWien/WS2122/DS_Project/data/additional_metadata/")
 
@@ -11,7 +11,7 @@ tourist_info = pd.read_csv("tourist_info.csv", encoding = 'utf-8', delimiter=";"
 #prepare datasets
 
 cities = gis_data.city.unique()
-routes = list(combinations(cities, 2))
+routes = list(permutations(cities, 2))
 
 #create routes list
 
@@ -74,7 +74,7 @@ new_df['origin_info'] = new_df['origin'].map(tourist_info_dict)
 new_df['destination_info'] = new_df['destination'].map(tourist_info_dict)
 
 #save new dataset
-new_df.to_csv("gisInfo_touristInfo.csv", encoding = 'utf-8')
+new_df.to_csv("gisInfo_touristInfo_final.csv", encoding = 'utf-8')
 
 
 
