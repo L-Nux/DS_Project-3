@@ -3,6 +3,7 @@ import re
 
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
+import pydeck as pdk
 
 from dashboardCalculations import *
 from multipage import *
@@ -33,6 +34,8 @@ app.previous_page_button = "Previous Page"
 
 # Reading the dataset
 routes_raw = pd.read_csv('../data.csv')
+gis_data = pd.read_csv("../gis_data.csv", encoding='utf-8', delimiter=";", index_col=0)
+gis_tourist_data = pd.read_csv("../gisInfo_touristInfo_final.csv", encoding='utf-8', delimiter=",", index_col=0)
 
 # Extracting only unique and sorted lists of ODs
 sources = routes_raw['sourcename'].sort_values().unique()
@@ -760,10 +763,126 @@ def app3(prev_vars):  # Third page
             else:
                 st.error(
                     'Recommendation cannot be done. Please select the destination that is different from the origin')
+#Map page
+def app4(prev_vars):
 
+    st.title("GIS Routing")
+    # Create a text element and let the reader know the data is loading.
+
+    # very basic map
+    st.subheader('All cities in travel system:')
+    data_load_state = st.text('Loading GIS data...')
+    st.map(gis_data)
+
+    # list of origin and destination cities
+    st.subheader('Find your route:')
+    origins = gis_tourist_data['origin'].sort_values().unique().tolist()
+    sourceName = st.selectbox('Origin', origins)
+    destinations = gis_tourist_data['destination'].sort_values().unique().tolist()
+    targetName = st.selectbox('Destination', destinations)
+    st.info("You selected: {} - {}".format(sourceName, targetName))
+
+    if sourceName != targetName:
+        OD_pair = str(sourceName + "-" + targetName)
+        # get route info
+        chosenOD = gis_tourist_data.loc[
+            (gis_tourist_data['routes'] == OD_pair)]  # & (gis_tourist_data['destination'] == targetName)]
+
+        # fancier map
+        chosenPath = chosenOD.path.item()
+
+        origin_gis = chosenOD.origin_gis.values[0]
+        destination_gis = chosenOD.destination_gis.values[0]
+        orig_lon = float(origin_gis.split(", ")[0].replace('[', ''))
+        orig_lat = float(origin_gis.split(", ")[1].replace(']', ''))
+        dest_lon = float(destination_gis.split(", ")[0].replace('[', ''))
+        dest_lat = float(destination_gis.split(", ")[1].replace(']', ''))
+
+        def get_middle_gis(oLon, oLat, dLon, dLat):
+            lon = (oLon + dLon) / 2
+            lat = (oLat + dLat) / 2
+
+            return lon, lat
+
+        middle_lon, middle_lat = get_middle_gis(orig_lon, orig_lat, dest_lon, dest_lat)
+
+        origin_info = chosenOD.origin_info.values[0]
+        destination_info = chosenOD.destination_info.values[0]
+
+        origin_name = chosenOD.origin.values[0]
+        destination_name = chosenOD.destination.values[0]
+
+        st.write("Would you like to get some information on your destination city?")
+        agree = st.checkbox("Yes, please")
+        if agree:
+            st.write("Follow this link:", destination_info)
+
+        middle_ger_lon = 51.163361
+        middle_ger_lat = 10.447683
+        view = pdk.ViewState(
+            latitude=middle_lat,
+            longitude=middle_lon,
+            zoom=5.5)
+
+        st.pydeck_chart(pdk.Deck(
+            map_style='mapbox://styles/mapbox/streets-v11',
+            initial_view_state=view,
+            layers=[
+                pdk.Layer(
+                    'PathLayer',
+                    data=chosenOD,
+                    pickable=True,
+                    get_color='[200, 30, 0, 160]',
+                    width_scale=20,
+                    width_min_pixels=4,
+                    get_path=chosenPath,
+                    get_width=5),
+                pdk.Layer(
+                    'ScatterplotLayer',
+                    chosenOD,
+                    pickable=True,
+                    opacity=0.8,
+                    stroked=True,
+                    filled=True,
+                    radius_scale=6,
+                    radius_min_pixels=5,
+                    line_width_min_pixels=1,
+                    get_position=origin_gis,
+                    get_radius=60,
+                    get_fill_color=[64, 64, 64, 160],
+                    get_line_color=[0, 0, 0],
+                ),
+                pdk.Layer(
+                    'ScatterplotLayer',
+                    chosenOD,
+                    pickable=True,
+                    opacity=0.8,
+                    stroked=True,
+                    filled=True,
+                    radius_scale=6,
+                    radius_min_pixels=5,
+                    line_width_min_pixels=1,
+                    get_position=destination_gis,
+                    get_radius=60,
+                    get_fill_color=[200, 30, 0, 160],
+                    get_line_color=[0, 0, 0],
+                ),
+                pdk.Layer(
+                    "TextLayer",
+                    chosenOD,
+                    pickable=True,
+                    get_position=origin_gis,
+                    get_text=origin_name,
+                    get_size=16,
+                    get_color=[64, 64, 64],
+                    get_angle=0
+                )
+            ]
+        ))
 
 app.set_initial_page(startpage)
 app.add_app("Survey", app1)
 app.add_app("Filters", app2)
 # app.add_app("Prediction", app3)
+app.add_app("Mapping", app4)
 app.run()
