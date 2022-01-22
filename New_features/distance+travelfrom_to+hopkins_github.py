@@ -23,7 +23,6 @@ df = pd.read_csv(file)
 print(df.describe()) #statistics
 
 df
-
 # drop redundant column via reading
 df.drop('Unnamed: 0', axis=1, inplace=True)
 
