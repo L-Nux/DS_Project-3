@@ -31,7 +31,7 @@ for city in cities:
 PARAMS = {}
   
 # send get request and save the response as response object
-r = requests.get(url = url_1, params = PARAMS)
+r = requests.get(url = url_1, params = PARAMS) 
   
 # extract data in json format
 #response = r.json() #parse the response
