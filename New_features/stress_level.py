@@ -164,4 +164,4 @@ nn.loc[nn['targetname'] == 'Bamberg']
 #save dataset for further usage in common one
 from google.colab import files
 nn.to_csv('alldata.csv') 
-files.download('alldata.csv')
+files.download('alldata.csv') 
