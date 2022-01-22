@@ -153,7 +153,7 @@ if best_recommendation_df.meal_option.to_string(index=False) == "catering trolle
                         st.write(
                             ":food: Driving your own car, consider the possibility of having a meal prepared in advance or stop at a gas station to satisfy your hunger ")
                             
-                        
+                      
                     
                     elif best_recommendation_df.meal_option.to_string(index=False) == "catering trolley, on-board catering with 2-g rule+ prepared own snacks, on-board purshase of low cost snacks&drinks+ prepared cold food&drinks, no alcohol":
                         st.write(
