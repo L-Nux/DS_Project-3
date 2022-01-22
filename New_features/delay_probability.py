@@ -73,12 +73,6 @@ BLABLACAR mode in Germany: consists of the blablacar option with the car and bla
 
 
 
-
-
-
-
-
-
 """
 
 #compute the probability values and populate the respective column 'delay_probability"
