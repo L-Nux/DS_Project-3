@@ -28,7 +28,7 @@ data3 = pd.read_csv(file)
 print(data3.describe()) #statistics
 
 #select rows with the specific values
-data3[(data3 == 999999.0).any(axis=1)]
+data3[(data3 == 999999.0).any(axis=1)] 
 
 """3 dimensional dataset has 17048 rows with the unreal values of 999999.0"""
 
