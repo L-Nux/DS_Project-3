@@ -21,7 +21,6 @@ https://www.destatis.de/EN/Themes/Labour/Earnings/Earnings-Earnings-Differences/
 24.44 €
 hourly gross earnings in Germany
 
-
 """
 
 #add the new column for future feature
