@@ -1,8 +1,9 @@
+import pickle
 import re
 
 import pandas as pd
-from sklearn.preprocessing import OrdinalEncoder
 import pydeck as pdk
+from sklearn.preprocessing import OrdinalEncoder
 
 from dashboardCalculations import *
 from multipage import *
@@ -47,26 +48,11 @@ totalwalkingdistance = "Total Walking Distance"
 
 cities_distance = {}
 
+
 def startpage():
-    upload_distance() #open on a start page
     st.write("# Welcome to the Itinerary Planning Dashboard :wave: ")
 
-# upload distances between cities into the runtime memory
-def upload_distances():
-    for row in range(0, len(routes_raw)):
-      k = routes_raw["sourcename"][row] + "_" + routes_raw["targetname"][row]
-      v = routes_raw["distance"][row]
-      if k not in cities_distance:
-        cities_distance[k] = v
-        
-# get distance between two cities from runtime memory
-def get_distance(source_city, target_city):
-    s = source_city + "_" + target_city
-    if s in cities_distance:
-        return cities_distance[s]
-    else:
-        return "-1"
-   
+
 # First page
 def app1(prev_vars):
     # Questionnaire for the traveler
@@ -119,12 +105,13 @@ def app1(prev_vars):
                 best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
 
                 # Generating the additional recommendation and showing all messages
-                
+
                 if not best_recommendation_df.empty:
-                    dist = get_distance(sourceName, targetName)
-                    st.write(f":arrow: In order to reach the final destination you need to cover : __{dist}__ km."
-                    st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
+
                     st.write(" The best transport recommendation (based on your preference) is:")
+                    st.write(":arrow_right: In order to reach the final destination you need to cover : __" +
+                             best_recommendation_df["distance"].to_string(index=False) + "__ km.")
+                    st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
                     st.success(
                         ":minibus: __" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip(
                             "[]") + "__")
@@ -410,7 +397,6 @@ def app2(prev_vars):  # Second page
 
             increase_indicator = 15
 
-
             # TODO: Fix the representation of indicators
 
             # Filter by the multimodality
@@ -430,12 +416,11 @@ def app2(prev_vars):  # Second page
 
                 st.write(df_after_mult_filt)
 
-
-                array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_mult_filt, df_before_mult_filt,
-                                                                     increase_indicator, "Without Transport Change"))
+                array_checkbox_feature_indicator.append(
+                    indicator_calculation_checkboxes(df_after_mult_filt, df_before_mult_filt,
+                                                     increase_indicator, "Without Transport Change"))
 
             # Filter by the safest route
-
 
             if safest_route:
 
@@ -448,10 +433,9 @@ def app2(prev_vars):  # Second page
 
                 df_after_safe_filt = len(chosenODs.query(filter_str).index)
 
-
-                array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_safe_filt, df_before_safe_filt,
-                                                                     increase_indicator,"Safest Route"))
-
+                array_checkbox_feature_indicator.append(
+                    indicator_calculation_checkboxes(df_after_safe_filt, df_before_safe_filt,
+                                                     increase_indicator, "Safest Route"))
 
             # Filter by the special needs
             if special_needs:
@@ -465,10 +449,10 @@ def app2(prev_vars):  # Second page
 
                 df_after_special_needs_filt = len(chosenODs.query(filter_str).index)
 
-
-
                 array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_special_needs_filt,
-                                                                     df_before_special_needs_filt, increase_indicator,"Special Needs"))
+                                                                                         df_before_special_needs_filt,
+                                                                                         increase_indicator,
+                                                                                         "Special Needs"))
 
             # Filter by the stress level
 
@@ -482,7 +466,6 @@ def app2(prev_vars):  # Second page
                     filter_str = filter_str + f"stresslevel.isin({stress_level})"
 
                 # df_after_stress_level_filt = len(chosenODs.query(filter_str).index)
-
 
                 # array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_stress_level_filt,
                 #                                                      df_before_stress_level_filt, increase_indicator,"Stress Level"))
@@ -501,7 +484,9 @@ def app2(prev_vars):  # Second page
                 df_after_mood_upgrade_filt = len(chosenODs.query(filter_str).index)
 
                 array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_mood_upgrade_filt,
-                                                                     df_before_mood_upgrade_filt, increase_indicator, "Mood Upgrade"))
+                                                                                         df_before_mood_upgrade_filt,
+                                                                                         increase_indicator,
+                                                                                         "Mood Upgrade"))
 
             # Filter by the delay
             if delay:
@@ -515,15 +500,13 @@ def app2(prev_vars):  # Second page
 
                 df_after_delay_filt = len(chosenODs.query(filter_str).index)
 
-
-                array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_delay_filt, df_before_delay_filt,
-                                                                     increase_indicator,"Lowest Chance of Trip Delay"))
+                array_checkbox_feature_indicator.append(
+                    indicator_calculation_checkboxes(df_after_delay_filt, df_before_delay_filt,
+                                                     increase_indicator, "Lowest Chance of Trip Delay"))
 
             # Applying filtering
             if not filter_str == "":
                 chosenODs_filtered = chosenODs.query(filter_str)
-
-
 
             chosenODs_filtered.reset_index(drop=True, inplace=True)
             chosenODs_filtered = assign_ids(chosenODs_filtered)
@@ -682,15 +665,16 @@ def app3(prev_vars):  # Third page
             else:
                 st.error(
                     'Recommendation cannot be done. Please select the destination that is different from the origin')
-#Map page
-def app4(prev_vars):
 
+
+# Map page
+def app4(prev_vars):
     st.title("GIS Routing")
     # Create a text element and let the reader know the data is loading.
 
     # very basic map
     st.subheader('All cities in travel system:')
-    data_load_state = st.text('Loading GIS data...')
+    # data_load_state = st.text('Loading GIS data...')
     st.map(gis_data)
 
     # list of origin and destination cities
@@ -798,6 +782,7 @@ def app4(prev_vars):
                 )
             ]
         ))
+
 
 app.set_initial_page(startpage)
 app.add_app("Survey", app1)
