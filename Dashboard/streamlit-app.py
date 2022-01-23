@@ -34,8 +34,8 @@ app.previous_page_button = "Previous Page"
 
 # Reading the dataset
 routes_raw = pd.read_csv('./data.csv')
-gis_data = pd.read_csv("../gis_data.csv", encoding='utf-8', delimiter=";", index_col=0)
-gis_tourist_data = pd.read_csv("../gisInfo_touristInfo_final.csv", encoding='utf-8', delimiter=",", index_col=0)
+gis_data = pd.read_csv("./gis_data.csv", encoding='utf-8', delimiter=";", index_col=0)
+gis_tourist_data = pd.read_csv("./gisInfo_touristInfo_final.csv", encoding='utf-8', delimiter=",", index_col=0)
 
 # Extracting only unique and sorted lists of ODs
 sources = routes_raw['sourcename'].sort_values().unique()
