@@ -191,7 +191,6 @@ def additional_recommendation(df, preference):
 
 # Indicator showing the extent to which the search results change due to an adjustment of the slider filters
 def indicator_calculation_sliders(increase_indicator, filters, df_initial, df_filtered):
-
     for feature, filter1 in zip(df_filtered, filters):
 
         if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
@@ -200,18 +199,20 @@ def indicator_calculation_sliders(increase_indicator, filters, df_initial, df_fi
             # Check if the filter range of a particular feature doesn't cover the whole dataframe
             if df_initial[feature].max() > filter1[1] or df_initial[feature].min() < filter1[0]:
 
-                if (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator and (
-                        len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
-
+                if (len(df_initial.index) - len(df_filtered.index)) > 0:
                     st.write(f"{feature} :arrow_up:")
 
-                elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 2 and (
-                        len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 3:
 
-                    st.write(f"{feature} :arrow_up: :arrow_up:")
-                elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 3:
-                    st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
-
+                # if (len(df_initial.index) - len(df_filtered.index))  < increase_indicator :
+                #
+                #     st.write(f"{feature} :arrow_up:")
+                #
+                # elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator  and (
+                #         len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
+                #
+                #     st.write(f"{feature} :arrow_up: :arrow_up:")
+                # elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 2:
+                #     st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
 
 
 # Assigning unique ids to the rows
@@ -264,15 +265,44 @@ def show_graph_interaction_instructions():
             "* Double click on the axes releases selection.\n"
             "* Drag different attributes for better comparison of choices.\n")
 
+
 def notify_no_recommendation():
     st.warning(
-        "Unfortunately, there is no recommendation for the chosen itinerary :pensive: Please select another one")
+        "Unfortunately, there is no recommendation for the chosen setting :pensive: Please try to change it")
+
+
 def notify_different_source_origin():
     st.error(
         'Recommendation cannot be done. The destination and the origin should be different. Please select them according to this requirement')
 
-# def change_in_filter(filter_initial_upper_value, filter_initial_lower_value, filter_tuple):
-#     if filter_initial_upper_value != filter_tuple[1] or filter_initial_lower_value != filter_tuple[0]:
-#         st.write(filter_initial_upper_value)
-#         st.write(filter_tuple[1])
-#         return True
+
+def indicator_calculation_checkboxes(df_after_filt, df_before_filt, increase_indicator, feature_name):
+    increase_indicator = increase_indicator
+    number_indicators = 0
+
+
+
+
+    if df_after_filt != None and df_before_filt != None:
+
+        if (df_before_filt - df_after_filt) > 0:
+            number_indicators = 1
+
+        # if (df_before_filt - df_after_filt) < increase_indicator:
+        #     number_indicators = 1
+        #
+        # elif (df_before_filt - df_after_filt) >= increase_indicator and (
+        #         df_before_filt - df_after_filt) < increase_indicator * 2:
+        #
+        #     number_indicators = 2
+        #
+        # elif (df_before_filt - df_after_filt) >= increase_indicator * 2:
+        #     number_indicators = 3
+
+    else:
+        number_indicators = 0
+
+    feature_indicator = {"feature_name": feature_name, "number_indicators": number_indicators}
+
+
+    return   feature_indicator

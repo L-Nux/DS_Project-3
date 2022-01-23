@@ -164,6 +164,6 @@ class MultiPage:
 
 				self.__apps[pag].func(prev_vars)
 
-				if st.sidebar.button("Party mode"):
-					st.balloons()
+				# if st.sidebar.button("Party mode"):
+				# 	st.balloons()
 
