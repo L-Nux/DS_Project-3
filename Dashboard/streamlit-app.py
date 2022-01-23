@@ -2,6 +2,7 @@ import re
 
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
+import pydeck as pdk
 
 from dashboardCalculations import *
 from multipage import *
@@ -32,6 +33,8 @@ app.previous_page_button = "Previous Page"
 
 # Reading the dataset
 routes_raw = pd.read_csv('../data.csv')
+gis_data = pd.read_csv("../gis_data.csv", encoding='utf-8', delimiter=";", index_col=0)
+gis_tourist_data = pd.read_csv("../gisInfo_touristInfo_final.csv", encoding='utf-8', delimiter=",", index_col=0)
 
 # Extracting only unique and sorted lists of ODs
 sources = routes_raw['sourcename'].sort_values().unique()
@@ -42,11 +45,28 @@ totalwaitingtimeinhours = "Total Waiting Time"
 totaltraveltimeinhours = "Total Travel Time"
 totalwalkingdistance = "Total Walking Distance"
 
+cities_distance = {}
 
 def startpage():
+    upload_distance() #open on a start page
     st.write("# Welcome to the Itinerary Planning Dashboard :wave: ")
 
-
+# upload distances between cities into the runtime memory
+def upload_distances():
+    for row in range(0, len(routes_raw)):
+      k = routes_raw["sourcename"][row] + "_" + routes_raw["targetname"][row]
+      v = routes_raw["distance"][row]
+      if k not in cities_distance:
+        cities_distance[k] = v
+        
+# get distance between two cities from runtime memory
+def get_distance(source_city, target_city):
+    s = source_city + "_" + target_city
+    if s in cities_distance:
+        return cities_distance[s]
+    else:
+        return "-1"
+   
 # First page
 def app1(prev_vars):
     # Questionnaire for the traveler
@@ -99,8 +119,10 @@ def app1(prev_vars):
                 best_recommendation_df = chosenODs[(chosenODs[preference] == chosenODs[preference].min())].head(1)
 
                 # Generating the additional recommendation and showing all messages
+                
                 if not best_recommendation_df.empty:
-
+                    dist = get_distance(sourceName, targetName)
+                    st.write(f":arrow: In order to reach the final destination you need to cover : __{dist}__ km."
                     st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
                     st.write(" The best transport recommendation (based on your preference) is:")
                     st.success(
@@ -170,7 +192,7 @@ def app1(prev_vars):
                     elif best_recommendation_df.meal_option.to_string(
                             index=False) == "prepared cold food&drinks, no alcohol + catering trolley, on-board catering with 2-g rule":
                         st.write(
-                            ":stew: You could only eat your own cold food in a bus.Catering trolley and the restaurant serving options are possible in compliance with 2-g rule in trains ")
+                            ":stew: You could only eat your own cold food in a bus. Catering trolley and the restaurant serving options are possible in compliance with 2-g rule in trains ")
                     elif best_recommendation_df.meal_option.to_string(
                             index=False) == "prepared own snacks, on-board purshase of low cost snacks&drinks":
                         st.write(
@@ -219,7 +241,7 @@ def app1(prev_vars):
                             ":money_with_wings: Salaries in this city are quite high, which may directly indicate increased prices for goods and services, be prepared that the expenses may be significant ")
                     elif (best_recommendation_df.possible_expences == 1).bool():
                         st.write(
-                            ":money_with_wings: Be prepared to spend spend quite a lot of money in the town of your choice, prices for goods and services will be above average, taking into account the cost of living and average net salaries of city residents ")
+                            ":money_with_wings: Be prepared to spend quite a lot of money in the town of your choice, prices for goods and services will be above average, taking into account the cost of living and average net salaries of city residents ")
 
                     # Notification about the Filters page
                     st.info(
@@ -660,10 +682,126 @@ def app3(prev_vars):  # Third page
             else:
                 st.error(
                     'Recommendation cannot be done. Please select the destination that is different from the origin')
+#Map page
+def app4(prev_vars):
 
+    st.title("GIS Routing")
+    # Create a text element and let the reader know the data is loading.
+
+    # very basic map
+    st.subheader('All cities in travel system:')
+    data_load_state = st.text('Loading GIS data...')
+    st.map(gis_data)
+
+    # list of origin and destination cities
+    st.subheader('Find your route:')
+    origins = gis_tourist_data['origin'].sort_values().unique().tolist()
+    sourceName = st.selectbox('Origin', origins)
+    destinations = gis_tourist_data['destination'].sort_values().unique().tolist()
+    targetName = st.selectbox('Destination', destinations)
+    st.info("You selected: {} - {}".format(sourceName, targetName))
+
+    if sourceName != targetName:
+        OD_pair = str(sourceName + "-" + targetName)
+        # get route info
+        chosenOD = gis_tourist_data.loc[
+            (gis_tourist_data['routes'] == OD_pair)]  # & (gis_tourist_data['destination'] == targetName)]
+
+        # fancier map
+        chosenPath = chosenOD.path.item()
+
+        origin_gis = chosenOD.origin_gis.values[0]
+        destination_gis = chosenOD.destination_gis.values[0]
+        orig_lon = float(origin_gis.split(", ")[0].replace('[', ''))
+        orig_lat = float(origin_gis.split(", ")[1].replace(']', ''))
+        dest_lon = float(destination_gis.split(", ")[0].replace('[', ''))
+        dest_lat = float(destination_gis.split(", ")[1].replace(']', ''))
+
+        def get_middle_gis(oLon, oLat, dLon, dLat):
+            lon = (oLon + dLon) / 2
+            lat = (oLat + dLat) / 2
+
+            return lon, lat
+
+        middle_lon, middle_lat = get_middle_gis(orig_lon, orig_lat, dest_lon, dest_lat)
+
+        origin_info = chosenOD.origin_info.values[0]
+        destination_info = chosenOD.destination_info.values[0]
+
+        origin_name = chosenOD.origin.values[0]
+        destination_name = chosenOD.destination.values[0]
+
+        st.write("Would you like to get some information on your destination city?")
+        agree = st.checkbox("Yes, please")
+        if agree:
+            st.write("Follow this link:", destination_info)
+
+        middle_ger_lon = 51.163361
+        middle_ger_lat = 10.447683
+        view = pdk.ViewState(
+            latitude=middle_lat,
+            longitude=middle_lon,
+            zoom=5.5)
+
+        st.pydeck_chart(pdk.Deck(
+            map_style='mapbox://styles/mapbox/streets-v11',
+            initial_view_state=view,
+            layers=[
+                pdk.Layer(
+                    'PathLayer',
+                    data=chosenOD,
+                    pickable=True,
+                    get_color='[200, 30, 0, 160]',
+                    width_scale=20,
+                    width_min_pixels=4,
+                    get_path=chosenPath,
+                    get_width=5),
+                pdk.Layer(
+                    'ScatterplotLayer',
+                    chosenOD,
+                    pickable=True,
+                    opacity=0.8,
+                    stroked=True,
+                    filled=True,
+                    radius_scale=6,
+                    radius_min_pixels=5,
+                    line_width_min_pixels=1,
+                    get_position=origin_gis,
+                    get_radius=60,
+                    get_fill_color=[64, 64, 64, 160],
+                    get_line_color=[0, 0, 0],
+                ),
+                pdk.Layer(
+                    'ScatterplotLayer',
+                    chosenOD,
+                    pickable=True,
+                    opacity=0.8,
+                    stroked=True,
+                    filled=True,
+                    radius_scale=6,
+                    radius_min_pixels=5,
+                    line_width_min_pixels=1,
+                    get_position=destination_gis,
+                    get_radius=60,
+                    get_fill_color=[200, 30, 0, 160],
+                    get_line_color=[0, 0, 0],
+                ),
+                pdk.Layer(
+                    "TextLayer",
+                    chosenOD,
+                    pickable=True,
+                    get_position=origin_gis,
+                    get_text=origin_name,
+                    get_size=16,
+                    get_color=[64, 64, 64],
+                    get_angle=0
+                )
+            ]
+        ))
 
 app.set_initial_page(startpage)
 app.add_app("Survey", app1)
 app.add_app("Filters", app2)
 # app.add_app("Prediction", app3)
+app.add_app("Mapping", app4)
 app.run()
