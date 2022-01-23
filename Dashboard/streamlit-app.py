@@ -33,7 +33,7 @@ app.next_page_button = "Next Page"
 app.previous_page_button = "Previous Page"
 
 # Reading the dataset
-routes_raw = pd.read_csv('../data.csv')
+routes_raw = pd.read_csv('./data.csv')
 gis_data = pd.read_csv("../gis_data.csv", encoding='utf-8', delimiter=";", index_col=0)
 gis_tourist_data = pd.read_csv("../gisInfo_touristInfo_final.csv", encoding='utf-8', delimiter=",", index_col=0)
 

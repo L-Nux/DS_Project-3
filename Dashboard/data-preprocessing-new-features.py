@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv(r"I:\University of Vienna\3 term\Data Analysis Project\DS_Project-3\Dashboard\final.csv")
+df = pd.read_csv(r"final.csv")
 
 df.info()
 
