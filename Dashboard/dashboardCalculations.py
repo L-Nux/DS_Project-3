@@ -199,16 +199,20 @@ def indicator_calculation_sliders(increase_indicator, filters, df_initial, df_fi
             # Check if the filter range of a particular feature doesn't cover the whole dataframe
             if df_initial[feature].max() > filter1[1] or df_initial[feature].min() < filter1[0]:
 
-                if (len(df_initial.index) - len(df_filtered.index))  < increase_indicator :
-
+                if (len(df_initial.index) - len(df_filtered.index)) > 0:
                     st.write(f"{feature} :arrow_up:")
 
-                elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator  and (
-                        len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
 
-                    st.write(f"{feature} :arrow_up: :arrow_up:")
-                elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 2:
-                    st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
+                # if (len(df_initial.index) - len(df_filtered.index))  < increase_indicator :
+                #
+                #     st.write(f"{feature} :arrow_up:")
+                #
+                # elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator  and (
+                #         len(df_initial.index) - len(df_filtered.index)) < increase_indicator * 2:
+                #
+                #     st.write(f"{feature} :arrow_up: :arrow_up:")
+                # elif (len(df_initial.index) - len(df_filtered.index)) >= increase_indicator * 2:
+                #     st.write(f"{feature} :arrow_up: :arrow_up: :arrow_up:")
 
 
 # Assigning unique ids to the rows
@@ -281,16 +285,19 @@ def indicator_calculation_checkboxes(df_after_filt, df_before_filt, increase_ind
 
     if df_after_filt != None and df_before_filt != None:
 
-        if (df_before_filt - df_after_filt) < increase_indicator:
+        if (df_before_filt - df_after_filt) > 0:
             number_indicators = 1
 
-        elif (df_before_filt - df_after_filt) >= increase_indicator and (
-                df_before_filt - df_after_filt) < increase_indicator * 2:
-
-            number_indicators = 2
-
-        elif (df_before_filt - df_after_filt) >= increase_indicator * 2:
-            number_indicators = 3
+        # if (df_before_filt - df_after_filt) < increase_indicator:
+        #     number_indicators = 1
+        #
+        # elif (df_before_filt - df_after_filt) >= increase_indicator and (
+        #         df_before_filt - df_after_filt) < increase_indicator * 2:
+        #
+        #     number_indicators = 2
+        #
+        # elif (df_before_filt - df_after_filt) >= increase_indicator * 2:
+        #     number_indicators = 3
 
     else:
         number_indicators = 0
@@ -299,4 +306,3 @@ def indicator_calculation_checkboxes(df_after_filt, df_before_filt, increase_ind
 
 
     return   feature_indicator
-

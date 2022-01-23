@@ -333,15 +333,19 @@ def app2(prev_vars):  # Second page
 
     col1, col2 = st.columns(2)
 
+    filter_str = ""
+
+    st.session_state.counter = 0
+
     with col1:
-        safest_route = st.checkbox("Safest Route")
-        special_needs = st.checkbox("Special Needs")
+        safest_route = st.checkbox("Safest Route", )
+        special_needs = st.checkbox("Special Needs", )
         delay = st.checkbox("Lowest Chance of Trip Delay")
 
     with col2:
 
-        multimodality = st.checkbox("Without Transport Change")
-        mood_upgrade = st.checkbox("Improved Mood")
+        multimodality = st.checkbox("Without Transport Change", )
+        mood_upgrade = st.checkbox("Improved Mood", )
 
     stress_level = st.multiselect("Stress level", ["low", "moderate", "high"], ["low", "moderate", "high"])
 
@@ -353,156 +357,150 @@ def app2(prev_vars):  # Second page
 
     filters = [totalTravelTimeInHours, totalPrice, totalWalkingDistance, totalWaitingTime, caloriesBurnt]
 
+    # Array for storing dictionaries of feature_name and the corresponding value of the indicator
+    array_checkbox_feature_indicator = []
+
+    # Filter by price
+
+    if not filter_str == "":
+        filter_str = filter_str + f"and Price >= {totalPrice[0]} and Price <= {totalPrice[1]}"
+    else:
+        filter_str = filter_str + f"Price >= {totalPrice[0]} and Price <= {totalPrice[1]}"
+    # Filter by total walking distance
+
+    if not filter_str == "":
+        filter_str = filter_str + f"and `Total Walking Distance` >= {totalWalkingDistance[0]} and `Total Walking Distance` <= {totalWalkingDistance[1]}"
+    else:
+        filter_str = filter_str + f"`Total Walking Distance` >= {totalWalkingDistance[0]} and `Total Walking Distance` <= {totalWalkingDistance[1]}"
+    # Filter by total waiting time
+
+    if not filter_str == "":
+        filter_str = filter_str + f"and `Total Waiting Time` >= {totalWaitingTime[0]} and `Total Waiting Time` <= {totalWaitingTime[1]}"
+    else:
+        filter_str = filter_str + f"`Total Waiting Time` >= {totalWaitingTime[0]} and `Total Waiting Time` <= {totalWaitingTime[1]}"
+
+    # Filter by total travel time
+
+    if not filter_str == "":
+        filter_str = filter_str + f"and `Total Travel Time` >= {totalTravelTimeInHours[0]} and `Total Travel Time` <= {totalTravelTimeInHours[1]}"
+    else:
+        filter_str = filter_str + f"`Total Travel Time` >= {totalTravelTimeInHours[0]} and `Total Travel Time` <= {totalTravelTimeInHours[1]}"
+
+    # Filter by calories burnt
+
+    if not filter_str == "":
+        filter_str = filter_str + f"and caloriesBurnt_avg >= {caloriesBurnt[0]} and caloriesBurnt_avg <= {caloriesBurnt[1]}"
+    else:
+        filter_str = filter_str + f"caloriesBurnt_avg >= {caloriesBurnt[0]} and caloriesBurnt_avg <= {caloriesBurnt[1]}"
+
+    st.session_state.filter_str = filter_str
+
+    increase_indicator = 15
+
+    # Filter by the multimodality
+    if multimodality:
+
+        df_before_mult_filt = len(chosenODs.query(filter_str).index)
+
+        if not filter_str == "":
+            filter_str = filter_str + "and multimodality == 0"
+        else:
+            filter_str = filter_str + "multimodality == 0"
+
+        df_after_mult_filt = len(chosenODs.query(filter_str).index)
+
+        array_checkbox_feature_indicator.append(
+            indicator_calculation_checkboxes(df_after_mult_filt, df_before_mult_filt,
+                                             increase_indicator, "Without Transport Change"))
+
+    # Filter by the safest route
+    if safest_route:
+
+        df_before_safe_filt = len(chosenODs.query(filter_str).index)
+
+        if not filter_str == "":
+            filter_str = filter_str + "and safety_boost == safety_boost.max()"
+
+        else:
+            filter_str = filter_str + "safety_boost == safety_boost.max()"
+
+        df_after_safe_filt = len(chosenODs.query(filter_str).index)
+
+        array_checkbox_feature_indicator.append(
+            indicator_calculation_checkboxes(df_after_safe_filt, df_before_safe_filt,
+                                             increase_indicator, "Safest Route"))
+
+    # Filter by the special needs
+    if special_needs:
+
+        df_before_special_needs_filt = len(chosenODs.query(st.session_state.filter_str).index)
+
+        if not filter_str == "":
+            filter_str = filter_str + "and totalwalkingdistance == totalwalkingdistance.min()"
+        else:
+            filter_str = filter_str + "totalwalkingdistance == totalwalkingdistance.min()"
+
+        df_after_special_needs_filt = len(chosenODs.query(st.session_state.filter_str).index)
+
+        array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_special_needs_filt,
+                                                                                 df_before_special_needs_filt,
+                                                                                 increase_indicator,
+                                                                                 "Special Needs"))
+
+    # Filter by the stress level
+
+    if stress_level:
+
+        df_before_stress_level_filt = len(chosenODs.query(filter_str).index)
+
+        if not filter_str == "":
+            filter_str = filter_str + f"and stresslevel.isin({stress_level})"
+        else:
+            filter_str = filter_str + f"stresslevel.isin({stress_level})"
+
+        df_after_stress_level_filt = len(chosenODs.query(filter_str).index)
+
+        array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_stress_level_filt,
+                                                                                 df_before_stress_level_filt,
+                                                                                 increase_indicator, "Stress Level"))
+
+    # Filter by the mood upgrade
+
+    if mood_upgrade:
+
+        df_before_mood_upgrade_filt = len(chosenODs.query(filter_str).index)
+
+        if not filter_str == "":
+            filter_str = filter_str + "and mood_upgrade == \"achieved\")"
+        else:
+            filter_str = filter_str + "mood_upgrade == \"achieved\")"
+
+        df_after_mood_upgrade_filt = len(chosenODs.query(filter_str).index)
+
+        array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_mood_upgrade_filt,
+                                                                                 df_before_mood_upgrade_filt,
+                                                                                 increase_indicator,
+                                                                                 "Mood Upgrade"))
+
+    # Filter by the delay
+    if delay:
+
+        df_before_delay_filt = len(chosenODs.query(filter_str).index)
+
+        if not filter_str == "":
+            filter_str = filter_str + "and delay_probability == delay_probability.min()"
+        else:
+            filter_str = filter_str + "delay_probability == delay_probability.min()"
+
+        df_after_delay_filt = len(chosenODs.query(filter_str).index)
+
+        array_checkbox_feature_indicator.append(
+            indicator_calculation_checkboxes(df_after_delay_filt, df_before_delay_filt,
+                                             increase_indicator, "Lowest Chance of Trip Delay"))
+
     if sourceName != targetName:
 
         if st.button("Recommend"):
-
-            filter_str = ""
-
-            # Array for storing dictionaries of feature_name and the corresponding value of the indicator
-            array_checkbox_feature_indicator = []
-
-            # Filter by price
-
-            if not filter_str == "":
-                filter_str = filter_str + f"and Price >= {totalPrice[0]} and Price <= {totalPrice[1]}"
-            else:
-                filter_str = filter_str + f"Price >= {totalPrice[0]} and Price <= {totalPrice[1]}"
-            # Filter by total walking distance
-
-            if not filter_str == "":
-                filter_str = filter_str + f"and `Total Walking Distance` >= {totalWalkingDistance[0]} and `Total Walking Distance` <= {totalWalkingDistance[1]}"
-            else:
-                filter_str = filter_str + f"`Total Walking Distance` >= {totalWalkingDistance[0]} and `Total Walking Distance` <= {totalWalkingDistance[1]}"
-            # Filter by total waiting time
-
-            if not filter_str == "":
-                filter_str = filter_str + f"and `Total Waiting Time` >= {totalWaitingTime[0]} and `Total Waiting Time` <= {totalWaitingTime[1]}"
-            else:
-                filter_str = filter_str + f"`Total Waiting Time` >= {totalWaitingTime[0]} and `Total Waiting Time` <= {totalWaitingTime[1]}"
-
-            # Filter by total travel time
-
-            if not filter_str == "":
-                filter_str = filter_str + f"and `Total Travel Time` >= {totalTravelTimeInHours[0]} and `Total Travel Time` <= {totalTravelTimeInHours[1]}"
-            else:
-                filter_str = filter_str + f"`Total Travel Time` >= {totalTravelTimeInHours[0]} and `Total Travel Time` <= {totalTravelTimeInHours[1]}"
-
-            # Filter by calories burnt
-
-            if not filter_str == "":
-                filter_str = filter_str + f"and caloriesBurnt_avg >= {caloriesBurnt[0]} and caloriesBurnt_avg <= {caloriesBurnt[1]}"
-            else:
-                filter_str = filter_str + f"caloriesBurnt_avg >= {caloriesBurnt[0]} and caloriesBurnt_avg <= {caloriesBurnt[1]}"
-
-            increase_indicator = 15
-
-            # TODO: Fix the representation of indicators
-
-            # Filter by the multimodality
-            if multimodality:
-
-                df_before_mult_filt = len(chosenODs.query(filter_str).index)
-
-                st.write(filter_str)
-                st.write(df_before_mult_filt)
-                if not filter_str == "":
-                    filter_str = filter_str + "and multimodality == 0"
-                else:
-                    filter_str = filter_str + "multimodality == 0"
-
-                st.write(filter_str)
-                df_after_mult_filt = len(chosenODs.query(filter_str).index)
-
-                st.write(df_after_mult_filt)
-
-                array_checkbox_feature_indicator.append(
-                    indicator_calculation_checkboxes(df_after_mult_filt, df_before_mult_filt,
-                                                     increase_indicator, "Without Transport Change"))
-
-            # Filter by the safest route
-
-            if safest_route:
-
-                df_before_safe_filt = len(chosenODs.query(filter_str).index)
-
-                if not filter_str == "":
-                    filter_str = filter_str + "and safety_boost == safety_boost.max()"
-                else:
-                    filter_str = filter_str + "safety_boost == safety_boost.max()"
-
-                df_after_safe_filt = len(chosenODs.query(filter_str).index)
-
-                array_checkbox_feature_indicator.append(
-                    indicator_calculation_checkboxes(df_after_safe_filt, df_before_safe_filt,
-                                                     increase_indicator, "Safest Route"))
-
-            # Filter by the special needs
-            if special_needs:
-
-                df_before_special_needs_filt = len(chosenODs.query(filter_str).index)
-
-                if not filter_str == "":
-                    filter_str = filter_str + "and totalwalkingdistance == totalwalkingdistance.min()"
-                else:
-                    filter_str = filter_str + "totalwalkingdistance == totalwalkingdistance.min()"
-
-                df_after_special_needs_filt = len(chosenODs.query(filter_str).index)
-
-                array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_special_needs_filt,
-                                                                                         df_before_special_needs_filt,
-                                                                                         increase_indicator,
-                                                                                         "Special Needs"))
-
-            # Filter by the stress level
-
-            if stress_level:
-
-                # df_before_stress_level_filt = len(chosenODs.query(filter_str).index)
-
-                if not filter_str == "":
-                    filter_str = filter_str + f"and stresslevel.isin({stress_level})"
-                else:
-                    filter_str = filter_str + f"stresslevel.isin({stress_level})"
-
-                # df_after_stress_level_filt = len(chosenODs.query(filter_str).index)
-
-                # array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_stress_level_filt,
-                #                                                      df_before_stress_level_filt, increase_indicator,"Stress Level"))
-
-            # Filter by the mood upgrade
-
-            if mood_upgrade:
-
-                df_before_mood_upgrade_filt = len(chosenODs.query(filter_str).index)
-
-                if not filter_str == "":
-                    filter_str = filter_str + "and mood_upgrade == \"achieved\")"
-                else:
-                    filter_str = filter_str + "mood_upgrade == \"achieved\")"
-
-                df_after_mood_upgrade_filt = len(chosenODs.query(filter_str).index)
-
-                array_checkbox_feature_indicator.append(indicator_calculation_checkboxes(df_after_mood_upgrade_filt,
-                                                                                         df_before_mood_upgrade_filt,
-                                                                                         increase_indicator,
-                                                                                         "Mood Upgrade"))
-
-            # Filter by the delay
-            if delay:
-
-                df_before_delay_filt = len(chosenODs.query(filter_str).index)
-
-                if not filter_str == "":
-                    filter_str = filter_str + "and delay_probability == delay_probability.min()"
-                else:
-                    filter_str = filter_str + "delay_probability == delay_probability.min()"
-
-                df_after_delay_filt = len(chosenODs.query(filter_str).index)
-
-                array_checkbox_feature_indicator.append(
-                    indicator_calculation_checkboxes(df_after_delay_filt, df_before_delay_filt,
-                                                     increase_indicator, "Lowest Chance of Trip Delay"))
 
             # Applying filtering
             if not filter_str == "":
@@ -515,22 +513,6 @@ def app2(prev_vars):  # Second page
                 notify_no_recommendation()
 
             else:
-                st.write(len(chosenODs.index))
-                st.write(len(chosenODs_filtered.index))
-
-                # final_solutions = chosenODs['finalsolutionusedlabels']
-
-                # Make the transport labels look user-friendly
-                # clean_recommendation = []
-
-                # for el in final_solutions:
-                #
-                #     clean_recommendation.append(re.sub(r"[\[\]]", "", el))
-                #
-                # # Output the recommendation
-                # for el in clean_recommendation:
-                #
-                #     st.write(el)
 
                 st.subheader("Your route recommendations")
 
@@ -568,9 +550,12 @@ def app2(prev_vars):  # Second page
                         st.write(f"{el['feature_name']} :arrow_up: :arrow_up: :arrow_up:")
 
                 st.info(
-                    "- :arrow_up: -- by adjusting this feature, a few of additional recommendations can appear \n"
-                    "- :arrow_up: :arrow_up: -- by adjusting this feature, a dozen of additional recommendations can appear \n"
-                    "- :arrow_up: :arrow_up: :arrow_up: -- by adjusting this feature, a lot of additional recommendations can appear \n")
+                    "- :arrow_up: -- by adjusting this feature, additional recommendations will appear \n"
+
+                    # "- :arrow_up: -- by adjusting this feature, a few of additional recommendations can appear \n"
+                    # "- :arrow_up: :arrow_up: -- by adjusting this feature, a dozen of additional recommendations can appear \n"
+                    # "- :arrow_up: :arrow_up: :arrow_up: -- by adjusting this feature, a lot of additional recommendations can appear \n"
+                )
     else:
         notify_different_source_origin()
 
