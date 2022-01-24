@@ -58,7 +58,7 @@ cities_dict = {'Gelsenkirchen' : 2921466,
 departure.sort()
 destination.sort()
 
-"""Used openweathermapAPI, challenge- didnt return the data for the names of German cities written with umplaut- for some gave the data with English representative names, but not for all of them. Decided to use a dictionary to map city with ids and base API requests on ids"""
+"""Used openweathermapAPI, challenge- didnt return the data for the names of German cities written with umlaut- for some gave the data with English representative names, but not for all of them. Decided to use a dictionary to map city with ids and base API requests on ids"""
 
 # a function for getting the weather properties
 def get_weather(city_id):
