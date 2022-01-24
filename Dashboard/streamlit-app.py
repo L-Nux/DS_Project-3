@@ -109,12 +109,13 @@ def app1(prev_vars):
                 if not best_recommendation_df.empty:
 
                     st.write(" The best transport recommendation (based on your preference) is:")
-                    st.write(":arrow_right: In order to reach the final destination you need to cover : __" +
-                             best_recommendation_df["distance"].to_string(index=False) + "__ km.")
-                    st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
                     st.success(
                         ":minibus: __" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip(
                             "[]") + "__")
+                    st.write(":arrow_right: In order to reach the final destination you need to cover : __" +
+                             best_recommendation_df["distance"].to_string(index=False) + "__ km.")
+                    st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
+
                     st.write(
                         f":beginner: This choice is __{best_recommendation_df.safety_boost.to_string(index=False)}__ times safer than driving by car")
 
