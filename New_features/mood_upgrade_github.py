@@ -180,10 +180,6 @@ com
 checked not_achieved- to be correct with the values
 """
 
-#download final Dataset for NN:
-from google.colab import files
-com.to_csv('final.csv') 
-files.download('final.csv')
 
 #check the density of values
 m = com.mood_upgrade
