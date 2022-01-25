@@ -108,13 +108,16 @@ def app1(prev_vars):
 
                 if not best_recommendation_df.empty:
 
+                    st.info(f":thumbsup: Based on the survey your preference is: __{preference}__.")
+
                     st.write(" The best transport recommendation (based on your preference) is:")
-                    st.write(":arrow_right: In order to reach the final destination you need to cover : __" +
-                             best_recommendation_df["distance"].to_string(index=False) + "__ km.")
-                    st.write(f":thumbsup: Based on the survey your preference is: __{preference}__.")
                     st.success(
                         ":minibus: __" + best_recommendation_df["finalsolutionusedlabels"].to_string(index=False).strip(
                             "[]") + "__")
+                    st.write(":arrow_right: In order to reach the final destination you need to cover : __" +
+                             best_recommendation_df["distance"].to_string(index=False) + "__ km.")
+
+
                     st.write(
                         f":beginner: This choice is __{best_recommendation_df.safety_boost.to_string(index=False)}__ times safer than driving by car")
 
@@ -148,11 +151,11 @@ def app1(prev_vars):
                     if best_recommendation_df.luggage_transportation.to_string(
                             index=False) == "unlimited carry-on and standard bags,no extra charge":
                         st.write(
-                            ":handbag: The luggage policy is generous, enjoy your trip with no limitations on board of RE/RB, Deutsche Bahn- trains")
+                            ":handbag: __The luggage policy is generous__. Enjoy your trip with no limitations on board of RE/RB, Deutsche Bahn- trains")
                     elif best_recommendation_df.luggage_transportation.to_string(
                             index=False) == "1 carry-on bag up to 7 kg, 1 free checked baggage up to 20 kg, additional bags per fee":
                         st.write(
-                            ":handbag: The luggage policy is pretty strict, although suitcases may not be checked and weighed. However, it is recommended to follow the rules of the carrier company: an upper bound is 1 carry-on bag up to 7 kg& 1 free checked baggage up to 20 kg. Additional bags might be included per fee")
+                            ":handbag: The luggage policy is pretty strict, although suitcases may not be checked and weighed. However, it is recommended to follow the rules of the carrier company: an upper bound is 1 carry-on bag up to 7 kg & 1 free checked baggage up to 20 kg. Additional bags might be included per fee")
                     elif best_recommendation_df.luggage_transportation.to_string(
                             index=False) == "2 pieces of hand luggage, 2 free pieces of checked baggage up to 23 kg, additional bags per fee":
                         st.write(
@@ -166,7 +169,7 @@ def app1(prev_vars):
                     elif best_recommendation_df.luggage_transportation.to_string(
                             index=False) == "1 carry-on bag up to 8kg, 1 free checked baggage up to 23 kg, additional bags per fee":
                         st.write(
-                            ":handbag: The luggage policy is strict, the suitcases will be 100% checked with respect to the dimensions and weighed. It is highly recommended to follow the rules of the carrier company: an upper bound is 1 carry-on bag up to 8kg, 1 free checked baggage up to 23 kg, additional bags per fee ")
+                            ":handbag: The luggage policy is strict, the suitcases will be checked and weighed. It is highly recommended to follow the rules of the carrier company: an upper bound is 1 carry-on bag up to 8kg, 1 free checked baggage up to 23 kg, additional bags per fee ")
 
                     if best_recommendation_df.meal_option.to_string(
                             index=False) == "catering trolley, on-board catering with 2-g rule":
@@ -272,6 +275,8 @@ def app2(prev_vars):  # Second page
 
     st.write("#### Configure filters and press the button to get the recommendations")
 
+
+
     # Setting up filters based on the survey
     if prev_vars is not None:
 
@@ -284,12 +289,16 @@ def app2(prev_vars):  # Second page
         sourceName = st.selectbox('Origin', sources, sources.tolist().index(sourceName))
         targetName = st.selectbox('Destination', targets, targets.tolist().index(targetName))
 
+        chosenODs = routes_raw.loc[
+            (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
+            ]
+
         # Setting up upper limits for filters
 
-        price_upper_limit = routes_raw[totalprice].max()
-        total_waiting_time_upper_limit = routes_raw[totalwaitingtimeinhours].max()
-        total_travel_time_upper_limit = routes_raw[totaltraveltimeinhours].max()
-        total_walking_distance_upper_limit = routes_raw[totalwalkingdistance].max()
+        price_upper_limit = chosenODs[totalprice].max()
+        total_waiting_time_upper_limit = chosenODs[totalwaitingtimeinhours].max()
+        total_travel_time_upper_limit = chosenODs[totaltraveltimeinhours].max()
+        total_walking_distance_upper_limit = chosenODs[totalwalkingdistance].max()
 
         match preference:
             case "Price":
@@ -310,7 +319,7 @@ def app2(prev_vars):  # Second page
         totalWalkingDistance = st.slider('Walking distance (m)', 0, 965,
                                          (0, int(total_walking_distance_upper_limit)))
 
-        totalWaitingTime = st.slider('Waiting time (h)', 0.0, 3.5,
+        totalWaitingTime = st.slider('Waiting time (h)', 0.0, 22.0,
                                      (0.0, float(total_waiting_time_upper_limit)),
                                      step=0.5)
 
@@ -349,9 +358,7 @@ def app2(prev_vars):  # Second page
 
     stress_level = st.multiselect("Stress level", ["low", "moderate", "high"], ["low", "moderate", "high"])
 
-    chosenODs = routes_raw.loc[
-        (routes_raw["sourcename"] == sourceName) & (routes_raw.targetname == targetName)
-        ]
+
 
     chosenODs_filtered = chosenODs
 
