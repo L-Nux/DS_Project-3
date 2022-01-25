@@ -196,9 +196,6 @@ def indicator_calculation_sliders(increase_indicator, filters, df_initial, df_fi
         if df_filtered.dtypes[feature] == np.float64 or df_filtered.dtypes[
             feature] == np.int64:
 
-            st.write(len(df_initial.index))
-            st.write(len(df_filtered.index))
-
             # Check if the filter range of a particular feature doesn't cover the whole dataframe
             if df_initial[feature].max() > filter1[1] or df_initial[feature].min() < filter1[0]:
 
