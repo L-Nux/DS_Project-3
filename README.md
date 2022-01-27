@@ -17,5 +17,11 @@ The main branch includes code scripts for all central parts of the project.
 
 - **Dashboard:** Dashboard, cache
 
+The data used in this project:
+
+- main file: data.csv
+
+- geo-information: gis_data.csv, gisInfo_touristInfo_final.csv
+
 ## Limitations
 The itinerary data includes only static data.
