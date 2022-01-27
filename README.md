@@ -17,6 +17,8 @@ The main branch includes code scripts for all central parts of the project.
 
 - **Dashboard:** Dashboard, cache
 
+## 2. Most Used Languages
+![Your Repository's Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=LisNux-77&theme=blue-green)
 
 ## Limitations
 The itinerary data includes only static data.
