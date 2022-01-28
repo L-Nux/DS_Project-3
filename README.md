@@ -25,9 +25,9 @@ The data used in this project:
 
 ### Running application locally
 1. Open terminal.
-2. Move to the project folder `cd <path to the project>`
-3. Move to the Dashboard folder `cd .\Dashboard\`
-4. Run `streamlit run streamlit-app.py`
+2. Move to the project folder `cd <path to the project>`.
+3. Move to the Dashboard folder `cd .\Dashboard\`.
+4. Run `streamlit run streamlit-app.py`.
 
 ### Accessing application globally
 [Application](https://itinerary-prediction-app.herokuapp.com/)
