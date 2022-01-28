@@ -23,6 +23,8 @@ The data used in this project:
 
 - geo-information: gis_data.csv, gisInfo_touristInfo_final.csv
 
+- statistical evluation: statistics_2dim, statistics_3dim
+
 ### Running application locally
 1. Open terminal.
 2. Move to the project folder `cd <path to the project>`.
