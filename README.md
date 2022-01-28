@@ -23,7 +23,7 @@ The data used in this project:
 
 - geo-information: gis_data.csv, gisInfo_touristInfo_final.csv
 
-- statistical evluation: statistics_2dim, statistics_3dim
+- statistical evaluation: statistics_2dim.csv, statistics_3dim.csv
 
 ### Running application locally
 1. Open terminal.
